@@ -5,8 +5,8 @@ metadata:
     - engine:CLAUDE.md
     - engine:scripts/censo-de-issues.mjs
     - engine:tests/censo-de-issues.node.test.js
-    - scripts/divida-dos-registos.py
-    - scripts/test-divida-dos-registos.py
+    - docs:scripts/divida-dos-registos.py
+    - docs:scripts/test-divida-dos-registos.py
   errata:
     - date: 2026-09-09
       what: >-

@@ -70,7 +70,14 @@ NAO_CONFERIDOS = {}
 #
 # 📌 Uma lista declarada resolve-o e custa uma linha por repositório: prefixo conhecido sem raiz é CONTADO;
 # prefixo desconhecido é PROBLEMA. Acrescentar um repositório a esta lista é o acto de o admitir.
-REPOS_CONHECIDOS = {"engine"}
+# 🔴 `docs` ENTROU EM 2026-09-09, e o que o obrigou foi o VEREDICTO DIVERGENTE que esta lista existe para
+# impedir. O ADR-0126 confirmava-se em `scripts/divida-dos-registos.py` SEM prefixo, e um caminho sem prefixo
+# resolve-se contra o repositório de onde se corre: a CI do docs abria-o e passava, a corrida a partir da
+# engine procurava-o na árvore errada e reprovava. A mesma árvore, verde de um lado e vermelha do outro, sem
+# nada a dizer qual estava certo — que é exactamente o defeito do `9d4a5e3`, agora vindo do DADO em vez da
+# ferramenta. 📌 Um caminho sem prefixo passa a significar «o repositório de onde se corre», e isso só é
+# seguro para um registo que vive com o código que ele nomeia; tudo o resto declara-se.
+REPOS_CONHECIDOS = {"engine", "docs"}
 
 # ADR-0057 diz como um registo MUDA. `confirmed-by` diz outra coisa, que faltava: se ele foi CONSTRUÍDO.
 #
