@@ -119,6 +119,45 @@ with tempfile.TemporaryDirectory() as base:
     exige("nao-existe" in saida,
           f"a reprovação não diz contra QUE raiz mediu — parece um registo mentiroso. Saída:\n{saida}")
 
+    # ======================= o ÍNDICE, que drenou sete registos em silêncio =======================
+    indice = os.path.join(adr, "README.md")
+
+    # [Vácuo] PRIMEIRO, e é o caso que importa mais: sem `README.md` o crivo SALTA, e tem de saltar —
+    # uma árvore de registos sem índice não é uma árvore partida. ⚠️ Mas um salto que ninguém afirma é
+    # como um crivo desligado: se o `os.path.exists` virasse `True` constante, nada abaixo notava.
+    codigo, saida = corre(adr)
+    exige(codigo == 0, f"sem índice nenhum devia saltar e sair 0; saiu {codigo}. Saída:\n{saida}")
+    exige("no row in the index" not in saida,
+          f"acusou índice em falta numa árvore que não tem índice nenhum. Saída:\n{saida}")
+
+    # [Right] com um índice que nomeia UM dos dois, o outro é acusado — e o acusado é o que falta.
+    with open(indice, "w", encoding="utf-8") as fh:
+        fh.write("| ADR | Decision | Status |\n|---|---|---|\n"
+                 "| [ADR-0001](ADR-0001-fixture.yaml) | a que está | accepted |\n")
+    codigo, saida = corre(adr)
+    exige(codigo != 0, f"registo fora do índice devia reprovar; saiu {codigo}. Saída:\n{saida}")
+    exige("ADR-0002" in saida, f"reprovou sem nomear QUAL registo falta. Saída:\n{saida}")
+    exige("ADR-0001" not in saida.replace("ADR-0001-fixture.yaml", ""),
+          f"acusou também o registo que TEM linha. Saída:\n{saida}")
+
+    # 🎯 [Boundary] SER MENCIONADO NÃO É TER LINHA, e é exactamente assim que os sete se esconderam:
+    # um registo citado dentro da prosa de outra linha aparece a um `grep` e continua sem entrada.
+    with open(indice, "w", encoding="utf-8") as fh:
+        fh.write("| ADR | Decision | Status |\n|---|---|---|\n"
+                 "| [ADR-0001](ADR-0001-fixture.yaml) | supersede em parte o ADR-0002 | accepted |\n")
+    codigo, saida = corre(adr)
+    exige(codigo != 0,
+          f"o ADR-0002 só é MENCIONADO na prosa de outra linha e mesmo assim passou; saiu {codigo}. "
+          f"Saída:\n{saida}")
+
+    # [Inverse] com os dois indexados, verde outra vez — senão seria um gate que nunca pode ficar verde.
+    with open(indice, "w", encoding="utf-8") as fh:
+        fh.write("| ADR | Decision | Status |\n|---|---|---|\n"
+                 "| [ADR-0001](ADR-0001-fixture.yaml) | a primeira | accepted |\n"
+                 "| [ADR-0002](ADR-0002-fixture.yaml) | a segunda | accepted |\n")
+    codigo, saida = corre(adr)
+    exige(codigo == 0, f"com os dois no índice devia sair 0; saiu {codigo}. Saída:\n{saida}")
+
 if falhas:
     for f in falhas:
         print(f"FAIL {f}")
@@ -134,3 +173,9 @@ print("validador: o que não é conferido é dito, e o que é conferido reprova 
 #    gate que nunca pode ficar verde é um gate que alguém desliga.
 # 3. tirar o `--repo` do parser (voltar a resolver tudo contra o `cwd`) → o [Right] reprova: os caminhos
 #    qualificados deixariam de ser encontrados mesmo com a raiz correcta.
+# 4. o crivo do índice a procurar `ADR-\d{4}` em qualquer posição da linha em vez de `^\| \[ADR-\d{4}\]`
+#    → o [Boundary] reprova. É a mutação que mais importa deste bloco, porque é a forma REAL do defeito:
+#    os sete registos que faltavam apareciam todos a um `grep` por número, citados na prosa de outras
+#    linhas, e um crivo assim teria dito «está tudo indexado» durante os sete.
+# 5. trocar o `os.path.exists(indice)` por `True` → o [Vácuo] reprova com um traceback em vez de saltar.
+#    Ao contrário, fixá-lo em `False` deixa o bloco inteiro verde para sempre — e é o [Right] que a apanha.
