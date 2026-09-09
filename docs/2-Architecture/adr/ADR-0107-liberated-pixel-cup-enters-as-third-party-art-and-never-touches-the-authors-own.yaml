@@ -1,6 +1,17 @@
 ---
 metadata:
   status: "accepted"
+  superseded-in-part:
+    - by: ADR-0133
+      what: >-
+        the framing of the quarantine as what THIRD-PARTY art requires. This record's own analysis identifies
+        the hazard correctly — share-alike propagating through a derivative-work pipeline into the artist's
+        own work — and then attaches the wall to the wrong property. Under ADR-0133 the wall follows the
+        LICENCE: CC BY-SA is quarantined because its share-alike travels, while CC0 and CC BY art from a third
+        party needs only a ledger row. ⚠️ Everything else here stands and is load-bearing: the measurement of
+        the LCP's dual licence, the choice of the CC BY-SA arm, the per-asset attribution ledger, and the
+        MIXING RULE — a resource of one origin may not derive from a resource of another — which becomes the
+        share-alike boundary rather than the third-party one, with its gate unchanged.
   supersedes-in-part: [ADR-0018]
   date: 2026-09-08
   decision-makers: [Dev]
