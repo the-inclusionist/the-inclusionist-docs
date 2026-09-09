@@ -1,6 +1,28 @@
 ---
 metadata:
   status: "accepted"
+  confirmed-by:
+    - engine:CLAUDE.md
+    - engine:scripts/censo-de-issues.mjs
+    - engine:tests/censo-de-issues.node.test.js
+    - scripts/divida-dos-registos.py
+    - scripts/test-divida-dos-registos.py
+  errata:
+    - date: 2026-09-09
+      what: >-
+        the three gates this record owed are paid, hours after it was written, and the `confirmed-by` above is
+        how that stops being prose. (1) `CLAUDE.md` now says what an issue IS and names the four homes, with
+        the mechanical test — an issue's body must be shorter than the commit message that closes it.
+        (2) The census is repeatable: `npm run censo:issues` reports how many open issues exceed the budget and
+        how many carry no checkbox, with a case keeping the detector alive. (3) A record that owes work has to
+        be followable: `scripts/divida-dos-registos.py` counts the records that declare a debt and have
+        NEITHER a named issue NOR a `confirmed-by`. 🎯 That third gate changed shape when measured, and the
+        change is the finding: the validator was reporting «126 sound» partly BECAUSE those records had no
+        `confirmed-by` at all — a record that declares a debt and never confirms it stays sound forever, so the
+        debt is invisible to the machine exactly while nobody pays it. The ledger went from 12 records with a
+        debt and 10 unfollowable down to ONE, by opening each record and measuring it against the tree.
+        ⚠️ STILL OWED AND NOT A GATE: the disposition of the sixteen. This record says so on purpose — moving
+        an issue changes its number and its history, and three of the sixteen need a decision written first.
   supersedes-in-part: []
   date: 2026-09-09
   decision-makers: [Dev]
