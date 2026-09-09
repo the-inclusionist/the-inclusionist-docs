@@ -1,17 +1,7 @@
 ---
 metadata:
-  status: "accepted"
-  superseded-in-part:
-    - by: ADR-0133
-      what: >-
-        the framing of the quarantine as what THIRD-PARTY art requires. This record's own analysis identifies
-        the hazard correctly — share-alike propagating through a derivative-work pipeline into the artist's
-        own work — and then attaches the wall to the wrong property. Under ADR-0133 the wall follows the
-        LICENCE: CC BY-SA is quarantined because its share-alike travels, while CC0 and CC BY art from a third
-        party needs only a ledger row. ⚠️ Everything else here stands and is load-bearing: the measurement of
-        the LCP's dual licence, the choice of the CC BY-SA arm, the per-asset attribution ledger, and the
-        MIXING RULE — a resource of one origin may not derive from a resource of another — which becomes the
-        share-alike boundary rather than the third-party one, with its gate unchanged.
+  status: "superseded"
+  superseded-by: ADR-0133
   supersedes-in-part: [ADR-0018]
   date: 2026-09-08
   decision-makers: [Dev]
@@ -169,6 +159,16 @@ decision-outcome:
       an entry naming an asset that no longer exists makes the file a memory instead of a measurement.
 
 more-information: |
+  🔴 SUPERSEDED WHOLE BY ADR-0133 ON 2026-09-09, THE DAY AFTER IT WAS WRITTEN, and the reader should know
+  which half died and which half is still true. What died is the DECISION: the Dev refused share-alike
+  outright — «nada de quarentena, melhor não aceitar por enquanto» — so the LCP does not enter under either
+  of its arms, and the quarantine of §3 is not merely unused but unnecessary. What is still true is every
+  MEASUREMENT below, and it is what makes the refusal informed rather than arbitrary: the set really is dual
+  CC BY-SA 3.0 / GPL-3.0, attribution really is required under both, the authorship really is per asset, and
+  the pipeline really is a derivative-work machine. ⚠️ And §3's own reasoning is what convicted it: this
+  record was right that the hazard is share-alike reaching the artist's work, and a wall is what it costs to
+  hold that back. ADR-0133 declines to pay for a wall around art the project never imported.
+
   ⚠️ WHAT THIS RECORD DOES NOT DECIDE, and should not be read as deciding:
 
   · WHICH assets are taken, and for which games. That is art direction, and it belongs with the person who

@@ -1,0 +1,282 @@
+---
+metadata:
+  status: "accepted"
+  errata:
+    - date: 2026-09-09
+      what: >-
+        THE SECOND DOOR WAS REWRITTEN THE DAY IT WAS WRITTEN, and both halves of it were wrong. The first
+        version said «a CC licence adequate to our work» and defined adequate by a TEST — allows derivatives
+        and allows commercial use — with CC BY-SA admitted under a quarantine. Two defects, and the Dev found
+        the first by naming a licence the record would have excluded. ① **«CC» named a FAMILY where the rule
+        is about a PROPERTY**, so OGA-BY was shut out although it is CC BY minus one restriction and is
+        therefore strictly more permissive; Creative Commons itself says it does not endorse OGA-BY, so the
+        word «CC» excluded it by construction. It is the same defect ADR-0107 committed and this record was
+        written to correct — a wall hung on the wrong property — repeated one level up, on the same day.
+        ② **THE TEST ADMITTED SHARE-ALIKE AND PAID FOR IT WITH A QUARANTINE**, which the Dev has now refused:
+        «nada de quarentena, melhor não aceitar por enquanto». The list below is therefore CLOSED and
+        ENUMERATED rather than derived from a test, because a test invites argument at the edges and a list
+        does not. ⚠️ What this erratum costs is written in the consequences and is not small: the Liberated
+        Pixel Cup no longer enters, and ADR-0107 falls whole.
+
+  supersedes: [ADR-0107]
+  supersedes-in-part: [ADR-0018, ADR-0119]
+  date: 2026-09-09
+  decision-makers: [Dev]
+  consulted:
+    - "The Dev's decision of 2026-09-09: «a partir de agora aceitamos dois tipos de arte: o procedural, quando
+       um artista ceder o direito de gerarmos arte derivada, e obras com licença CC adequadas ao nosso
+       trabalho. E isso vai pra ADR corrigindo decisões anteriores»"
+    - "The Dev's decision of 2026-09-09, which closed the list: «no nosso ADR só aceitamos CC0, CC-BY 3.0,
+       CC-BY 4.0 e OGA-BY por enquanto. Deve ficar claro o que não aceitamos: ND, NC e SA (nada de
+       quarentena, melhor não aceitar por enquanto)»"
+    - "opengameart.org/content/faq and content/oga-by-30-faq, read 2026-09-09 — OGA-BY 3.0 is «a license based
+       on CC-BY 3.0 that removes that license's restriction on technical measures», it is NOT endorsed by
+       Creative Commons, OGA-BY 4.0 exists, and there is NO OGA-BY-SA"
+    - "creativecommons.org/compatible-licenses and the BY-SA 3.0 legal code §4(b), read 2026-09-09 — a BY-SA
+       3.0 adaptation may be relicensed under a later version with the same elements, and BY-SA 4.0 is
+       one-way compatible with GPLv3 and the Free Art Licence. AGPL appears on none of those pages"
+    - "github.com/OpenGameArt/LiberatedPixelCup, read 2026-09-09 — its README and its two licence files
+       confirm the dual CC BY-SA 3.0 / GPL-3.0 grant, and GitHub's own detector reports GPL-3.0"
+    - "github.com/ElizaWy/LPC — «LPC Revised», raised by the Dev on 2026-09-09. Its README declares every
+       asset CC BY 3.0 or OGA-BY 3.0, and every directory carries a `Credits.txt` naming ARTIST(S), SOURCE,
+       LICENSE and the derivation chain. 🔴 The repository itself carries NO licence file and GitHub reports
+       none; the grant lives in README prose"
+    - "The three OpenGameArt source pages that `Credits.txt` cites, read 2026-09-09 — and they do not all
+       agree with it. See more-information: this is the measurement that produced the verification gate"
+    - "ADR-0018 — SUPERSEDED IN PART: «outside art only as design reference». ADR-0107 had already lifted it
+       for one case; this lifts it as a rule"
+    - "ADR-0107 — SUPERSEDED WHOLE: its chosen option was the LCP under CC BY-SA 3.0 in a quarantine, and the
+       Dev has refused both the licence and the mechanism"
+    - "ADR-0119 — SUPERSEDED IN PART: it made LCP art one of the four heavy things the platform delivers"
+    - "ADR-0010 pillar 10 — «THE ART IS NOT OURS TO LICENSE». Untouched, and it is what makes the first door
+       a GRANT from the artist rather than a policy the project can adopt"
+    - "ADR-0028 — NOT TOUCHED, and the boundary is stated in more-information: the AAC pictogram layer has its
+       own rule and its own CC BY-SA sources"
+    - "docs/game-design/plano-arte-procedural.md — the pipeline this record has to keep safe, because it turns
+       source art into derivative works by construction"
+  informed: []
+
+title: Art enters by two doors — the artist's grant, and four named licences with no share-alike
+
+context-and-problem-statement: |
+  Until today the project's answer about outside art was written case by case. ADR-0018 said in July that
+  outside art could serve only as design reference, written when the only outside art in view was a generator.
+  ADR-0107 lifted that for one case in September — the Liberated Pixel Cup, taken under its CC BY-SA 3.0 arm
+  and put in a quarantine. Neither states a rule, so the third case would be argued from scratch, and the
+  fourth would be argued from the third.
+
+  The Dev has now stated the rule: art enters by two doors, and by no others. The first is PROCEDURAL, when an
+  artist grants the right to generate derivative art from her work. The second is a work under one of four
+  named licences, and the naming is the point — the first version of this record defined the second door by a
+  TEST, and a test is argued at the edges by whoever is in a hurry.
+
+  🎯 WHAT DECIDES THE LIST IS THAT THE PIPELINE IS A DERIVATIVE-WORK MACHINE, which ADR-0107 had already
+  measured. A semantic image traced from a sprite is a derivative of that sprite, and a recolour is a
+  derivative before that. So three questions decide a licence, not two: may we DERIVE, may we use
+  COMMERCIALLY, and — the one the first version got wrong — **does anything TRAVEL from the source into the
+  output**. Share-alike travels, and that is what makes it different in kind from attribution.
+
+  ⚠️ AND THE PRICE OF ADMITTING SHARE-ALIKE IS A WALL, NOT A FORM TO FILL IN. ADR-0107 called its quarantine
+  «the substance of this record, not its housekeeping», and it was right: a segregated tree, a mixing rule
+  asserted by an inventory, and a per-asset tax paid forever, all to stop one thing — the copyleft reaching
+  the artist's own non-FOSS work and licensing it without asking her. The Dev has decided that the project
+  does not pay that price for art it does not yet have.
+
+  ⚠️ AND PILLAR 10 IS WHY THE FIRST DOOR IS A GRANT AND NOT A POLICY. It says, in as many words, that the art
+  is not the project's to license: a program is what Lei 9.609 defines, and art follows Lei 9.610 and belongs
+  to whoever made it. The project cannot decide that an artist's work may be machine-derived; only she can.
+  That is why this door is opened by her and not by this record.
+
+decision-drivers:
+  - "A rule stated once beats a case argued four times, and the fourth case is where the drift happens"
+  - "The pipeline makes derivatives by construction, so 'may we derive' is the first question of adequacy"
+  - "🎯 Licences without share-alike KEEP options; share-alike SPENDS them — CC BY is one-way compatible with
+     BY-SA, so a permissive collection can always become share-alike later and the reverse is closed forever"
+  - "The art's terms must never be narrower than the code's, or a user the AGPL permits is stopped by a sprite"
+  - "Pillar 10 keeps the artist's decision hers, so her door is a grant she gives rather than a rule we write"
+  - "A quarantine is a mechanism with a permanent cost, and the project has no art in it to justify the cost"
+  - "An enumerated list is checkable by a gate; a test with two questions is argued by whoever is in a hurry"
+
+considered-options:
+  - "A · two doors, and the second is a CLOSED LIST of four licences, with ND, NC and SA all refused"
+  - "B · two doors, and the second is a TEST (derivatives + commercial), with share-alike admitted behind a quarantine"
+  - "C · two doors, with 'CC' left undefined and judged per case"
+  - "D · keep the case-by-case practice: every new source gets its own record"
+
+pros-and-cons-of-the-options:
+  A:
+    good:
+      - "The next source is answered by reading a licence name off a list, which a gate can assert and a person cannot argue with."
+      - "🎯 Nothing travels from a source into the output, so no quarantine has to exist, no mixing rule has to be maintained, and no per-asset tax is paid."
+      - "It admits OGA-BY, which is CC BY minus the anti-DRM restriction and therefore strictly more permissive — and which the day one of the 300 games ships through a store with DRM is the only one of the two that still works."
+      - "It states the incompatibility that would otherwise be discovered mid-pipeline: no-derivatives art cannot be recoloured, let alone traced."
+    bad:
+      - "🔴 The Liberated Pixel Cup does not enter. Its two arms are CC BY-SA 3.0 and GPL-3.0 and neither is on the list, so the largest purpose-built asset set for exactly this kind of game is refused — and ADR-0107, ADR-0119 and four gates were built around it."
+      - "⚠️ A closed list has to be REOPENED by a decision every time a good source carries a licence nobody thought of, and the cost of that is a record instead of a judgement."
+      - "It rules out CC BY-SA art that would have been perfectly safe used alone, in a game that never mixes sources."
+  B:
+    good:
+      - "It keeps the LCP, and with it the labour that was the whole reason to reach for outside art."
+      - "The test explains itself, so a reader can apply it to a licence the list never anticipated."
+    bad:
+      - "🔴 It buys the art with a permanent mechanism: a segregated tree, a mixing rule and a per-asset tax, all to hold back one hazard."
+      - "«Adequate» with a two-question test still admits things the project would refuse on reading them, because the questions do not ask what TRAVELS."
+      - "It excluded OGA-BY by naming a family, which is how this record found its own defect."
+  C:
+    good:
+      - "No edge case is ruled out in advance; each is judged with its facts."
+    bad:
+      - "🔴 It is the current state renamed. 'Adequate' with no test is decided by whoever is in a hurry."
+  D:
+    good:
+      - "Every source gets full consideration."
+    bad:
+      - "Three sources, three records, and the rule still unwritten — which is how ADR-0018's sentence survived two months past being true."
+
+decision-outcome:
+  chosen-option:
+    link: "A — two doors, and the second is a closed list of four licences"
+    justification: |
+      **Art enters this project by two doors and no others.**
+
+      **The first door is PROCEDURAL, and it is opened by the artist.** When an artist grants the right for
+      her work to be machine-derived — recoloured, re-regioned, turned into a semantic image — the pipeline
+      may take it. The grant is hers to give because pillar 10 says the art is not ours to license, and it
+      must be explicit: silence is not a grant, and neither is having been paid for the original.
+
+      **The second door is a work under one of these four licences, and the list is CLOSED:**
+
+      · **CC0 1.0** — no obligation at all. We still write the ledger row, because provenance is what the
+        gates read and credit is decency, but the licence does not require it.
+      · **CC BY 3.0**
+      · **CC BY 4.0**
+      · **OGA-BY 3.0 and 4.0** — OpenGameArt's own attribution licence. ⚠️ It is NOT a Creative Commons
+        licence and Creative Commons says so; it is CC BY with the restriction on technical measures removed.
+        That makes it strictly MORE permissive than CC BY, so wherever CC BY passes it passes — and it is the
+        one that still works the day a game ships through a distribution network that applies DRM, which
+        CC BY forbids and which names iOS, Xbox Live and PSN in OpenGameArt's own words.
+
+      **🔴 AND WHAT WE DO NOT ACCEPT IS NAMED, because a rule that only lists what is allowed is read as a
+      list of examples:**
+
+      · **NO DERIVATIVES — any ND.** Refused, and it is not a formality: recolouring is already a derivative,
+        so ND art cannot even become a palette swap, let alone a semantic image.
+      · **NON-COMMERCIAL — any NC.** Refused, and not because the project sells anything. The art's terms
+        would be NARROWER THAN THE CODE'S: the AGPL permits commercial use, so a downstream user the licence
+        invites would be stopped by a sprite. NC's boundary is also genuinely unsettled, and a municipal
+        deployment sits exactly on it.
+      · **SHARE-ALIKE — any SA, in any version, and the GPL arm of a dual licence with it.** Refused, AND
+        THERE IS NO QUARANTINE. Share-alike TRAVELS: the derivative inherits it, and a pipeline that mixes
+        sources would reach the artist's own non-FOSS work and license it without asking her. A quarantine
+        can stop that, and ADR-0107 built one — but a quarantine is a segregated tree plus a mixing rule plus
+        a tax paid per asset forever, and the Dev has decided the project does not pay it for art it does not
+        yet have. ⚠️ **The GPL arm is refused by the same reasoning and this is the one inference this record
+        makes rather than quotes**: the Dev's list does not name it, and copyleft propagates the same way
+        whichever family it comes from.
+
+      🎯 **AND THE REASON THIS IS THE RIGHT WAY ROUND, WHICH IS THE ARGUMENT THAT SURVIVES THE FASHION:**
+      CC BY is one-way compatible with BY-SA. A work under CC BY may be adapted and the adaptation licensed
+      BY-SA; a work under BY-SA may never be adapted and the adaptation licensed CC BY. **So a collection of
+      CC0, CC BY and OGA-BY keeps forever the option of becoming share-alike, and a collection that admits
+      share-alike has already spent it.** Refusing SA today forecloses nothing; admitting it forecloses
+      everything downstream of it.
+
+  consequences:
+    good:
+      - "The next collection is answered by reading a licence name, not by opening a decision."
+      - "The artist's work stays hers by construction: the pipeline may only take what she has granted."
+      - "🎯 No quarantine has to exist. No segregated tree, no mixing rule to maintain, no per-asset tax — the whole mechanism of ADR-0107 §3 becomes unnecessary rather than merely unused."
+      - "The project keeps the option of licensing its own output however it likes, because nothing travels into it."
+      - "An incompatibility that would otherwise surface mid-pipeline — ND art that cannot even be recoloured — is stated before anyone imports it."
+    bad:
+      - "🔴 THE LIBERATED PIXEL CUP REPOSITORY DOES NOT ENTER. Both its arms — CC BY-SA 3.0 and GPL-3.0 — are refused, so the coherent purpose-built 32x32 set that ADR-0107 reached for is gone as a COLLECTION, and with it the argument from ADR-0051 that rebuilding what exists under a free licence wastes public money. 📏 It costs NOTHING today, measured: `art/lcp/` holds a README and a 40-byte CSV header and not one asset ever entered. It costs the labour that was never done."
+      - "⚠️ AND WHAT REPLACES IT IS A PER-ASSET READING, NOT A SECOND COLLECTION. `ElizaWy/LPC` declares CC BY 3.0 or OGA-BY 3.0 — two of our four — but a declaration downstream is not a grant upstream, and one sampled credit line does not survive its own cited source. The art is reachable asset by asset and only asset by asset, which is work nobody has scoped."
+      - "🔴 NC art is ruled out, and some of it would serve a school perfectly well. The reason is downstream users, who are not in the room."
+      - "The first door depends on a grant whose FORM is unspecified: nothing here says what a grant looks like, who records it, or where it lives."
+      - "⚠️ A closed list needs a decision to grow. The first genuinely good source under a fifth licence will be blocked by this record until someone writes the next one."
+      - "ADR-0018's reference-only rule had one virtue this loses — it could never produce a licensing mistake, because nothing was ever taken."
+
+  confirmation: |
+    ⚠️ NOT YET BUILT, and the debt is followable: **issue #140** carries it.
+
+    The gates this owes:
+
+    · THE LEDGER NAMES A LICENCE ON EVERY ROW, AND IT IS ONE OF THE FOUR — asserted over the attribution
+      ledger rather than promised. A row naming anything else fails, and the failure names the row. 🎯 The
+      enumerated list is what makes this assertable at all: the previous version's two-question test could
+      not be checked by a gate, because «does this permit commercial use» is not a string comparison.
+    · A ROW NAMING ND, NC, SA OR GPL FAILS BY NAME — the four refusals are as much of the decision as the
+      four admissions, and a gate that only knows the allowed list would pass an empty licence field.
+    · 🎯 EVERY ROW CARRIES ITS SOURCE URL, AND THE DECLARED LICENCE IS CHECKED AGAINST THE SOURCE — the gate
+      this record would not have had without the Dev's question. A ledger row says «OGA-BY 3.0»; the check
+      opens the `SOURCE` page and asserts that the licence appears in that page's own grant. ⚠️ It verifies
+      the LAST link and says so: it cannot walk a chain of derivations back to the first artist, and the case
+      that proves it necessary is in more-information. An unreachable source is a FAILURE, not a pass — «the
+      page did not load» must never read as «the licence is fine».
+    · THE ARTIST'S GRANT IS RECORDED WHERE THE PIPELINE CAN SEE IT — 🔴 and this is the one with no shape yet.
+      Nothing in the tree distinguishes art the artist granted for derivation from art she merely made. Until
+      it does, the first door is honoured by memory, which is what every other rule in this repository has
+      failed at.
+    · 📌 THE QUARANTINE GATE IS RETIRED, NOT DELETED. `tests/lcp-quarantine.node.test.js` asserted that a wall
+      held; this record removes the wall, so the case that says «the quarantine exists» must be turned into
+      the case that says «no refused licence appears in the ledger». ⚠️ Deleting it outright would leave the
+      ledger with no gate at all during the change, which is how a rule becomes a sentence in a document.
+
+more-information: |
+  Supersedes ADR-0107 WHOLE. That record's chosen option was A3 — the LCP under the CC BY-SA 3.0 arm, in a
+  quarantine — and both halves are refused here, so nothing of its decision survives to be read as current.
+  ⚠️ Its MEASUREMENTS remain true and are why the LCP is refused rather than forgotten: the set really is dual
+  CC BY-SA 3.0 / GPL-3.0, attribution really is required under both, and the authorship really is per asset.
+  And one of its ideas outlives it in this record's gates — an asset whose author is unknown does not enter,
+  because «we could not find out» is not a licence.
+
+  Supersedes ADR-0119 in part: the clause that makes LCP ART one of the four heavy things the platform
+  delivers. Three of the four stand untouched — the fonts, the neural voice and the vision runtime — and the
+  measurement that produced that record («of four, ONE is delivered») is unaffected. What falls is the fourth
+  item's IDENTITY: the art still arrives by the platform when it exists, but it will not be the LCP.
+
+  Supersedes ADR-0018 in part: «outside art only as design reference» falls as a rule, not merely for one
+  case. ADR-0107 had already lifted it for the LCP; this states what replaces it.
+
+  ADR-0010 pillar 10 is untouched and is load-bearing here: the art is not the project's to license, which is
+  precisely why the first door is a grant from the artist rather than a permission this record could give.
+
+  ⚠️ ADR-0028 IS NOT TOUCHED, AND THE BOUNDARY MATTERS BECAUSE IT LOOKS LIKE A CONTRADICTION. The AAC
+  pictogram layer admits Mulberry, Blissymbolics and Tawasol under CC BY-SA, and `docs/LICENSES.md` already
+  says the share-alike reaches a pictogram we refit to the pixel grid or to the high-contrast palette. That is
+  a different decision about a different thing: a pictogram is a word a child says, chosen by ADR-0028 on
+  licence grounds for a communication board, and it does not pass through the procedural pipeline. This record
+  governs art the PIPELINE consumes. ⚠️ Whether the refusal of share-alike should reach the pictogram layer
+  too is a real question with a real cost — it would empty most of the AAC menu — and it is the Dev's, not
+  this record's.
+
+  🔴 THE MEASUREMENT THAT PRODUCED THE SOURCE-VERIFICATION GATE, and it is the reason this record does not
+  simply swap one collection for another. The Dev asked, of `ElizaWy/LPC`: how do we certify she did not take
+  a BY-SA image and redistribute it as BY? Read on 2026-09-09, one `SOURCE` line at a time, against the
+  OpenGameArt page each line cites:
+
+  · `Characters/Hair/Credits.txt` → «Medium 01 - Page», source `lpc-medieval-fantasy-character-sprites` by
+    Wulax, declared OGA-BY 3.0. ✅ **HOLDS** — that page's own grant reads «CC-BY-SA 3.0, GPL 3.0, OGA-BY 3.0»,
+    so OGA-BY was granted upstream and a derivative may carry it.
+  · `Characters/Credits.txt` → «Adult Head - Feminine», source `liberated-pixel-cup-lpc-base-assets`, declared
+    OGA-BY 3.0. 🔴 **DOES NOT HOLD as cited** — that page's grant reads «CC-BY-SA 3.0, GPL 3.0» and nothing
+    else. A derivative of BY-SA cannot be distributed under OGA-BY, because share-alike travels and CC BY is
+    one-way compatible with BY-SA rather than the reverse.
+  · `Characters/Hair/Credits.txt` → the bluecarrot16 entries, source `lpc-hair`, declared OGA-BY 3.0 with
+    «Original CC0 by BlueCarrot16» in the details. ⚠️ **UNDECIDABLE AT PAGE LEVEL** — the page's grant reads
+    «CC-BY-SA 3.0», but it is a compilation whose items carry their own terms, so the answer is inside the
+    submission and not on it.
+
+  ⚠️ THREE THINGS FOLLOW, AND NONE OF THEM IS AN ACCUSATION. The page's licences can be added to over time,
+  the base assets have many contributors behind a `CREDITS.TXT`, and a private grant would not appear on a
+  public page — any of those could explain the second line. What none of them does is make a DOWNSTREAM
+  declaration sufficient. 🎯 **So the rule this project takes is: we verify against the upstream grant, per
+  asset, and a licence stated by whoever hands us the file is evidence rather than authority.** That is the
+  gate above, and it is worth more than the collection that produced it.
+
+  📌 And it is the same defect this repository keeps paying for, in a new place: a fact copied from its source
+  into a second table, where it can drift without either copy looking wrong.
+
+  Deliberately NOT decided here: what form the artist's grant takes and where it is recorded; whether the
+  per-asset reading of `ElizaWy/LPC` is worth the labour it costs; and whether ND art may still serve as pure
+  design reference, which ADR-0018 permitted and this record neither restores nor forbids.

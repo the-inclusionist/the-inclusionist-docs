@@ -1,6 +1,16 @@
 ---
 metadata:
   status: "accepted"
+  superseded-in-part:
+    - by: ADR-0133
+      what: >-
+        the IDENTITY of the fourth heavy thing, and nothing else. This record names LCP art as one of four
+        things the platform delivers, and reasons throughout that «the quarantine boundary has to survive
+        delivery». ADR-0133 removes the quarantine by refusing share-alike, so the LCP does not enter under
+        either arm and the delivery path has no wall to survive. ⚠️ The other three items stand untouched —
+        the fonts, the neural voice and the vision runtime — and so does the measurement that produced this
+        record, that of four things the engine claims to offer, ONE was delivered. What changes is that the
+        fourth slot is now art the project does not yet have, rather than art it had chosen and not shipped.
   supersedes-in-part: [ADR-0117]
   date: 2026-09-09
   decision-makers: [Dev]

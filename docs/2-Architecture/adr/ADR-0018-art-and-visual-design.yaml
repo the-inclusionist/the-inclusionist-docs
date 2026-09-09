@@ -8,9 +8,10 @@ metadata:
         the same clause, now as a RULE rather than as one exception. ADR-0107 lifted «outside art only as
         design reference» for the Liberated Pixel Cup alone; the Dev stated the general form on 2026-09-09:
         art enters by two doors — PROCEDURAL, when the artist grants the right to derive from her work, and
-        works under a CC licence that permits DERIVATIVES and COMMERCIAL use. ⚠️ And what this old clause had,
-        given up here deliberately, is that it could never produce a licensing mistake: nothing was ever
-        taken, so nothing could be taken wrongly.
+        works under one of FOUR NAMED LICENCES: CC0, CC BY 3.0, CC BY 4.0 and OGA-BY. ND, NC and share-alike
+        are refused by name, with no quarantine. ⚠️ And what this old clause had, given up here deliberately,
+        is that it could never produce a licensing mistake: nothing was ever taken, so nothing could be taken
+        wrongly.
     - by: ADR-0107
       what: "The clause on where outside art may come from — «PixelLab/Magnific only as design reference».
               Written in 2026-07-04, when the only outside art in view was a GENERATOR and the answer was
