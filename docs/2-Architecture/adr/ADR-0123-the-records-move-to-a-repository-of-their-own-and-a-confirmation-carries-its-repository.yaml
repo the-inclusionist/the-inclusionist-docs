@@ -161,6 +161,13 @@ decision-outcome:
       stops warning; with a wrong root it FAILS and the message names both the path and the root it measured
       against. Three mutations confirmed — delete the warning loop, turn the skip into a failure (a gate that
       can never be green is a gate somebody switches off), and drop `--repo` from the parser.
+    · ✅ **THE DRIFT BETWEEN THE TWO COPIES OF THE VALIDATOR — PAID** (`tests/validador-sem-deriva.node.test.js`
+      in the engine, `9d4a5e3`). Clause 4 buys two copies of one tool, and 📏 they diverged on DAY ONE: `--repo`
+      was added beside the records while the engine's copy still had only `--root`, and the first
+      cross-repository run returned nine false failures. ⚠️ The defect is not the stale copy, it is the
+      VERDICT — the same tree green in one repository and red in the other, with nothing to say which is
+      right. Two cases, vacuum first (emptying one copy fails BOTH, instead of comparing two empty reads).
+
     · ⚠️ **AND THE ONE THIS RECORD CANNOT PAY: nothing checks that `engine:` still names a real repository.**
       If the engine is renamed, the prefix rots and the validator reports «not checked», which reads exactly
       like the normal case. It is named here so it is found by reading rather than by breaking.
