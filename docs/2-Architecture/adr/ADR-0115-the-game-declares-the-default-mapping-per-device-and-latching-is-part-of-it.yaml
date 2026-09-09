@@ -1,6 +1,25 @@
 ---
 metadata:
   status: "accepted"
+  confirmed-by:
+    - engine:tests/contract.node.test.js
+    - engine:tests/mapeamento-do-jogo.node.test.js
+    - engine:tests/mapeamento-do-pad.node.test.js
+    - engine:app/js/core/contract.ts
+  errata:
+    - date: 2026-09-09
+      what: >-
+        the confirmation still listed its gates as owed, and all of them are built. MEASURED against the tree
+        rather than recalled: `seguraTeclas` is a required contract field whose absence the conformance check
+        refuses (`core/contract.ts`, exercised in `tests/contract.node.test.js`), the game's keyboard map is
+        `mapeamentoDoTeclado` with precedence resolved in ONE function
+        (`tests/mapeamento-do-jogo.node.test.js`), and the pad half is `mapeamentoDoPad` with the seat lifted
+        into the polling loop (`tests/mapeamento-do-pad.node.test.js`). A `confirmed-by` was added so the
+        claim is opened by the validator instead of asserted in prose.
+        ⚠️ AND A PROCESS NOTE THAT NEARLY PRODUCED A FALSE REPORT: `git grep mapeamentoDoPad -- tests`
+        returned ZERO while the gate existed — the file writes `registrarMapeamentoDoPad`, and git grep is
+        case-sensitive. An empty result is never an absence; it is a question about the detector.
+        Errata and not supersession: nothing was decided differently.
   supersedes-in-part: [ADR-0113]
   date: 2026-09-08
   decision-makers: [Dev]

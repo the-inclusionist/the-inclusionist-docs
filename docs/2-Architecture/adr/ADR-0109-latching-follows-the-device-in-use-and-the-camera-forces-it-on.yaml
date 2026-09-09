@@ -1,6 +1,27 @@
 ---
 metadata:
   status: "accepted"
+  confirmed-by:
+    - engine:tests/transporte-em-uso.node.test.js
+    - engine:tests/origem-da-tecla.node.test.js
+    - engine:tests/latch-scope.node.test.js
+    - engine:tests/latch-sync.node.test.js
+    - engine:tests/latch-edge.node.test.js
+    - engine:app/js/input/transporte-em-uso.ts
+  errata:
+    - date: 2026-09-09
+      what: >-
+        the confirmation still read «the automaton is not WIRED to anything yet: nothing tells it that an edge
+        happened, and nowhere holds the per-player state», and both halves stopped being true. MEASURED, not
+        recalled: the composition root reads it — `boot/create-game.ts` passes
+        `transporteEmUso: (i) => entradaDe(i).emUso` — and the per-player state, which the record called an
+        open question about the player entity, was answered by putting it in `input/state` beside the fields
+        that were already there. The wiring landed across `input/latch-store`, `input/latch-sync`,
+        `input/latch-edge` and the four transports, and issue #127 closed on it. A `confirmed-by` was added so
+        the claim is opened by the validator instead of asserted in prose. WHAT REALLY REMAINS is one line and
+        it is not this repository's: the cartridge's `onTouchControlsShown` patch comes out in the major, in
+        `game-platformer`. Errata and not supersession: nothing was decided differently — a record went on
+        saying its work was undone after it was done.
   supersedes-in-part: [ADR-0104]
   superseded-in-part:
     - by: ADR-0113

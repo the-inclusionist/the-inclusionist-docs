@@ -1,6 +1,25 @@
 ---
 metadata:
   status: "accepted"
+  confirmed-by:
+    - engine:tests/engine-boundary.node.test.js
+    - engine:tests/origem-da-tecla.node.test.js
+    - engine:tests/nome-abstrato-nao-chega-a-pessoa.node.test.js
+    - engine:app/js/input/origem-sintetica.ts
+  errata:
+    - date: 2026-09-09
+      what: >-
+        the confirmation opened with «NOT YET BUILT» and all four gates are built. MEASURED against the tree:
+        no cartridge imports `input/` (`tests/engine-boundary.node.test.js`); every command carries a source
+        and `undefined` is one of the values, with the stamp travelling ON THE EVENT
+        (`app/js/input/origem-sintetica.ts`, `tests/origem-da-tecla.node.test.js`); no `new KeyboardEvent`
+        exists without `carimbarOrigem`, asserted as an inventory at its FLOOR, so it now claims the whole
+        absence rather than reporting a throttle; and the word that reaches a person is the GAME's
+        (`tests/nome-abstrato-nao-chega-a-pessoa.node.test.js`), whose reach is declared and SMALLER than the
+        rule — eight of the fourteen positions, the verbs, because marking the six language words would lie.
+        A `confirmed-by` was added so the claim is opened by the validator instead of asserted in prose.
+        Errata and not supersession: nothing was decided differently — the record went on saying its work was
+        undone after it was done, which is the defect the debt census now counts.
   date: 2026-09-08
   decision-makers: [Dev]
   consulted:
