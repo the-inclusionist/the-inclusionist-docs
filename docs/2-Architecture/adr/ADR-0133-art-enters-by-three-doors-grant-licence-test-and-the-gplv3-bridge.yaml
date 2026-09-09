@@ -81,6 +81,22 @@ metadata:
         cabeçalho. **Logo a engine não consegue buscar do itch: só uma pessoa consegue.** ⚠️ Isto não afecta
         o Kenney, que é CC0 e portanto pode ser servido por nós — o obstáculo do CORS só morde onde a licença
         já nos proibia de servir.
+    - date: 2026-09-09
+      what: >-
+        🔴 «SATISFIES IT BY CONSTRUCTION» ERA UMA PROMESSA ESCRITA COMO FACTO, e é exactamente o defeito que o
+        ADR-0128 nomeia — uma confirmação escrita antes do trabalho azeda em silêncio. A terceira porta afirma
+        que a forma preferível de modificação «IS the modifiable form — semantic image plus palette dictionary,
+        versioned in the repository». **Não é, hoje.** Medido na árvore da engine: não existe `app/js/art/`,
+        não existe formato semântico, `tools/` só tem o editor de mapas, e o único código do género é o
+        `PIP_*`/`indexedToCanvas` de `render/textures.ts:141-172`, **estacionado de propósito e com zero
+        chamadores**. ⚠️ A CONSEQUÊNCIA NÃO É COSMÉTICA: **a terceira porta está descrita e não está aberta**,
+        e o Liberated Pixel Cup não entra até o pipeline existir. O registo já dizia isso noutro parágrafo
+        («the art editor ships»); o que estava errado era o tempo verbal desta frase. 📌 A afirmação gémea em
+        `engine:docs/LICENSES.md` foi corrigida no mesmo turno.
+        📏 E a MEDIÇÃO que o desbloqueio precisava foi feita: descodificadas três folhas reais do LPC, elas têm
+        **quinze cores únicas somadas** (92 244 píxeis opacos) e **zero alfa parcial**. A anotação é uma tabela
+        de quinze linhas, não um problema — e a máscara dura do formato deixa de ser restrição imposta para
+        passar a ser o que a fonte já é.
   supersedes: [ADR-0107]
   supersedes-in-part: [ADR-0018, ADR-0119]
   date: 2026-09-09
