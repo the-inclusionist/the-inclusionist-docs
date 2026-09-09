@@ -1,0 +1,39 @@
+# SPDX-License-Identifier: AGPL-3.0-or-later
+#
+# THE GATE OF THE RECORDS — ADR-0123.
+#
+# ⚠️ IT DOES NOT CHECK OUT THE ENGINE, and that is a decision rather than an omission (ADR-0123 §5). A record
+# naming an engine artefact that disappeared is the ENGINE's breakage, and it must redden where somebody can
+# fix it. Making this repository red on another repository's rename is the coupling ADR-0121 was written
+# about, pointing the other way.
+#
+# 📌 So the `confirmed-by` paths qualified with `engine:` are NOT opened here — the validator counts them and
+# says so on every run, which is the whole defence against a sieve that checks nothing and prints «all sound».
+# The engine's own `adr` job is what opens them, with `--repo engine=.`.
+name: ci
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  adr:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-python@v7
+        with:
+          python-version: '3.x'
+
+      # A única dependência do validador. Sem ela ele sai com uma mensagem própria em vez de um traceback.
+      - run: pip install pyyaml
+
+      # ⚠️ SEM CANO. O código de saída é o gate, e um `| tail` esconde-o — lição paga neste projecto mais de
+      # uma vez: «N passed» convive com saída não-zero.
+      - name: validate the records
+        run: python scripts/validate-adr.py docs/2-Architecture/adr
