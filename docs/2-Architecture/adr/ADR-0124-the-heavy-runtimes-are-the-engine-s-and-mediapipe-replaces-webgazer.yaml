@@ -3,6 +3,15 @@ metadata:
   status: "accepted"
   supersedes-in-part: [ADR-0094]
   date: 2026-09-09
+  errata:
+    - date: 2026-09-09
+      what: >-
+        the confirmation asked for a gate that ALREADY EXISTED. It read «a case has to hold the
+        surviving half» of ADR-0094; measured hours later, `tests/tts.node.test.js` holds it in four
+        cases. Errata and not supersession by the ADR-0057 test: the author, with the same facts that
+        day, would have written «already held by» — the record mis-stated a FACT about the tree, it did
+        not decide differently. What remains owed is PRECEDENCE, which cannot be asserted until the
+        engine owns a runtime for the cartridge's door to win over.
   decision-makers: [Dev]
   consulted:
     - "The Dev's decision of 2026-09-09, in one line: «piper-tts, mediapipe (webgazer não), e LPCP: devem
@@ -174,6 +183,17 @@ decision-outcome:
       future refactor is most likely to undo for a plausible-sounding reason («don't download what nobody uses»).
     · THE CARTRIDGE'S DOOR STILL WORKS: a game that supplies `carregarVozNeural` keeps its own voice. ADR-0094's
       argument is superseded in part, not deleted, and a case has to hold the surviving half.
+      ✅ **ALREADY PAID, AND THIS RECORD WAS WRONG TO ASK FOR IT** — measured hours after it was written, in
+      `tests/tts.node.test.js` («platform/tts — a porta da voz neural»), FOUR cases: without the door the child
+      is WARNED and narration continues in the browser voice; without the door narration does not fall silent;
+      with the door the neural path runs whole and the requested voice comes from `TTS_SOURCES`; and a door
+      that REJECTS does not bring the game down. ⚠️ It is the third time in two days that this project has
+      owed a gate that already existed — the pattern is the same each time: my summary of a record became the
+      premise instead of the record, and the tree was never asked.
+      ⬜ **WHAT IS GENUINELY NOT COVERED IS PRECEDENCE, and it cannot be today:** when clause 2 lands and the
+      engine owns a runtime of its own, something must assert that the CARTRIDGE's door still wins over it.
+      There is no engine runtime yet, so that case has nothing to stand on — and writing it now would be a
+      case that cannot fail.
 
 more-information: |
   Supersedes ADR-0094 in part: the cartridge's door stops being the ONLY path for a neural voice, and the
