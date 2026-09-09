@@ -46,6 +46,41 @@ metadata:
         arte CC BY-SA 4.0 até um ecossistema AGPLv3, com a GPLv3 como ponte.** ⚠️ E o registo diz que o
         caminho existe E QUE O PROJECTO O RECUSA, com os quatro custos escritos, para ninguém o redescobrir do
         zero daqui a um ano e concluir que a decisão foi tomada por ignorância. Ver more-information.
+    - date: 2026-09-09
+      what: >-
+        🔴 A LISTA FECHADA CAIU NO MESMO DIA, E PELA TERCEIRA VEZ PELO MESMO DEFEITO. A errata acima
+        substituiu «uma licença CC» por «uma destas quatro» e chamou-lhe conserto — ⚠️ **mas uma lista
+        fechada é um teste de família com outro chapéu**, e recusa exactamente da mesma maneira: por um nome
+        não estar nela. O Dev apanhou-o com dois casos concretos. ① O **Tiny Swords** tem termos que permitem
+        uso pessoal e comercial e modificação à vontade, sem exigir crédito — «É COMPATÍVEL COM NOSSO
+        PROJETO! NÃO PRECISA SER EXATAMENTE CC!» — e a lista recusava-o por a concessão ser do autor em vez
+        de ter um nome conhecido. ② E a **CC BY-SA** era recusada por ser share-alike quando existe uma
+        declaração de compatibilidade publicada pela própria Creative Commons que a leva até um projecto AGPL.
+        🎯 **O teste passa a ser COMPATIBILIDADE COM O PROJECTO, em quatro perguntas**, e a lista de nomes
+        passa a ser EXEMPLOS. Nasce uma TERCEIRA porta para copyleft, com quatro condições lidas nas fontes —
+        e a condição que trava a maioria dos adaptadores (entregar a forma preferível de modificação) é a que
+        este projecto já cumpre por construção. ⚠️ O que NÃO muda: ND e NC continuam sem caminho nenhum.
+    - date: 2026-09-09
+      what: >-
+        🔴 A PERGUNTA 3 NÃO É UM CRITÉRIO DE ADMISSÃO — É UM ENCAMINHAMENTO DE ENTREGA, e foi o Dev que
+        o viu: «não é necessário pedir, mas sim baixar e apontar para os assets baixados. A permissão dele
+        é que eu poderia usar os assets num jogo, mas o que estamos fazendo aqui é equipar a engine com o
+        pacote inteiro! Ou seja, justamente no que a licença pessoal dele pede para não fazer.»
+        ⚠️ **A versão anterior deste registo tratava «podemos conveiar» como pergunta de SIM ou NÃO e pôs o
+        Tiny Swords atrasado numa leitura de fronteira.** A leitura não era de fronteira nenhuma: equipar
+        uma engine com o pacote inteiro e entregá-lo a trezentos jogos é *repackage* e *redistribute* no
+        sentido mais directo da frase do autor. 📌 E a resposta não é pedir-lhe autorização — seria pedir
+        licença exactamente para aquilo que ele escreveu a linha para impedir. **É NÃO CONVEIAR.**
+        🎯 Então a pergunta 3 passa a ROTEAR: quem pode ser conveiado viaja connosco; quem não pode é
+        **obtido por quem instala, da origem**, e não entra nesta árvore nem no pacote. O precedente já existe
+        e é idêntico: o **ADR-0108** decidiu que a fonte Ronde não pode ser empacotada, então oferece-se o
+        download e a opção fica desabilitada enquanto o ficheiro não estiver presente.
+        🔴 **E MEDIDO NO MESMO TURNO, o que fecha a porta à versão automática disto:** nem `itch.io` nem
+        `kenney.nl` mandam cabeçalho CORS, e o itch não tem link directo estável (`/download` responde 404
+        sem sessão). O buscador de pesados funciona com o Hugging Face e o jsDelivr porque ELES mandam o
+        cabeçalho. **Logo a engine não consegue buscar do itch: só uma pessoa consegue.** ⚠️ Isto não afecta
+        o Kenney, que é CC0 e portanto pode ser servido por nós — o obstáculo do CORS só morde onde a licença
+        já nos proibia de servir.
   supersedes: [ADR-0107]
   supersedes-in-part: [ADR-0018, ADR-0119]
   date: 2026-09-09
@@ -80,9 +115,9 @@ metadata:
     - "kenney.nl, kenney-assets.itch.io and opengameart.org, read 2026-09-09 — the Kenney assets are CC0 1.0,
        stated identically by all three. Raised by the Dev as a source: «podemos usar os assets CC0 do Kenney»"
     - "ansimuz.itch.io and pixelfrog-assets.itch.io/tiny-swords, read 2026-09-09 — raised by the Dev in the
-       same breath. ansimuz is CC0 per pack; Tiny Swords is NOT CC BY 4.0 and splits in two — the current
-       Free Pack is under the author's own grant and is refused for not being on the list, while the
-       `TS_old version_CC0 Licensed` download is CC0 and passes. See more-information"
+       same breath. ansimuz is CC0 per pack. Tiny Swords is NOT CC BY 4.0: it carries the author's own grant,
+       permissive on use, modification and commerce, and it is the case that showed the closed list to be the
+       family test in disguise. See more-information"
     - "ADR-0018 — SUPERSEDED IN PART: «outside art only as design reference». ADR-0107 had already lifted it
        for one case; this lifts it as a rule"
     - "ADR-0107 — SUPERSEDED WHOLE: its chosen option was the LCP under CC BY-SA 3.0 in a quarantine, and the
@@ -96,7 +131,7 @@ metadata:
        source art into derivative works by construction"
   informed: []
 
-title: Art enters by two doors — the artist's grant, and four named licences with no share-alike
+title: Art enters by three doors — the author's grant, a licence that passes four questions, and copyleft across the GPLv3 bridge
 
 context-and-problem-statement: |
   Until today the project's answer about outside art was written case by case. ADR-0018 said in July that
@@ -142,11 +177,14 @@ decision-drivers:
      BY-SA, so a permissive collection can always become share-alike later and the reverse is closed forever"
   - "The art's terms must never be narrower than the code's, or a user the AGPL permits is stopped by a sprite"
   - "Pillar 10 keeps the artist's decision theirs, so their door is a grant they give rather than a rule we write"
-  - "A quarantine is a mechanism with a permanent cost, and the project has no art in it to justify the cost"
-  - "An enumerated list is checkable by a gate; a test with two questions is argued by whoever is in a hurry"
+  - "A quarantine is a mechanism with a permanent cost; the bridge replaces it, because art that crosses it
+     stops being share-alike on our side instead of being walled off from the rest"
+  - "🔴 A closed list is a FAMILY TEST in disguise: it refuses by absence of a name, which is the defect this
+     record was written to correct. What a gate can check is the ANSWERS, recorded per asset, not the name"
 
 considered-options:
-  - "A · two doors, and the second is a CLOSED LIST of four licences, with ND, NC and SA all refused"
+  - "A · three doors — the author's grant, a licence that passes four questions, and copyleft across the
+     GPLv3 bridge. ND and NC have no door"
   - "B · two doors, and the second is a TEST (derivatives + commercial), with share-alike admitted behind a quarantine"
   - "C · two doors, with 'CC' left undefined and judged per case"
   - "D · keep the case-by-case practice: every new source gets its own record"
@@ -183,53 +221,116 @@ pros-and-cons-of-the-options:
 
 decision-outcome:
   chosen-option:
-    link: "A — two doors, and the second is a closed list of four licences"
+    link: "A — three doors: the grant, the four questions, and the bridge"
     justification: |
-      **Art enters this project by two doors and no others.**
+      **Art enters this project by three doors and no others, and what decides a door is COMPATIBILITY WITH
+      THE PROJECT — never which licence family a name belongs to.**
 
-      **The first door is PROCEDURAL, and it is opened by the artist.** When an artist grants the right for
-      their work to be machine-derived — recoloured, re-regioned, turned into a semantic image — the pipeline
-      may take it. The grant is theirs to give because pillar 10 says the art is not ours to license, and it
-      must be explicit: silence is not a grant, and neither is having been paid for the original.
+      🔴 **THAT SENTENCE IS THE CORRECTION THIS RECORD HAD TO MAKE TWICE IN ONE DAY.** The first version
+      said «a CC licence» and shut out OGA-BY, which is CC BY minus a restriction. The second said «one of
+      these four» and shut out every permissive licence nobody had thought of — MIT art, a public-domain
+      dedication that is not CC0, an author's own written grant. **A closed list is a family test wearing a
+      different hat**, and it fails the same way: by refusing things the project can plainly use.
 
-      **The second door is a work under one of these four licences, and the list is CLOSED:**
+      **THE FIRST DOOR IS THE AUTHOR'S GRANT, and it is opened by them.** When whoever holds the rights grants
+      this project the right to use and machine-derive their work — recoloured, re-regioned, turned into a
+      semantic image — the pipeline may take it. Pillar 10 is why: the art is not ours to license, so the
+      grant is theirs to give. It must be EXPLICIT and RECORDED: silence is not a grant, and neither is having
+      been paid for the original. ⚠️ This door is not a formality for bespoke commissions — it is the door
+      that answers an asset pack whose terms are permissive but ambiguous for our case, because one written
+      answer from the author converts an ambiguity into a permission.
 
-      · **CC0 1.0** — no obligation at all. We still write the ledger row, because provenance is what the
-        gates read and credit is decency, but the licence does not require it.
-      · **CC BY 3.0**
-      · **CC BY 4.0**
-      · **OGA-BY 3.0 and 4.0** — OpenGameArt's own attribution licence. ⚠️ It is NOT a Creative Commons
-        licence and Creative Commons says so; it is CC BY with the restriction on technical measures removed.
-        That makes it strictly MORE permissive than CC BY, so wherever CC BY passes it passes — and it is the
-        one that still works the day a game ships through a distribution network that applies DRM, which
-        CC BY forbids and which names iOS, Xbox Live and PSN in OpenGameArt's own words.
+      **THE SECOND DOOR IS A PUBLIC LICENCE THAT PASSES FOUR QUESTIONS**, whatever it is called:
 
-      **🔴 AND WHAT WE DO NOT ACCEPT IS NAMED, because a rule that only lists what is allowed is read as a
-      list of examples:**
+      1. **May we DERIVE?** The pipeline is a derivative-work machine and recolouring is already a derivative.
+      2. **May the work be used COMMERCIALLY?** Not because the project sells anything — because the art must
+         never be NARROWER THAN THE CODE. The AGPL invites commercial use; a sprite must not stop who it invites.
+      3. **May we CONVEY the work as part of what we ship?** 🎯 This question does not admit or refuse — it
+         **ROUTES**, and reading it as a pass/fail was a defect this record carried for one version. What may
+         be conveyed travels with us. What may NOT be conveyed is **obtained by the person installing, from
+         the origin**, and never enters this tree or the package. ⚠️ And the distinction is not subtle for an
+         asset pack: using assets IN A GAME is what such a grant typically permits, while **equipping an
+         engine with the whole pack and handing it to three hundred games is repackaging it**. The precedent
+         is ADR-0108, which decided exactly this for the Ronde font: not packaged, the download offered, and
+         the option disabled until the file is present.
+      4. **Does anything TRAVEL from the source into our output?** If nothing does, the asset is free and
+         costs one ledger row. If copyleft does, it is the third door and not this one.
 
-      · **NO DERIVATIVES — any ND.** Refused, and it is not a formality: recolouring is already a derivative,
-        so ND art cannot even become a palette swap, let alone a semantic image.
-      · **NON-COMMERCIAL — any NC.** Refused, and not because the project sells anything. The art's terms
-        would be NARROWER THAN THE CODE'S: the AGPL permits commercial use, so a downstream user the licence
-        invites would be stopped by a sprite. NC's boundary is also genuinely unsettled, and a municipal
-        deployment sits exactly on it.
-      · **SHARE-ALIKE — any SA, in any version, and the GPL arm of a dual licence with it.** Refused, AND
-        THERE IS NO QUARANTINE. Share-alike TRAVELS: the derivative inherits it, so everything the pipeline
-        makes from an SA source ships SA — and that output is the project's own future art, which it would
-        then not be free to license. Holding that back needs a quarantine, and ADR-0107 built one; a
-        quarantine is a segregated tree plus a mixing rule plus a tax paid per asset forever, and the Dev has
-        decided the project does not pay it. ⚠️ **The GPL arm is refused by the same reasoning and this is
-        the one inference this record makes rather than quotes**: the Dev's list does not name it, and
-        copyleft propagates the same way whichever family it comes from.
-        📌 **AND THE REFUSAL IS INFORMED, NOT INNOCENT: there IS a legal path from CC BY-SA 4.0 into an AGPL
-        project, and this record declines it with the reasons written.** See more-information.
+      **Passing today, measured at their own pages:** CC0 1.0 · CC BY 3.0 and 4.0 · **OGA-BY 3.0 and 4.0**
+      (⚠️ NOT a Creative Commons licence — CC says so itself — and strictly MORE permissive than CC BY, being
+      CC BY without the restriction on technical measures, which is what keeps working the day a game ships
+      through a store that applies DRM) · and the permissive software licences when art carries one, **MIT**
+      and **Apache-2.0** among them. 📌 The list is EXAMPLES, not the rule. The rule is the four questions.
 
-      🎯 **AND THE REASON THIS IS THE RIGHT WAY ROUND, WHICH IS THE ARGUMENT THAT SURVIVES THE FASHION:**
-      CC BY is one-way compatible with BY-SA. A work under CC BY may be adapted and the adaptation licensed
-      BY-SA; a work under BY-SA may never be adapted and the adaptation licensed CC BY. **So a collection of
-      CC0, CC BY and OGA-BY keeps forever the option of becoming share-alike, and a collection that admits
-      share-alike has already spent it.** Refusing SA today forecloses nothing; admitting it forecloses
-      everything downstream of it.
+      **THE THIRD DOOR IS COPYLEFT, AND IT ENTERS AS GPL-3.0 THROUGH THE BRIDGE.** CC BY-SA is admitted, and
+      the mechanism is not a loophole — it is a compatibility declaration Creative Commons published on
+      2015-10-08 for exactly this situation. Four conditions, each read from its own source:
+
+      1. **The source is CC BY-SA 4.0**, or CC BY-SA 3.0 that we ADAPT: §4(b)(ii) of the 3.0 text lets an
+         Adaptation be distributed under a later version with the same elements. ⚠️ The original file never
+         moves — it stays 3.0 for everyone, and only our adaptation carries 4.0. So **nothing enters this tree
+         verbatim**, which ADR-0018 already required for another reason: art is procedural data, and a raw PNG
+         was never the thing we keep.
+      2. **Our contributions to the adaptation are licensed GPL-3.0-ONLY**, not «or later». The determination
+         covers version 3 and no other, so a later-version notice would claim a compatibility that does not
+         exist yet.
+      3. **The source form travels.** This is the real condition and CC states it plainly: an adapter who
+         cannot make available the work in the preferred form for modification «cannot take advantage of the
+         one-way compatibility declaration». 🎯 **And this project satisfies it BY CONSTRUCTION**: the
+         pipeline's output IS the modifiable form — semantic image plus palette dictionary, versioned in the
+         repository. What blocks most adapters is the condition we were already meeting.
+      4. **Attribution survives, satisfied the GPL way.** BY-SA 4.0 §2(a)(5)(B) lets downstream satisfy both
+         licences in the manner GPLv3 dictates, so the ledger row is the attribution and the GPL notice
+         travels with the asset.
+
+      **And the combination with our AGPL code is §13 of the GPLv3 itself**, verbatim: «permission to link or
+      combine any covered work with a work licensed under version 3 of the GNU Affero General Public License
+      into a single combined work, and to convey the resulting work.» The art ships GPL-3.0; the code stays
+      AGPL-3.0-or-later; the combined work is conveyed lawfully.
+
+      🔴 **AND THE THIRD DOOR HAS A PREREQUISITE THAT IS NOT A LICENCE: THE PROCEDURAL ART SUBSYSTEM HAS TO
+      EXIST FIRST.** The Dev drew the consequence in one line — «ou seja, temos que fazer o editor de arte
+      procedural» — and it is correct twice over. The bridge opens only for an ADAPTATION, and what makes an
+      LCP sprite an adaptation here is the semantic image; and the compatibility declaration requires the
+      **preferred form for modification** to be available, which for us IS that semantic image plus its
+      palette dictionary. **Both halves of the requirement are the same artefact, and that artefact is the
+      output of a pipeline that does not exist yet** — roadmap Fase 3 and Fase 4, issues #18 and #19.
+      🎯 **So the doors sequence the work, and that is worth more than it looks:** CC0 art (Kenney, ansimuz)
+      is usable the day someone imports it, while the Liberated Pixel Cup is usable the day the art editor
+      ships. A licence question turned into a build order.
+
+      ⚠️ **WHAT THE THIRD DOOR COSTS, and it is stated so that nobody discovers it later:** it is ONE-WAY and
+      permanent — art that goes through it never returns to CC, and every later choice about that asset is
+      made inside the code's licence family. It also crosses the line pillar 10 and `LICENSES.md` draw between
+      Lei 9.609 and Lei 9.610. The project accepts that cost for copyleft art it wants; it does not pay it by
+      accident, which is why this door has a name and a checklist instead of being a judgement call.
+
+      **🔴 AND WHAT STILL DOES NOT ENTER, BY ANY DOOR:**
+
+      · **NO DERIVATIVES — any ND.** No path exists. Recolouring is already a derivative, so ND art cannot
+        even become a palette swap, and the bridge is for share-alike, not for a ban on adapting.
+      · **NON-COMMERCIAL — any NC.** No path exists, and the reason is question 2: the art's terms would be
+        narrower than the code's, and NC's boundary is genuinely unsettled — a municipal deployment sits on it.
+
+      🎯 **AND THE DEV DECIDED THE FIRST INTAKE IN THE SAME BREATH: four sources enter BEFORE any art of the
+      project's own — his, a contributor's, a volunteer's.** Each comes through a different door, which is the
+      clearest possible demonstration that the doors are not decoration:
+
+      | source | door | what the ledger row carries |
+      |---|---|---|
+      | **Kenney** · `kenney.nl/assets` | 2 — licence | `CC0-1.0`, verified at three pages that agree |
+      | **ansimuz** · `ansimuz.itch.io` | 2 — licence | `CC0-1.0`, **per pack**: the profile grants nothing |
+      | **Tiny Swords** · `TS_old version_CC0 Licensed` | 2 — licence | `CC0-1.0`, cited to the `LICENSE` inside the archive |
+      | **Tiny Swords** · current Free Pack | 1 — grant | the author's own written terms, quoted in the row |
+      | **Liberated Pixel Cup** · `OpenGameArt/LiberatedPixelCup` | 3 — bridge | source `CC-BY-SA-3.0`, output `GPL-3.0-only`, adaptation only |
+
+      ⚠️ **ONE ITEM IS OPEN, AND IT IS THE ONLY ONE.** The current Tiny Swords pack answers three of the four
+      questions permissively on its own page and leaves question 3 to a reading: «You may not redistribute…
+      even if the files are modified» plainly forbids republishing the pack AS a pack, and it is unsettled
+      whether it also reaches files shipped inside an open-source game repository. 📌 The resolution is a
+      message to the author on the pack's own discussion board, and the answer becomes the grant. Until it
+      arrives the row records the reading the project is taking, so that a later reader finds a decision
+      rather than an assumption.
 
   consequences:
     good:
@@ -239,11 +340,11 @@ decision-outcome:
       - "The project keeps the option of licensing its own output however it likes, because nothing travels into it."
       - "An incompatibility that would otherwise surface mid-pipeline — ND art that cannot even be recoloured — is stated before anyone imports it."
     bad:
-      - "🔴 THE LIBERATED PIXEL CUP REPOSITORY DOES NOT ENTER. Both its arms — CC BY-SA 3.0 and GPL-3.0 — are refused, so the coherent purpose-built 32x32 set that ADR-0107 reached for is gone as a COLLECTION, and with it the argument from ADR-0051 that rebuilding what exists under a free licence wastes public money. 📏 It costs NOTHING today, measured: `art/lcp/` holds a README and a 40-byte CSV header and not one asset ever entered. It costs the labour that was never done."
-      - "⚠️ AND WHAT REPLACES IT IS A PER-ASSET READING, NOT A SECOND COLLECTION. `ElizaWy/LPC` declares CC BY 3.0 or OGA-BY 3.0 — two of our four — but a declaration downstream is not a grant upstream, and one sampled credit line does not survive its own cited source. The art is reachable asset by asset and only asset by asset, which is work nobody has scoped."
+      - "✅ THE LIBERATED PIXEL CUP ENTERS AGAIN, by the third door: its CC BY-SA 3.0 arm, adapted by the pipeline, relicensed 4.0 on our contribution and conveyed GPL-3.0-only alongside the AGPL code. ⚠️ And it enters ONLY as adaptation — no LCP file is kept verbatim — which is what ADR-0018 already required of all art."
+      - "⚠️ BUT THE PER-ASSET READING STILL HAS TO HAPPEN. `ElizaWy/LPC` declares CC BY 3.0 or OGA-BY 3.0, and one sampled credit line does not survive its own cited source — a declaration downstream is not a grant upstream. The third door removes the licence obstacle; it does not remove the verification."
       - "🔴 NC art is ruled out, and some of it would serve a school perfectly well. The reason is downstream users, who are not in the room."
       - "The first door depends on a grant whose FORM is unspecified: nothing here says what a grant looks like, who records it, or where it lives."
-      - "⚠️ A closed list needs a decision to grow. The first genuinely good source under a fifth licence will be blocked by this record until someone writes the next one."
+      - "🔴 A test needs JUDGEMENT where a list needed none, and question 3 is where it will be spent: whether a given grant permits conveying the files inside a public source repository is a reading, not a lookup. The mitigation is the first door — when the reading is close, ask the author and record the answer."
       - "ADR-0018's reference-only rule had one virtue this loses — it could never produce a licensing mistake, because nothing was ever taken."
 
   confirmation: |
@@ -251,12 +352,20 @@ decision-outcome:
 
     The gates this owes:
 
-    · THE LEDGER NAMES A LICENCE ON EVERY ROW, AND IT IS ONE OF THE FOUR — asserted over the attribution
-      ledger rather than promised. A row naming anything else fails, and the failure names the row. 🎯 The
-      enumerated list is what makes this assertable at all: the previous version's two-question test could
-      not be checked by a gate, because «does this permit commercial use» is not a string comparison.
-    · A ROW NAMING ND, NC, SA OR GPL FAILS BY NAME — the four refusals are as much of the decision as the
-      four admissions, and a gate that only knows the allowed list would pass an empty licence field.
+    · EVERY ROW DECLARES WHICH DOOR IT CAME THROUGH, and the gate checks what that door requires. 🎯 This
+      is what replaces the closed list, and it is the shape that survives the test being a JUDGEMENT: a gate
+      cannot answer «does this licence permit commercial use», but it can assert that somebody wrote down the
+      answer and that the row is internally consistent.
+        · `porta: licenca` — the licence identifier must be one the project has already measured and
+          recorded as passing. A NEW name is not refused; it is REFERRED: the row fails until a record says
+          the four questions were answered for it, which is the difference between a list and a bottleneck.
+        · `porta: concessao` — the row must point at the recorded grant. A grant nobody can open is a memory.
+        · `porta: ponte` — the source licence must be CC BY-SA (3.0 with an adaptation, or 4.0), and
+          `licenca-de-saida` must be exactly `GPL-3.0-only`. ⚠️ Not `-or-later`: the compatibility
+          determination covers version 3 and no other, and a later-version notice would claim a permission
+          that does not exist.
+    · A ROW NAMING ND OR NC FAILS BY NAME, whatever door it claims — those two have no path at all, and a
+      gate that only knew the allowed answers would pass an empty licence field.
     · 🎯 EVERY ROW CARRIES ITS SOURCE URL, AND THE DECLARED LICENCE IS CHECKED AGAINST THE SOURCE — the gate
       this record would not have had without the Dev's question. A ledger row says «OGA-BY 3.0»; the check
       opens the `SOURCE` page and asserts that the licence appears in that page's own grant. ⚠️ It verifies
@@ -327,9 +436,9 @@ more-information: |
   📌 And it is the same defect this repository keeps paying for, in a new place: a fact copied from its source
   into a second table, where it can drift without either copy looking wrong.
 
-  ⚖️ THE PATH FROM CC BY-SA 4.0 INTO AN AGPL PROJECT EXISTS, AND THIS RECORD DECLINES IT KNOWINGLY. Written
-  here at the Dev's instruction, because a refusal that looks like ignorance gets reopened every year. Three
-  steps, each read from its own source on 2026-09-09:
+  ⚖️ THE THIRD DOOR IN FULL, WITH EVERY STEP READ FROM ITS OWN SOURCE ON 2026-09-09. An earlier version of
+  this record described this path and then DECLINED it; the Dev's answer was that he was looking for a way to
+  admit the licence, not the assets — and the way exists. Three steps:
 
   1. **CC BY-SA 3.0 §4(b)(ii)** lets an Adaptation be distributed under «a later version of this License with
      the same License Elements» — so a derivative of 3.0 material may go out as **4.0**. ⚠️ The ORIGINAL file
@@ -346,20 +455,27 @@ more-information: |
   AGPL appears on none of the Creative Commons pages, and why «AGPL is absent from the list» was a true
   observation that did not settle the question.
 
-  ⚠️ AND THESE ARE THE FOUR COSTS OF CROSSING, which are why the project stays on this side:
+  🎯 AND THE CONDITION THAT DECIDES EVERYTHING IS THE SOURCE ONE, WHICH THIS PROJECT ALREADY MEETS. CC states
+  it plainly: an adapter who cannot make the work available «in the preferred form for making modifications»,
+  whether because they never received it in modifiable form or cannot convert it, «cannot take advantage of
+  the one-way compatibility declaration». **That is the clause that stops most people, and it is the one
+  clause this project satisfies by construction** — ADR-0018 already says art is procedural DATA, so what we
+  keep IS the modifiable form: semantic image plus palette dictionary, versioned in the repository. The
+  obligation that reads as a cost to a studio shipping flattened PNGs is, for this pipeline, a description of
+  what it already does.
 
-  · **The bridge only opens for a DERIVATIVE.** An unmodified BY-SA 3.0 file stays 3.0 and has no path, so it
-    would have to be kept as MERE AGGREGATION — media in a tree of its own, independent of the code. That is
-    the quarantine again, under a name from a different discipline.
-  · **It puts art under the CODE licence**, which is the line ADR-0010 pillar 10 and `LICENSES.md` draw for
-    legal reasons: a program is Lei 9.609 and art is Lei 9.610, with different owners and different duties.
-  · **It drags GPLv3's «source = the preferred form for modification» onto the art sources** — the Aseprite
-    files, the semantic images, the palette dictionaries — an obligation the art regime never accepted.
+  ⚠️ AND THE TWO REAL COSTS, stated so nobody discovers them later:
+
   · **It is one-way and permanent.** Nothing comes back from GPLv3 to CC, and every later choice about that
     asset is made inside the code's licence family.
+  · **It puts that art under the CODE licence**, crossing the line ADR-0010 pillar 10 and `LICENSES.md` draw
+    for legal reasons: a program is Lei 9.609 and art is Lei 9.610, with different owners and different
+    duties. ⚠️ The line is not erased — art that comes through doors one and two stays on the art side. What
+    crosses is only what the bridge carries, and the ledger says which is which.
 
-  📌 Recorded so that the next reader finds the analysis rather than the conclusion. If the project ever wants
-  the LCP badly enough to pay those four costs, the door is described here and the decision is a new record.
+  📌 A third thing that reads as a cost and is not: **the bridge only opens for a DERIVATIVE**, so no
+  BY-SA file may be kept verbatim. ADR-0018 required exactly that of all art two months before this record
+  existed, for reasons that had nothing to do with licensing.
 
   📚 THE SOURCES THE DEV RAISED, EACH READ AT ITS OWN PAGE ON 2026-09-09. This is the second door being used
   for the first time, and the rule paid for itself twice on the day it was written.
@@ -377,24 +493,24 @@ more-information: |
   author answered — «it was cc-by then I changed to cc0 later». **When the field and the prose disagree, the
   pack is not settled**, and the ledger row must not pretend otherwise.
 
-  ⚖️ **Tiny Swords** (`pixelfrog-assets.itch.io/tiny-swords`) — **SPLITS IN TWO, and is not CC BY 4.0.** The
-  page carries **no «Asset license» field at all**, and it offers three downloads under one licence section.
+  ⚖️ **Tiny Swords** (`pixelfrog-assets.itch.io/tiny-swords`) — **the case that broke the closed list, and it
+  is not CC BY 4.0.** The page carries no «Asset license» field; it carries the author's own grant, and the
+  whole of it matters: «Feel free to use this asset pack in both personal and commercial projects, modifying
+  the assets as needed. Crediting is not required, but it helps and is always welcome. You may not
+  redistribute, resell, or repackage the assets, even if the files are modified.»
 
-  · The **current Free Pack** is under a grant the author wrote, and the whole of it matters: «Feel free to
-    use this asset pack in both personal and commercial projects, modifying the assets as needed. Crediting
-    is not required, but it helps and is always welcome. You may not redistribute, resell, or repackage the
-    assets, even if the files are modified.» **Two permissive lines and one restriction.** 🔴 It is refused,
-    and the reason needs none of them read closely: **it is not one of the four.**
-  · **`TS_old version_CC0 Licensed`** is CC0 and PASSES. ⚠️ But the only statement of that on the page is the
-    FILE NAME, so the ledger row must cite the `LICENSE` inside the archive rather than the page — this
-    record's own rule applied to its own example.
+  Against the four questions: **derive — yes**, expressly. **Commercial — yes**, expressly. **Travel —
+  nothing**, there is no copyleft. Three of four are answered on the page, permissively, by the author.
 
-  🎯 **AND THIS IS THE CASE THAT EARNS THE CLOSED LIST.** Whether the third line bites us at all turns on
-  reading «redistribute»: a public repository serves the raw PNGs to anyone, so it is defensible that an
-  open-source project redistributes by existing — ⚠️ but that is an INFERENCE and it is marked as one here,
-  because an earlier version of this paragraph stated it as fact. A collection whose admissibility depends on
-  who interprets a word is a collection that enters on the day someone is in a hurry. The enumerated list
-  answers it without anyone interpreting anything.
+  ⚠️ **Question 3 is the open one, and it is a READING rather than a lookup.** «Redistribute» plainly covers
+  republishing the pack as a pack; whether it also covers shipping the files inside an open-source game
+  repository is genuinely unsettled, because that repository serves the raw PNGs to anyone who clones it.
+  🎯 **The cheapest resolution is the FIRST DOOR, not an argument**: one written answer from the author turns
+  the reading into a permission, and the ledger row then cites the grant instead of the page. That is what the
+  first door is for, and this is the case that showed it is not only for bespoke commissions.
+  📌 And `TS_old version_CC0 Licensed`, offered on the same page, is CC0 and passes with no reading at all —
+  though the only statement of that is the FILE NAME, so its ledger row must cite the `LICENSE` inside the
+  archive rather than the page.
 
   🎯 **AND THAT IS THE RULE OF THIS RECORD ARRIVING BEFORE THE FIRST IMPORT.** Two of the three sources the
   Dev named were right and one was not, and the difference was invisible from the outside — «CC BY 4.0» was a
