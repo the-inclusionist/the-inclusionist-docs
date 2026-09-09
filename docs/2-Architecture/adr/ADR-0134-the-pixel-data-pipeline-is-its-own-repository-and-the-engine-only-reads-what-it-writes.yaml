@@ -1,0 +1,268 @@
+---
+metadata:
+  status: "accepted"
+  date: 2026-09-09
+  # Declara um endereço e NÃO supersede nada, no molde do ADR-0097. Desde que o ADR-0067 §5 fez a
+  # DECLARAÇÃO ser o gatilho, um endereço novo não emenda a enumeração do ADR-0058 §1 — junta-se a ela.
+  supersedes-in-part: []
+  decision-makers: [Dev]
+  consulted:
+    - "ADR-0133 §3 — the third door. Its bridge is CONDITIONAL on the preferred form for modification being
+       available, and this repository is what makes that sentence true"
+    - "ADR-0067 §5 — a repository is created when a record declares its address, and NOT by a folder somebody
+       made. This record is that declaration"
+    - "ADR-0067 §2 — the four files a repository is born with, and §3 the README that says it is empty"
+    - "ADR-0058 §1 — the `the-inclusionist-*` prefix marks a SYSTEM. A tenth address joins the nine"
+    - "ADR-0064 — AGPL-3.0-or-later, decided before the first line"
+    - "ADR-0068 §4 — the CI caller is invoked, never copied"
+    - "ADR-0027 — fifteen distinct sprite sizes, so the atlas cannot assume a uniform grid and each sprite
+       carries its own pivot. It is why the pivot lives in the file and not in a naming convention"
+    - "ADR-0128 — a record has two tempos. The confirmation below declares debt and does not prophesy"
+    - "docs/game-design/plano-arte-procedural.md in the engine — the study this record decides against in
+       three places, and agrees with everywhere else"
+  informed: []
+
+title: The pixel-data pipeline gets a repository of its own, and the engine becomes a reader of what it writes
+
+context-and-problem-statement: |
+  ADR-0133 opened a third door for art: CC BY-SA crosses into this AGPL project as GPL-3.0-only. The
+  mechanism is public and has three steps, and the last of them carries a condition that is not legal:
+
+    «an adapter who cannot make available the work IN THE PREFERRED FORM FOR MODIFICATION cannot take
+     advantage of the one-way compatibility declaration» (Creative Commons, 8 October 2015)
+
+  🔴 THAT FORM DOES NOT EXIST. The engine's `docs/LICENSES.md` already says so in red, after an erratum on
+  the same day removed the sentence claiming the project «already maintains» it. There is no `app/js/art/`,
+  no semantic format and no tool. So the third door is DESCRIBED AND NOT OPEN, and the Liberated Pixel Cup —
+  the largest purpose-built asset set for exactly this kind of game — stays out.
+
+  ⚠️ AND A SECOND DEBT WAITS ON THE SAME WORK. `plano-arte-procedural.md` §11 paused about twenty scenario
+  themes, «because each theme drawn by hand before this exists is art that step 6 will have to redo».
+
+  A study exists (`plano-arte-procedural.md`, and a working plan written on top of it). It answered WHAT the
+  format should be. It did not answer WHERE the work lives, and the answer it assumed — inside the engine —
+  turned out to rest on a single load-bearing assumption that the Dev has now removed.
+
+decision-drivers:
+  - "The condition in ADR-0133 §3 is about ARTEFACTS being available, not about who parses them. Whatever
+     satisfies it must be a file somebody can open, in a place somebody can reach."
+  - "🎯 The engine link in the earlier plan existed for ONE reason, stated in its own words — «sem ela o
+     editor não tem pré-visualização». The Dev has decided there is no pixel-art editor, so there is no live
+     preview, so the reason is gone and nothing else replaced it."
+  - "A producer and a consumer that share an implementation are one program in two repositories. A producer
+     and a consumer that share a WRITTEN FORMAT are two programs, and either can be rewritten."
+  - "⚠️ `render/viz-axes` is the warning this project already paid for: a complete model, 33 cases, and
+     orphaned. Code placed where it has no caller is not an investment."
+  - "Volunteer labour (ADR-0070) means the annotation cost is the real constraint. A mechanism that turns
+     many files into one decision is worth more than any byte saved."
+
+considered-options:
+  - "P1 — build the pipeline inside the engine (`app/js/art/`), as the earlier plan decided, with the tool as
+     an external consumer depending on the published package"
+  - "P2 — a repository of its own that produces FILES ONLY; the engine writes its own reader against a
+     written specification and a set of reference fixtures"
+  - "P3 — a repository of its own that also PUBLISHES the reader as a package, which the engine imports"
+
+pros-and-cons-of-the-options:
+  P1:
+    good: ["One implementation of the format, guaranteed, because there is only one place it can live.",
+           "The game must read this data at run time, and code the game needs is code the engine holds.",
+           "It is what the study proposed, so no record has to change."]
+    bad: ["⚠️ Its stated justification was live preview inside an editor, and the editor was cancelled. What
+           remains is an assumption with nothing under it.",
+          "It puts a producer's toolchain inside a consumer, which inverts the dependency: the engine would
+           carry code no game calls, for the benefit of a tool that is not the engine.",
+          "It makes the tool the engine's third external consumer, with an import-boundary gate to maintain,
+           to solve a problem the tool would not have had on its own."]
+  P2:
+    good: ["The condition in ADR-0133 §3 is satisfied by artefacts, and artefacts are exactly what this
+            produces. Nothing else is needed to open the door.",
+           "🎯 Zero coupling in both directions. This repository never imports the engine; the engine never
+            imports this. Either can be rewritten in another language without asking permission.",
+           "The format becomes a WRITTEN CONTRACT with reference fixtures, which is a stronger artefact than
+            a shared module: a specification can be implemented, audited and disagreed with."]
+    bad: ["⚠️ Two implementations of the reader, and they can diverge. The fixtures are the only thing
+           holding them together, and fixtures only work when both sides run them.",
+          "The engine's reader is work that does not exist yet and is not scheduled here.",
+          "A specification is a maintenance surface of its own: it must be corrected whenever the format
+           moves, and nothing forces that."]
+  P3:
+    good: ["One implementation, and the dependency points the right way — the consumer imports the producer.",
+           "The engine gets a reader for free on the day it needs one."]
+    bad: ["It makes this repository a published dependency of the engine, which is a versioning obligation
+           taken on before anything has been built once.",
+          "⚠️ It is the coupling of P1 with the arrow reversed, and it buys the same divergence guarantee at
+           the cost of the independence that is P2's whole point."]
+
+decision-outcome:
+  chosen-option:
+    link: "P2 — a repository of its own, producing files only, with the format written down and fixtured"
+    justification: |
+      ===== 1. THE ADDRESS, AND THIS SENTENCE IS THE CREATION =====
+      **`the-inclusionist/the-inclusionist-pixeldata`.** ADR-0067 §5 says creation follows a declaration in a
+      record and NOT «a folder somebody made» — a folder and a remote already exist, and under that rule they
+      created nothing. This line does.
+
+      The `the-inclusionist-*` prefix is deliberate (ADR-0058 §1): it marks a SYSTEM, which is what this is,
+      and not a game. ADR-0082's `game-<slug>` rule governs games and says so in its own §2, so it does not
+      reach here.
+
+      ===== 2. WHAT IT IS =====
+      An application that imports existing pixel art and returns a file describing the drawing by
+      **(region, level)** instead of by colour, plus a dictionary of palettes that can be reused across
+      tilesets. It never draws pixel art; it annotates art that already exists.
+
+      ===== 3. WHAT THIS REVOKES, AND IT IS THREE THINGS =====
+      The study in `plano-arte-procedural.md` and the working plan on top of it are kept whole in their
+      diagnosis and their measurement. Three of their conclusions are replaced:
+
+        a) **The reader does NOT live in the engine.** The earlier plan put `semantic.ts`, `palettes.ts` and
+           `recolor.ts` in `app/js/art/` and made the tool an external consumer of the published package. Its
+           justification was live preview; there is no editor, so there is no preview, so there is no link.
+           The engine writes its own reader against `docs/FORMAT.md` and the fixtures.
+
+           ⚠️ AND THE STRONGEST ARGUMENT OF THAT PLAN SURVIVES UNTOUCHED, which is why this costs nothing:
+           `render/high-contrast.ts:128-133` reconstructs a pseudo-luminance from RGBA
+           (`0.299R+0.587G+0.114B`) and multiplies it by a paper colour. With (region, level) that stops
+           being reconstruction and becomes reading. That gain comes from the DATA EXISTING, not from who
+           parses it.
+
+        b) **One file per set, not two files per resource.** The earlier plan concluded `<name>.semantic.png`
+           plus `<name>.semantic.json`. The Dev asked for «um único arquivo que ensina como desenhar a
+           TILESET de forma semântica, não exatamente uma única imagem» — a description, not a portrait. The
+           grid ships inside the JSON, run-length encoded.
+
+        c) **One program, not two.** The earlier plan had an annotation page plus a batch CLI. The batch
+           lives in the IMPORT — the page opens a folder at once — so a second surface would be maintained
+           for work the first already does.
+
+      ===== 4. THE MECHANISM THAT PAYS FOR THE WHOLE THING =====
+      Two exact comparisons, no tolerance and no parameter. For each imported file: scan in raster order,
+      build the distinct RGBA colours in order of first appearance, replace each pixel by its index, then
+
+        · `drawingHash` over (w, h, index grid) — the SAME DRAWING with different colours;
+        · `paletteHash` over the sorted colour set — DIFFERENT DRAWINGS with the same colours.
+
+      🎯 The first turns dozens of palette variants into ONE annotation and dozens of palettes harvested
+      exactly: if index 4 was annotated `(skin, 3)`, then the colour at index 4 of any file with the same
+      `drawingHash` IS level 3 of skin in that variant.
+
+      📏 MEASURED on 197 CC0 files (*Tiny Swords*, 1 777 268 bytes) before this record was written:
+      **34 groups of «same drawing, different palettes» cover 119 files.** Thirty-four annotations would
+      cover a hundred and nineteen files. The mechanism is not a hope.
+
+      ⚠️ The palette grouping is RARE in that pack — seven groups — because each unit there carries its own
+      colours. It is not wrong (its seven groups are shared MATERIALS: scaffolding and wood), but the case
+      that justifies the file boundary is the LPC, where `walk`, `thrust` and `hurt` of one body share a
+      palette. Written down because the number is smaller than the design assumed.
+
+      ===== 5. TWO FORMAT DECISIONS THE MEASUREMENT MADE, AND ONE OF THEM CORRECTS THE STUDY =====
+      **(i) The grid is run-length encoded per row, in readable form.** Four candidates were measured against
+      the source PNGs: plain text at two characters per pixel is **46.80×**; RLE per row readable is 3.12×;
+      RLE per row in base36 is 2.97×; flat RLE crossing rows is 2.79×.
+      🎯 Gzipped, the readable and the compact differ by **0.4 %** — and git stores objects zlib-compressed,
+      so IN THE REPOSITORY THEY COST THE SAME. When the cost in history is equal, the readable one wins, and
+      the flat one's extra 6 % is paid in diffs that can no longer be located to a row.
+      📌 An erratum to the study in passing: it estimated the plain-text grid at «roughly ten times» the PNG.
+      Across 197 real files it is 46.8×. The conclusion was right; the number was optimistic by five.
+
+      **(ii) 🔴 ALPHA IS PART OF THE COLOUR, NOT A MASK.** The earlier format said `A` is «0 or 255 and
+      nothing else», and called the hard mask a property the source already had — true of the LPC, where all
+      92 244 opaque pixels measured exactly 255.
+      📏 It is FALSE of distributed pixel art generally: **119 of 197 files carry partial alpha.** That rule
+      would reject sixty per cent of a CC0 pack.
+      📌 And the shape of the failure is what makes the fix small: **never more than three semi-transparent
+      colours in a file** (85 files have one, 24 have two, 10 have three, zero have more). That is not
+      anti-aliasing — it is a shadow at a constant alpha. So alpha travels in the palette ramp beside R, G
+      and B, and a shadow becomes a region like any other.
+
+      ===== 6. WHAT THE FORMAT IS =====
+      Per set, one `<set>.semantic.json`: `regions` (the vocabulary this set uses), `levels` (steps per
+      region, and which index is `outline`), `sheets[]` (each with `w`, `h`, the encoded `grid` and
+      `frames[]` carrying `pivot`), `colorMap` (the human decision, index → region and level), `palettes[]`
+      (references to the compatible palettes) and `source` (provenance, the fields of `art/ATTRIBUTION.csv`).
+
+      Separately, `<name>.palette.json`: `region → { variants: { name: ramp[] } }`, reusable across tilesets,
+      because that reuse is the reason the colours are not in the set file.
+
+      ⚠️ The pivot lives in the file and not in a naming convention, because ADR-0027 measured fifteen
+      distinct sprite sizes and concluded the atlas cannot assume a uniform grid. The LPC confirms it from
+      the other side: `walk` is 576×256 and `hurt` is 448×64 — the grid changes between sheets of the same
+      character.
+
+      ===== 7. 🔴 ONE PNG DECODER, AND IT IS OURS =====
+      `createImageBitmap` and canvas may apply colour management when decoding a PNG carrying `gAMA`, `iCCP`
+      or `sRGB`. If the colours the page sees are not the colours the file holds, THE KEYS OF `colorMap` STOP
+      MATCHING — and it fails silently, producing a wrong mapping instead of an error.
+      📏 **All 197 measured files carry an `sRGB` chunk.** Colour-management chunks are the norm in
+      distributed pixel art, not an edge case. So the decoder is ours, in the browser and in Node, and it
+      ignores those chunks explicitly.
+
+      ===== 8. WHAT THIS DOES NOT DECIDE =====
+      Not the engine's reader, not the migration of `high-contrast.ts`, not the importers for
+      Aseprite/Tiled/LDtk, and not which palettes a game offers a child. Those are the engine's and the
+      games', and each owes its own record when it is built.
+
+  consequences:
+    positive:
+      - "The condition of ADR-0133 §3 becomes satisfiable by artefacts that exist, which is what the third
+         door has been waiting for since the day it was written."
+      - "🎯 Thirty-four annotations covering a hundred and nineteen files, measured. The annotation cost —
+         the real constraint under volunteer labour — drops by more than an order of magnitude."
+      - "The engine takes on nothing. No new export subpath, no third external consumer, no import-boundary
+         gate, and no code without a caller."
+      - "The twenty paused scenario themes gain a pipeline to be built against."
+    negative:
+      - "⚠️ TWO IMPLEMENTATIONS OF THE READER, one here and one in the engine when it comes. They can
+         diverge, and the reference fixtures only prevent it if both sides actually run them. Nothing forces
+         the engine to run them today."
+      - "A scaffold README that says the repository is not built, which becomes FALSE on the commit that
+         builds it. ADR-0067 already names this failure mode and nothing checks for it."
+      - "A tenth address to configure, watch and keep licensed."
+      - "⚠️ The palette grouping was measured at seven groups in 197 files. If the LPC does not group better,
+         the file boundary chosen here yields roughly one file per image, and the word «set» stops earning
+         its place."
+    neutral:
+      - "`plano-arte-procedural.md` keeps its diagnosis, its four sections on palettes and render, and its
+         measurement of the LPC. Only the three conclusions of §3 above are replaced."
+      - "`REPOS_CONHECIDOS` in `scripts/validate-adr.py` is `{engine, docs}` and stays that way. It needs the
+         new prefix only on the day a `confirmed-by` names this repository."
+
+  confirmation: |
+    ⚠️ NOT YET BUILT. This record is the decision; what follows is the debt it declares, in the shape
+    ADR-0128 requires — written before the code, and therefore stating what is owed rather than what passed.
+
+    Owed, and each is a gate that must be born red with its mutation confirmed:
+
+      · A round trip that is exact: PNG → semantic file plus palette → recomposed → the same pixel. It is the
+        case that catches the two corruptions which fail in silence, colour management and alpha
+        premultiplication.
+      · Both groupings in both directions: same drawing with different colours forms one group, and ONE pixel
+        changed forms two.
+      · The reference fixtures under `fixtures/`, which are what the engine's future reader is measured
+        against and the only thing standing between two implementations and divergence.
+      · `docs/FORMAT.md` describing what a reader must do, corrected whenever the format moves.
+
+    ⚠️ WHAT NO CHECK CONFIRMS TODAY: that the engine's reader agrees with this one. That is checkable — the
+    engine can run these fixtures in its own suite — and it is NOT built, and it is not this record's to
+    build. It is named here so that the day it is built, it has somewhere to be confirmed against.
+
+    THE ISSUE THIS DEBT BELONGS TO does not exist yet, because ADR-0126 files an issue against a repository
+    and the repository is created by this sentence. It is opened with the first commit, and its number
+    arrives here as an erratum.
+
+more-information: |
+  SUPERSEDES NOTHING, in the mould of ADR-0097. ADR-0058 §1 enumerated nine addresses at a moment when a
+  repository was created by its first commit; ADR-0067 §5 replaced that trigger with DECLARATION, and since
+  then a new address joins the topology by being declared rather than by amending the enumeration. ADR-0058
+  governs unchanged — the five systems, the two mechanisms, the four backends, the multi-tenancy, and the
+  reason the `the-inclusionist-*` prefix exists, which is the reason this name carries it.
+
+  ⚠️ THIS RECORD DOES NOT DECIDE WHAT THE ENGINE DOES NEXT. Whether `app/js/art/` is ever written, and
+  whether `high-contrast.ts` migrates to reading regions instead of reconstructing luminance, are the
+  engine's decisions and owe the engine's records. This one only guarantees there will be something to read.
+
+  📌 AND THE MEASUREMENT IS NOT THE LPC. It was taken on 197 CC0 files from *Tiny Swords* because the LPC is
+  not on the machine. Where the two disagree — the LPC has zero partial alpha, this pack has it in 119 of 197
+  files — both numbers are kept, and §5(ii) is decided by the wider one, because a format that only holds for
+  one source is not a format.
