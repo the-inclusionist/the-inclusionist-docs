@@ -1,0 +1,166 @@
+---
+metadata:
+  status: "accepted"
+  supersedes-in-part: [ADR-0066]
+  date: 2026-09-09
+  decision-makers: [Dev]
+  consulted:
+    - "The Dev's decision of 2026-09-09: «A prefeitura é dona do código por lei, mas também por lei ela é
+       obrigada a trabalhar com código aberto. Não deveria eu portanto parar de usar repositórios privados e
+       passar a usar tudo público no github?» and, on the record that kept it closed: «não faço questão.
+       Manter privado está custando dinheiro que a prefeitura não ressarce»"
+    - "ADR-0066 — SUPERSEDED IN PART: the organisation is private until the ato. The ORGANISATION stands; the
+       VISIBILITY clause is what falls"
+    - "ADR-0010 pillar 10 — AGPL-3.0 for the code. The licence the Dev already chose, and the one that makes
+       publication coherent rather than merely cheaper"
+    - "ADR-0070 — the work exists by VOLUNTEERING; there is no budget, which is why an unreimbursed cost is
+       not a rounding error"
+    - "issue #5 — CodeQL and npm audit, deferred in part because of what they cost on a private repository"
+    - "issue #130 — the shared CI pipeline across six game repositories: the thing that consumes the minutes"
+  informed: []
+
+title: The organisation goes public, and privacy stops being paid for
+
+context-and-problem-statement: |
+  ADR-0066 kept the GitHub organisation private «until the ato» — the formal act by which the municipality
+  takes the code. It was written when publication looked like a step that could only be taken once and should
+  therefore wait for the paperwork.
+
+  🔴 TWO FACTS HAVE CHANGED SINCE, AND THE SECOND IS THE ONE THAT DECIDES.
+
+  1. **THE PAPERWORK HAS NOT MOVED.** The Dev's own words, 2026-09-09: «nem assinaram os papéis para efetivar
+     a licença como AGPL». So the ato is not near, and «until the ato» has stopped being a date and become an
+     open interval.
+  2. **PRIVACY IS BEING PAID FOR, BY THE PERSON WHO IS NOT BEING REIMBURSED.** GitHub Actions minutes are
+     free without limit on PUBLIC repositories and metered on private ones; the same asymmetry applies to
+     code scanning. This project runs a shared CI pipeline across six game repositories plus the engine and
+     the docs tree — issue #130 is literally about extending it to the two that lack it. ⚠️ Under ADR-0070
+     there is no budget at all: the cost lands on a volunteer, for a municipality that does not reimburse it.
+
+  🎯 AND THE LEGAL FRAMING CUTS THE OTHER WAY FROM WHAT IT FIRST LOOKS LIKE. The Dev states the municipality
+  owns the code by law and is obliged by law to work with open source. ⚠️ **This record does not rest on that
+  claim, and says so deliberately** — it is a question for a lawyer, not for an architecture record, and the
+  premise that would activate it (a signed transfer) has not happened. What follows without needing any of it:
+  **while the papers are unsigned, the code is the Dev's, the choice is the Dev's, and he has made it.** If
+  the obligation he describes is real, publication is where the code was going anyway; if it is not,
+  publication is still what AGPL-3.0 already implies.
+
+  📌 THE ONE THING THAT MAKES THIS DIFFERENT FROM A SETTING: **publication does not undo.** A repository made
+  public can be made private again, but the bytes cannot be recalled — forks, caches and archives keep what
+  they saw. So the decision is cheap and the PRE-FLIGHT is not, and this record's real content is the list of
+  what must be true first.
+
+decision-drivers:
+  - "An unreimbursed cost falling on a volunteer is a cost the project must remove, not absorb"
+  - "AGPL-3.0 was already chosen; a private AGPL repository is a licence nobody can act on"
+  - "«Until the ato» has no date, so it is not a condition — it is an indefinite hold"
+  - "Publication does not undo: what goes out cannot be recalled, so the audit comes first"
+  - "Free CI and free code scanning are the difference between issue #5 being deferred and being done"
+
+considered-options:
+  - "A · every repository goes public, after a pre-flight audit"
+  - "B · stay private until the ato, as ADR-0066 decided"
+  - "C · publish only the engine and the docs tree; games stay private"
+  - "D · publish, but first rewrite history to remove anything unwanted"
+
+pros-and-cons-of-the-options:
+  A:
+    good:
+      - "The cost goes to zero: unlimited Actions minutes and free code scanning on public repositories."
+      - "The AGPL-3.0 licence becomes something a person can actually exercise."
+      - "Issue #5 (CodeQL) stops being blocked by what it costs."
+      - "A municipality that must work with open source finds open source, rather than a promise of it."
+    bad:
+      - "🔴 Irreversible in effect: forks, caches and archives keep whatever is published, including history."
+      - "Every commit message, author email and mistake becomes public — 3300 tests' worth of working notes included."
+      - "It precedes the ato, so the code is public before its ownership is settled on paper."
+  B:
+    good:
+      - "Nothing to audit; no exposure risk."
+    bad:
+      - "🔴 The Dev keeps paying for it, and he has said plainly that he does not insist on the privacy."
+      - "The condition has no date, so this is an indefinite hold dressed as a milestone."
+  C:
+    good:
+      - "The two repositories with the most reusable value go out; the games stay closed."
+    bad:
+      - "The games are where the CI minutes are actually spent — it saves the least money."
+      - "A split visibility rule needs a criterion nobody has, and it will be applied by habit."
+  D:
+    good:
+      - "Publishes a clean history rather than the real one."
+    bad:
+      - "🔴 A force-push over shared history, on repositories already pushed — the exact cost this project measured and refused when it declined to rewrite footers."
+      - "Presumes something needs removing; measured, nothing does."
+
+decision-outcome:
+  chosen-option:
+    link: "A — every repository goes public, after the pre-flight below passes"
+    justification: |
+      **The organisation goes public.** ADR-0066's organisation stands; only the visibility clause falls, and
+      it falls for a reason that record could not have weighed: it was costing the volunteer money.
+
+      🛑 **AND THE FLIP IS THE DEV'S ACT, NOT THIS AI'S.** It is outward-facing and it does not undo. What this
+      AI does is the audit; what the Dev does is the switch.
+
+      📏 **THE PRE-FLIGHT, and the part of it already measured on 2026-09-09:**
+
+      · **Secrets in history** — scanned across every revision of the engine for token, key and `_authToken`
+        shapes: **ZERO**. ⚠️ And the limit of that scan is stated rather than implied: a pattern scan finds
+        secrets that LOOK like secrets. A password written in prose, a private URL, or a credential with an
+        unusual shape passes it. It lowers the risk; it does not clear it.
+      · **Tracked credential files** — no `.npmrc`, `.env`, `.pem` or key file is tracked in the engine.
+        ⚠️ Issue #110 names `.npmrc` in `inclusionist-commons` and `inclusionist-lab` as needing repair, and
+        those two must be re-checked at their own HEAD before they go out.
+      · **Office documents** — no `.docx`/`.xlsx`/`.pdf`/`.odt` is tracked in the engine, the docs tree or
+        the lab. This matters more than it sounds: a personal or legal document committed once stays in
+        history forever, and publication is when that becomes irreversible.
+      · 🔴 **`the-inclusionist-docs` HAS NO `LICENSE` FILE**, measured today — and it is the repository that
+        would go out carrying 123 records. Content published without a licence is «all rights reserved» by
+        default, which is the opposite of the obligation this decision is meant to satisfy. **This one is a
+        blocker, and it is one file.**
+      · **Author identity** — the Dev's own email is in every commit and becomes public with them. That is
+        normal for open source and is named here so it is a choice rather than a surprise.
+
+  consequences:
+    good:
+      - "The unreimbursed cost disappears: free Actions minutes and free scanning."
+      - "AGPL-3.0 becomes exercisable, and the four adopting games' CI stops being metered."
+      - "Issue #5 unblocks; CodeQL is free where it was paid."
+      - "A reader can verify the accessibility claims instead of taking them on trust — which is what this project keeps saying it wants."
+    bad:
+      - "🔴 Irreversible: history, working notes and every mistake go out and cannot be recalled."
+      - "The code is public before the ato settles who owns it."
+      - "Anything the pattern scan did not shape-match is now public — the residual risk this record refuses to call zero."
+      - "The organisation loses the option to stage a first impression; the repositories are seen mid-work."
+
+  confirmation: |
+    ⚠️ NOT YET EXECUTED. The decision is made; the flip is the Dev's, and it must not happen before the two
+    items below are true. Written as a record rather than a checklist in chat precisely because a pre-flight
+    that lives in a conversation is a pre-flight nobody runs the second time.
+
+    The gates this owes:
+
+    · `the-inclusionist-docs` HAS A `LICENSE` FILE before it is published — asserted by a case in that
+      repository, not by memory. 🔴 It is the one measured blocker.
+    · EVERY REPOSITORY THAT GOES PUBLIC HAS A LICENCE, checked as an inventory over the organisation rather
+      than per repository, so a repository added later cannot slip out unlicensed.
+    · THE SECRET SCAN IS RE-RUN AT THE HEAD OF EACH REPOSITORY, not only the engine, and its RESULT IS
+      RECORDED WITH ITS LIMITS. ⚠️ A scan reported as «clean» without saying what it can miss is the false
+      report this repository has caught three times; the confirmation must carry the method.
+    · `inclusionist-commons` AND `inclusionist-lab` HAVE NO `.npmrc` WITH AN AUTH TOKEN at HEAD — issue #110
+      named exactly this, and it is the one place a real credential was already suspected.
+
+more-information: |
+  Supersedes ADR-0066 in part: the organisation and its naming stand; the clause keeping it private until the
+  ato does not. The ato remains the event that settles OWNERSHIP; this record only stops visibility from
+  waiting on it.
+
+  📌 The legal premise the Dev states — that the municipality owns the code by law and is obliged by law to
+  work with open source — is recorded as HIS statement and is not load-bearing here. This record stands on
+  two things that need no lawyer: the papers are unsigned, so the choice is his today; and privacy has a
+  price he is paying and nobody is refunding.
+
+  Deliberately NOT decided here: when the flip happens; whether the games go out at the same moment as the
+  engine; whether any repository stays private for a reason not yet named; and anything about the ato itself,
+  which is ownership and not visibility.

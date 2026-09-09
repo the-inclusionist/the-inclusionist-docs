@@ -2,6 +2,14 @@
 metadata:
   status: "accepted"
   date: 2026-09-04
+  superseded-in-part:
+    - by: ADR-0125
+      what: >-
+        the clause that keeps the organisation PRIVATE until the ato, and only that clause. The
+        organisation itself, its naming and everything else this record decides are untouched. The Dev
+        withdrew the privacy on 2026-09-09 — «não faço questão. Manter privado está custando dinheiro que
+        a prefeitura não ressarce» — and the condition had become an open interval, because the papers
+        that would constitute the ato are still unsigned.
   errata:
     - date: 2026-09-05
       what: "a decision-driver read `the clean history has to become the only history, and it cannot
