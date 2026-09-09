@@ -128,6 +128,15 @@ decision-outcome:
       is five other repositories, and a gate that reads them would make this repo's CI depend on their state);
       it is a step in the procedure, and it belongs in `CLAUDE.md` beside «fato duplicado apodrece».
 
+    ✅ **PAID the same day, and it earned its keep within hours.** The rule is in `CLAUDE.md` («TIRAR CAMPO DE
+    CONTRATO? MEÇA O CATÁLOGO, NÃO O CONSUMIDOR DA CASA»), and it is what produced the measurement behind
+    ADR-0122: the four repositories were opened and read BEFORE the field was retired the second time. What
+    came back changed the WORK rather than the decision — `game-chess` has its own pause menu, so adopting
+    there is design work and not a deletion.
+    ⚠️ And the same rule caught this record's OWN premise: the keyboard cost quoted here was a consumer's
+    comment repeated as if it were a measurement. Measured, both readers of the pause card are gated on
+    `!menu.hidden`. The sweep is a procedure, and a procedure applied to itself is what found that.
+
 more-information: |
   Supersedes ADR-0120 in part: the retirement itself. Its reading of why the field EXISTED — the engine had
   nothing that suited a game with no pause of its own, and stages 2 and 3 of ADR-0106 built that away — is

@@ -108,6 +108,19 @@ decision-outcome:
     · THE QUIZ GETS A CARD, asserted where the engine mounts it. The absence was the old behaviour and it had
       no case; the presence needs one, or «every game has a pause» stays prose.
 
+    ✅ **THE THREE ARE PAID — measured on 2026-09-09, and the road there is the part worth keeping.** This
+    record was REVERTED (ADR-0121) and then restored by the Dev's own decision (ADR-0122, «132 é A»), so the
+    gates below were built against the second retirement rather than the first:
+
+    · the field is absent from `docs/6-DevOps-SRE/public-shape.json` — and it was the shape portrait that
+      reported the removal, red, on the way in;
+    · `tests/declinio-morto.node.test.js` lists THREE declines and asserts `semMenuDePausa` is not among
+      them, so the sieve cannot silently start asserting a field that no longer exists;
+    · the card is asserted in three files — `boot-create-game.node`, `boot-create-game.browser` and
+      `cartao-de-pausa-nao-come-teclas.browser` — and one of them, added by ADR-0122, is the case that no
+      decline removes it. 🌐 It was also seen in a real browser: `#vp-pause-0` mounted inside `#game-region`
+      with fifteen items, born hidden, on the `quiz.html` served from `dist`.
+
 more-information: |
   Supersedes ADR-0106 in part: the collision its `more-information` named and deliberately left open. Every
   other clause of that record stands, and two of them — the default button list and the mounting — are why
