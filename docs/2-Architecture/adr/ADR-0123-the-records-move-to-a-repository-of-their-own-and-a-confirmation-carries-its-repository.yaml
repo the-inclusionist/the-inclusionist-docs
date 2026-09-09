@@ -155,8 +155,12 @@ decision-outcome:
       and running `--repo engine=.`, which is the only place the 24 confirmations can actually be opened.
       Until that lands the tree exists twice, and two copies of a record are two records — the state this
       decision exists to end.
-    · **A GATE THAT THE UNCHECKED COUNT IS PRINTED.** The line above is the whole defence against a silent
-      sieve, and a defence with no test is a comment.
+    · ✅ **A GATE THAT THE UNCHECKED COUNT IS PRINTED — PAID** (`scripts/test-validate-adr.py`, in this
+      repository's CI). Four assertions over a temporary fixture: the sieve reads it at all; without a root
+      it is sound AND says what it skipped, naming the repository; with the right root it checks for real and
+      stops warning; with a wrong root it FAILS and the message names both the path and the root it measured
+      against. Three mutations confirmed — delete the warning loop, turn the skip into a failure (a gate that
+      can never be green is a gate somebody switches off), and drop `--repo` from the parser.
     · ⚠️ **AND THE ONE THIS RECORD CANNOT PAY: nothing checks that `engine:` still names a real repository.**
       If the engine is renamed, the prefix rots and the validator reports «not checked», which reads exactly
       like the normal case. It is named here so it is found by reading rather than by breaking.

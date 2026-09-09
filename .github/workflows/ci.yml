@@ -37,3 +37,8 @@ jobs:
       # uma vez: «N passed» convive com saída não-zero.
       - name: validate the records
         run: python scripts/validate-adr.py docs/2-Architecture/adr
+
+      # 🎯 O GATE DO GATE (ADR-0123 §3): que o validador DIGA o que não conferiu. Sem esta linha, apagar
+      # aquele aviso deixa-o a imprimir «tudo são» sem ter aberto um artefacto, e nada reprova.
+      - name: the validator says what it did NOT check
+        run: python scripts/test-validate-adr.py
