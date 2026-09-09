@@ -4,6 +4,16 @@ metadata:
   date: 2026-08-27
   supersedes: [ADR-0022]
   superseded-in-part:
+    - by: ADR-0127
+      what: >-
+        §1's RUNTIME clause, and only it: «THE RUNTIME IS UNCHANGED — sherpa-onnx-wasm, as ADR-0022 chose it».
+        The neural TTS runtime is `@mintplex-labs/piper-tts-web`, owned by the engine. 📏 The motive that
+        produced the sherpa swap was measured FALSE on 2026-09-09: no version of the mintplex package carries a
+        `deprecated` field and 1.0.5 shipped on 2026-08-11 — after ADR-0022 declared it dead — and the
+        installed 1.0.4 carries 118 voices including the FOUR this record guarantees. Two months after that
+        adoption, zero lines of sherpa exist and the engine has no runtime at all. ⚠️ Everything else here
+        stands untouched: the locales, the ownership, §5's ban on `ncnn` and `int8` with its measured reason,
+        and §6's voices-as-data.
     - by: ADR-0110
       what: "§2's COUNT (three locales became four voices — en_US ships two) and §4's DELIVERY MODEL. §4 chose
              runtime cache on FIRST USE over precache, and the argument it gave is what expired: «neural speech
