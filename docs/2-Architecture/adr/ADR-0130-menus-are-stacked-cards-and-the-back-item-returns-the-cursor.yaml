@@ -2,6 +2,28 @@
 metadata:
   status: "accepted"
   supersedes-in-part: []
+  errata:
+    - date: 2026-09-09
+      what: >-
+        🔴 THIS RECORD OVER-COMMITTED, and the Dev caught it within the hour: «por que já registrou como ADR ao
+        invés de implementar primeiro e ver se dá certo?». He is right about two of the six rules, and the
+        reason ADR-0128 did not prevent it is that ADR-0128 splits the RECORD into decision-before and
+        confirmation-after without splitting the CONTENT. There are three kinds of thing here, not two.
+        A DECISION is a choice among alternatives with different consequences for a person, which no test
+        settles — it must be written before, or the code takes it by omission. A CONSTRAINT is something the
+        world or the tree already makes true, so writing it records a fact. A DESIGN HYPOTHESIS is a
+        specification whose RIGHTNESS is discovered by building it and watching somebody use it.
+        Rules 2, 4, 5 and 6 are constraints and stand as accepted: the hint in the footer has already failed
+        twice, a toggle is what an on/off control means, a menu outside the canvas is unreachable, and a fixed
+        width truncates a longer translation — that last is arithmetic rather than taste.
+        ⚠️ RULE 1 AND THE THRESHOLD IN RULE 3 ARE HYPOTHESES AND ARE HEREBY DEMOTED TO PROPOSED IN SUBSTANCE.
+        Whether stacked cards with cursor restoration serve a child better than today's model, and whether the
+        cut is at five options or at seven, are things issue #134 DISCOVERS. The record keeps them as the shape
+        to build first, not as settled architecture — and if the build says otherwise, what changes is this
+        paragraph and not a second record superseding the first.
+        📌 The cost of the mistake is concrete and is why it is worth writing down: `accepted` tells the next
+        reader the question is closed, so being wrong would have cost a supersession — a second record and a
+        back-pointer — where a hypothesis merely stops being one.
   date: 2026-09-09
   decision-makers: [Dev]
   consulted:
@@ -120,6 +142,16 @@ decision-outcome:
       ⚠️ Rule 2 is deliberately kept even though ADR-0044 already decided it. It is the rule with a record of
       failing — twice, in `settings-visual` and `settings-empathy` — and a rule that has failed is worth
       stating in the place where the next person will look.
+
+      🔴 AND FOUR OF THESE SIX ARE SETTLED WHILE TWO ARE NOT, which the first version of this record failed to
+      distinguish. Rules 2, 4, 5 and 6 are CONSTRAINTS: they record something already true of the world or of
+      the tree, and no implementation can disagree with them. A fixed width truncates a longer translation
+      whether or not anyone likes the result; a menu outside the canvas cannot be reached.
+      Rule 1, and the number FIVE inside rule 3, are HYPOTHESES. Whether stacked cards with cursor restoration
+      serve a child better than today's model is something issue #134 finds out by building it and watching
+      somebody use it; whether the dropdown threshold is five or seven is the same kind of question. They are
+      recorded here as THE SHAPE TO BUILD FIRST rather than as settled architecture, so that revising them
+      costs a paragraph in this record instead of a supersession.
 
   consequences:
     good:
