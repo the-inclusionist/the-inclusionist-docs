@@ -62,7 +62,17 @@ def main() -> int:
         if not tem_issue and not tem_confirmacao:
             sem_rastro.append(p.name)
 
+    # ⏳ E AS DECISOES A ESPERA DO DEV, que sao a outra forma de uma coisa ficar quieta. Um registo
+    # `proposed` nao deve gates — nao ha decisao para os dever — entao os contadores acima nao o veem. Sem esta
+    # linha, uma proposta medida e escrita fica no mesmo silencio de que uma issue fechada a tiraria.
+    propostas = [
+        p.name for p in ficheiros
+        if re.search(r'^\s*status:\s*"?proposed', p.read_text(encoding="utf-8")[:400], re.M)
+    ]
+
     print(f"divida dos registos · {len(ficheiros)} registos")
+    if propostas:
+        print(f"  ⏳ A ESPERA DE DECISAO ({len(propostas)}): " + ", ".join(n[:12] for n in propostas))
     print(f"  declaram divida na confirmacao: {len(devedores)}")
     print(f"  🔴 SEM RASTRO — nem issue nomeada, nem `confirmed-by`: {len(sem_rastro)}")
     for n in sem_rastro:
