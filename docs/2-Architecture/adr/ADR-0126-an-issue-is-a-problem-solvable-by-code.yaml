@@ -1,0 +1,192 @@
+---
+metadata:
+  status: "accepted"
+  supersedes-in-part: []
+  date: 2026-09-09
+  decision-makers: [Dev]
+  consulted:
+    - "The Dev's decision of 2026-09-09: «eu realmente gostaria que uma issue fosse um problema resolvível
+       por código. Percebe que inúmeros itens que você coloca como issue não são assim: muitos chegam a ser
+       ADRs disfarçados. Inclusive inúmeros commits vazios foram feitos para fechar issues, não?»"
+    - "CLAUDE.md §0 — «Trabalho novo → uma issue», the rule that produced the census below. It is not
+       superseded here because it lives in an operating manual and not in a record; this record is what it
+       must now say"
+    - "ADR-0057 — a decision is a record that supersedes, not an edit in place. The reason a DECISION cannot
+       be an issue: an issue is closed and disappears, a record is superseded and stays readable"
+    - "ADR-0067 §5 — a repository exists when a record declares its address: the precedent that a decision's
+       artefact is a RECORD, not a closed ticket"
+  informed: []
+
+title: An issue is a problem solvable by code — decisions, phases and fieldwork are not issues
+
+context-and-problem-statement: |
+  The Dev made a claim and a request. 📏 BOTH WERE MEASURED BEFORE THIS RECORD WAS WRITTEN, and the claim is
+  the one that did not survive intact — which is worth writing down, because the request survives without it.
+
+  🔴 **THE CLAIM: «inúmeros commits vazios foram feitos para fechar issues».** Measured across all history:
+  **24 commits carry `Closes #`, and ZERO of them are empty.** The repository does contain 5 truly empty
+  commits — all from one document workflow whose file is not tracked, which is why there was nothing to
+  record — and **none of them closes an issue**.
+
+  ⚠️ **BUT THE INSTINCT LANDS ONE LEVEL DOWN, AND THERE THE NUMBER IS REAL: 11 of those 24 (46%) close an
+  issue without touching production code.** Seven are tests or scripts, which in this repository IS the
+  deliverable — a gate is the work, and ADR-0053's «a promise without execution is a promise that decays» is
+  the reason. Two are configuration. **And two close an issue by writing a DOCUMENT**: `eb05319` closes one
+  by writing an ADR, and `b46a33b` closes a roadmap phase by editing a document.
+
+  📏 **THE CENSUS THAT SETTLES THE REQUEST. Of the 33 issues open in the engine, SIXTEEN are not problems
+  solvable by code:**
+
+  · **6 are roadmap phases** (#15, #16, #18, #19, #20, #21) — containers for work, not problems with a fix;
+  · **4 are fieldwork** (#6, #7, #8, #13) — a screen-reader audit, five children, a Chromebook, a WCAG
+    sweep. They produce FINDINGS, and a finding is an input to work, not the work;
+  · **3 produce a document** (#1, #2, #14);
+  · **3 are decisions — records in disguise** (#22, whose own body says «write an ADR before any
+    implementation»; #53, «choose a dependency updater»; #129, «where does the WASM come from»).
+
+  🎯 **AND THE MECHANISM IS NOT CARELESSNESS — IT IS THE RULE.** `CLAUDE.md` says «Trabalho novo → uma
+  issue», with no second category. Everything that was not code therefore had to enter as an issue: decisions,
+  phases, fieldwork. Each then needed a closing commit, and the only possible closing act for a decision is a
+  document. **The rule manufactured the documentation-commits that close issues.** The Dev is right about the
+  smell and the cause is upstream of the commits.
+
+  ⚠️ **AND THE COST IS NOT TIDINESS.** A decision filed as an issue is CLOSED and disappears from view; a
+  decision filed as a record is SUPERSEDED and stays readable, with the reasoning that produced it. ADR-0057
+  exists precisely because a decision that stops being visible comes back to argue against itself in the next
+  conversation. **An ADR disguised as an issue is a decision with an expiry date.**
+
+  📏 WHERE THE RULE CAME FROM, TRACED RATHER THAN GUESSED. It entered on 2026-07-05 in commit `51bbe07`,
+  whose SUBJECT is the preview convention — `Co-Authored-By: Claude Opus 4.8`. **A governing rule of the
+  project entered the operating manual as a passenger in a commit about something else, written by an AI, and
+  was therefore never argued.** ⚠️ And its original text named TWO surfaces: «GitHub Project *The Inclusionist
+  Roadmap* + Issues». Measured today, `gh project list --owner the-inclusionist` returns EMPTY — the board was
+  lost in the GitLab→GitHub migration, and with it the home where a PHASE was a column. The current line says
+  only «Issues», so the second category did not have to be invented; **it was deleted.**
+
+  🎯 AND THE DEV NAMED THE REAL DEFECT BETTER THAN THIS RECORD FIRST DID: «a ideia era transformar planos em
+  issues para facilitar a marcação das partes cumpridas, mas ao invés de anotar um item para checklist, você
+  passou a anotar um livro em cada issue.» 📏 Measured across all 126 issues:
+
+  · median body **1,499 characters**, mean 1,801, largest **8,930** — roughly 250 words per issue;
+  · **only 14 of 126 contain a single checkbox** — the instrument that was the entire point is present in 11%;
+  · only 5 have a body under 600 characters;
+  · and the largest, #75 at 8,930 characters with ZERO checkboxes, carries the word `DECISÃO:` in its own
+    title. It is the claim proved by a single row.
+
+  ⚠️ **SO THE MISCLASSIFICATION IS THE SECOND DEFECT, NOT THE FIRST.** A plan item became an essay, and an
+  essay needs somewhere to be right — which is how issues silently became records. The prose itself is not
+  the problem; this project is written densely on purpose. The problem is that it was written a THIRD time:
+  the reasoning already lives in the record and in the commit message, and «fato duplicado apodrece» is a rule
+  this repository applies to code and had never applied to its own tracker.
+
+decision-drivers:
+  - "An issue must have a fix — something a commit can do and a gate can hold"
+  - "A decision must stay readable after it is taken; an issue does not"
+  - "The tracker must be a list of work, not a mixture of work, intent and history"
+  - "Whatever is not an issue must have a home, or the rule just deletes information"
+  - "The rule has to say what to do with the sixteen that already exist, or it is advice"
+
+considered-options:
+  - "A · an issue is a problem solvable by code; everything else moves to the home its KIND has"
+  - "B · keep one tracker for everything, and label the kinds"
+  - "C · an issue is anything with an owner and an outcome — the current de facto rule"
+
+pros-and-cons-of-the-options:
+  A:
+    good:
+      - "A closed issue means a problem was fixed, which is what closing is for."
+      - "A decision keeps the property ADR-0057 exists to protect: superseded and still readable."
+      - "📏 It empties 16 of 33 from a tracker whose job is telling the next person what to build."
+      - "Fieldwork stops being an issue that cannot be closed by anyone, which is what #7 and #8 are today."
+    bad:
+      - "🔴 Four homes to maintain instead of one, and a wrong home is worse than an untidy tracker."
+      - "Roadmap phases lose their GitHub-native visibility; a document is easier to forget than a board."
+      - "Reclassifying 16 issues is work, and some of it is judgement."
+  B:
+    good:
+      - "No migration; labels are cheap and reversible."
+    bad:
+      - "Labels do not change what CLOSING means, and closing is where the defect showed up."
+      - "The two documentation-closes would still be the only way to close a decision."
+  C:
+    good:
+      - "It is what happens today, and nothing breaks."
+    bad:
+      - "🔴 It is the rule that produced the census: 16 of 33, and two decisions closed by writing a document."
+
+decision-outcome:
+  chosen-option:
+    link: "A — an issue is a problem solvable by code; everything else goes to the home its kind has"
+    justification: |
+      **An issue is a problem that a commit can fix and a gate can hold.** Four homes, and the fourth is the
+      one that makes the rule honest rather than merely tidy:
+
+      1. **A DECISION IS A RECORD**, in `the-inclusionist-docs`. Not an issue — because an issue is closed
+         and a record is superseded, and only the second stays readable. When a decision needs work AFTER it
+         is taken, THAT work is the issue, and it is the record's `confirmation` that names it.
+      2. **A ROADMAP PHASE IS THE ROADMAP.** `docs/ROADMAP.md` already exists and already carries the
+         strategy and the order; a phase is a container, and a container with no fix cannot be closed by a
+         commit — which is exactly how `b46a33b` came to close one by editing a document.
+      3. **FIELDWORK IS A TEST PLAN.** `Test-Plan.md` already holds the Chromebook scope, decided by the Dev
+         on 2026-09-08. A session with a child produces FINDINGS; each finding that needs code becomes an
+         issue then, with the evidence attached.
+      4. **AND THE WORK A RECORD OWES STAYS AN ISSUE**, which is what stops this rule from deleting
+         information. «MediaPipe replaces WebGazer» is a decision; «wire the face landmarker and build the
+         gaze estimation» is a problem solvable by code, and it is an issue.
+
+      🎯 **AND A FIFTH CLAUSE, WHICH IS THE ONE THAT ACTUALLY CHANGES THE DAY: AN ISSUE IS A CHECKLIST ITEM,
+      NOT A BOOK.** The Dev's own diagnosis, and the measurement is unambiguous — median body 1,499
+      characters, checkboxes in 11%. The test is mechanical and needs no judgement:
+
+      **an issue's body should be SHORTER than the commit message that closes it.** If it is longer, the
+      thinking belongs in a record and the issue should be the line that remains: the problem, the shape of
+      the fix, and how we will know it worked.
+
+      ⚠️ The budget is ~600 characters and a checklist, and it is a BUDGET rather than a limit: an issue that
+      needs more is telling you it is a decision wearing a ticket's clothes. 📌 The prose is not being
+      deleted — it moves to the two places that already hold it and keep it readable, the record and the
+      commit message. Writing it a third time was the duplication.
+
+      ⚠️ **THE SIXTEEN ARE NOT RECLASSIFIED BY THIS RECORD**, and that is deliberate: moving an issue changes
+      its number and its history, it is an act on shared surfaces, and three of the sixteen (#22, #53, #129)
+      need a decision WRITTEN before the issue can go anywhere. The record fixes the rule; the disposition
+      follows it, one at a time, with the reason visible.
+
+  consequences:
+    good:
+      - "A closed issue means a problem was fixed — the word recovers its meaning."
+      - "Decisions stop having an expiry date, which is the property ADR-0057 was written to protect."
+      - "The tracker becomes a list of buildable work: 17 of 33 today, and every one of them has a fix."
+      - "The two documentation-closes stop being the only available shape for closing a decision."
+    bad:
+      - "🔴 Four homes instead of one, and things put in the wrong home are harder to find than things in an untidy tracker."
+      - "Roadmap phases lose a GitHub board and gain a Markdown file, which is easier to let rot."
+      - "16 issues need dispositions, and some are judgement calls that will be got wrong."
+      - "⚠️ Fieldwork leaving the tracker risks it becoming invisible — it is already the work that never happens, and #7 has been open longest."
+
+  confirmation: |
+    ⚠️ THE RULE IS DECIDED; THE DISPOSITION OF THE SIXTEEN IS NOT DONE. Written as a record and not as a
+    conversation because a census that lives in a chat is a census nobody runs again.
+
+    The gates this owes:
+
+    · `CLAUDE.md` SAYS WHAT AN ISSUE IS. Today it says «Trabalho novo → uma issue» with no second category,
+      and that sentence is what manufactured the census. It has to name the four homes, or the next new
+      thing lands in the tracker for the same reason as the last sixteen.
+    · THE CENSUS IS REPEATABLE, not a one-off count: a script or a case that reports how many open issues
+      have no code path, so the number is visible on a schedule instead of being rediscovered by the Dev.
+      ⚠️ It reports rather than fails — an issue tracker's shape is not something a red build should hold
+      hostage, and a permanently red gate is one somebody switches off.
+    · EVERY RECORD THAT OWES WORK NAMES THE ISSUE THAT DOES IT. This is the clause that keeps rule 4 honest:
+      without it, «the decision is a record» becomes a way to file work where nobody schedules it.
+
+more-information: |
+  📏 The claim that started this record — «inúmeros commits vazios foram feitos para fechar issues» — is
+  recorded as MEASURED FALSE in its literal form (0 of 24) and RIGHT in its substance (11 of 24 touch no
+  production code; 2 close an issue by writing a document). Both halves are kept because the second is the
+  one that produced the rule, and because a record that quietly drops the half that did not hold teaches the
+  next reader to trust the half that did.
+
+  Deliberately NOT decided here: where each of the sixteen goes; whether roadmap phases keep a GitHub
+  milestone alongside the document; and whether the games' own trackers adopt the same rule, which is theirs
+  to decide.
