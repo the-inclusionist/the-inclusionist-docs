@@ -1,8 +1,34 @@
 ---
 metadata:
   status: "accepted"
+  confirmed-by:
+    - engine:tests/vozes-fora-do-pacote.node.test.js
+    - engine:tests/nada-de-cdn-a-mao.node.test.js
+    - engine:tests/voice-plan.node.test.js
+    - engine:scripts/check-precache.mjs
+  errata:
+    - date: 2026-09-09
+      what: >-
+        the confirmation opened with «NOT YET BUILT» while four of its five gates were built. MEASURED: no
+        runtime and no model travels in the npm package, with `.wasm` in the sieve for the reason ADR-0094
+        gave (`tests/vozes-fora-do-pacote.node.test.js`); the FLOOR is asserted as a floor in
+        `scripts/check-precache.mjs`, which cites this record's own wording at the point it does it; no
+        hand-written CDN survives unlisted (`tests/nada-de-cdn-a-mao.node.test.js`); and the model host is
+        named in ONE place with `ncnn` and `int8` refused (`tests/voice-plan.node.test.js`), with the
+        one-host clause counted as a NUMBER so a mirror added beside it cannot pass. The fifth is superseded
+        above rather than corrected here.
   supersedes-in-part: [ADR-0094]
   superseded-in-part:
+    - by: ADR-0124
+      what: >-
+        the second gate, and ONLY it: «THE RUNTIME IS IN THE FIRST PRECACHE BLOCK». ADR-0124 keeps the INTENT
+        — the runtime is the engine's and arrives on INSTALL rather than on first use — and moves the DELIVERY
+        to `platform/pesados`, the same mechanism as the voices, so the child plays while it comes down.
+        ⚠️ AND THE REASON HAS TO BE STATED CAREFULLY, because half of it died the same day: ADR-0124 rejected
+        the precache partly as «arithmetically impossible» against a 2048 KiB budget, and the Dev REMOVED that
+        budget hours later — it was never his number, it entered in `af35a7d` from this AI, in no record at
+        all. What survives is the reason that never depended on it: a precached runtime must finish installing
+        before the worker is ready, while a background download lets the child play meanwhile.
     - by: ADR-0117
       what: >-
         the DELIVERY UNIT this record reasoned about. It priced a vendored runtime as «the app's dist grows,

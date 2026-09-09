@@ -1,9 +1,27 @@
 ---
 metadata:
   status: "accepted"
-  supersedes-in-part: [ADR-0094]
+  supersedes-in-part: [ADR-0094, ADR-0114]
   date: 2026-09-09
+  confirmed-by:
+    - engine:app/js/platform/pesados-catalogo.ts
+    - engine:tests/pesados.node.test.js
+    - engine:tests/nada-vem-de-fora.node.test.js
   errata:
+    - date: 2026-09-09
+      what: >-
+        🔴 ONE OF THIS RECORD'S OWN ARGUMENTS DIED THE SAME DAY IT WAS WRITTEN, and it is recorded rather than
+        quietly dropped. Option D (everything into the precache manifest) was rejected as «arithmetically
+        impossible: 11.21 MB against a 2048 KiB budget that is already 82% spent», and the Dev removed that
+        budget hours later — «Por que tem que caber em 2MB? … Quero que retire este limite» — after measurement
+        showed the number was never his: it entered in `af35a7d`, co-authored by this AI, and lived in no
+        record. So option D is no longer impossible, and the choice of A has to stand on the reasons that never
+        depended on the ceiling: the npm-package objection (35 MB on every cartridge, ADR-0094's argument), the
+        241 MB of models that were never precache candidates, and — the strongest — that a precached runtime
+        must finish installing before the worker is ready, while a background download lets the child PLAY
+        while it arrives. ⚠️ The measurements themselves stand unchanged; what fell is a constraint, not a
+        fact. Re-opening D is a decision available to the Dev at any time, and this paragraph is what makes it
+        visible instead of buried under an argument that no longer holds.
     - date: 2026-09-09
       what: >-
         the confirmation asked for a gate that ALREADY EXISTED. It read «a case has to hold the

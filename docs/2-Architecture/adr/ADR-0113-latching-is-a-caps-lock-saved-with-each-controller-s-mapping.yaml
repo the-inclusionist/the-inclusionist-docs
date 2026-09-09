@@ -1,6 +1,30 @@
 ---
 metadata:
   status: "accepted"
+  confirmed-by:
+    - engine:tests/alternancia-por-transporte.node.test.js
+    - engine:tests/latch-scope.node.test.js
+    - engine:tests/latch-sync.node.test.js
+    - engine:tests/settings-motor.browser.test.js
+    - engine:tests/entrada-por-jogador.node.test.js
+    - engine:app/js/input/latch-sync.ts
+  errata:
+    - date: 2026-09-09
+      what: >-
+        the confirmation opened with «NOT YET BUILT — the rule module exists, the wiring does not», and the
+        wiring exists. MEASURED file by file rather than recalled: the flag is read from the transport in use
+        and the legacy key inherits for every transport
+        (`tests/alternancia-por-transporte.node.test.js`, `tests/latch-scope.node.test.js`); the `altmove`
+        icon is mounted and writes the flag of the transport in use (`tests/pause-icons.*`,
+        `tests/settings-motor.browser.test.js`); the assisted transports refuse with `aria-disabled` and a
+        `.opt-hint` carrying the REASON, which that browser case asserts on `#opt-altmove`; and the per-player
+        enabling is exercised in `tests/entrada-por-jogador.node.test.js`.
+        🎯 THE FIFTH GATE CHANGED SHAPE AND GOT STRONGER, which is why it is worth writing down. It asked for
+        an inventory of READERS of `pl.toggleMove` shrinking to zero; the wiring made that field a DERIVED
+        CACHE, so its readers are the point and they stay. What is asserted instead is the other side —
+        `tests/latch-sync.node.test.js` holds that the engine has exactly ONE writer, because a second writer
+        in any module makes the cache diverge silently. Issue #127 closed on this.
+        Errata and not supersession: nothing was decided differently.
   supersedes-in-part: [ADR-0109]
   superseded-in-part:
     - by: ADR-0115
