@@ -42,3 +42,11 @@ jobs:
       # aquele aviso deixa-o a imprimir «tudo são» sem ter aberto um artefacto, e nada reprova.
       - name: the validator says what it did NOT check
         run: python scripts/test-validate-adr.py
+
+      - name: the debt census stays alive
+        run: python scripts/test-divida-dos-registos.py
+
+      # RELATORIO e nao gate: nunca reprova (ADR-0126). Corre aqui para o numero aparecer sozinho em
+      # vez de so quando alguem desconfia — que foi como os doze devedores foram descobertos.
+      - name: how many records owe work nobody can find
+        run: python scripts/divida-dos-registos.py

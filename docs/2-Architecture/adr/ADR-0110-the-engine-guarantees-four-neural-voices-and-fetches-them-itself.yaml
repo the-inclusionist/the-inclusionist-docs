@@ -1,6 +1,11 @@
 ---
 metadata:
   status: "accepted"
+  confirmed-by:
+    - engine:tests/vozes-fora-do-pacote.node.test.js
+    - engine:tests/voice-plan.node.test.js
+    - engine:tests/vozes-prontas.node.test.js
+    - engine:tests/pesados.node.test.js
   superseded-in-part:
     - by: ADR-0117
       what: >-
@@ -13,6 +18,17 @@ metadata:
         ~244 MB. At the platform it is fetched once and every cartridge is served from it.
   supersedes-in-part: [ADR-0065, ADR-0094]
   date: 2026-09-08
+  errata:
+    - date: 2026-09-09
+      what: >-
+        the confirmation opened with «NOT YET BUILT» and that stopped being true. All four gates are
+        paid: no model or runtime travels in the package (vozes-fora-do-pacote), the four are named in
+        one place with ncnn and int8 refused (voice-plan), a failed fetch is reported and the engine
+        says which voice it is actually using (vozes-prontas, pesados), and the fallback speaks while
+        the model downloads (vozes-prontas). A confirmed-by was added so the claim is OPENED by the
+        validator instead of asserted in prose — measured: pointing one path at a missing file fails
+        the run, so the check bites. Errata and not supersession: nothing was decided differently, a
+        record simply went on saying its work was undone after it was done.
   decision-makers: [Dev]
   consulted:
     - "The Dev's decision of 2026-09-08, answering the ownership question issue #91 left open and choosing the
