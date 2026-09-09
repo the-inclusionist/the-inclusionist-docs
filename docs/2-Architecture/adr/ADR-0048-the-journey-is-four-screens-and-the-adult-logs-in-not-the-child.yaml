@@ -1,5 +1,23 @@
 metadata:
   status: "accepted"
+  confirmed-by:
+    - engine:app/js/educational/adaptive-engine.ts
+    - engine:tests/adaptive-engine.node.test.js
+  errata:
+    - date: 2026-09-09
+      what: >-
+        this record had no `confirmed-by` while §5 and §6 were built and gated, so nothing connected the
+        decision to the code that keeps it true. The adaptive engine exists as pure logic in the curriculum
+        layer, exactly as the decision required — it is not inside a game — and its gate holds every case the
+        work asked for: the exact boundary of each of the three bands, the arithmetic that justifies them
+        (guessing with three attempts across five alternatives resolves 60% of questions, so proficiency has
+        to be eight of ten FIRST-TRY rather than eight resolved; four failed questions in a row is 2.56%,
+        below the 5% cut), the floor arriving as a parameter instead of being embedded, and the distinction
+        that matters most in practice — four wrong ATTEMPTS inside one question is not four failed QUESTIONS,
+        and treating them alike would demote a child for one hard question. The three per-question outcomes
+        survive the journey rather than collapsing into «got it right», which is the whole point: without
+        that distinction there is no zone of proximal development, only difficulty. ⚠️ The clauses of this
+        record about the four screens and about who logs in are NOT confirmed by these paths; §5 and §6 are.
   date: 2026-08-27
   decision-makers: [Dev]
   consulted:
