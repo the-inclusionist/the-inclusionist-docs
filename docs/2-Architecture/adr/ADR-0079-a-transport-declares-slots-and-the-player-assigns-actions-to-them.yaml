@@ -1,6 +1,28 @@
 ---
 metadata:
   status: "accepted"
+  confirmed-by:
+    - engine:app/js/input/transports.ts
+    - engine:tests/transports.node.test.js
+    - engine:app/js/ui/reach-notice.ts
+    - engine:tests/reach-notice.node.test.js
+    - engine:tests/reach-notice.browser.test.js
+  errata:
+    - date: 2026-09-09
+      what: >-
+        this record had no `confirmed-by` while §3's guarantee was built, gated and mounted. The arithmetic
+        lives in `input/transports`, the screen that shows it to a child lives in `ui/reach-notice`, and the
+        composition root calls both. ⚠️ The keyboard's slot count — which issue #112 correctly identified as
+        the one number needing a DECISION rather than a measurement — is `ACTIONS.length`, and the reasoning
+        sits beside it: not the number of keys, because a hundred keys are not a hundred places a child finds
+        and remembers; not the current scheme's bindings, because the scheme grows and the limit would become
+        the configuration rather than the device. It is the vocabulary the engine can NAME, so a transport
+        covering every position that exists cannot be the short one — and being derived rather than written
+        by hand, it grew from nine to fourteen with the vocabulary instead of quietly starting to lie.
+        📌 The screen INFORMS rather than refuses, which is the clause holding the rest up: keyboard detection
+        is imprecise by nature, and a tablet WITH a keyboard answers «touch» to the media query this project
+        uses. A refusing screen would give that tablet a FALSE refusal for a game it can play; informing costs
+        one extra sentence and never a closed door.
   superseded-in-part:
     - by: ADR-0091
       what: "ONE clause of §3 — what the engine does when nothing fits. This record says the engine `diz antes
