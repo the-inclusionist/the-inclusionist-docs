@@ -10,6 +10,22 @@ metadata:
   errata:
     - date: 2026-09-09
       what: >-
+        🔴 THE BUDGET IN THIS RECORD — «~600 characters» — WAS INVENTED, NOT MEASURED, and it made the census
+        report 17 of 18 open issues as over budget. A report that accuses almost everything is a report nobody
+        reads, and it cannot tell a book from a paragraph. 📏 Measured afterwards over the last 400 commit
+        messages in the engine: median 2619 characters, lower quartile 1941, lower decile 1388. This record's
+        own rule compares an issue body with the commit that CLOSES it, and that commit is not known in
+        advance — so the budget is now the lower decile, 1400: a body under it is shorter than 90% of this
+        tree's commit messages, and therefore satisfies the rule against nearly any closing commit.
+        📌 Derived from the tree rather than chosen, for the same reason the keyboard's slot count is
+        `ACTIONS.length`: a number written by hand starts lying the day the tree changes.
+        ⚠️ And the census gained a third figure, because the two raw ones were being read as one: «over
+        budget» and «no checkbox» each measure something real, but the ACTIONABLE number is their
+        INTERSECTION — a body that is long AND has no list. With the measured budget that intersection is
+        ZERO, while the raw counts are 9 and 7. Same lesson the module-without-a-test sieve already carried:
+        the rule is the intersection, and the wider version accuses things that are fine.
+    - date: 2026-09-09
+      what: >-
         the three gates this record owed are paid, hours after it was written, and the `confirmed-by` above is
         how that stops being prose. (1) `CLAUDE.md` now says what an issue IS and names the four homes, with
         the mechanical test — an issue's body must be shorter than the commit message that closes it.
@@ -164,8 +180,11 @@ decision-outcome:
       thinking belongs in a record and the issue should be the line that remains: the problem, the shape of
       the fix, and how we will know it worked.
 
-      ⚠️ The budget is ~600 characters and a checklist, and it is a BUDGET rather than a limit: an issue that
-      needs more is telling you it is a decision wearing a ticket's clothes. 📌 The prose is not being
+      ⚠️ The budget is 1400 characters and a checklist — MEASURED as the lower decile of this repository's
+      last 400 commit messages, whose median is 2619, so a body under it is shorter than nearly any commit
+      that could close it. It is a BUDGET rather than a limit: an issue that needs more is telling you it is a
+      decision wearing a ticket's clothes. 🔴 The first version of this record said «~600» and that number was
+      invented; see the errata. 📌 The prose is not being
       deleted — it moves to the two places that already hold it and keep it readable, the record and the
       commit message. Writing it a third time was the duplication.
 
