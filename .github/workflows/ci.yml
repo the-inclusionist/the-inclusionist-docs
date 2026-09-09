@@ -43,6 +43,9 @@ jobs:
       - name: the validator says what it did NOT check
         run: python scripts/test-validate-adr.py
 
+      - name: a record does not contradict its own tree
+        run: python scripts/tempo-dos-registos.py
+
       - name: the debt census stays alive
         run: python scripts/test-divida-dos-registos.py
 

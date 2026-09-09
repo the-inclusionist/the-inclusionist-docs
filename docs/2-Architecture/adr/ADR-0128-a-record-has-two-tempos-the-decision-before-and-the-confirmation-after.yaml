@@ -1,0 +1,149 @@
+---
+metadata:
+  status: "accepted"
+  supersedes-in-part: []
+  date: 2026-09-09
+  decision-makers: [Dev]
+  consulted:
+    - "The Dev's decision of 2026-09-09. He asked the question first — «O ideal não seria escrever como ADR
+       somente após testes? Após a verificação que o caminho foi o certo e a arquitetura deve permanecer a
+       escolhida?» — then read the split back and said «Por favor, implemente isso.»"
+    - "ADR-0057 — a decision changes by supersession, errata only when the record never said what was decided.
+       This record does not touch that; it says WHAT GOES IN a record at each of two moments"
+    - "ADR-0126 — an issue is a problem solvable by code, and the work a record OWES stays an issue. That
+       fourth home is the mechanism this record depends on: without an issue to name, a debt has nowhere to be
+       followed"
+    - "ADR-0053 — «a promise without execution is a promise that decays». The confirmation is the execution
+       half, and this record is what stops it being written as prophecy"
+    - "issue #22 — «write an ADR before any implementation», the line that produced the question"
+  informed: []
+
+title: A record has two tempos — the decision before, the confirmation after
+
+context-and-problem-statement: |
+  🔴 THE DEV'S QUESTION CAME WITH ITS OWN EVIDENCE, MEASURED THE SAME DAY. Eight accepted records opened with
+  «⚠️ NOT YET BUILT» over work that was built — ADR-0108, 0109, 0110, 0111, 0113, 0114, 0115 and 0124. Each was
+  written before the code, and each went on describing a future that had already happened. A reader opening
+  ADR-0111 would have found a contract «not yet built» whose four gates had existed for a day.
+
+  ⚠️ AND THE MACHINE AGREED WITH THEM. The validator reported «126 sound, 0 problems» while those eight lied,
+  because a record with no `confirmed-by` has nothing to check: **a record that declares a debt and never
+  confirms it stays sound forever.** The debt was invisible exactly while nobody paid it.
+
+  🎯 SO THE DEV IS RIGHT ABOUT HALF OF THE RECORD, AND THE HALF MATTERS. A confirmation written before the
+  gate exists is a PROPHECY — it says how we would know it worked, in the future tense, and nothing ever
+  brings it back to the present.
+
+  📏 BUT THE OTHER HALF IS RIGHT TOO, AND ALSO MEASURED. ADR-0110 says in its own text that it was written
+  first «so that the code cannot quietly choose D2 by putting the models in the package *just for now*» — and
+  on 2026-09-09 the heavy-asset fetcher nearly did exactly that. A decision that is not recorded is not left
+  open: it gets taken by omission, by whoever writes the code, and nobody can disagree before the cost is
+  paid. This project has the receipts on both sides — three records said `sherpa-onnx-wasm` while the code ran
+  mintplex for two months, and nobody noticed because both «worked».
+
+  📌 THE TWO SIDES ARE NOT IN TENSION BECAUSE THEY ANSWER DIFFERENT QUESTIONS. A test answers «does it work».
+  A record answers «is this the right boundary, and what does the child gain or lose» — and no green suite
+  settles that. ADR-0076's refusal to run a disability simulation over a child's own high-contrast setting is
+  right whether or not it passes; it is right because of what it does to a person.
+
+decision-drivers:
+  - "A decision unrecorded is taken by omission, by the code, before anyone can disagree"
+  - "A confirmation written before its gate exists is a prophecy, and prophecies go stale silently"
+  - "The machine must be able to tell a paid debt from an unpaid one, or the ledger is decoration"
+  - "Nothing may be deleted: the debt has to be followable while it is unpaid"
+  - "A rule that cannot go red today is a rule nobody keeps"
+
+considered-options:
+  - "A · two tempos in one record — the decision before, the confirmation completed after, with the debt followable meanwhile"
+  - "B · write the whole record only after the work is verified (the Dev's opening question, read literally)"
+  - "C · keep writing everything up front, as before"
+  - "D · two documents — a proposal before, a record after"
+
+pros-and-cons-of-the-options:
+  A:
+    good:
+      - "The decision is on the table before the cost is paid, which is what stops decision-by-omission."
+      - "The confirmation stops being prophecy: it lands when the gate exists, and `confirmed-by` makes it checkable."
+      - "📏 It needs no new field — `confirmed-by` already exists and the validator already OPENS the paths."
+      - "The debt is followable meanwhile, because ADR-0126 makes it name an issue."
+    bad:
+      - "🔴 A record is now written in two sittings, and the second is the one people skip — which is exactly what produced the eight."
+      - "Until the second sitting the record is honest but incomplete, and an incomplete record reads as a weaker one."
+  B:
+    good:
+      - "Every record would describe something that demonstrably works. No prophecy is possible."
+      - "It is how the Dev framed the question, and the failure mode it removes is real and measured."
+    bad:
+      - "🔴 It hands every architectural choice to whoever writes the code first — the decision gets made, just not by anyone who could be disagreed with."
+      - "📏 Measured against this tree: ADR-0110's own reason for existing was to stop the code choosing in silence, and the fetcher nearly did it anyway."
+      - "It cannot record a decision that is not implementable yet, which is most of what this project decides — the vision runtime, the platform, the ato."
+  C:
+    good:
+      - "No change; the habit is established."
+    bad:
+      - "🔴 It is the defect: eight records claiming unbuilt work, and a validator that approved all of them."
+  D:
+    good:
+      - "Each document is written once, in one tense."
+    bad:
+      - "Two artefacts for one decision is `fato duplicado apodrece` with a governance flavour — and the proposal is what people would keep citing."
+
+decision-outcome:
+  chosen-option:
+    link: "A — two tempos in one record"
+    justification: |
+      **A record is written in two moments, and each moment has its own tense.**
+
+      1. **THE DECISION GOES BEFORE, in the past tense of a choice made:** context and measurement, the
+         options considered, what was chosen, and the consequences — including what the child gains or loses.
+         This half is complete on the day it is written and never depends on code existing.
+      2. **THE CONFIRMATION GOES AFTER, and until then it is a DEBT and says so:** it names the gates the
+         decision owes and **the issue that builds them** (ADR-0126's fourth home). It does NOT describe them
+         as if they existed.
+      3. **`confirmed-by` IS THE SECOND SITTING**, and it is the whole mechanism — no new field is invented.
+         When a gate lands, its path is added there, and the validator OPENS it: a record pointing at a file
+         that does not exist fails the run, proved on 2026-09-09.
+      4. **AND THE CONTRADICTION IS A GATE**: a record that carries `confirmed-by` may not still declare its
+         work unbuilt without an errata saying what changed. That is the exact shape of the eight, and it is
+         mechanical — 📏 measured before writing this clause: 18 records carry `confirmed-by` and ZERO
+         contradict themselves today, so the rule is born green and can still go red.
+
+      ⚠️ **WHAT THIS DOES NOT CHANGE, and saying so is half the point:** the SPEED. `CLAUDE.md` requires a
+      decision to be recorded in the same turn it is taken, and that stands — this record is about what the
+      confirmation may claim, not about waiting to write the decision. Registering is still execution.
+
+  consequences:
+    good:
+      - "A confirmation stops being able to lie about the tree, because the machine can tell paid from unpaid."
+      - "A decision still reaches the table before the cost is paid, which is what B would have given away."
+      - "The debt is followable while unpaid: an issue to work, a `confirmed-by` when it lands."
+      - "📏 The eight stale records were corrected on the way to writing this, and the ledger reached zero."
+    bad:
+      - "🔴 The second sitting is the one people skip, and nothing forces it except a gate that only fires once someone half-remembers."
+      - "A record is incomplete for as long as its work is, and an incomplete record is easier to dismiss."
+      - "⚠️ The contradiction gate can be satisfied by writing an errata rather than by doing the work — it detects the LIE, not the delay."
+
+  confirmation: |
+    ✅ BUILT IN THE SAME TURN, which is deliberate: a record about confirmations not being prophecy would be an
+    embarrassing place to write one.
+
+    · `scripts/tempo-dos-registos.py` FAILS when a record carries `confirmed-by` and still declares its work
+      unbuilt with no errata explaining it. 📏 Born green over 127 records with 18 carrying `confirmed-by`, and
+      proved able to go red.
+    · `scripts/divida-dos-registos.py` (ADR-0126) already reports the other half — a debt with no issue and no
+      `confirmed-by` is unfollowable. Together they cover the two ways a record can drift from its tree.
+    · ⚠️ AND THE LIMIT IS DECLARED: neither can tell whether the work is actually DONE. They catch a record
+      that contradicts itself and a debt nobody can follow. A record that quietly stays unbuilt for a year,
+      with its issue open, passes both — and should, because that is a scheduling problem and not a lie.
+
+more-information: |
+  Completes ADR-0126 rather than superseding it: that record created the fourth home (the work a record owes
+  stays an issue), and this one says when each half of the record is written. Neither touches ADR-0057, which
+  governs how a decision CHANGES.
+
+  📌 The question came from issue #22's line, «write an ADR before any implementation». Under this record that
+  line is right about the decision and silent about the confirmation, which is the distinction it was missing.
+
+  Deliberately NOT decided here: whether a record should carry a status distinguishing «decided» from
+  «confirmed». `confirmed-by` already answers it by presence, and a second signal saying the same thing is the
+  duplication this project keeps paying for.
