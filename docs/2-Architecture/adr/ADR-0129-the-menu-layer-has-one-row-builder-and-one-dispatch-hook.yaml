@@ -21,27 +21,31 @@ metadata:
 title: The menu layer has one row builder and one dispatch hook
 
 context-and-problem-statement: |
-  📏 THE FORM WAS MEASURED, NOT DESIGNED. The menus-and-dialogues layer holds most of the readable content of
-  this product — **30 of 37 markup sinks and 116 of 192 announcements, across 26 modules**. Counting what those
-  builders emit (`scripts/medir-forma-do-menu.py`), the vocabulary that already exists by habit is small:
+  ADR-0092 fixed how many interface layers this engine has and which they are. The largest of them is the one
+  holding menus and dialogues, and it is largest in a concrete sense rather than a figurative one: it carries
+  most of the text a person ever reads in this product — 30 of the 37 markup sinks and 116 of the 192
+  screen-reader announcements, spread across 26 modules. Every settings panel, every dialogue and every list
+  of options builds its own HTML by hand.
 
-  · `ctrl-row` — 14 uses across **8** modules: the ROW, and the dominant unit;
-  · `opt-hint` (6/5), `panel-sub` (5/4), `panel-sub__tag` (4/3), `mode-btn` (3/3), `vol` (3/3);
-  · and **30 classes appear in a single module** (42 uses) — those belong to that panel, not to the form.
+  Rather than design an abstraction and then try to fit the code into it, this proposal began by COUNTING what
+  those 26 modules actually emit (`scripts/medir-forma-do-menu.py`). The count found that a shared form
+  already exists, created by habit and written down nowhere. The class `ctrl-row` — the ROW — appears in eight
+  modules; `opt-hint`, the explanation that the shell moves to the footer, in five; the section title in four;
+  the button and the slider in three each. Against those, thirty classes appear in a single module and belong
+  to that panel rather than to any shared form. The real vocabulary is therefore SECTION → ROW → (LABEL +
+  CONTROL + HINT), with only four kinds of control: toggle, radio, slider and plain button.
 
-  🎯 SO THE VOCABULARY IS `section → row → (label + control + hint)`, and it is not an abstraction to invent —
-  it is one that exists already and is written down nowhere. The controls are four: toggle (`aria-pressed`),
-  radio (`aria-checked`), slider (`vol`) and plain button.
+  The problem this measurement exposes has two faces. The first is click DISPATCH. There is a common
+  attribute, `data-act`, present in nine modules — but beside it live fourteen more, invented one per panel
+  (`data-acat`, `data-crt-tgl`, `data-rmc`, `data-rm`, `data-font`, `data-viz`, `data-caa`, `data-mp`,
+  `data-slot`, `data-avol`, `data-cen`, `data-fnot`, `data-tab-n`, `data-sub`), and each obliges its panel to
+  carry its own `querySelectorAll` and its own listener. It is one idea implemented fourteen times.
 
-  🔴 AND THE FINDING IS THE DISPATCH, WHICH IS BROKEN INTO FOURTEEN. `data-act` appears in 9 modules and is the
-  common hook. Beside it live, one per panel: `data-acat`, `data-crt-tgl`, `data-rmc`, `data-rm`, `data-font`,
-  `data-viz`, `data-caa`, `data-mp`, `data-slot`, `data-avol`, `data-cen`, `data-fnot`, `data-tab-n`,
-  `data-sub`. Each panel invented its own, and each needs its own `querySelectorAll` plus listener to read it.
-
-  ⚠️ AND ONE ACCESSIBILITY RULE IS REMEMBERED BY HAND AND HAS ALREADY FAILED: «a panel that re-renders must
-  call `fillExplain` on every render». `settings-visual` and `settings-empathy` did not, and the prose jumped
-  back inside the rows on the first click (fixed in issue #109). A builder that emits the row with the hint
-  already in place makes that forgetting impossible.
+  The second face is more serious, because it has already cost a real defect. An accessibility rule — «a panel
+  that re-renders must call `fillExplain` again» — depends today on somebody remembering it. Two panels did
+  not remember: `settings-visual` and `settings-empathy` let the explanation jump back inside the rows on the
+  first click, instead of staying in the footer where ADR-0044 puts it. It was repaired by hand, panel by
+  panel, in issue #109. A rule that survives only by memory is a rule that fails again.
 
 decision-drivers:
   - "The form exists by habit and is written nowhere, so it drifts one panel at a time"
@@ -87,23 +91,31 @@ decision-outcome:
   chosen-option:
     link: "⏳ NOT DECIDED — proposed. The recommendation is A, and the Dev has not taken it."
     justification: |
-      **This record is `proposed`, and that is the point of it existing.** It was living inside issue #115 as
-      «what this issue proposes to decide», which is a decision wearing a ticket's clothes: a closed issue
-      disappears, and a record is superseded and stays readable (ADR-0057).
+      This record is `proposed`, and that status is the reason it exists at all. The proposal was living
+      inside issue #115 under the heading «what this issue proposes to decide», which is a decision wearing a
+      ticket's clothes: a closed issue disappears, while a record is superseded and stays readable (ADR-0057).
+      Moving it here changes nothing about the argument and everything about whether it survives being
+      answered.
 
-      The recommendation is **A**, in three clauses:
+      The recommendation is option A, and it answers both faces of the problem with the same piece. A single
+      function builds the row and returns DOM NODES rather than a string, emitting the label, the control, the
+      hint and the matching ARIA state TOGETHER — never as separate steps that a caller can perform partially.
+      Alongside it, one dispatch attribute replaces the fourteen; `data-act` plus a value is the obvious
+      candidate, since it is the only hook already present in nine modules.
 
-      1. **ONE ROW BUILDER that returns NODES, not a string** — label by `textContent`, hint in `.opt-hint`,
-         one of the four control types, and the matching ARIA state emitted TOGETHER with it, never separately.
-      2. **ONE DISPATCH HOOK** in place of the fourteen. Probably `data-act` plus a value, since it is the only
-         one already present in nine modules.
-      3. **THE GUARANTEE IS PER LAYER**, which is ADR-0092's whole point: with rows born from a builder,
-         «every menu row has an accessible label» is asserted once.
+      What that buys is not tidiness, and the distinction matters because tidiness would not be worth the
+      risk. It is that the guarantee becomes PER LAYER, which is ADR-0092's whole point. Asserting «every menu
+      row carries an accessible label» becomes one assertion made once, instead of thirty assertions that
+      drift apart; and forgetting `fillExplain` stops being possible, because a row born from the builder
+      already has its hint in the right place. The shape is not invented either — `winsDots` in
+      `game/quiz.ts` already returns nodes this way, which is what ADR-0092 asks for.
 
-      ⚠️ **AND WHAT IS EXPLICITLY NOT PROPOSED: rewriting the thirty sinks.** Single-module classes stay their
-      module's, and a panel that does not fit the form is INFORMATION ABOUT THE FORM rather than a panel to
-      repair. ADR-0092 already warns that overriding the contract, the z-index scale or the action vocabulary
-      would be worse than having no abstraction.
+      What the proposal explicitly is NOT matters as much as what it is: it does not rewrite the thirty
+      markup sinks. Classes that exist in a single module stay that module's, and a panel that does not fit
+      the form is INFORMATION ABOUT THE FORM rather than a panel to repair. ADR-0092 already warns that
+      overriding the contract, the z-index scale or the action vocabulary would be worse than having no
+      abstraction at all, and a builder that grows a parameter for every exception is exactly how that
+      happens.
 
   consequences:
     good:
@@ -125,13 +137,19 @@ decision-outcome:
     thirty times.
 
 more-information: |
-  This record supersedes nothing. It completes ADR-0092, which fixed how many layers there are and which, and
-  left the FORM of the largest one unstated.
+  This record supersedes nothing. It completes ADR-0092, which fixed how many layers there are and which they
+  are, and left the FORM of the largest one unstated.
 
-  📌 It exists as `proposed` rather than as an issue because ADR-0126 puts decisions in records and ADR-0128
-  puts the decision half before the code. ⚠️ And a proposal in a tracker has a specific failure mode this
-  project has already paid for: issue #115 carried a full measurement and three clauses, and would have
-  DISAPPEARED on being closed, taking the census with it.
+  It exists as a `proposed` record rather than as an issue for a reason this project has already paid to
+  learn. ADR-0126 puts decisions in records and ADR-0128 puts the decision half before the code, but the
+  concrete failure is simpler than either rule: issue #115 carried a full census and three clauses, and a
+  closed issue disappears. The measurement would have gone with it, and the next person to ask «what shape do
+  our menus have» would have had to count all over again.
+
+  ⚠️ A note on the writing, kept because the Dev raised it and it applies beyond this file: the first version
+  of this record was written in fragments — bullet stubs, arrows standing in for connectives, tables where an
+  argument belonged. It was dense without being clear, and a record that is hard to follow is a record that
+  gets skimmed and then re-decided. The prose here was rewritten to carry the reasoning in sentences.
 
   Deliberately NOT decided here: whether the value of the single hook is a name or a namespaced action; and
   which panel migrates first, which is sequencing rather than architecture.
