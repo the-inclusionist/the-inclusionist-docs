@@ -2,6 +2,16 @@
 metadata:
   status: "accepted"
   supersedes-in-part: [ADR-0094, ADR-0114]
+  superseded-in-part:
+    - by: ADR-0132
+      what: >-
+        the parenthesis «webgazer não», and only it. Measured in the package's own typings after this record
+        was written: `@mediapipe/tasks-vision` exposes fifteen task classes and gaze is not among them — what
+        exists is `FACE_LANDMARKS_LEFT_IRIS` and its twin, connection sets over landmarks. MediaPipe answers
+        WHERE THE IRIS IS; WebGazer answered WHERE THE CHILD IS LOOKING, which is a regression with a
+        calibration step. Told that, the Dev chose both. ⚠️ And this record's own reasoning survives the
+        change: what made WebGazer a defect here was that it is LAZY, not who wrote it — under ADR-0132 it
+        arrives on INSTALL like everything else, and the defect goes while the capability stays.
   date: 2026-09-09
   confirmed-by:
     - engine:app/js/platform/pesados-catalogo.ts

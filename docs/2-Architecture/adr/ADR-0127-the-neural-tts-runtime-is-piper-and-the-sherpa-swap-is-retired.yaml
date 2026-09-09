@@ -2,6 +2,17 @@
 metadata:
   status: "accepted"
   supersedes-in-part: [ADR-0065]
+  superseded-in-part:
+    - by: ADR-0132
+      what: >-
+        the clause naming what would bring sherpa back — «mintplex actually deprecated, a locale piper cannot
+        serve, or the HF_BASE guard blocking a school mirror». The Dev withdrew it hours later: «Deixe isso em
+        ADR para não voltar mais.» 📏 The cost of leaving a door ajar is measured here rather than argued: the
+        sherpa adoption sat `accepted` for two months with ZERO lines written, while three records went on
+        naming a runtime the code did not use. A future change of TTS runtime is a NEW decision on new
+        evidence, not the resumption of a July plan whose motive was measured false. ⚠️ Everything else in
+        this record stands: the runtime is piper, the «discontinued» premise was false, and Approach B is
+        inherited.
   date: 2026-09-09
   decision-makers: [Dev]
   consulted:
@@ -102,7 +113,10 @@ decision-outcome:
       2. **THE ENGINE OWNS IT, THE CARTRIDGE'S DOOR STAYS.** ADR-0124 already decided ownership and delivery;
          this record only names the thing. `carregarVozNeural` is not removed — a game may still supply its
          own — but a game that declares nothing stops being silent.
-      3. **AND SHERPA IS NOT CLOSED, IT IS UNBLOCKED FROM A FALSE PREMISE.** What would reopen it is written
+      3. 🛑 **ESTA CLÁUSULA FOI SUPERADA NO MESMO DIA — VER ADR-0132.** O Dev fechou a porta que ela deixa
+         aberta: «Deixe isso em ADR para não voltar mais.» O que se segue fica como estava escrito, porque um
+         registo não se reescreve; o que vale é a supersessão.
+         **AND SHERPA IS NOT CLOSED, IT IS UNBLOCKED FROM A FALSE PREMISE.** What would reopen it is written
          here so the next reader does not have to re-derive it: mintplex being actually deprecated, a locale
          the project needs that piper cannot serve, or the `HF_BASE` guard blocking a school mirror the
          deployment requires. Any one of those is a new record, not a revival of this one.
