@@ -1,6 +1,20 @@
 ---
 metadata:
   status: "accepted"
+  confirmed-by:
+    - engine:tests/fontes-empacotadas.node.test.js
+    - engine:app/js/ui/fonts.ts
+  errata:
+    - date: 2026-09-09
+      what: >-
+        the confirmation listed TWO gates as «unwritable today», and both stopped being so. (a) The Ronde
+        NOTICE said «there is no i18n key for it yet» — `font.off.ronde` now exists in pt, en and es,
+        naming Ronde Script, OPTIFrench-Script and Merveille, with a case asserting all three in all
+        three. (b) The reachability gate said it needed a download mechanism — it landed in the shape the
+        MEASUREMENT supported instead: the catalogue holds the eight and no more, and the game speaks
+        three languages, so the ninth face nobody can ask for. What is asserted is the rule the download
+        would be a consequence of — NO FACE IS OFFERED WITHOUT A WAY TO OBTAIN IT — which forces whoever
+        wants a ninth to build the arrival BEFORE the offer. Issue #87 closed on this.
   supersedes-in-part: [ADR-0012]
   date: 2026-09-08
   decision-makers: [Dev]
