@@ -172,6 +172,16 @@ decision-outcome:
       If the engine is renamed, the prefix rots and the validator reports «not checked», which reads exactly
       like the normal case. It is named here so it is found by reading rather than by breaking.
 
+      ✅ **CORRECTION, SAME DAY: THE SENTENCE ABOVE WAS BADLY PUT, AND THE GATE IS PAID.** A prefix is not a
+      repository's name on GitHub — it is a LABEL somebody binds to a root with `--repo`. Renaming the
+      repository does not rot it. What rots it is a label no `--repo` ever supplies, and that case wears the
+      uniform of the normal one: `enigne:app/js/x.ts` is counted as «not checked», which is what a run without
+      a root prints every day. 🎯 So the validator now holds a DECLARED list of prefixes: a known one without
+      a root is counted, an unknown one is a PROBLEM. Mutation confirmed — with the list removed, a record
+      carrying a typo reports «3 records · 3 sound · 0 with problems», the typo living inside the message that
+      exists to say everything is fine. ⚠️ The wrong sentence stays: it was true of what I believed that
+      morning, and the correction is what the reader needs beside it.
+
 more-information: |
   Supersedes ADR-0068 in part: §5's clause that the records stay in the engine. Everything else in that record
   — one repository per game, no `adr/` folder in a game, the catalogue that chooses instead of holding — is

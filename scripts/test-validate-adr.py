@@ -101,6 +101,17 @@ with tempfile.TemporaryDirectory() as base:
     exige("NOT checked" not in saida,
           f"avisou que não conferiu, com a raiz na mão. Saída:\n{saida}")
 
+    # 🔴 [Boundary] UM PREFIXO QUE NINGUÉM DECLAROU é problema, e não «não conferido». Era o caso que o
+    # ADR-0123 dizia não poder pagar, e a frase estava mal posta: o risco não é o repositório mudar de nome, é
+    # o rótulo nunca ter existido — e um erro de escrita ficava a viver dentro da mensagem do dia a dia.
+    escreve(adr, 3, "com um prefixo que não existe",
+            "  confirmed-by:\n    - enigne:existe.ts")
+    codigo, saida = corre(adr)
+    exige(codigo != 0, f"prefixo desconhecido devia reprovar; saiu {codigo}. Saída:\n{saida}")
+    exige("not a declared repository" in saida,
+          f"reprovou, mas não pela razão certa. Saída:\n{saida}")
+    os.remove(os.path.join(adr, "ADR-0003-fixture.yaml"))
+
     # 🔴 [Inverse] COM a raiz errada: reprova, e a mensagem diz contra o que mediu.
     codigo, saida = corre(adr, "--repo", f"engine={os.path.join(base, 'nao-existe')}")
     exige(codigo != 0, f"raiz errada devia reprovar; saiu {codigo}. Saída:\n{saida}")
