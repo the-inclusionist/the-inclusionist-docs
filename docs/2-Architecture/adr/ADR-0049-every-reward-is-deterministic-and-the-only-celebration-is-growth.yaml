@@ -1,5 +1,23 @@
 metadata:
   status: "accepted"
+  confirmed-by:
+    - engine:app/js/educational/segment-bar.ts
+    - engine:tests/segment-bar.node.test.js
+    - engine:tests/no-random-rewards.node.test.js
+  errata:
+    - date: 2026-09-09
+      what: >-
+        this record had NO `confirmed-by` while two of its clauses were built and gated, so nothing connected
+        the decision to the code that keeps it true. ⚠️ It was not caught by the debt census either, because
+        its `confirmation` is a LITERATURE CHECK rather than a list of owed gates — an honest shape, and one
+        that leaves the built half invisible to the machine. Added: the ten-segment bar
+        (`educational/segment-bar.ts` with its gate) and the ban on randomness in reward code
+        (`tests/no-random-rewards.node.test.js`), which asserts over the reward MODULES rather than promising
+        in prose — the issue itself demanded that distinction. 📌 The bar PROJECTS the verdict and does not
+        recompute it: `educational/` imports nothing (ADR-0032), so a second implementation of the thresholds
+        is not merely discouraged, it is impossible. ⚠️ The clauses about scoring, superpowers-as-level-
+        structure and the two celebrations are NOT confirmed by these paths — they are game construction, and
+        issue #84's sibling #93 carries them.
   errata:
     - date: 2026-08-28
       what: "§5 dizia `a barra de dez segmentos`, no SINGULAR, e chamava-a `the child's window onto §5 of
