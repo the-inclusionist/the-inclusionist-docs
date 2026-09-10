@@ -68,6 +68,15 @@ metadata:
         are indexed**, and 85 of those sit at bit depths 2 or 4, which the reader refused outright until it
         learned them.
 
+  superseded-in-part:
+    - by: ADR-0135
+      what: "§6 — WHAT THE FORMAT IS, in two clauses. It decided TWO files per set (`<set>.semantic.json`
+             plus `<name>.palette.json`) and a `regions` map of numeric ids to names, with the ids written
+             into the annotation. Both are replaced: one file carries the pixels and every palette, and a
+             region is a WORD written in place. The reason is one the Dev gave and this record could not
+             have had: the file is imported for a language model to READ, and a join is where a reader goes
+             wrong. §§1–5 and §7 govern unchanged, and §4's mechanism is what makes the single file possible."
+
   # Declara um endereço e NÃO supersede nada, no molde do ADR-0097. Desde que o ADR-0067 §5 fez a
   # DECLARAÇÃO ser o gatilho, um endereço novo não emenda a enumeração do ADR-0058 §1 — junta-se a ela.
   supersedes-in-part: []

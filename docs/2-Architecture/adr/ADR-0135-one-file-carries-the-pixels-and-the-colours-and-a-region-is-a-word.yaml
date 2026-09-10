@@ -1,0 +1,166 @@
+---
+metadata:
+  status: "accepted"
+  date: 2026-09-10
+  supersedes-in-part: [ADR-0134]
+  decision-makers: [Dev]
+  consulted:
+    - "ADR-0134 §6 — SUPERSEDED IN PART. It decided two files per set and a `regions` map of ids to names.
+       Everything else in that record governs unchanged, including the mechanism of §4 and the reader rules
+       of §7"
+    - "ADR-0057 — a record changes by SUPERSESSION, and an erratum is the only edit in place. This is not an
+       erratum: §6 said exactly what was decided on the day it was written, and the Dev has decided otherwise"
+    - "ADR-0007 (AI content, human curation) — the file is now written to be read by a language model, which
+       makes its shape a question about how a machine reads rather than only how a program parses"
+  informed: []
+
+title: One file carries the pixels AND the colours, and a region is a word rather than an id
+
+context-and-problem-statement: |
+  ADR-0134 §6 settled the format as two artefacts: `<set>.semantic.json` for the pixels and
+  `<name>.palette.json` for the colours, kept apart so one palette could serve several sets. It also kept a
+  `regions` map from numeric id to name, with the ids written into the annotation.
+
+  ⚠️ THE DEV HAS NOW ASKED FOR ONE FILE THREE TIMES, and the third time gave the reason the first two did
+  not: **«O arquivo será importado para um modelo de linguagem ler.»** The file is not only parsed, it is
+  READ — and that changes what a good shape is.
+
+  Two things follow, and they are the same thing seen twice:
+
+  🔴 A READER HANDED TWO FILES CAN BE HANDED ONE. A game loading a sprite opens the pixels and the colours
+  separately, and nothing in either says the other is missing. The reuse the split bought was theoretical:
+  📏 in practice palettes are harvested from the same import that produced the sheets, and the tool writes
+  both in the same act.
+
+  🔴 AN ID IS A JOIN, AND A JOIN IS WHERE A READER GOES WRONG. Learning that a pixel is skin meant reading
+  `colorMap[i].region === 1`, then looking 1 up in `regions`. A model reading the file has to hold both
+  structures at once to answer the simplest question the file exists to answer.
+
+  ⚠️ AND THE INTERFACE WAS ENFORCING THE ID. The tool offered a dropdown of regions with a button to add one,
+  which is a closed vocabulary wearing the clothes of an open one: a person could only say what the list
+  already held, and the list existed only because the format wanted numbers.
+
+decision-drivers:
+  - "🎯 The file is read by a language model, so a structure that needs two lookups to answer «what is this
+     pixel» is worse than one that answers it in place, even at some cost in bytes."
+  - "A resource that arrives in two files can arrive in one. Nothing in either half says the other exists."
+  - "The vocabulary belongs to the artwork, not to the tool. «metal da fivela» is a better answer than
+     anything a dropdown could have offered, and a dropdown cannot be persuaded to offer it."
+  - "⚠️ The reuse that justified the split was never exercised: every palette this tool writes is harvested
+     from the same import as the sheets it describes."
+
+considered-options:
+  - "F1 — keep ADR-0134 §6: two files, numeric region ids, a closed vocabulary in the interface"
+  - "F2 — one file carrying pixels and every palette, with the region written as a WORD in each position"
+  - "F3 — one file, but keep the id/name indirection to save the repeated strings"
+
+pros-and-cons-of-the-options:
+  F1:
+    good: ["One palette file could in principle be shared by several sets.",
+           "Numeric ids repeat nothing, so a large annotation is a few bytes smaller.",
+           "It is the rule in force, so no record has to change."]
+    bad: ["⚠️ A reader can be handed half a resource, and neither half says so.",
+          "Answering «what is this pixel» takes two lookups, which is the operation a model reading the file
+           is most likely to get wrong.",
+          "The closed vocabulary is a consequence of the ids, and it stops a person saying what they see."]
+  F2:
+    good: ["One file is one resource: it cannot arrive incomplete.",
+           "🎯 A position says what it is IN PLACE — `{\"region\": \"pele\", \"level\": 1}` — with nothing to
+            join and nothing to hold in mind.",
+           "The vocabulary becomes free text, so the interface stops being a list and becomes a field.",
+           "`palettes` is a plain map of name to ramps, which reads as what it is."]
+    bad: ["⚠️ The region name repeats once per position. 📏 Measured: a median file has 7 positions and the
+           worst in the LPC has 253, so the cost is tens of short strings — real, and small.",
+          "A palette can no longer be shared between two sets without being copied.",
+          "Two typings of the same word are two regions, and nothing catches it."]
+  F3:
+    good: ["One file, and no repeated strings."]
+    bad: ["It keeps the join, which is the half of the problem the Dev actually named. Saving bytes in a file
+           whose purpose is to be READ is optimising the wrong thing."]
+
+decision-outcome:
+  chosen-option:
+    link: "F2 — one file, and the region is a word"
+    justification: |
+      ===== 1. ONE FILE =====
+      `<set>.semantic.json` and nothing beside it. It carries `sheets` (the run-length grids and their
+      frames), `positions` (what each position in the index space means), `levels` (per region, how many
+      steps and which is the outline), `palettes` (every palette the art was found wearing, by name), and
+      `source` (provenance, the fields of `art/ATTRIBUTION.csv`).
+
+      ⚠️ EVERY PALETTE THE IMPORT FOUND GOES IN, not only the one that reproduces the source. Writing only
+      `source` would leave the tool offering palettes the saved file does not carry, which is worse than not
+      offering them.
+
+      ===== 2. A REGION IS A WORD =====
+      `{"region": "pele", "level": 1}`. There is no `regions` map and no id. `region: null` is nothing at
+      all — the hole in the picture — and it is `null` rather than a word like «nothing» because a word could
+      collide with one a person types.
+
+      🎯 AND THE INTERFACE FOLLOWS THE FORMAT RATHER THAN THE OTHER WAY ROUND: the dropdown and its «add
+      region» button are gone, replaced by a text field on each row. A person types what they see.
+
+      ===== 3. THE FILE SAYS WHAT IT IS =====
+      A `"//"` field carries one sentence explaining the structure, because the first thing to open this file
+      may be a model with no other context. It costs one line and it is the cheapest thing in the format.
+
+      ===== 4. WHAT THIS DOES NOT CHANGE =====
+      Everything else of ADR-0134 stands. The two groupings of §4 and the harvest that rests on them; the
+      run-length grid stopping at row ends; the index being the SET's canonical order and not first
+      appearance; alpha being part of the colour; a variant chosen PER REGION; `outline` never guessed; and
+      §7's rule that a reader must never apply colour management, premultiply, or resize.
+
+      ===== 5. A CONSEQUENCE FOUND WHILE BUILDING IT =====
+      🔴 Free-text regions broke the level suggestion, and the fix belongs in this record because it is
+      forced by the decision. The draft ranks every opaque colour by luminance as ONE region; the moment a
+      person splits them into «pele», «cabelo» and «roupa», the levels scatter — 1, 5, 2 where 0, 1, 2 was
+      meant. That leaves ramps full of holes and a `steps` count that lies: eleven steps for a region holding
+      one colour.
+
+      So NAMING A REGION RE-RANKS THAT REGION'S LEVELS BY LUMINANCE. A ramp runs shadow to light, so the
+      ranking IS the level. ⚠️ It overwrites a level set by hand in that region, and that is the trade: a
+      hand-set level is rare and repeatable, and a silently broken ramp is neither.
+
+  consequences:
+    positive:
+      - "A resource is one file. It cannot arrive half-missing, and a game offering four team colours opens
+         one thing rather than five."
+      - "🎯 «What is this pixel» is answered in place, by a word, with no join — which is what the Dev asked
+         for when he said the file is read by a language model."
+      - "The vocabulary is the artwork's. «metal da fivela» and «brilho da lâmina» are sayable, and no list
+         has to be maintained to make them sayable."
+      - "`steps` stops lying, because levels are ranked within the region they belong to."
+    negative:
+      - "⚠️ The region name repeats once per position — tens of short strings in a median file, 253 in the
+         worst measured one. Small, and real."
+      - "A palette can no longer be shared between two sets without being copied into both."
+      - "⚠️ TWO SPELLINGS OF ONE WORD ARE TWO REGIONS, and nothing catches it. «pele» and «Pele» would each
+         get a ramp. No check exists for this and none is built."
+      - "Schema 1 files cannot be read by a schema 2 reader, and none should exist outside this repository's
+         own fixtures — but nothing enforces that."
+    neutral:
+      - "`src/app/variants.ts` was deleted with this change. Its work moved to `workspace.ts` when panel 3
+         became a palette switcher, and it had no caller left — the `render/viz-axes` shape ADR-0134's own
+         drivers name as the warning."
+
+  confirmation: |
+    ⚠️ NOT YET CONFIRMED BY THE CONSUMER, which is the only confirmation that would mean anything: the
+    engine's reader does not exist. What holds today, in this repository:
+
+      · `fixtures/valid/tiny.semantic.json` is ONE file, hand-written, with the exact pixels each palette
+        choice must produce — including the per-region case. It was worked out by hand and not generated.
+      · `fixtures/invalid/` holds five files a conforming reader must refuse, each wrong in one way.
+      · The round trip is exact for every visible pixel, and the suite is 179 cases.
+      · 📏 Checked on real LPC art: three palettes of `Human_male` import as one file carrying `source`,
+        `Gold` and `Ivory`, with no holes in any ramp and a truthful `steps` per region.
+
+    THE ISSUE THIS DEBT BELONGS TO is the same one ADR-0134's confirmation names, and it is still unopened
+    because the repository has not been pushed.
+
+more-information: |
+  SUPERSEDES ADR-0134 §6 IN PART — the two-file shape and the `regions` id map. Sections 1 to 5 and 7 of that
+  record govern unchanged, and §4's mechanism is what makes `palettes` in the single file possible at all.
+
+  ⚠️ THIS IS A SCHEMA BUMP, from 1 to 2, and it is deliberately not backward compatible. A schema 1 reader
+  and a schema 2 file disagree about where a region's name lives, and there is no reading that half-works —
+  which is why the version is checked first and an unknown one is refused rather than read hopefully.
