@@ -12,6 +12,15 @@ metadata:
     - "ADR-0027 (art renders NEAREST) — the same mandate that makes the transparent collapse invisible is what
        makes a merged colour invisible: no filtering blends the survivor with what it replaced"
   informed: []
+  superseded-in-part:
+    - by: ADR-0137
+      what: "THE STARTING POINT, and with it the first of the three conditions the decision-drivers here set
+             for admitting a parameter at all. This record started the tool on the art that came in and had a
+             person pick a level; ADR-0137 opens it already simplified at the widest level, because the tool
+             exists to show the art it will DELIVER — 253 positions on screen against 119 in the file made a
+             person annotate 134 that would not exist. Sections 1, 2, 3 and 5 govern unchanged, and the cost
+             table of §4 is what makes the new default answerable: it prices the default on the control that
+             sets it."
 
 title: Simplification is the one parameter, and it merges positions AFTER grouping rather than colours before
 

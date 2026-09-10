@@ -1,0 +1,154 @@
+---
+metadata:
+  status: "accepted"
+  date: 2026-09-10
+  supersedes-in-part: [ADR-0136]
+  decision-makers: [Dev]
+  consulted:
+    - "ADR-0136 — SUPERSEDED IN PART. Its §4 made the simplification a level a person picks from a table of
+       costs, starting from «no simplification». The mechanism, the level range, the cost table and the
+       provenance field all govern unchanged; what changes is where the tool STARTS"
+    - "ADR-0134 §4 — the two exact groupings. Still untouched: simplification merges positions after the
+       grouping has happened, so no default can reach the grouping"
+    - "ADR-0027 (art renders NEAREST) — what makes a seven-per-channel shift invisible rather than merely small"
+  informed: []
+
+title: The tool opens on the art it will DELIVER, so simplification is the default rather than an option
+
+context-and-problem-statement: |
+  ADR-0136 gave the tool a simplification a person picks, starting from «no simplification». The Dev then
+  asked for the starting point to change:
+
+    «O app deve exibir por padrão os desenhos com imagem simplificadas, e não as imagens originais. Com isso,
+    ao selecionar a cor na paleta, é mostrado onde aquela cor realmente estará na imagem final.»
+
+  🎯 THE REASON IS THE TOOL'S OWN PURPOSE. This program exists to record what a pixel MEANS in the artwork
+  that will be delivered. Opening on the art that came in shows a person positions that the delivered file
+  will not have, and invites them to annotate all of them.
+
+  📏 WHAT THAT COSTS, MEASURED ON THE LPC'S `Skeleton`: 253 positions on screen against 119 in the file.
+  A person annotating the unsimplified art writes meanings for **134 positions that will not exist**, and no
+  message tells them which 134.
+
+  ⚠️ AND ONE PART OF THE DEV'S REASONING IS SMALLER THAN IT SOUNDS, WHICH THIS RECORD SAYS RATHER THAN
+  FLATTERS. Isolating a colour on the unsimplified art does light the wrong pixels — but 📏 on that same
+  `Skeleton` only **558 of 292 064 visible pixels (0.2 %)** change which position they belong to, and the
+  position that gains most goes from 75 676 to 75 822 lit pixels. The highlight is very nearly right either
+  way. What is badly wrong on the unsimplified art is the LIST: 253 rows for a file with 119 positions.
+
+decision-drivers:
+  - "🎯 The tool must show the artwork it is going to write. Anything else asks a person to annotate a
+     picture that will not be delivered."
+  - "🔴 A default is a choice nobody will revisit, so it must be a level that is safe without being looked at
+     — which is a stronger bar than «a level a person may pick»."
+  - "The provenance must stay honest: a file simplified by default still records the level it was given."
+  - "⚠️ It must remain possible to opt out in one click, because art that has to be preserved exactly is a
+     real case and the tool must not make it hard."
+
+considered-options:
+  - "D1 — keep ADR-0136: open unsimplified, and let the person pick a level"
+  - "D2 — open at the WIDEST level (n=15), with «no simplification» as an explicit choice"
+  - "D3 — open at a level chosen per import, e.g. the narrowest whose worst error stays under some bound"
+
+pros-and-cons-of-the-options:
+  D1:
+    good: ["Every simplification is chosen by a person who saw its cost, which is exactly the test ADR-0136
+            set for admitting a parameter at all.",
+           "The art on screen is byte-for-byte the art that was imported, so nothing is ever a surprise."]
+    bad: ["🔴 It shows a picture the tool will not write. 📏 253 positions on screen, 119 in the file.",
+          "A person annotates 134 positions that will not exist, and nothing says which.",
+          "The isolated colour lights the pixels of a position that is about to be merged away — a small
+           error in pixels, 0.2 % measured, and a total one in meaning."]
+  D2:
+    good: ["🎯 What is on screen is what will be written, so an annotation is made against the positions the
+            file will actually hold.",
+           "📏 The level is safe unlooked-at: over `Body/Base` — 269 files, eleven workspaces — n=15 halves
+            the positions of the whole folder (1056 → 564) for a worst single-channel error of SEVEN in any
+            palette of any workspace.",
+           "The cost table of ADR-0136 stays exactly where it was, so the person still sees what the default
+            costs THIS art and can leave it in one click."]
+    bad: ["⚠️ The person did not choose it. Somebody who never looks at the chooser writes simplified art,
+           and the only thing that tells them is the footer and the `simplifiedToBits` in the file.",
+          "Art that must be preserved exactly now needs a deliberate «no simplification».",
+          "Every import pays the simplification's cost in time, even when it would have been left off."]
+  D3:
+    good: ["It would adapt to the art instead of applying one number to everything."]
+    bad: ["🔴 It is a threshold, which is the thing this repository has refused everywhere else — and it
+           would have to be recorded in the file to be reproducible.",
+          "⚠️ The measurement says a bound would not even be stable: the cliff is not gradual. At n=14 one
+           four-file workspace of the same folder saves ONE position and shifts a colour by 123, right beside
+           workspaces that lose nothing at n=12. A rule that picks per import would pick that one wrong."]
+
+decision-outcome:
+  chosen-option:
+    link: "D2 — open at the widest level, and make «no simplification» the explicit choice"
+    justification: |
+      ===== 1. WHERE IT OPENS =====
+      A workspace opens at `OPENS_AT`, which is `MAX_BITS` — 2¹⁵. The chooser preselects it, the footer says
+      «simplificado a 2^15», and the file records `simplifiedToBits: 15`. Every route that opens a workspace
+      lands there, including a second import into the same session.
+
+      ===== 2. WHY THE WIDEST, AND NOT A MIDDLE ONE =====
+      🔴 BECAUSE A DEFAULT IS A CHOICE NOBODY WILL REVISIT, and the measurement says the cliff is at the very
+      next step down:
+
+        · n=15 across eleven workspaces of `Body/Base`: 1056 → 564 positions, worst error **7**
+        · n=14: one four-file workspace saves ONE position and shifts a colour by **123**
+
+      A worst case of seven per channel is invisible under NEAREST (ADR-0027) and halves the positions. One
+      step narrower buys a single position for a colour nobody would call near. So n=15 is not «the safest
+      of several defensible defaults» — it is the only level that may be applied without somebody looking.
+
+      ===== 3. WHAT DOES NOT CHANGE =====
+      Everything else of ADR-0136 governs. Simplification still merges POSITIONS after the grouping, never
+      colours before it; the survivor is still the most-used colour of its bucket; alpha is still never
+      quantised; the cost table still names, for all eight levels, the positions remaining and the worst
+      error any palette would suffer; and `simplifiedToBits` is still provenance a reader must refuse when it
+      is outside 8 to 15.
+
+      ===== 4. WHAT THIS COSTS ADR-0136's OWN TEST =====
+      ⚠️ ADR-0136 admitted the parameter on three conditions: a person chooses it, sees what it costs before
+      choosing, and the file records what was chosen. THE FIRST NO LONGER HOLDS as written. What holds
+      instead, and what this record puts in its place: the cost of the default is on the control before
+      anything is written, the state is named in the footer at all times, the file records it, and one click
+      turns it off. A default is admissible when it is visible, reversible, recorded — and measured safe
+      without being looked at.
+
+  consequences:
+    positive:
+      - "🎯 The screen and the file agree. An annotation is written against the positions that will exist."
+      - "📏 The annotation surface halves on real art: 253 rows become 119 on the `Skeleton`, and 1056 become
+         564 across the whole of `Body/Base`."
+      - "A person who does look at the chooser sees what the default is costing this art, on the option that
+         is already selected."
+    negative:
+      - "⚠️ SOMEBODY WHO NEVER LOOKS AT THE CHOOSER SHIPS SIMPLIFIED ART. The footer and the file say so, and
+         nothing else does. That is the price of the default and it is not small."
+      - "Art that must be preserved exactly needs a deliberate «no simplification» before saving."
+      - "Every import now pays the simplification's cost in time. 📏 269 files import in about 15 seconds,
+         and the simplification is a small fraction of that — but it is no longer optional work."
+      - "⚠️ The default is set in `main.ts`, which no test covers. `OPENS_AT` and its measurement are held by
+         a gate in `workspace.ts`; that the wiring USES it is verified on screen and not by a test."
+    neutral:
+      - "The claim that isolating a colour on unsimplified art lights badly wrong pixels is TRUE but small:
+         📏 558 of 292 064 visible pixels, 0.2 %, on the `Skeleton`. The decision rests on the list of
+         positions, not on the highlight, and this record says so rather than repeating the stronger form."
+
+  confirmation: |
+    ⚠️ NOT CONFIRMED BY THE CONSUMER — the engine's reader still does not exist. What holds today:
+
+      · 📏 Measured over the LPC's `Body/Base`, 269 files and eleven workspaces, by a script that drives the
+        same `workspacesIn` and `costOfSimplifying` the interface calls: n=15 → 1056 → 564 positions, worst
+        error 7; n=14 → a 123 on a four-file workspace.
+      · 📏 Verified on screen against the real `Skeleton` folder: the import opens on «2^15 — 119 posições,
+        erro máx 6», panel 4 lists 119 rows and 119 swatches, and the footer reads «posições: 119 ·
+        simplificado a 2^15» before anything is clicked.
+      · `OPENS_AT` is held by two cases in `workspace.node.test.ts`, and a mutation lowering it to 12 turns
+        the suite red.
+      · Gates: `tsc` 0 · 215 cases · `build` 0 · 65/65 mutations caught.
+
+more-information: |
+  SUPERSEDES ADR-0136 IN PART — only the starting point, and the first of the three conditions its
+  decision-drivers set for admitting a parameter. Sections 1, 2, 3 and 5 of that record govern unchanged, and
+  its cost table is what makes this default answerable at all: a default nobody can price is not the same
+  decision as a default priced on the control that sets it.
