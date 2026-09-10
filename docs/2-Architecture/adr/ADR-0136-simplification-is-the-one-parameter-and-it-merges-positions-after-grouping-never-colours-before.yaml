@@ -1,0 +1,219 @@
+---
+metadata:
+  status: "accepted"
+  date: 2026-09-10
+  decision-makers: [Dev]
+  consulted:
+    - "ADR-0134 §4 — the two exact groupings. This record exists because a parameter threatens them, and §4 is
+       what says why: `drawingHash` over the grid of first-appearance indices, `paletteHash` over the sorted
+       colour set, both by EXACT equality and with no tolerance anywhere"
+    - "ADR-0135 — one file, and a region is a word. `simplifiedToBits` is a new field in that file, so the
+       schema-2 contract of `docs/FORMAT.md` moves with this decision"
+    - "ADR-0027 (art renders NEAREST) — the same mandate that makes the transparent collapse invisible is what
+       makes a merged colour invisible: no filtering blends the survivor with what it replaced"
+  informed: []
+
+title: Simplification is the one parameter, and it merges positions AFTER grouping rather than colours before
+
+context-and-problem-statement: |
+  The Dev asked for an option the tool did not have:
+
+    «O projeto precisa de uma opção de simplificação para 2^n cores possíveis, com n indo de 8 (256 cores) a
+    15 (32k cores): isso faria com que cores muito próximas sejam tratadas como a mesma, simplificando o
+    desenho procedural sem perda significativa.»
+
+  ⚠️ THIS IS THE FIRST PARAMETER IN A TOOL BUILT NOT TO HAVE ONE. Every grouping in it is exact equality —
+  ADR-0134 §4 chose that deliberately, and §4's own drivers say a threshold is what makes a result
+  unreproducible and unexplainable. The request is legitimate and the reasoning is sound: a procedural
+  drawing with 253 positions is harder to reason about than one with 119, and the difference between two
+  colours one unit apart is not a difference anybody drew on purpose.
+
+  🔴 SO THE QUESTION IS NOT WHETHER, BUT WHERE. Two orderings were built and measured, and they do not differ
+  by a little:
+
+  ===== MEASURED: SIMPLIFYING COLOURS BEFORE GROUPING DESTROYS THE GROUPING =====
+  📏 Over 269 real LPC sheets, merging colours at import and then grouping: at n=8 the «same drawing»
+  coverage collapsed from **244 files to 100**. The cause is structural rather than a matter of degree.
+  Palettes have different spacings, so two colours that fall in one bucket in `Coffee` fall in two in
+  `Ivory`; the two files WERE the same drawing and come out of the merge with different index grids. The
+  harvest — the mechanism that turns one annotation into a hundred files, which is the entire economic
+  argument of ADR-0134 — finds nothing where it used to find everything.
+
+  ===== MEASURED: THE COST OF A LEVEL IS NOT A PROPERTY OF THE LEVEL =====
+  📏 The same n costs almost nothing on one body and ruins another:
+
+    · `Skeleton` at n=15: 253 → 119 positions, worst single-channel error **6**
+    · `Skeleton` at n=8:  253 → 38 positions,  worst error **60**
+    · `Human_child` at n=9: saves **one** position and shifts a colour by **118**
+
+  ⚠️ 118 is not «cores muito próximas». So «sem perda significativa» is true of some art at some levels and
+  false of others, and NOTHING IN THE NUMBER n SAYS WHICH — the art says it.
+
+  And the loss lands where it is hardest to see. Measured on a two-palette fixture: the base is `Blue`, whose
+  two colours are 1 apart, so merging them looks free. The same two positions in `Red` are `#c82828` and
+  `#5a2828` — 110 apart — and after the merge that palette simply **drops** `#5a2828`. A cost measured on the
+  base alone would have reported 1.
+
+decision-drivers:
+  - "🔴 The two exact groupings of ADR-0134 §4 must survive. They are what makes the tool affordable and what
+     makes its results explainable, and a parameter that breaks them buys simplicity with the whole product."
+  - "🎯 A parameter is admissible when a person chooses it, sees what it costs BEFORE choosing, and the file
+     records what was chosen. Those three together are what separate an option from a tolerance."
+  - "The loss must be measured where it lands — in the other palettes — not where it is convenient to measure."
+  - "⚠️ A colour that enters the palette must be a colour the artist used. The palette is meant to be what the
+     art is made of."
+  - "Alpha is not a colour axis. 📏 A measured LPC file carries up to eighty semi-transparent colours and they
+     are shadow at distinct strengths; merging two of them merges two different things."
+
+considered-options:
+  - "Q1 — refuse: no simplification, exact equality everywhere, as before"
+  - "Q2 — simplify COLOURS at import, before grouping, then group the simplified art"
+  - "Q3 — simplify POSITIONS after grouping, on the base, with the cost of every level shown before choosing"
+  - "Q4 — simplify by a perceptual metric (CIEDE2000, or a median cut) instead of a bit budget"
+
+pros-and-cons-of-the-options:
+  Q1:
+    good: ["Nothing to explain, nothing to record, no parameter to get wrong.",
+           "The groupings stay provably exact."]
+    bad: ["⚠️ It refuses a request the measurements support: 253 positions where 119 would do is a real cost
+           paid by every consumer of the file, forever.",
+          "The near-duplicates it preserves are not decisions anybody made — they are artefacts of how the
+           pack was authored."]
+  Q2:
+    good: ["The simplest thing to implement: one pass over the pixels at import and everything downstream is
+            unchanged.",
+           "It also merges near colours ACROSS palettes, which sounds like more grouping rather than less."]
+    bad: ["🔴 MEASURED FATAL: «same drawing» coverage falls from 244 files to 100 at n=8. Palettes have
+           different spacings and merge asymmetrically, so files that were the same drawing stop being it.",
+          "The failure is silent — the tool reports fewer groups and nothing says why.",
+          "⚠️ And no safe n exists. The damage varies with the art, so any threshold chosen would be a guess
+           that holds until the next pack."]
+  Q3:
+    good: ["🎯 A position is the same position in every palette, because the correspondence between palettes
+            is structural rather than by colour. Merging positions CANNOT break the grouping: the grids keep
+            their shape and only their numbering changes, so every `drawingHash` is preserved.",
+           "The cost can be computed for all eight levels before any is applied, and shown.",
+           "It composes with the harvest already built: the palettes are found by shared drawings, so they do
+            not have to be rebuilt after a simplification."]
+    bad: ["⚠️ It simplifies the BASE's positions, so the spacing of one palette decides what merges for all of
+           them. That is why the cost has to be measured across every palette and reported as the worst.",
+          "The other palettes lose a colour each time two positions merge, and the survivor is the one the
+           base's surviving position corresponds to — not the most-used colour of THAT palette.",
+          "A merged position keeps one annotation, so a region typed against the rarer colour is dropped."]
+  Q4:
+    good: ["A perceptual metric is closer to what «looks the same» means than a bit budget is.",
+           "Median cut would hit an exact colour count rather than a bucket grid."]
+    bad: ["It is the threshold ADR-0134 §4 refused, wearing better clothes: the number becomes unexplainable
+           («ΔE 2.3») where 2ⁿ is a sentence a person can finish.",
+          "⚠️ The Dev named the space — 2ⁿ, n from 8 to 15 — and it is a space with a natural meaning: bits of
+           colour kept. Substituting a metric would answer a question nobody asked.",
+          "Median cut chooses representatives by cluster, which invites a synthesised colour into the palette."]
+
+decision-outcome:
+  chosen-option:
+    link: "Q3 — merge positions after grouping, and show the cost of every level before one is chosen"
+    justification: |
+      ===== 1. WHERE IT HAPPENS =====
+      🔴 AFTER the import has grouped, on the base set's POSITIONS. `simplifySet` maps each position to the
+      position that now stands for its bucket, renumbers every grid, and adds up the pixel counts. The
+      `drawingHash` of every sheet is unchanged by construction, so the palettes found by shared drawings are
+      still found — `simplifyWorkspace` does NOT rebuild them.
+
+      ⚠️ Never on the colours before grouping. That ordering was built, measured, and thrown away: 244 files
+      of «same drawing» coverage became 100.
+
+      ===== 2. THE SPACE, AND HOW THE BITS ARE SPENT =====
+      2ⁿ with n from 8 to 15, spread across the channels in the order GREEN, RED, BLUE, repeatedly — green
+      first because the eye reads most of a picture's luminance from it, the same 0.587 the luminance ranking
+      already uses. So n=8 is G3 R3 B2 and n=15 is G5 R5 B5.
+
+      ⚠️ ALPHA IS NEVER QUANTISED. Alpha says how much, not which, and this option is about which.
+
+      ===== 3. THE SURVIVOR IS A COLOUR THE ARTIST USED =====
+      The representative of a bucket is its MOST-USED original colour, never the bucket's arithmetic centre —
+      a synthesised colour would put into the palette something that appears nowhere in the art. Ties break
+      towards the smaller packed value, so two runs over identical art give an identical file and a diff is
+      never noise.
+
+      🎯 And the merged position keeps the meaning of the most-used member. A person annotates the colour
+      covering ten thousand pixels, not its near-duplicate covering ten; taking the first member's meaning
+      would let the rare colour's annotation quietly overrule theirs.
+
+      ===== 4. THE PRICE IS SHOWN BEFORE IT IS PAID =====
+      🔴 THE CONTROL IS NOT A NUMBER, IT IS A TABLE. `costOfSimplifying` reports, for each of the eight
+      levels, how many positions would remain and the worst single-channel error ANY palette would suffer —
+      and the chooser shows both figures on every option:
+
+        «sem simplificar — 253 posições» · «2^15 — 119 posições, erro máx 6» … «2^8 — 38 posições, erro máx 60»
+
+      ⚠️ The error is measured in the other palettes, not the base. On the measured fixture the base's two
+      colours are 1 apart and another palette's are 110 apart; a cost taken from the base would report 1 and
+      the person would choose in the dark.
+
+      ===== 5. THE FILE SAYS WHAT WAS DONE TO IT =====
+      `simplifiedToBits` — the n that was applied, or `null`. It is PROVENANCE, not a setting: there is
+      nothing left for a reader to perform, and the field exists so that somebody comparing this file against
+      the original PNG knows why they differ.
+
+      🔴 AND A READER MUST REFUSE A VALUE OUTSIDE 8 TO 15. A level no writer could have applied is a false
+      claim about the art, and a reader that shrugs at it passes the lie on. The bounds therefore live in the
+      format rather than in the quantiser that applies them, and `fixtures/invalid/` gained a sixth file for
+      it.
+
+  consequences:
+    positive:
+      - "📏 The request is served where it pays: `Skeleton` goes from 253 positions to 119 with a worst error
+         of 6 — a file half the size to reason about, for a difference no eye finds under NEAREST."
+      - "🎯 The two exact groupings of ADR-0134 §4 survive untouched. Simplification is the only parameter in
+         the tool and it does not reach them."
+      - "A person choosing n sees what that level costs THIS art rather than trusting the word «near»."
+      - "The file records the level, so art that was simplified can never be mistaken for art that was not."
+    negative:
+      - "⚠️ THE BASE'S SPACING DECIDES FOR EVERY PALETTE. Two positions merge because the base calls them
+         close, and another palette then drops one of its colours — measured at 110 per channel on a
+         two-colour fixture, and 118 on `Human_child` at n=9. The cost table is what makes this a choice
+         instead of a surprise, but it does not make it free."
+      - "The colour another palette keeps is the one the surviving position corresponds to, NOT that palette's
+         most-used member. There is no second frequency ranking per palette and none is built."
+      - "⚠️ A region typed against the rarer of two merged colours is lost with it. The annotation of the
+         most-used member survives, which is the right default and still a loss."
+      - "Simplification is not reversible from the file: the written art IS the simplified art. Re-importing
+         the source PNGs is the only way back, which is why `applySimplification` returns a new array and
+         never overwrites what was decoded."
+      - "⚠️ The 8-to-15 bound is now stated in two places that must agree — this record and
+         `docs/FORMAT.md` — because a reader outside this repository has to know what to refuse."
+    neutral:
+      - "n=15 is not lossless and was never going to be: five bits per channel is a bucket eight values wide,
+         so 100 and 101 merge at every level the tool offers. 📏 At n=15 the LPC's 643 colours still fall to
+         321 with a worst error of 7. Nothing in the interface says «lossless»."
+      - "The bounds moved into `src/format/semantic.ts` and are re-exported by `src/format/quantise.ts`, so a
+         caller still has one place to look."
+
+  confirmation: |
+    ⚠️ NOT CONFIRMED BY THE CONSUMER — the engine's reader still does not exist, and that is the only
+    confirmation that would settle the format questions. What holds today, in this repository:
+
+      · 📏 The order-of-operations finding is a measurement, not an argument: 269 LPC sheets, «same drawing»
+        coverage 244 → 100 files at n=8 when colours are merged before grouping. The script that produced it
+        also produced the per-level table of pixels changed, mean and worst error.
+      · 📏 Verified on the real `Skeleton` folder through the interface: 8 sheets, 253 → 119 positions at
+        n=15, `simplifiedToBits: 15` written into the file, and exactly one palette in it.
+      · 18 mutations were applied one at a time to `quantise.ts`, the new `workspace.ts` functions and the new
+        reader check; all 18 turned the suite red. 🔴 SIX OF THEM WERE GREEN FIRST — `costOfSimplifying` was
+        asserted with `toBeGreaterThanOrEqual(0)`, which a function answering zero forever also satisfies, and
+        `simplifyWorkspace` had no Node case at all. The gates that now hold those decisions were written
+        because the mutation found them missing.
+      · Gates: `tsc` 0 · 210 cases in 15 files across two projects · `build` 0.
+
+    THE ISSUE THIS DEBT BELONGS TO is the one ADR-0134's confirmation names, and it is still unopened.
+
+more-information: |
+  This record adds to ADR-0134 and ADR-0135 rather than superseding any part of either. ADR-0134 §4's exact
+  groupings are what it is written to protect, and the `simplifiedToBits` field extends the schema-2 file of
+  ADR-0135 without changing anything already in it — a file without the field is still refused, because a
+  writer always states it.
+
+  📌 WHY THE PARAMETER IS ADMISSIBLE AT ALL, said plainly, since ADR-0134 §4 argues against parameters: a
+  tolerance decides FOR a person, silently, inside a grouping they cannot see. This decides WITH them: they
+  are shown what each level costs this art, they pick, and the file says what they picked. Those three
+  properties are the test any future parameter in this tool has to pass.
