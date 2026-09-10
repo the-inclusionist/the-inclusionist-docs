@@ -28,6 +28,22 @@ metadata:
         🎯 What makes the new figures worth more than the old ones is that TWO INDEPENDENT IMPLEMENTATIONS
         now agree on them: the throwaway measuring script, and `src/group/group.ts`, written afterwards from
         tests and by another route.
+    - date: 2026-09-09
+      what: >-
+        «THE SAME PIXEL» IN THE CONFIRMATION WAS TOO STRONG BY ONE CASE, and building the round trip found
+        it. The confirmation promised «PNG → semantic file plus palette → recomposed → the same pixel». The
+        true claim is **the same VISIBLE pixel**: RGB stored underneath a fully transparent pixel is not
+        preserved. 📏 Verified over the same 197 files — 41 512 960 pixels compared, 197 of 197 identical
+        wherever anything is visible, with **12 560 pixels carrying a hidden RGB** that comes back as zero.
+        📌 THIS IS A TRADE THE DECISION ALREADY MADE, stated late rather than changed. §4 collapses every
+        fully transparent pixel to one key precisely so that two files identical to the eye cannot get
+        different index grids — one storing white-at-zero-alpha where the other stores black — because that
+        would make the variant harvest find nothing. The hidden bytes are the price of the mechanism that
+        pays for the tool.
+        ⚠️ AND IT CARRIES A CONDITION, which is the part worth having in the record: hidden RGB DOES matter
+        under bilinear filtering and mipmapping, which sample transparent texels and bleed their colour into
+        visible edges. It does not matter for this project because its art renders NEAREST by mandate
+        (ADR-0027). If that ever stops holding, this is to be revisited rather than rediscovered.
   # Declara um endereço e NÃO supersede nada, no molde do ADR-0097. Desde que o ADR-0067 §5 fez a
   # DECLARAÇÃO ser o gatilho, um endereço novo não emenda a enumeração do ADR-0058 §1 — junta-se a ela.
   supersedes-in-part: []
@@ -265,9 +281,10 @@ decision-outcome:
 
     Owed, and each is a gate that must be born red with its mutation confirmed:
 
-      · A round trip that is exact: PNG → semantic file plus palette → recomposed → the same pixel. It is the
-        case that catches the two corruptions which fail in silence, colour management and alpha
-        premultiplication.
+      · A round trip that is exact for every VISIBLE pixel: PNG → semantic file plus palette → recomposed →
+        the same pixel wherever anything can be seen (see the second erratum for the one thing it does not
+        preserve). It is the case that catches the two corruptions which fail in silence, colour management
+        and alpha premultiplication.
       · Both groupings in both directions: same drawing with different colours forms one group, and ONE pixel
         changed forms two.
       · The reference fixtures under `fixtures/`, which are what the engine's future reader is measured
