@@ -2,6 +2,32 @@
 metadata:
   status: "accepted"
   date: 2026-09-09
+  errata:
+    - date: 2026-09-09
+      what: >-
+        TWO MEASURED NUMBERS IN §4 WERE WRONG, and both were corrected the same day, by building the module
+        the record describes and running it over the same 197 files. The record said the drawing grouping
+        covered «119 files» and that the palette grouping found «seven groups». The true figures are
+        **34 drawing groups covering 100 files, and 42 palette groups covering 139**. This is an erratum and
+        not a supersession: the decision — that the two exact comparisons are the mechanism, and that a set
+        sharing a palette is the file boundary — is exactly what was decided, and the author with these
+        numbers would have written the same choice.
+        ① The «119» was NEVER COMPUTED. The measuring script printed the groups without summing them, so the
+        figure was supplied from memory.
+        🎯 AND ITS ORIGIN IS WORTH KEEPING, because it is the general shape of this kind of error: 119 is a
+        REAL measured number from the same table — the count of files carrying partial alpha, one section
+        above. The wrong figure was not invented; a true figure was carried across from a neighbouring row.
+        That is why it read as measured, and why nothing about it looked suspicious.
+        ② The «seven» was a `head -60` truncating the script's output at a boundary that made the short list
+        look complete. Thirty-five palette groups were cut off, and nothing in the output said so.
+        📌 AND THE CORRECTION RUNS TOWARDS THE DECISION, not against it. The record warned that the palette
+        grouping was RARE and that the file boundary might therefore degenerate to one file per image; at
+        forty-two groups covering 139 of 197 files it is not rare, and every group is semantically exact —
+        the largest gathers four different subjects sharing a palette because they share a MATERIAL. The
+        negative consequence written on the strength of «seven» is withdrawn below.
+        🎯 What makes the new figures worth more than the old ones is that TWO INDEPENDENT IMPLEMENTATIONS
+        now agree on them: the throwaway measuring script, and `src/group/group.ts`, written afterwards from
+        tests and by another route.
   # Declara um endereço e NÃO supersede nada, no molde do ADR-0097. Desde que o ADR-0067 §5 fez a
   # DECLARAÇÃO ser o gatilho, um endereço novo não emenda a enumeração do ADR-0058 §1 — junta-se a ela.
   supersedes-in-part: []
@@ -147,14 +173,16 @@ decision-outcome:
       exactly: if index 4 was annotated `(skin, 3)`, then the colour at index 4 of any file with the same
       `drawingHash` IS level 3 of skin in that variant.
 
-      📏 MEASURED on 197 CC0 files (*Tiny Swords*, 1 777 268 bytes) before this record was written:
-      **34 groups of «same drawing, different palettes» cover 119 files.** Thirty-four annotations would
-      cover a hundred and nineteen files. The mechanism is not a hope.
+      📏 MEASURED on 197 CC0 files (*Tiny Swords*, 1 777 268 bytes) before this record was written, and
+      re-measured by a second implementation afterwards (see the erratum): **34 groups of «same drawing,
+      different palettes» cover 100 files**, and **42 groups of «same palette, different drawings» cover
+      139**. Thirty-four annotations would cover a hundred images. The mechanism is not a hope.
 
-      ⚠️ The palette grouping is RARE in that pack — seven groups — because each unit there carries its own
-      colours. It is not wrong (its seven groups are shared MATERIALS: scaffolding and wood), but the case
-      that justifies the file boundary is the LPC, where `walk`, `thrust` and `hurt` of one body share a
-      palette. Written down because the number is smaller than the design assumed.
+      📌 AND EVERY PALETTE GROUP IS SEMANTICALLY EXACT, which could not have been assumed: the largest
+      gathers `Wood_Tower_InConstruction`, `Castle_Construction`, `Tower_Construction` and `Bridge_All` —
+      four different subjects that share a palette because they share a MATERIAL. In art drawn by one hand,
+      colour identity tracks material identity, and that is what makes the palette a defensible boundary for
+      the file rather than an arbitrary one.
 
       ===== 5. TWO FORMAT DECISIONS THE MEASUREMENT MADE, AND ONE OF THEM CORRECTS THE STUDY =====
       **(i) The grid is run-length encoded per row, in readable form.** Four candidates were measured against
@@ -207,8 +235,9 @@ decision-outcome:
     positive:
       - "The condition of ADR-0133 §3 becomes satisfiable by artefacts that exist, which is what the third
          door has been waiting for since the day it was written."
-      - "🎯 Thirty-four annotations covering a hundred and nineteen files, measured. The annotation cost —
-         the real constraint under volunteer labour — drops by more than an order of magnitude."
+      - "🎯 Thirty-four annotations covering a hundred files, measured twice by two implementations. The
+         annotation cost — the real constraint under volunteer labour — drops by roughly threefold on this
+         pack through the drawing grouping alone, before the palette grouping gathers anything."
       - "The engine takes on nothing. No new export subpath, no third external consumer, no import-boundary
          gate, and no code without a caller."
       - "The twenty paused scenario themes gain a pipeline to be built against."
@@ -219,9 +248,11 @@ decision-outcome:
       - "A scaffold README that says the repository is not built, which becomes FALSE on the commit that
          builds it. ADR-0067 already names this failure mode and nothing checks for it."
       - "A tenth address to configure, watch and keep licensed."
-      - "⚠️ The palette grouping was measured at seven groups in 197 files. If the LPC does not group better,
-         the file boundary chosen here yields roughly one file per image, and the word «set» stops earning
-         its place."
+      - "⚠️ WITHDRAWN BY THE ERRATUM ABOVE, and kept so the reasoning is not lost. It read: «the palette
+         grouping was measured at seven groups in 197 files; if the LPC does not group better, the file
+         boundary chosen here yields roughly one file per image». The seven was a truncated listing. At 42
+         groups covering 139 files the worry does not arise, and the boundary holds on this pack without
+         needing the LPC to rescue it."
     neutral:
       - "`plano-arte-procedural.md` keeps its diagnosis, its four sections on palettes and render, and its
          measurement of the LPC. Only the three conclusions of §3 above are replaced."
