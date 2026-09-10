@@ -12,6 +12,15 @@ metadata:
        grouping has happened, so no default can reach the grouping"
     - "ADR-0027 (art renders NEAREST) — what makes a seven-per-channel shift invisible rather than merely small"
   informed: []
+  superseded-in-part:
+    - by: ADR-0138
+      what: "§2 — THE LEVEL, and only that. This record set the default at `MAX_BITS` (2¹⁵) on the argument
+             that a default must be safe unlooked-at, which the measurement supports. The Dev has decided 2⁸
+             instead — «O padrão ao importar deve ser 2^8» — buying a procedural drawing half again simpler
+             (1056 → 274 positions across `Body/Base`, against 564) and paying a worst single-channel error
+             of 123 on one workspace where 2¹⁵ cost 7. §1, §3 and §4 govern unchanged: the tool still opens
+             on the art it will DELIVER, and a default is still admissible only when it is visible,
+             reversible and recorded."
 
 title: The tool opens on the art it will DELIVER, so simplification is the default rather than an option
 

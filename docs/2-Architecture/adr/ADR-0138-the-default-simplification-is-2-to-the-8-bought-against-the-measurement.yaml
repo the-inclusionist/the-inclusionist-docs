@@ -1,0 +1,138 @@
+---
+metadata:
+  status: "accepted"
+  date: 2026-09-10
+  supersedes-in-part: [ADR-0137]
+  decision-makers: [Dev]
+  consulted:
+    - "ADR-0137 — SUPERSEDED IN PART, and only its §2. That the tool opens ALREADY SIMPLIFIED, and why, is
+       unchanged and is the reason this record is a number rather than a rethink"
+    - "ADR-0136 — the mechanism, the range, the cost table and `simplifiedToBits`. All unchanged: this record
+       moves where the chooser starts, not what it does"
+    - "ADR-0057 — a record changes by SUPERSESSION; an erratum is the only edit in place, and its test is
+       whether the author with the corrected facts would have written the same choice. Here they would not:
+       ADR-0137 §2 chose the widest level BECAUSE of the measurement, and the Dev has chosen the narrowest
+       knowing it. The decision changed, so the record changes by supersession"
+  informed: []
+
+title: The default simplification is 2⁸, bought against the measurement and with its price stated
+
+context-and-problem-statement: |
+  ADR-0137 made the tool open already simplified, and set the level at `MAX_BITS` — 2¹⁵ — on the argument
+  that a default is a choice nobody revisits and must therefore be safe unlooked-at. The Dev has decided
+  otherwise, in one line:
+
+    «O padrão ao importar deve ser 2^8.»
+
+  🔴 THIS IS A TRADE BEING BOUGHT, NOT A DISAGREEMENT ABOUT FACTS. The measurement is the same one, run over
+  the same folder — the LPC's `Body/Base`, 269 files, eleven workspaces — and it says both halves plainly:
+
+    | level | positions across the folder | worst single-channel error in any palette |
+    |-------|-----------------------------|-------------------------------------------|
+    | 2¹⁵   | 1056 → 564                  | **7**                                     |
+    | 2⁸    | 1056 → **274**              | **123** on one workspace, 40–60 on five   |
+
+  🎯 What 2⁸ buys is the thing this repository exists to produce: a **procedural drawing half again simpler**,
+  which every consumer of the file reads for as long as the file exists. What it costs is colour — at 2⁸ a
+  shifted colour is one a person can see, where at 2¹⁵ it is not.
+
+  ⚠️ AND THE COST IS NOT EVEN ACROSS THE ART. The same 2⁸ leaves a 15-file `Coffee` workspace with a worst
+  error of 118 and an 11-position palette almost untouched at 10 positions, while `Gold` — the largest, 195
+  files — goes from 22 positions to 15 for an error of 40. There is no level at which the loss is uniform,
+  which is why ADR-0136 put the price of every level on the control and why that stays.
+
+decision-drivers:
+  - "🔴 The choice belongs to the Dev. The measurement is an input to it, not a veto over it — and this
+     record's job is to make sure the trade is written down, not to re-argue it."
+  - "🎯 The simpler procedural drawing is the product. 274 positions against 564 is half again less for every
+     reader of every file, forever."
+  - "⚠️ A default that loses colour visibly must be visible, priced and reversible — which is exactly what
+     ADR-0137 §4 already requires of any default here."
+  - "Provenance must not lie: a file simplified at 2⁸ records 8, and a reader can tell it from art that came
+     in that way."
+
+considered-options:
+  - "L1 — keep ADR-0137 §2: open at 2¹⁵, the level measured safe unlooked-at"
+  - "L2 — open at 2⁸, as instructed"
+  - "L3 — open at 2⁸ but warn when the measured error exceeds some number"
+
+pros-and-cons-of-the-options:
+  L1:
+    good: ["📏 Worst error 7 per channel anywhere in the folder — invisible under NEAREST (ADR-0027).",
+           "Nobody can be surprised by a colour they did not ask to change."]
+    bad: ["564 positions where 274 would do, in every file, for every consumer.",
+          "⚠️ It is not what the Dev decided, and the decision is his."]
+  L2:
+    good: ["🎯 The procedural drawing is half again simpler: 1056 → 274 across the folder, 253 → 38 on the
+            `Skeleton`.",
+           "The chooser still prices all eight levels and «sem simplificar» is still one click away, so the
+            default is a starting point rather than a fate.",
+           "The file records 8, so nothing about the art is hidden from a reader."]
+    bad: ["📏 A worst single-channel error of 123 on one workspace, and 40–60 on five more. That is a colour
+           a person can see, not a near colour.",
+          "⚠️ Somebody who never opens the chooser ships it. The footer and `simplifiedToBits` say so; nothing
+           else does."]
+  L3:
+    good: ["It would put the loudest cases in front of a person without changing the default."]
+    bad: ["🔴 It is a threshold, and this repository has refused thresholds everywhere the art is grouped.
+           Worse, it would have to pick a number — and 📏 the measurement shows the error is 0 on two
+           workspaces and 123 on another, so any number chosen would fire constantly or never.",
+          "The cost table already shows the number, on the option that is selected. A warning would be the
+           same fact said twice, and the second time as an alarm."]
+
+decision-outcome:
+  chosen-option:
+    link: "L2 — open at 2⁸"
+    justification: |
+      ===== 1. THE LEVEL =====
+      `OPENS_AT` is `MIN_BITS` — 2⁸, 256 colours. Every route that opens a workspace starts there, the
+      chooser preselects «2^8 — N posições, erro máx M» with N and M measured on the art in hand, the footer
+      reads «simplificado a 2^8», and the file records `simplifiedToBits: 8`.
+
+      ===== 2. WHAT DOES NOT CHANGE =====
+      ADR-0137 §1 stands: the tool opens on the art it will DELIVER, and that is why there is a default at
+      all. ADR-0136 stands entire: positions are merged after grouping and never colours before, the survivor
+      is the most-used colour of its bucket, alpha is never quantised, every level is priced on the control,
+      and a reader refuses a `simplifiedToBits` outside 8 to 15.
+
+      ===== 3. WHAT THIS RECORD IS FOR =====
+      🔴 IT EXISTS SO THE PRICE IS ON PAPER. The code says `MIN_BITS`; only a record says that 2⁸ costs a
+      visible colour on some art and that this was known when it was chosen. Without it the next person to
+      read the comment beside `OPENS_AT` would find a default that looks like an oversight and «fix» it.
+
+  consequences:
+    positive:
+      - "📏 The procedural drawing is half again simpler than at 2¹⁵ and a quarter of what came in: across
+         `Body/Base`, 1056 positions become 274; on the `Skeleton`, 253 become 38."
+      - "A person annotating writes 38 meanings where they would have written 253 — and every one of them is
+         a position the file will actually hold."
+    negative:
+      - "🔴 COLOUR IS LOST WHERE A PERSON CAN SEE IT. 📏 Worst single-channel error 123 on one workspace of
+         `Body/Base`, 40–60 on five more. At 2¹⁵ it was 7."
+      - "⚠️ Somebody who never opens the chooser ships that. The footer names the level at all times and the
+         file records it; nothing stronger warns them, by the same argument that refused a threshold."
+      - "Art that must keep its colours needs “sem simplificar” chosen deliberately before saving."
+    neutral:
+      - "The cost table of ADR-0136 is what makes this answerable rather than a leap: the person sees, on the
+         option already selected, how many positions remain and the worst error any palette would suffer."
+
+  confirmation: |
+    ⚠️ NOT CONFIRMED BY THE CONSUMER — the engine's reader does not exist. What holds today:
+
+      · 📏 Measured over the LPC's `Body/Base` (269 files, eleven workspaces) with the same `workspacesIn` and
+        `costOfSimplifying` the interface calls: 2⁸ → 274 positions, worst error 123; 2¹⁵ → 564, worst 7.
+      · 📏 Verified on screen against the real `Skeleton` folder: the import opens on «2^8 — 38 posições, erro
+        máx 60», panel 4 lists 38 rows, and the footer reads «posições: 38 · simplificado a 2^8».
+      · `OPENS_AT` is held by a case asserting it is `MIN_BITS`, and a mutation moving it to 12 turns the
+        suite red — so the level cannot drift without the decision being revisited.
+      · Gates: `tsc` 0 · 221 cases · `build` 0 · 69/69 mutations caught.
+
+more-information: |
+  SUPERSEDES ADR-0137 §2 — the level, and nothing else. §1, §3 and §4 of that record govern unchanged, and §4
+  is what makes this one defensible: a default is admissible when it is visible, reversible and recorded.
+  This record adds the fourth thing that a default costing visible colour needs, which is that the price is
+  written down beside the choice.
+
+  📌 A NOTE ON WHY THIS IS NOT AN ERRATUM. ADR-0057 allows an edit in place only when the author, holding the
+  corrected facts, would have written the same choice. ADR-0137 §2 chose 2¹⁵ BECAUSE of these very numbers,
+  so it fails that test: the facts did not change, the decision did.
