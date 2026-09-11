@@ -23,6 +23,9 @@ metadata:
     - "ADR-0141 — the game side of ADR-0080 §2's RNG rule. Same family of defect, opposite direction: there a
        cartridge reaches shared state, here the engine holds it"
   informed: []
+  confirmed-by:
+    - engine:app/js/boot/create-game.ts
+    - engine:tests/boot-create-game.node.test.js
   errata:
     - date: 2026-09-11
       what: "`more-information` said the frozen `seguraTeclas` in the pause-icons context «goes to the engine
@@ -195,16 +198,35 @@ decision-outcome:
          pause-icons context, and that is an engine defect with its own issue, not a clause here"
       - "No game repository has to change for this record. The cartridge shape is ADR-0139's"
   confirmation: |
-    ⚠️ NOT BUILT, so no `confirmed-by`. The gates, named now so they are not invented later:
+    BUILT on 2026-09-11, in `app/js/boot/create-game.ts`, with five cases in
+    `tests/boot-create-game.node.test.js`. Suite green: 172 files, 2683 tests; browser 66/66; `tsc` clean.
 
-      1. Mount cartridge A, mount cartridge B, and assert `engine.problems` describes B. This is the whole
-         point of the record and it is one test.
-      2. A cartridge declaring an action vocabulary that warns, followed by one that does not, leaves NO
-         reach warning in the document.
-      3. After `unmount()`, `registrarMapeamentoDoTeclado` and `registrarMapeamentoDoPad` hold null.
-      4. The child's blind mode, contrast and typeface survive a mount-unmount-mount cycle unchanged —
-         the PAGE half of ADR-0038, asserted rather than assumed.
-      5. The scene stack is empty after `unmount()`, and each popped scene's `exit()` ran.
+    WHAT THE GATES ASSERT, and which of the five planned ones landed:
+
+      1. ✅ **The one that decides.** Boot a cartridge whose declared world is absent, assert `problems`
+         says so, `mount()` a sound one, assert the line is gone — and the PAIR in the other direction, so
+         that «it disappeared» cannot pass for «it never looked». 🔴 Mutation-checked: making `problems`
+         return only the host half turns 5 of 44 red.
+      2. ✅ `mount()` throws on a malformed declaration, and the sound cartridge stays mounted — a refusal
+         must not leave the root half-swapped.
+      3. ✅ `declaration` hands back the mounted cartridge and not the one that booted.
+      4. ✅ `unmount()` empties the scene stack and every popped scene's `exit()` runs. ⚠️ And the case
+         measures only the TAIL, because `push` already fires the `exit()` of the scene beneath — measured
+         here rather than assumed, and asserting the whole list would have credited `unmount` with it.
+
+    ⚠️ TWO PLANNED GATES DID NOT LAND, and the debt is named rather than quietly dropped:
+
+      · The reach notice — that a cartridge with nothing to warn about erases the previous one's notice.
+        `retirarAvisoDeAlcance()` exists and runs always; what is missing is the case. It belongs in the
+        BROWSER project, because the notice is DOM and the node double does not model removal faithfully.
+      · The mappings holding `null` after `unmount()`. ⚠️ NOT TESTABLE TODAY WITHOUT WIDENING THE PUBLIC
+        SURFACE: `registrarMapeamentoDoTeclado` and `registrarMapeamentoDoPad` are write-only — there is no
+        reader — so asserting it would mean exporting one. That is a decision, not an oversight, and it is
+        left to whoever needs it.
+
+    📌 The PAGE half of ADR-0038 — that the child's blind mode, contrast and typeface survive a swap — is
+    true by construction rather than by assertion: `state` is a live module binding and `mount()` does not
+    touch it. A case for it is still worth having, and is not written.
 
 more-information: |
   ⚠️ THIS RECORD SUPERSEDES NOTHING, and that was checked rather than assumed. The index was searched for a
