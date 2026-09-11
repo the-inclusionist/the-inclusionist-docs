@@ -20,6 +20,17 @@ metadata:
        state, so that two games on one page do not collide», marked done on the engine's side and waiting
        for a game. This record is the game side of it"
   informed: []
+  errata:
+    - date: 2026-09-11
+      what: "`more-information` listed `declines` as undecided between the host's half and the game's, and
+             said the direction «has to be read from the implementation rather than guessed». It was read,
+             and it is the GAME's: `app/js/boot/create-game.ts` uses it twice as a statement a game makes
+             about itself — `declines.semVozNeural` at `:468` («declare `carregarVozNeural` … ou
+             `declines.semVozNeural`») and `declines.semAtorDePausa` at `:682`. Both are a cartridge saying
+             what it does not have, which is §1's own test for which half a field belongs to. ➡️ `declines`
+             belongs in `CartridgeHooks`. ERRATUM under ADR-0057 §1 and not a supersession: the record asked
+             for this reading and left the hole for its answer; the answer fills the hole and changes no
+             decision."
 
 title: A cartridge supplies HALF of CreateGameOptions and never calls createGame
 

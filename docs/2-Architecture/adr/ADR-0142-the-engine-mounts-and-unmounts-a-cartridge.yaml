@@ -34,6 +34,20 @@ metadata:
              falsy. ERRATUM under ADR-0057 §1 and not a supersession: the decision is untouched, and what the
              sentence described was the DISPOSAL of a defect this record deliberately kept outside itself.
              ⚠️ The record's own subject — `mount()` and `unmount()` — remains unbuilt, so no `confirmed-by`."
+    - date: 2026-09-11
+      what: "§2's first row is WRONG, and it was measured on the build output rather than on the source.
+             `conformanceProblems(o.declaration)` does not feed `problems`: it THROWS —
+             `app/js/boot/create-game.ts:428-431`, «createGame: declaração malformada». A malformed
+             declaration is a precondition and not a diagnostic. ➡️ So `mount()` must THROW on a malformed
+             cartridge rather than refresh a list, which is a better rule than the one this record wrote and
+             a different one. 📏 And the rest of `problems` splits: of its seven feeders FOUR are about the
+             HOST and do not move on a swap (`:441` missing markup, `:512` no filter host, `:519` no
+             accessibility bar, `:620` a bar that takes no content), and THREE depend on the cartridge
+             (`:454` the declared world, `:469` the neural-voice line through `declines`, `:682` seats
+             without a pause actor). ⚠️ Also: the eight sites are NOT «the second third» — measured in the
+             source they run from line 428 to 885 across a 947-line file, interleaved with 24 top-level
+             bindings that feed each other. ERRATUM under ADR-0057 §1: the DECISION — the engine gains mount
+             and unmount — is untouched; what was wrong is this record's description of the work."
 
 title: The engine MOUNTS and UNMOUNTS a cartridge, so one composition root can serve many
 
