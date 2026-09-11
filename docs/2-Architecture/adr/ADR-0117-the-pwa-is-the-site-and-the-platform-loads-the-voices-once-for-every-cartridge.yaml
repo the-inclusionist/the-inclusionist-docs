@@ -22,6 +22,18 @@ metadata:
         the 300+ games — a `404.html` and a design system. The platform exists; it was named after a listing
         rather than after the code. ⚠️ THE DECISION HERE IS INTACT: the PWA is the platform, a game is a
         cartridge, and the fonts, voices and runtime are loaded once for every cartridge.
+    - by: ADR-0140
+      what: >-
+        the ABSOLUTE form of «A GAME IS A CARTRIDGE, NOT A PWA», and only that. Read absolutely, the sentence
+        takes away something nobody meant to remove: a game is its own repository (ADR-0068 §1), and whoever
+        works in it alone — its author, a reviewer, an accessibility audit, a demonstration to a school — has
+        no platform to run it in, because the platform's manifest has no format yet. The Dev's requirement of
+        2026-09-11 is that a game builds BOTH ways from one source: a standalone PWA that bundles the engine,
+        and a cartridge that externalises it. ⚠️ AND THE REASONING HERE IS NOT TOUCHED, only bounded: the
+        standalone artifact is a development and demonstration route and never a delivery route, because the
+        moment one is deployed for children every word of this record applies exactly as written — the cache
+        partitions by origin, the accessibility settings stop following the child, and the school network has
+        a second address to allow.
   date: 2026-09-09
   decision-makers: [Dev]
   consulted:
