@@ -31,6 +31,22 @@ metadata:
              belongs in `CartridgeHooks`. ERRATUM under ADR-0057 §1 and not a supersession: the record asked
              for this reading and left the hole for its answer; the answer fills the hole and changes no
              decision."
+    - date: 2026-09-11
+      what: "§1's ENUMERATION IS INCOMPLETE — it lists fifteen of the twenty fields `CreateGameOptions`
+             actually has. 📏 Counted in the source (`app/js/boot/create-game.ts:178-318`): the five missing
+             are `declines`, `getPauseActs`, `setPauseActor`, `setTemaDoJogador` and `setCorrecaoDoJogador`,
+             and the record's own test — «could a PAGE answer this without knowing which game runs?» — puts
+             ALL FIVE in the game's half. Each is a statement about this game: what it declines, what its
+             pause offers, who edits which seat, and whether it writes a theme or a colour-vision
+             correction. 📌 And the last two are corroborated by a filter this project already ships:
+             `iconesQueAccionam({ tema, correcao, seguraTeclas })` mounts the ⚫ and 🚥 icons only for a game
+             that supplies the writers — three game-owned answers, read together. ERRATUM under ADR-0057 §1
+             and not a supersession: the RULE is untouched and it is the rule that decides; what was wrong
+             was the list, which under-counted by a quarter. The corrected game's half is fifteen fields:
+             `declaration`, `isNavigable`, `comIndice`, `naBarraDe`, `navBar`, `players`, `setPhase`,
+             `sonarPlayers`, `isBlindMode`, `preset`, `declines`, `getPauseActs`, `setPauseActor`,
+             `setTemaDoJogador`, `setCorrecaoDoJogador`; the host's is five: `host`, `carregarVozNeural`,
+             `baixarPesados`, `aoProgredirPesados`, `disponibilidade`."
 
 title: A cartridge supplies HALF of CreateGameOptions and never calls createGame
 
