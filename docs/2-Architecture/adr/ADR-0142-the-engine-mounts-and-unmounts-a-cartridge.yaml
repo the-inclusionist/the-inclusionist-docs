@@ -23,6 +23,17 @@ metadata:
     - "ADR-0141 — the game side of ADR-0080 §2's RNG rule. Same family of defect, opposite direction: there a
        cartridge reaches shared state, here the engine holds it"
   informed: []
+  errata:
+    - date: 2026-09-11
+      what: "`more-information` said the frozen `seguraTeclas` in the pause-icons context «goes to the engine
+             as an issue». It did not: the Dev asked «pra que abrir issue se podemos corrigir agora?» and it
+             was fixed in the same session. `EscritoresVisuais.seguraTeclas` and `PauseIconsCtx.seguraTeclas`
+             became `() => boolean`, `create-game` passes the reference instead of the result, and three test
+             fixtures were corrected — one of which, the MINIMAL ctx of `pause-icons.browser.test.js`, was
+             passing its §5 case BY ACCIDENT, because an omitted field is `undefined` and `undefined` is
+             falsy. ERRATUM under ADR-0057 §1 and not a supersession: the decision is untouched, and what the
+             sentence described was the DISPOSAL of a defect this record deliberately kept outside itself.
+             ⚠️ The record's own subject — `mount()` and `unmount()` — remains unbuilt, so no `confirmed-by`."
 
 title: The engine MOUNTS and UNMOUNTS a cartridge, so one composition root can serve many
 
