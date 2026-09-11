@@ -14,7 +14,20 @@ metadata:
        already appeared twice before anyone named it, and the answer was one record for one field. Same here"
     - "ADR-0068 §1 — a game is its own repository, so a rule that binds all six has to live in a record and
        not in one of them"
+    - "ADR-0080 §2 — THE PARENT, and it decided the engine side of this before anyone measured the game
+       side: «a generator is created and owned by whoever needs a reproducible stream. The engine may offer
+       a default instance for convenience, and a game that wants determinism gets its own. ⚠️ Not only for
+       tidiness: today a shuffle shares a stream with the weather.» This record is that rule applied where a
+       cartridge can break it, with the import that breaks it named"
   informed: []
+  errata:
+    - date: 2026-09-11
+      what: "the first version of this record cited ADR-0084, ADR-0139 and the engine's user stories, and
+             MISSED ADR-0080 §2, which had already decided the same rule from the engine's side. ERRATUM
+             under ADR-0057 §1 and not a supersession: the author with the missing fact would have written
+             the same decision — the measurement, the forbidden imports and the lint gate are unchanged —
+             but would have written it as the game-side application of an existing rule rather than as a
+             fresh finding. The citation is added; nothing else moves."
 
 title: A cartridge owns its random stream, because the shared one is module state
 
