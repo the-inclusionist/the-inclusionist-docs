@@ -1,6 +1,31 @@
 ---
 metadata:
   status: "accepted"
+  confirmed-by:
+    - engine:scripts/new-repo-scaffold.mjs
+    - engine:tests/new-repo-scaffold.node.test.js
+  errata:
+    - date: 2026-09-11
+      what: >-
+        🔴 §5 WAS BEING READ AS A PERMISSION GATE ON THE DEV, AND IT NEVER SAID THAT. He asked why this record
+        obstructs him every time he creates a repository, and the answer is that it does not — the AI does,
+        by quoting §5 at him. ⚠️ MEASURED AGAINST THE RECORD'S OWN STRUCTURE: §1 argues the trigger, §2 lists
+        the files, §3 answers the «reads as progress» objection and §4 answers the termo objection. **§5 is
+        the only section with no argument of its own**, none of the four decision-drivers mentions it, and
+        none of R1–R4 is about WHO authorises a repository. It sits under the heading «WHAT THIS DOES NOT
+        LICENSE» because it is a SCOPE LIMIT on §1, written so that «creation follows a declaration» could
+        not be read as «create repositories freely». Its target is accretion — a name in a backlog item, a
+        folder somebody made — and in this project that means the AI.
+        🎯 AND ITS OWN WORDS ALREADY SAY THE NARROWER THING: «this rule has not fired and the repository is
+        not created» states when ADR-0067 OBLIGES an address to exist. It is not a prohibition, and reading
+        the second clause as one contradicts the rest of the governance — `CLAUDE.md` says REGISTERING IS
+        EXECUTION, NOT CONSULTATION, and ADR-0128 puts the decision and its record in the same TURN rather
+        than the same instant. When the Dev creates a repository the decision has already been taken, because
+        he is who takes them; the record follows in the same turn and writing it is the AI's work, not a lock
+        on his.
+        📌 **THE DECISION DOES NOT CHANGE, WHICH IS WHY THIS IS ERRATA AND NOT SUPERSESSION** (ADR-0057 §1):
+        the trigger stays, the four files stay, the README debt stays, and accretion stays refused. What the
+        sentence gains is a property the decision already had and failed to carry. Applied to §5 below.
   date: 2026-09-04
   supersedes-in-part: [ADR-0058]
   decision-makers: [Dev]
@@ -146,6 +171,15 @@ decision-outcome:
       backlog item, or a folder somebody made. If a repository has no record naming it, this rule has not
       fired and the repository is not created.
 
+      ⚠️ AND THIS IS A LIMIT ON THE RULE, NOT A GATE ON THE DEV — amended 2026-09-11, see the errata. It
+      states when ADR-0067 OBLIGES an address to exist, so that §1 could not be read as «create repositories
+      freely»; what it refuses is ACCRETION, which in this project means the AI proposing addresses. **The
+      Dev's decision to create a repository IS the declaration**, because he is who takes decisions here; the
+      record follows in the SAME TURN and writing it is the AI's work (ADR-0128, and `CLAUDE.md`: registering
+      is execution, not consultation). 🎯 The operational form of this, which keeps the section honest instead
+      of merely permissive: **the scaffold script refuses to run without a record identifier**, so the record
+      exists by the time the four files do — and the AI writes it rather than waiting to be asked.
+
   consequences:
     positive:
       - "The backlog migration unblocks: every one of the 44 items has an address to be filed against, and the
@@ -174,9 +208,21 @@ decision-outcome:
     · No backlog item filed against the engine describes work belonging to another system.
     · No termo or ato lists a repository that holds only scaffolding.
 
-    ⚠️ WHAT NO CHECK CONFIRMS TODAY: that a scaffold README is removed on the commit that falsifies it. It is
-    checkable — a workflow could fail when a repository has product code and still says it has none — and it
-    is NOT built. Written here as the debt it is, rather than as a promise.
+    ✅ BUILT 2026-09-11 — `engine:scripts/new-repo-scaffold.mjs` writes the four files of §2 plus the local
+    `adr` job of ADR-0123, and `engine:tests/new-repo-scaffold.node.test.js` holds eleven cases with five
+    confirmed mutations. 🎯 The one that matters is the ORDER of §3: a generator that emits the four sections
+    in the wrong sequence passes every «does it contain» check and fails the decision, because the order IS
+    the answer this record gives to ADR-0058 §10. Reordering it reddens that case ALONE.
+    📌 And the script REFUSES to run without a record identifier — §5 enforced where enforcing it costs the
+    Dev nothing, since the record is written in the same turn as the decision. The refusal reads as a missing
+    field, not as a prohibition; that distinction is the erratum of 2026-09-11 made operational.
+
+    ⚠️ WHAT STILL NO CHECK CONFIRMS: that a scaffold README is removed on the commit that falsifies it. The
+    script now WRITES the debt paragraph with its due date, which is half of it — the half that stops the
+    sentence from being forgotten at authoring time. The other half is a workflow failing when a repository
+    has product code and still says it has none, and it is **not built**. ⚠️ It cannot live in this engine:
+    it has to run in the repository being scaffolded, over a tree this one never sees. Written here as the
+    debt it is, rather than as a promise.
 
 more-information: |
   SUPERSEDES ADR-0058 §10 IN PART. The rest of ADR-0058 governs unchanged: the five systems, the nine
