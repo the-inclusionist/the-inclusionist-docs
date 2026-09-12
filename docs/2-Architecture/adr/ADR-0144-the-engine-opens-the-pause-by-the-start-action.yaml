@@ -1,0 +1,162 @@
+---
+metadata:
+  status: "accepted"
+  date: 2026-09-12
+  decision-makers: [Dev]
+  consulted:
+    - "ADR-0122 — «não oferecido, não declinável: um jogo que arranca pelo `createGame` recebe o mesmo cartão
+       e a mesma barra». Esta é a metade que faltava a essa frase: 📏 medido em 2026-09-12, o cartão é
+       OFERECIDO e não é ALCANÇÁVEL, e um cartão que nada abre está tão ausente quanto um que não existe"
+    - "ADR-0106 §1 — a regra do Dev de que o menu de pausa é oferecido pela ENGINE. Um jogo que tem de se
+       lembrar de chamar `pausa.mostrar` é a mesma arrumação que o ADR-0139 diz ter falhado em cinco de seis"
+    - "ADR-0085 — `ActionPreset` e o vocabulário de `core/actions`. `start` já é uma das catorze posições, com
+       a palavra do jogo, remapeável pela criança. Esta decisão não inventa uma tecla: usa a que ela já tem"
+    - "ADR-0044 §2 — «a pausa tem sete itens e a ORDEM é a decisão». Por isso a saída escolhida NÃO é um ícone
+       novo na barra: ela deslocaria a ordem de tabulação que quem usa leitor de tela já aprendeu"
+    - "ADR-0143 — o controle virtual, cujo `#touch-start` é INCONDICIONAL. É a metade táctil desta mesma
+       decisão: quem só tem dedo carrega no START do pad, quem tem tecla ou botão dispara a acção `start`"
+  informed: []
+
+title: The engine OPENS the pause, by the `start` action — a card nothing opens is a card nobody has
+
+context-and-problem-statement: |
+  🔴 **MEASURED 2026-09-12, and it is the hole under everything built this week.** `createGame` mounts the
+  pause card, the accessibility bar and four settings panels. And then:
+
+    · `git grep` across the whole engine: NOTHING reveals `#vp-pause-0` except the `pausa.mostrar` API that
+      the GAME must call. The only other mentions are the mount itself (`create-game.ts:863`) and the
+      `getPauseMenu` the navigation reads.
+    · In a real browser, on `dist/quiz.html`: Escape, `p` and Enter leave the card hidden.
+
+  So a game that only calls `createGame` receives the card, the bar and four panels — and **a child cannot
+  reach any of them**. ADR-0122 said «not offered, not declinable»; what it produced is a card that is offered
+  and unreachable, which is the shape of half-truth ADR-0074 §6 already had about the touch pad.
+
+  📌 **AND THE THING THAT USED TO OPEN IT IS DELIBERATELY NOT MOUNTED.** `ui/shell` is the phase machine that
+  revealed the pause in the monolith, and `create-game.ts:325-336` refuses to mount it in so many words: it
+  «não substitui o boot do `main.js`, que tem catorze anos de ordem própria». That refusal is right and stays;
+  what it left behind is this gap.
+
+  🎯 **TWO THINGS THE ENGINE ALREADY HAS, measured the same day:**
+
+    · **An ear on the window.** `createGame` calls `nav.attach()` (`:1228`), and `ui/menu-nav.menuNavKey`
+      installs itself on `keydown` in the CAPTURE phase. The engine already hears every key.
+    · **A phase hook.** `CreateGameOptions.setPhase?: (p: 'title'|'playing'|'paused') => void` exists
+      (`:225`) and is already passed down with an empty default (`:1181`).
+
+  ⚠️ **AND THE DISTINCTION THAT DECIDES THE SHAPE: OPENING THE CARD IS NOT PAUSING THE GAME.**
+  `pausa.mostrar(i)` does two things and only two — `reflectPauseIcons()` and `cartao.hidden = false`.
+  Freezing the physics, silencing the ambience and hiding the touch pad were `ui/shell.aplicarCena`, and they
+  are the GAME's. Anyone who treats the two as one ships a menu over a running game, with the child dying
+  while she picks a font.
+
+decision-drivers:
+  - "D1 — A CHILD WHO CANNOT REACH THE SETTINGS HAS NO SETTINGS. Four panels in the document that nothing
+     opens are worth exactly as much as zero panels, and cost more to build."
+  - "D2 — THREE HUNDRED GAMES MUST NOT EACH REMEMBER ONE LINE. That is the arrangement ADR-0139 records as
+     having failed in five of six games, for the bar and the card."
+  - "D3 — THE ENGINE MUST NOT DECIDE WHICH KEY. The child remaps; `core/actions` already carries `start` as
+     one of the fourteen positions, and the keyboard runtime already resolves code → action per seat."
+  - "D4 — AND IT MUST NOT PRETEND TO FREEZE A WORLD IT DOES NOT OWN. The engine can open its own card; only
+     the game can stop its own clock."
+
+considered-options:
+  - "A — Leave it: the game calls `pausa.mostrar`."
+  - "B — The engine binds the `start` ACTION: reveal the card, and ask the game to pause via `setPhase`."
+  - "C — The engine mounts `ui/shell`, the phase machine, and gets the reveal with it."
+  - "D — A pause icon on the accessibility bar."
+
+pros-and-cons-of-the-options: |
+  **A — leave it.**
+  ✅ Costs nothing.
+  ❌ ADR-0122 stays a half-truth, and every one of the three hundred games carries a line it can forget. The
+     five-of-six measurement says what happens then.
+
+  **B — bind the `start` action.**
+  ✅ Reuses three things that already exist — the ear on the window, the `ACTIONS` vocabulary and the phase
+     hook — and adds no new contract field.
+  ✅ Transport-independent by construction: keyboard, gamepad and the pad's START all raise the same action.
+  ✅ Honours the child's own remapping: she presses the key SHE put on `start`, not one the engine chose.
+  ❌ It needs a rule for a game that declares `start` in its own `preset` for something else.
+
+  **C — mount `ui/shell`.**
+  ✅ It is what used to work.
+  ❌ Already refused, and refused well: it brings a boot order the games do not have. Re-deciding it here
+     would be re-litigating a judgement this repository made with the code in front of it.
+
+  **D — a pause icon on the bar.**
+  ✅ The bar is visible from the first screen and its targets are already 44px.
+  ❌ It moves the tabbing order of a bar that whoever uses a screen reader has LEARNED, which ADR-0044 §2
+     treats as part of the decision rather than as arrangement.
+  ❌ And it is redundant once ADR-0143 lands: the pad's `#touch-start` is unconditional, so the child who has
+     only a finger already gets her button — on the surface where her fingers are.
+
+decision-outcome:
+  chosen-option:
+    link: "B — the engine binds the `start` action: it reveals the card and asks the game to pause"
+    justification: |
+      ===== 1. THE RULE =====
+      When the `start` action fires — from any transport — the engine reveals the pause card for the seat
+      that raised it, and calls `cartucho.setPhase?.('paused')`.
+
+      ===== 2. THE ENGINE OPENS; THE GAME FREEZES =====
+      `pausa.mostrar(i)` is the engine's half and it only reveals. Stopping the world is the game's, and
+      `setPhase` is the hook it already has. A game that does not implement it gets the card over a running
+      game — which for a quiz is the RIGHT answer, and is why `consumer-quiz` declares
+      `isNavigable: () => true` in the first place.
+
+      ===== 3. THE KEY IS THE CHILD'S =====
+      The engine never names a key. It listens for the ACTION, which `input/keyboard-runtime` resolves from
+      the seat's own scheme — so a child who remapped `start` keeps her remap, and a gamepad or the touch pad
+      raise the same action without a second rule.
+
+      ===== 4. `start` BELONGS TO THE PAUSE, AND A GAME DOES NOT TAKE IT =====
+      A cartridge may not claim `start` in its `preset` for something else. Since ADR-0122 the pause is not
+      declinable, and a game that took the only position that reaches it would be declining it by the back
+      door. ⚠️ This is the one clause of this record that ADDS a restriction rather than reusing something,
+      and it is stated here so nobody discovers it from a conflict.
+
+      ===== 5. WHAT DOES NOT MOVE =====
+      The seven items and their order (ADR-0044 §2), the bar's contents and its tabbing order, and the refusal
+      to mount `ui/shell`. This record adds a way IN; it re-decides nothing about what is found there.
+
+  consequences:
+    positive:
+      - "The four panels mounted this week stop being furniture and become reachable — by keyboard, by gamepad
+         and, once ADR-0143 lands, by finger"
+      - "ADR-0122's «not declinable» becomes true rather than half-true"
+      - "No consumer gains a line to remember, and none gains a contract field"
+      - "The child's own remapping carries the pause with it, at no extra cost"
+    negative:
+      - "`start` stops being available to a cartridge for anything else — a restriction that did not exist
+         yesterday, and that a game using it today would feel"
+      - "A game with no `setPhase` gets a menu over a running world. That is the correct default for a game
+         without phases and a hazard for one that has them and did not declare the hook"
+      - "The engine now consumes a key it did not consume before, in the capture phase, where `menu-nav`
+         already carries two documented defects about swallowing keys"
+
+  confirmation: |
+    ⚠️ NOT BUILT YET, so there is no `confirmed-by`. The work is **issue #142** in
+    `the-inclusionist-engine`. The gates, named now:
+
+      1. A minimal document plus `createGame` with a `preset` that declares `start`: raising the action
+         reveals `#vp-pause-0`, and the case asserts it was HIDDEN before.
+      2. The same, with a cartridge that supplies `setPhase`: the hook is called with `'paused'`, once.
+      3. A cartridge with NO `setPhase` still gets the card — the absence of the hook does not swallow the
+         open, which is the failure a `??` written the other way round would produce.
+      4. 🔴 A cartridge that declares `start` in its `preset` is REFUSED, with the reason said. This is the
+         gate for §4, and it is the one a careless implementation passes by accident: today no cartridge
+         declares `start`, so asserting only «nothing breaks» would stay green with nothing enforced.
+
+more-information: |
+  📏 **The measurements this record rests on**, all taken 2026-09-12 in the engine at `a8abb24`:
+    · `git grep` for `vp-pause-` across `app/js`: the mount at `create-game.ts:863`, the `getPauseMenu`
+      lookup at `:1167`, and the `pausa.mostrar`/`esconder` pair at `:1316`/`:1320`. Nothing else.
+    · `create-game.ts:1228` — `nav.attach()`; `ui/menu-nav` installs `menuNavKey` on `keydown`, capture.
+    · `create-game.ts:225` and `:1181` — `setPhase` declared and passed with an empty default.
+    · In the browser, `dist/quiz.html`, service worker killed: Escape, `p`, Enter — card stays hidden.
+
+  ⚠️ **The riskiest part is the capture phase.** `ui/menu-nav`'s own header records two preserved defects
+  about `menuNavKey` treating Escape as «back» in CAPTURE with `stopPropagation()`. Adding a second meaning to
+  a key in that same phase is the sort of change that breaks something three screens away, and the work should
+  measure what else sees the key before it decides where to hook.
