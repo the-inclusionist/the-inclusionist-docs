@@ -17,6 +17,28 @@ metadata:
   informed: []
   errata:
     - date: 2026-09-12
+      what: "🔴 **§1 CLAIMED BOTH VISUAL ICONS FOR THE ENGINE, and only ONE of them is hers.** Measured while
+             building it (`engine:a64e042`): 🚥 colour-vision correction the engine genuinely can action —
+             `installCvdFilters` mounts the six SVG filters, `aplicarFiltroDeVisao` puts one on the world
+             element, and a FILTER does not need to know the game, which is the argument §1 itself used.
+             🔴 But 🌗 high contrast is NOT a filter: `setTemaDoJogador` is a REPAINT of the game's textures
+             (`render/textures`, `DIRECT_CFG`/`directSpriteCanvas`), and the levels `hc-direto-45` /
+             `hc-direto-7` are the WCAG 4.5:1 and 7:1 RATIOS. The engine has no textures, and approximating it
+             with `filter: contrast()` would announce a ratio nothing guarantees — the engine asserting what
+             it cannot know, which is the failure ADR-0087 names. So 🌗 stays the game's, and the gate that
+             landed asserts its ABSENCE beside 🚥's presence. ⚠️ §1's consequence «the engine writes to the
+             visual axes by default» therefore applies to ONE axis, not two."
+    - date: 2026-09-12
+      what: "📏 **And building §1 uncovered a defect older than this record, named here so it is not lost.**
+             `create-game` passes `getPlayers: () => cartucho.players ?? []` to `initPauseIcons` — an EMPTY
+             list — while the keyboard runtime gets `players()`, which falls back to ONE seat. Two answers to
+             the same question in one file. The empty one makes `P()[0]` `undefined`, and since the icon
+             cycles compute the next step from the player's own state, **🚥, ☝️ and 🧩 never advance past the
+             first position for a game that declares no players**. ⚠️ The one-line fix does NOT work:
+             `initPauseIcons` consumes `getPlayers()` EAGERLY at boot (`ui/pause-icons:822`), so the `const`
+             declared ~500 lines below lands in TDZ and the whole boot dies — 39 cases at once, measured. The
+             fix is hoisting `players`/`semJogadores` above that call, which is boot-order refactoring."
+    - date: 2026-09-12
       what: "§1 recorded a difference rather than resolving it: the Dev had asked for «alto contraste (toggle
              entre off e dois níveis)» and `CONTRAST_LEVELS` carries off plus THREE (`hc-direto`,
              `hc-direto-45`, `hc-direto-7`, the last two being the WCAG 1.4.3 and 1.4.6 ratios). ✅ **Resolved
