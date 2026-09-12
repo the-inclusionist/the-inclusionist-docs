@@ -15,6 +15,20 @@ metadata:
     - "ADR-0113 — the three zones of the screen, by Gestalt: accessibility in the HEADER, options in the work
        area, caption in the footer. This record gives the first of those three a measurable boundary"
   informed: []
+  errata:
+    - date: 2026-09-12
+      what: "§1 recorded a difference rather than resolving it: the Dev had asked for «alto contraste (toggle
+             entre off e dois níveis)» and `CONTRAST_LEVELS` carries off plus THREE (`hc-direto`,
+             `hc-direto-45`, `hc-direto-7`, the last two being the WCAG 1.4.3 and 1.4.6 ratios). ✅ **Resolved
+             the same day, by him: «Fez bem, eu que errei me esquecendo de um deles».** The cycle is off plus
+             three, and the negative consequence «🌗 offers off plus three levels where the Dev said two» no
+             longer applies. 📌 Kept as an erratum rather than edited away, because the flagged difference is
+             the reason it got looked at."
+    - date: 2026-09-12
+      what: "§4 said this record does not decide whether the three `soon` icons keep their seats, and it still
+             does not. ⚠️ But the bar is no longer ten seats: **ADR-0149 adds an ELEVENTH**, a typography cycle,
+             at the Dev's request. The count in §1's table is the measurement of 2026-09-12 and stays as the
+             record of that day; the roster it belongs to now lives in that record."
 
 title: The accessibility bar is HUD — it owns its space, and it mounts the icons that work
 

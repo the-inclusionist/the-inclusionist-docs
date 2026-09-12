@@ -18,6 +18,23 @@ metadata:
     - "ADR-0144 — the engine opens the pause. Until 2026-09-12 nothing did, which is why a root list where
        seven of nine items are invisible had never been seen by anyone"
   informed: []
+  errata:
+    - date: 2026-09-12
+      what: "§5 left `quit` deliberately undecided — «what LEAVING means with no host is a question whose wrong
+             answer loses a child's progress». ✅ **The Dev answered it the same day: «Voltar à tela de press
+             start».** So `quit` is `setPhase('title')` and not a reload, not `history.back()`, and not a menu
+             that may not exist: the child goes back to where she pressed start, which is a place the project
+             already has a name and a phase for. 📌 That makes `quit` the engine's like the other eight, and
+             removes the one exception §5 carved out — with one honest edge left: `ui/shell`, the phase
+             machine that used to DRAW that screen, is deliberately not mounted by `createGame`
+             (`create-game.ts:325-336`), so the engine asks for the phase and a game without the hook stays
+             where it is. Same shape as `setPhase('paused')` in ADR-0144 §2, and it is why the gate for this
+             has to assert the CALL and not the pixels."
+    - date: 2026-09-12
+      what: "⚠️ The typography question this record left open in `more-information` is ANSWERED, and the answer
+             is reading (a): no typography item on the HUD bar. 📌 But not by leaving the bar alone — the Dev
+             asked for an ELEVENTH button there that cycles five typography presets. That is **ADR-0149**, and
+             it is why this record's open question closes without work landing here."
 
 title: The pause root is NINE items, and the engine actions the ones that are hers
 
