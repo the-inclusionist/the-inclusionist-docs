@@ -39,6 +39,26 @@ metadata:
              sports, rhythm, reaction, party, fighting, local multiplayer, hybrids, and the experimental
              corner where «one-button games» is already a sub-genre. 📌 And the rule for WHAT collapses into
              WHAT is genre-bound too, which is why 36% does not make it general."
+    - date: 2026-09-12
+      what: "📏 THE TWO ERRATA ABOVE WERE MEASURED UNDER A KEY THE DEV THEN CORRECTED. The study used the 35
+             categories of the catalogue as genres, and they are a production backlog, not a taxonomy
+             (`engine:docs/1-Discovery/estudo-acomodacoes-por-genero.md` §0). Re-keyed with ONE axis per
+             accommodation (§0.1, `engine:40179bd`) and cross-checked against the 105 Game Accessibility
+             Guidelines (§0.2, `engine:d953caf`), both numbers change, and one conclusion with them.
+             · **Navigation sound and blind mode: 78%, not 18%.** The reasoning of the first erratum SURVIVES
+               and is now the contract's own rule: the sonar needs a world (`world: none` ⇒ no sonar) AND a
+               direction (`bearing` is `none` on `hotspots`). What changed is the count — every grid and
+               continuous space has a direction, the board games included. Cards, quiz and narrative still go
+               through narration and the spoken index.
+             · **One-button: 93% and GAG Basic — NOT genre-bound.** The second erratum's conclusion does not
+               survive. Its subject is any game played by actions, which is an answer the contract already
+               gives (`needsPointer()`), and «what collapses into what» is the scanning rule, not a genre's.
+             📌 AND THE RE-KEYING BEARS ON §5, WHICH LEFT OPEN WHERE THE DECLARATION LIVES — it does not
+             decide it: of the 54 accommodations, 23 are general, **15 have a subject the contract already
+             answers** (`tick`, `seguraTeclas()`, `needsPointer()`, `world()` × `topology()`, the players
+             list) and 16 need the game to say. The catalogue now holds those three families as types
+             (`engine:app/js/core/accommodations.ts`). ERRATUM under ADR-0057 §1: the decision — a general
+             catalogue, and what has no subject is absent — is untouched; what was wrong is two measurements."
 
 title: The accommodation catalogue is GENERAL, and a GENRE declares its subset and its own additions
 
