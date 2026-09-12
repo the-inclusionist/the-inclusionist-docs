@@ -1,6 +1,12 @@
 ---
 metadata:
   status: "accepted"
+  confirmed-by:
+    - engine:app/js/boot/create-game.ts
+    - engine:app/js/core/actions.ts
+    - engine:tests/pausa-abre-pelo-start.browser.test.js
+    - engine:tests/boot-create-game.node.test.js
+    - engine:tests/cartao-de-pausa-nao-come-teclas.browser.test.js
   date: 2026-09-12
   decision-makers: [Dev]
   consulted:
@@ -16,6 +22,28 @@ metadata:
     - "ADR-0143 — o controle virtual, cujo `#touch-start` é INCONDICIONAL. É a metade táctil desta mesma
        decisão: quem só tem dedo carrega no START do pad, quem tem tecla ou botão dispara a acção `start`"
   informed: []
+  errata:
+    - date: 2026-09-12
+      what: "§5 said this record «adds a way IN; it re-decides nothing about what is found there». 🔴 MEASURED
+             while building it, and the sentence was wrong in a way that would have trapped a child: THERE WAS
+             NO WAY OUT. `ITENS_DA_ENGINE` is `{options, pmback, acessibilidade}` and `create-game`'s own
+             `acoesDaEngine` table never defined `resume`, so `itensQueAccionam` cut «continue» from the pause
+             card of EVERY game that only calls `createGame`. And Escape did not close it either:
+             `ui/menu-nav:403` calls `ctx.setPhase('playing')` and nothing else — no card is hidden — and that
+             port was the cartridge's `setPhase` with an empty default. Nobody had noticed because NOTHING
+             OPENED THE CARD. ⚠️ Opening a door with no way out is worse than not opening it: it is ADR-0106 §5
+             in so many words, and the child who would be trapped is the one who navigates without seeing, who
+             has no mouse to fall back on. ✅ So the engine now also SUPPLIES the exit: `acoesDaEngine.resume`
+             hides its own card and asks the game to resume, and the `setPhase` handed to `ui/menu-nav` is the
+             engine's, which hides the card before passing the phase on to the cartridge. The cartridge still
+             overrides both — `getPauseActs` spreads the game over the engine — because resuming can mean
+             unfreezing physics and audio, which is the game's. What the engine guarantees is that an exit is
+             never MISSING. 📌 And this unlocks a third thing the `getPauseActs` field already recorded as a
+             loss: `entrarNaBarra` calls `acts.resume?.()` before handing the d-pad to the accessibility bar;
+             with an empty table that was `undefined`, and item 7 of ADR-0044 was «unreachable from any game».
+             ERRATUM under ADR-0057 §1: the DECISION — the engine binds the `start` action, opens its card and
+             asks the game to pause — is untouched. What was wrong is a sentence about SCOPE, written before
+             anyone had opened the card and seen there was no way back."
 
 title: The engine OPENS the pause, by the `start` action — a card nothing opens is a card nobody has
 
@@ -136,17 +164,42 @@ decision-outcome:
          already carries two documented defects about swallowing keys"
 
   confirmation: |
-    ⚠️ NOT BUILT YET, so there is no `confirmed-by`. The work is **issue #142** in
-    `the-inclusionist-engine`. The gates, named now:
+    ✅ BUILT AND GATED on 2026-09-12, issue #142. The four gates this record named are the first four below,
+    and they exist; the rest came from the erratum and from measuring what else sees the key.
 
-      1. A minimal document plus `createGame` with a `preset` that declares `start`: raising the action
-         reveals `#vp-pause-0`, and the case asserts it was HIDDEN before.
-      2. The same, with a cartridge that supplies `setPhase`: the hook is called with `'paused'`, once.
-      3. A cartridge with NO `setPhase` still gets the card — the absence of the hook does not swallow the
-         open, which is the failure a `??` written the other way round would produce.
-      4. 🔴 A cartridge that declares `start` in its `preset` is REFUSED, with the reason said. This is the
-         gate for §4, and it is the one a careless implementation passes by accident: today no cartridge
-         declares `start`, so asserting only «nothing breaks» would stay green with nothing enforced.
+    **`engine:tests/pausa-abre-pelo-start.browser.test.js`** — twelve cases, one composition root for the
+    whole file. ⚠️ One root, and that is a finding rather than tidiness: every `createGame` hangs a listener
+    on the window and nothing takes it off, so a file that calls it per case leaves the OLDEST root opening
+    the card and the current cartridge's hook is never called. The cartridge is swapped by `mount()` instead,
+    which is the path ADR-0142 already provides.
+
+      1. The card WAS hidden, and the `start` action opens it — the «was hidden» half is the case.
+      2. `setPhase('paused')` is called once, and only once even if the key is pressed again.
+      3. A cartridge with NO `setPhase` still gets the card.
+      4. 🔴 `engine:tests/boot-create-game.node.test.js` — a cartridge that declares `start` in its `preset`
+         is refused, at `createGame` AND at `mount()`, and the PAIR is there: a preset without `start`
+         passes, so a refusal written `if (preset) throw` cannot hide behind the first assertion.
+      5. The exit of the erratum: «continue» is alive in the card, clicking it closes and asks for
+         `'playing'`, and Escape closes even for a cartridge with no `setPhase`.
+      6. The three guards, each read off the code path that produces it: a panel open with the card closed
+         (the quiz's own state), the child on the accessibility bar (item 7 of ADR-0044 owns START there),
+         and the card already open.
+
+    📏 **Fourteen mutations, all red**, applied by script to the file with the occurrence count checked first.
+    They cover the listener itself, each guard, the seat resolution, the `preventDefault`, both halves of the
+    exit, and both directions of the refusal (never accuses / always accuses).
+
+    🌐 **In the browser, `dist/quiz.html` with the service worker killed**: the card opens on the `start`
+    action, closes on Escape and on «continue», and the item is live in a game that declares none of it.
+    ⚠️ Honest limit: the preview pane would not take OS keystrokes in that session, so the events were
+    dispatched inside the page — same capture→bubble chain through a real document, but not a real keypress.
+
+    ⚠️ **And one thing this record changes for the catalogue, which no surface gate can see:** `Enter` is
+    `start` in the solo scheme (`input/default-bindings:89`), so `Enter` now opens the pause. That is the
+    behaviour the monolith already had (`PAUSE_KEYS = {Escape, Enter}`), and it is why that binding was
+    declared — but a game that had grown to rely on `Enter` reaching it during play will feel it. Recorded in
+    `engine:docs/6-DevOps-SRE/Breaking-Changes.md`, because a constant that changes MEANING passes the
+    surface gate green.
 
 more-information: |
   📏 **The measurements this record rests on**, all taken 2026-09-12 in the engine at `a8abb24`:
