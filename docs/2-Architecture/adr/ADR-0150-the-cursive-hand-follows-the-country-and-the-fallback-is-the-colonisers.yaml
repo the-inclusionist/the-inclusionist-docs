@@ -21,6 +21,19 @@ metadata:
     - "ADR-0010 pilar 8 — offline-first. It is the argument the Dev used to package rather than fetch, and it
        is also what makes the size number worth writing down"
   informed: []
+  errata:
+    - date: 2026-09-12
+      what: "🔴 «Clash Display … enters the day the licence is read» — THE LICENCE HAS BEEN READ, AND IT REFUSES.
+             On its Fontshare page the family is «Closed Source / ITF Free Font License»; the licence (version
+             2.0, 17 Aug 2026) was read in full. Its §02 forbids making the file available to anyone else through a repository, an application,
+             a platform or a public server, and forbids offering it as a selectable font to third-party users,
+             even where they cannot extract it. The engine is an AGPL public repository and a library for three
+             hundred games by others, so both clauses apply. And its definition of a derivative work includes
+             converting the format, which the `.woff2` we package would already be. So the condition this record
+             set resolves to NO: what was a wait becomes a refusal with a reason, and a gate now holds it
+             (`engine:tests/fontes-empacotadas.node.test.js`). ⚠️ Only a separate written licence from Indian
+             Type Foundry (FFL §09) could lift it. ERRATUM under ADR-0057 §1: nothing decided changes; the record
+             stated a condition, and the condition has been checked."
 
 title: The cursive hand follows the country — and where there is none, the fallback is the coloniser's
 
