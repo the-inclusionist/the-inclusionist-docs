@@ -1,6 +1,12 @@
 ---
 metadata:
   status: "accepted"
+  superseded-in-part:
+    - by: ADR-0157
+      what: >-
+        §2 «the shape comes from `preset`, and from nothing else» and §3 «a game with no `preset` gets no pad». The pad
+        now always has the four directions and four action buttons, and its presses drive the menus; the engine still
+        draws it and still gives each named position the game's word.
   date: 2026-09-12
   decision-makers: [Dev]
   consulted:
