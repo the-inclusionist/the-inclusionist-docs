@@ -1,6 +1,12 @@
 ---
 metadata:
   status: "accepted"
+  superseded-in-part:
+    - by: ADR-0156
+      what: >-
+        WHICH genre list. «The pinned Wikipedia taxonomy» becomes the Dev's written transcription of it: casino
+        refused, horror discouraged, and the by-purpose and sandbox / open world sections out. Genre stays optional
+        and the cartridge still answers its accommodations.
   supersedes-in-part: [ADR-0145]
   date: 2026-09-12
   decision-makers: [Dev]
