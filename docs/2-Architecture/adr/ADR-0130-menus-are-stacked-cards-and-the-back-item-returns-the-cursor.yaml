@@ -1,6 +1,11 @@
 ---
 metadata:
   status: "accepted"
+  superseded-in-part:
+    - by: ADR-0158
+      what: >-
+        rule 1's position of «back»: it is the FIRST item of a menu, not the last, and a panel has no close button
+        after its rows. The cursor returning to the item that opened the menu stands.
   supersedes-in-part: []
   errata:
     - date: 2026-09-09
