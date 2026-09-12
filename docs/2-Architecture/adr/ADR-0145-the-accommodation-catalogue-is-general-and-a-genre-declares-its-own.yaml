@@ -18,6 +18,27 @@ metadata:
     - "ADR-0068 §6 — the template for the three hundred game repositories. A genre is the unit those three
        hundred fall into, and this record is what a genre template would carry"
   informed: []
+  errata:
+    - date: 2026-09-12
+      what: "§4's starting classification put NAVIGATION SOUND among the general entries. 📏 The study this
+             record asked for in §3 has been done — `engine:docs/1-Discovery/estudo-acomodacoes-por-genero.md`,
+             crossing all 35 categories and 380 games of the catalogue — and it measures navigation sound
+             (cane, sonar, guide) at **6 of 35 genres · 67 games · 18%**. It is GENRE-BOUND, not general.
+             ⚠️ And the reason matters more than the number: blind mode and its cane need a SPATIAL world to
+             cross. Where there is none — cards, quiz, typing, board, narrative — the same child plays through
+             NARRATION and the SPOKEN MENU INDEX, which are universal and already built. So the engine has two
+             mechanisms for one person and only one of them needs space; coverage for a child who cannot see
+             stays at 100%, by two paths rather than one. Classifying them together would have been the
+             symmetrical error to the wheelchair-in-chess one that produced this record. ERRATUM under
+             ADR-0057 §1: the DECISION — a general catalogue, a genre declaring its own — is untouched; what
+             was wrong is one line of the starting list §4 itself called «a starting point and not the answer»."
+    - date: 2026-09-12
+      what: "§4 left `oneButton` deliberately unclassified, saying it would go into the study. The study
+             settles it: **12 of 35 genres · 135 games · 36%**, and GENRE-BOUND. It has a subject where the
+             game has more than one action AND real-time pressure — arcade, shooters, runner, platformer,
+             sports, rhythm, reaction, party, fighting, local multiplayer, hybrids, and the experimental
+             corner where «one-button games» is already a sub-genre. 📌 And the rule for WHAT collapses into
+             WHAT is genre-bound too, which is why 36% does not make it general."
 
 title: The accommodation catalogue is GENERAL, and a GENRE declares its subset and its own additions
 
