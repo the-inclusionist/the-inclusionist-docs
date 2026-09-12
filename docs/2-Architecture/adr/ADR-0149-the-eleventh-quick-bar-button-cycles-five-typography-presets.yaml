@@ -18,6 +18,16 @@ metadata:
   informed: []
   errata:
     - date: 2026-09-12
+      what: "⚠️ **§2 OVERSTATED THE HOLE, and building it corrected the number.** It says the default face «has
+             no BDA spacing at all». The file says otherwise: `:root` already carried `--ls: 0.12em` /
+             `--ws: 0.16em`, which is the WCAG 2.2 §1.4.12 floor. 📏 The accurate statement is narrower and
+             still carries the decision: the BDA numbers — 0.18em / 0.63em, word ≥ 3.5× letter — lived ONLY in
+             `[data-fonte=\"dislexia\"]`, so the default face sat on the LOWER of the two floors, and sat
+             there because of a LABEL rather than a rule about faces. ✅ BUILT in `engine:6386175`: the BDA
+             numbers are the document default, the `dislexia` rule keeps only the family, and a joined face
+             returns both to `normal` through `data-cursiva`. 📌 §2's blast-radius warning stands unchanged —
+             the metrics of every screen in the catalogue moved at once."
+    - date: 2026-09-12
       what: "🔴 §5's FALLBACK is superseded. It said a tag with no region, or a country with no face, falls
              back to **Playwrite US Modern** — which is what the Dev had said at the time. He changed it the
              next day: the fallback is the COLONISER's hand, by language — Spanish → Playwrite ES,
