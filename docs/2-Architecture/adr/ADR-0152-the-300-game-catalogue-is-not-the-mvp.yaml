@@ -1,0 +1,68 @@
+---
+metadata:
+  status: "accepted"
+  supersedes-in-part: [ADR-0058]
+  date: 2026-09-12
+  decision-makers: [Dev]
+  consulted:
+    - "ADR-0058 — SUPERSEDED IN PART: §1's «`the-inclusionist-demos` — the demonstration CATALOGUE, plural, and
+       the MVP: the 300+ games of `minigames-catalog-v2.html`». The repositories, the five systems and the
+       multi-tenant boundary are untouched; only the sentence that made the 300 games the MVP goes"
+    - "ADR-0145 and the accommodation study — they used the 380 games of the catalogue as a measuring sample.
+       That use stands: a sample for studying what games need is not a commitment to build them"
+    - "ADR-0070 — the work exists by volunteering, and the 300 games had no schedule. This record removes the
+       commitment that sentence was already softening"
+  informed: []
+
+title: The 300-game catalogue is not the MVP — it stays a sample for study, not a list to build
+
+context-and-problem-statement: |
+  The engine's `CLAUDE.md` §1 and ADR-0058 §1 state that the MVP is the 300+ games of `minigames-catalog-v2.html`,
+  and that premise kept entering technical decisions as a cost: «a contract change breaks three hundred games»,
+  «three hundred games answering deliberately is the price». On 2026-09-12, answering how a cartridge declares
+  its accommodations, the Dev wrote: **«NÃO vamos fazer os 300 jogos. Guarde isso por favor.»**
+
+decision-drivers:
+  - "D1 — A COST THAT WILL NOT BE PAID IS NOT A COST. Weighing contract changes by 300 games that are not going to
+     be built bends engine decisions toward a burden nobody will carry"
+  - "D2 — THE CATALOGUE IS STILL USEFUL AS EVIDENCE: 380 games in 35 categories is a wide sample of what games
+     need, and the accommodation study already rests on it"
+
+considered-options:
+  - "A — keep the 300 games as the MVP"
+  - "B — the catalogue stops being the MVP and stays a study sample"
+
+pros-and-cons-of-the-options: |
+  **A.** ✅ Nothing to rewrite. ❌ It is not what the Dev intends, and it keeps distorting contract decisions.
+  **B.** ✅ Contract changes are weighed against the real consumers. ❌ The project has no written MVP until one
+  is decided — the sentence goes and nothing replaces it yet.
+
+decision-outcome:
+  chosen-option:
+    link: "B — the 300-game catalogue is not the MVP; it stays a sample for study"
+    justification: |
+      1. **The 300 games are not going to be made.** No record, plan or code comment should use them as the
+         cost or the reason of a decision.
+      2. **Contract changes are measured against the REAL consumers** — the game repositories that exist — which
+         is the rule `CLAUDE.md` already gives for removing a contract field.
+      3. **The catalogue stays as evidence.** Studies may keep sampling it (the accommodation study does), because
+         a sample of what games need is not a promise to build them.
+      4. ⚠️ **What the MVP IS instead is not decided here.** The Dev removed the commitment and did not name a
+         replacement; guessing one would be writing a decision he did not take.
+
+  consequences:
+    positive:
+      - "Contract decisions stop being weighed by a burden that will never exist"
+      - "The accommodation study and its scripts keep their sample"
+    negative:
+      - "The project has no written MVP until the Dev names one"
+      - "Older records, comments and plans still argue by «300 jogos»; they are history (ADR-0057) and are not
+         rewritten, so a reader has to know this record exists"
+
+  confirmation: |
+    Nothing to build. The engine's `CLAUDE.md` §1 points to this record in the same change, so the operational
+    manual stops stating the old MVP.
+
+more-information: |
+  The Dev's sentence came with the 2c answer (ADR-0153), where the «300 games» cost had been part of my
+  recommendation.

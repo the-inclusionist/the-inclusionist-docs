@@ -3,6 +3,10 @@ metadata:
   status: "accepted"
   supersedes: [ADR-0055]
   superseded-in-part:
+    - by: ADR-0152
+      what: >-
+        the MVP clause of §1 — «the 300+ games of `minigames-catalog-v2.html`». The Dev: «NÃO vamos fazer os
+        300 jogos». The catalogue stays a sample for study; what the MVP is instead is not decided.
     - by: ADR-0067
       what: "§10 — a rule about WHEN a repository is created (`when its first commit exists`). The four
              addresses it held back are created as scaffolds instead, each carrying a README that says it

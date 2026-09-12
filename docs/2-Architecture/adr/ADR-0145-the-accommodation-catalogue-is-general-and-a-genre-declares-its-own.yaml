@@ -1,6 +1,11 @@
 ---
 metadata:
   status: "accepted"
+  superseded-in-part:
+    - by: ADR-0153
+      what: >-
+        §1's genre as the unit that answers. The Dev: «Gênero não é obrigatório» and «não precisa responder todas
+        as acomodações, mas sim o cartucho, obrigatoriamente». The general catalogue and «no subject, absent» stand.
   date: 2026-09-12
   decision-makers: [Dev]
   consulted:
