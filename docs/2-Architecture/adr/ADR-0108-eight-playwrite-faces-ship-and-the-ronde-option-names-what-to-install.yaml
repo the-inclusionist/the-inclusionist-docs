@@ -5,6 +5,19 @@ metadata:
     - engine:tests/fontes-empacotadas.node.test.js
     - engine:app/js/ui/fonts.ts
   errata:
+    - date: 2026-09-12
+      what: "🔴 **P3's «nada de empacotar» is REVOKED for seven more faces, by the Dev.** This record chose to
+             bundle EIGHT and fetch the rest on demand, and asserted the rule NO FACE IS OFFERED WITHOUT A WAY
+             TO OBTAIN IT so that a ninth would force the download mechanism to be built first. 📏 It never
+             was. His decision of 2026-09-12: «estas fontes devem ser baixadas no primeiro dia para fazer
+             parte do PWA. Se valer a pena empacotar em vez de baixar, vamos empacotar» — and on this record's
+             own framing of the cost, «a palavra ‹pagar› é desproporcional pela quantidade tão baixa de
+             dados». So Playwrite ES, ES Deco, PT, GB J, GB S, CU and PE ship, and the packaged set is
+             FIFTEEN. ✅ What is NOT revoked is the rule itself: the new faces satisfy it by being packaged,
+             not by being exempted, and the prefix gate still fails a sixteenth. The reason for each of the
+             seven — the coloniser fallback, the two-hand countries, the excluded `Guides` — is **ADR-0150**.
+             ⚠️ And the negative consequence this record wrote about itself stands, only larger: the precache
+             went from 1922 KiB to 3512 KiB on the day, and it is a school on 3G that waits for it once."
     - date: 2026-09-09
       what: >-
         the confirmation listed TWO gates as «unwritable today», and both stopped being so. (a) The Ronde

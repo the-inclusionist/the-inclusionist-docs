@@ -16,6 +16,23 @@ metadata:
     - "ADR-0106 §5 — an icon is mounted when its action works. This one always works: the engine owns every
        face in the cycle"
   informed: []
+  errata:
+    - date: 2026-09-12
+      what: "🔴 §5's FALLBACK is superseded. It said a tag with no region, or a country with no face, falls
+             back to **Playwrite US Modern** — which is what the Dev had said at the time. He changed it the
+             next day: the fallback is the COLONISER's hand, by language — Spanish → Playwrite ES,
+             Portuguese → Playwrite PT, English → Playwrite GB J. 📌 It follows ADR-0012's own sentence («the
+             hand a child is taught is NATIONAL») rather than contradicting it: what that record never said is
+             what to do for the nations with no face, and «whatever the United States teaches» was a default
+             wearing a country's name. The region→face half of §5 STANDS. Full rule, the two-hand countries
+             and the packaging consequence: **ADR-0150**."
+    - date: 2026-09-12
+      what: "⚠️ §4 is NARROWED. It turned the `caligrafica` role from «never in the UI» into «never by
+             DEFAULT», which was wider than the decision needed. The Dev: «quero que abra exceção somente para
+             a Playwrite do país e os fallbacks». So Pinyon Script, UnifrakturMaguntia and Fondamento stay out
+             of the interface entirely — they are decorative, not a hand anybody is taught, and ADR-0012's
+             objection applies to them undiminished. Only the child's own national hand, and its language
+             fallback, reach position (e). In ADR-0150 §4."
 
 title: The eleventh quick-bar button cycles five typography presets — and the BDA spacing stops being Lexend's alone
 
