@@ -55,6 +55,11 @@ metadata:
              leaves: «O que esta categoria controla? Nada. Então pra que?» — a volume with nothing under it is a
              dead control (ADR-0106 §5). ERRATUM under ADR-0057 §1: the list the record transcribed was incomplete,
              and the decision — keep only what the child chooses — is what these four answers apply."
+    - date: 2026-09-12
+      what: "🔴 THE GENERAL SOUND COMES BACK, by the Dev the same day: «Ok, toggle + barra para som geral voltam.» The
+             erratum above had it leaving («Volume geral é o do computador»); it returns as the general sound switch and
+             volume at the top of the new Áudio panel (§2 item 4), not in hearing accessibility. The navigation master
+             volume stays out — it duplicated the sonar, guard and guide volumes. Built in `engine:07a1d0d`."
 
 title: The pause root is SIX items and fits 640×360 — and the settings keep only what the child chooses
 
