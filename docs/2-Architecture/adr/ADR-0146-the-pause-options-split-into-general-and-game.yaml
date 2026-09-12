@@ -18,6 +18,21 @@ metadata:
     - "ADR-0122 — «não oferecido, não declinável». What stays non-declinable is the GENERAL half; the game
        half exists exactly when the game has something to put in it"
   informed: []
+  errata:
+    - date: 2026-09-12
+      what: "🔴 **§4 IS REVOKED — the remapping panel goes to the ROOT, not into «opções gerais».** The Dev,
+             hours after this record was accepted and with the mounted card in front of him: «A opção controle
+             deve aparecer neste primeiro nível do menu de pausa». The reasoning of §4 is not contradicted, it
+             is finished: §4 argued that nesting remapping under «motora» would put it three levels deep for
+             the child who cannot reach a key, the one who plays with one hand and the one with a foreign
+             keyboard — and for those children remapping is not an option among options, it is what makes the
+             game playable at all. 📌 The new home, the rest of the root list (which goes from eight to NINE)
+             and the rule that keeps `controles` out of the engine's always-on set are in **ADR-0147**.
+             ⚠️ This is a SUPERSESSION of one clause, recorded as an erratum pointer rather than as
+             `superseded-by`, because §1–§3 and §5 of this record STAND: the two doors, the general half being
+             non-declinable, the game half mounted only when the game has something of its own, and the two
+             names not sharing a spoken prefix. Marking the whole record superseded would take those with it.
+             The precedent for an erratum used as a pointer is ADR-0021's own."
 
 title: The pause options split into «opções gerais» and «opções do jogo»
 
