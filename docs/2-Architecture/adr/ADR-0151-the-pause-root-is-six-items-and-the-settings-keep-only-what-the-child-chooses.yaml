@@ -1,6 +1,13 @@
 ---
 metadata:
   status: "accepted"
+  superseded-in-part:
+    - by: ADR-0155
+      what: >-
+        §1's «the quick bar is reached by the SELECT button» and §3's «ARASAAC and PCS … shown with the reason, not
+        hidden». START now carries the quick bar (the quick pause, with PAUSED) and SELECT opens this record's menus;
+        and the two pictogram systems are SKIPPED in the cycle. The six-item root, the seven-item submenu and every
+        removal stand.
   supersedes-in-part: [ADR-0147, ADR-0146, ADR-0149]
   date: 2026-09-12
   decision-makers: [Dev]
@@ -26,6 +33,28 @@ metadata:
     - "ADR-0115 — the latches. They leave the motor PANEL; the ☝️ quick-bar icon that toggles them stays, so no
        child loses the accommodation"
   informed: []
+  errata:
+    - date: 2026-09-12
+      what: "✅ THREE OF THE FOUR OPEN POINTS OF `more-information`, ANSWERED BY THE DEV the same day. Each was a
+             reading this record declined to guess, so filling it contradicts nothing it decided (ADR-0057 §1).
+             (1) TOUCH PAD SIZE — FOUR steps, not three, each aimed at one persona: small child (under 6), older
+             child (12), small adult, adult with large hands. Stepped with left/right like the other steppers.
+             (2) KEYBOARD FOR 3–4 PLAYERS — offered only when the game's preset names none of `leftShoulder`,
+             `leftTrigger`, `rightShoulder`, `rightTrigger`. The reason is the Dev's: in chess it lets four children
+             each play against a DIFFERENT computer opponent, «visto que o modo competitivo deve ser
+             desencorajado». Several seats is not several rivals.
+             (4) SONAR AND NARRATION — «Eu misturei sonar com narração, mas os botões devem ser separados. Erro
+             meu.» Two rows, as §2 item 3 already lists them: sonar toggle + volume, and TTS toggle + volume.
+             (3) WHAT SELECT SHOWS FOR A PRINT is answered too, but the answer MOVES the buttons, so it is not an
+             erratum: see ADR-0155."
+    - date: 2026-09-12
+      what: "✅ §2 ITEMS 3 AND 4 WERE SILENT ON FOUR ROWS THAT EXIST TODAY, and the Dev answered each. BLIND MODE
+             stays in hearing accessibility, WITHOUT its explanatory hint (the same «quem precisa sabe o que é» as
+             the sonar line). The SPOKEN INDEX stays: «Errei, não era pra tirar» — the dictated list left it out by
+             mistake. The MASTER VOLUME leaves: «Volume geral é o do computador». The `other` sound category
+             leaves: «O que esta categoria controla? Nada. Então pra que?» — a volume with nothing under it is a
+             dead control (ADR-0106 §5). ERRATUM under ADR-0057 §1: the list the record transcribed was incomplete,
+             and the decision — keep only what the child chooses — is what these four answers apply."
 
 title: The pause root is SIX items and fits 640×360 — and the settings keep only what the child chooses
 

@@ -1,6 +1,13 @@
 ---
 metadata:
   status: "accepted"
+  superseded-in-part:
+    - by: ADR-0155
+      what: >-
+        what `start` OPENS. It no longer reveals the pause card: it is the QUICK PAUSE — the game frozen, the quick
+        bar on the directional, and PAUSED at the centre of the screen — and the card is opened by `select`. That
+        `start` belongs to the engine and a cartridge may not take it (§4), and the ask for `setPhase('paused')`
+        (§2), stand.
   confirmed-by:
     - engine:app/js/boot/create-game.ts
     - engine:app/js/core/actions.ts
