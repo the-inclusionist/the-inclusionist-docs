@@ -1,6 +1,12 @@
 ---
 metadata:
   status: "accepted"
+  superseded-in-part:
+    - by: ADR-0154
+      what: >-
+        §4's «while no ronde font is present the control stays disabled». The stack falls back to Cookie, so the
+        control is never disabled; the notice naming Ronde Script, OPTIFrench-Script and Merveille stays, now as the
+        remedy for a hand that is close but not the ronde. §3 — the ronde is never packaged — stands.
   confirmed-by:
     - engine:tests/fontes-empacotadas.node.test.js
     - engine:app/js/ui/fonts.ts
