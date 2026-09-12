@@ -37,6 +37,16 @@ metadata:
     - date: 2026-09-12
       what: "📌 AND THE SLOT STAYS EMPTY, by the Dev: «Vamos ficar sem ela». No other face replaces Clash Display in the
              roster; the fifteen faces this record packaged are the whole of that request."
+    - date: 2026-09-12
+      what: "🔴 THE ERRATUM ABOVE WAS WRONG IN ITS FRAMING, and the Dev said so: «POR QUE VAGA?! VAGA DO QUE E PRA
+             QUE? Eu só pedi para deixar uma fonte na coleção, quem escolhe se usa ou não é o programador do
+             cartucho». There is no slot. The roster is a COLLECTION that a cartridge's programmer chooses from, and
+             no face in it replaces any other. What stands is only the fact: Clash Display is NOT in the collection,
+             and cannot be, because ITF FFL §02 forbids exactly the act the collection exists for — offering the face
+             as a selectable font to third parties, which a cartridge's programmer is. 📌 A cartridge may still bring
+             Clash Display itself, under a licence its authors obtain from Indian Type Foundry; the engine's rule
+             that a game can bring its own font (§2, the Guides) already covers that. ERRATUM under ADR-0057 §1: the
+             decision is unchanged, and the sentence that described it as an empty slot is withdrawn."
 
 title: The cursive hand follows the country — and where there is none, the fallback is the coloniser's
 

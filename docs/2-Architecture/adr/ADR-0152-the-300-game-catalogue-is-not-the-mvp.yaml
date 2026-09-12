@@ -13,6 +13,13 @@ metadata:
     - "ADR-0070 — the work exists by volunteering, and the 300 games had no schedule. This record removes the
        commitment that sentence was already softening"
   informed: []
+  errata:
+    - date: 2026-09-12
+      what: "📌 WHAT THE MVP IS stays open ON PURPOSE, by the Dev: «Os jogos que estarão no MVP estão em fase de
+             planejamento, deixe em aberto.» §4 below said the replacement was not decided; the sharper reading is
+             that the MVP's games are being PLANNED, so no record or plan should name them, estimate them or argue
+             from them until that planning lands in a record of its own. ERRATUM under ADR-0057 §1: nothing decided
+             changes."
 
 title: The 300-game catalogue is not the MVP — it stays a sample for study, not a list to build
 
