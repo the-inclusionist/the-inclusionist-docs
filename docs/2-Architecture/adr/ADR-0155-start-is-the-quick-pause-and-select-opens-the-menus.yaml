@@ -19,6 +19,18 @@ metadata:
     - "ADR-0113 clause 3 — `hidden` for «not offered», `aria-disabled` with a reason for «exists and is locked». A
        cycle position is neither a row nor a control on its own: skipping it is how a cycle says «not offered»"
   informed: []
+  errata:
+    - date: 2026-09-12
+      what: >-
+        ✅ THE OPEN ALTERNATIVE IS ANSWERED — «Ambos» (Dev). The menus have TWO doors: SELECT, as §2 says, AND
+        `action4` from the quick pause, announced by a legend in the footer of the frozen screen: «Ação 2: confirmar
+        · Ação 3: voltar · Ação 4: menu · START: voltar ao jogo» (localised). The legend is also what makes SELECT's
+        cost in `consequences` smaller: the frozen screen now says how to reach the menus.
+    - date: 2026-09-12
+      what: >-
+        📌 HOW PAUSED IS DRAWN, by the Dev: only the word, in WHITE, with a BLACK OUTLINE ON THE LETTERS — «Borda nas
+        letras, não numa caixa» —, no box and no border around it. The first build drew a dark rounded box; that
+        is withdrawn. The outline is also what keeps the word legible over a light scene.
 
 title: START is the quick pause — the bar over the frozen game, and PAUSED — and SELECT opens the menus
 
