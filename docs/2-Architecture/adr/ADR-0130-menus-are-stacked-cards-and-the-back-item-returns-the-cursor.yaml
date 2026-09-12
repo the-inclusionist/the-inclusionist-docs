@@ -24,6 +24,17 @@ metadata:
         📌 The cost of the mistake is concrete and is why it is worth writing down: `accepted` tells the next
         reader the question is closed, so being wrong would have cost a supersession — a second record and a
         back-pointer — where a hypothesis merely stops being one.
+    - date: 2026-09-12
+      what: >-
+        🔴 RULE 3 IS REVISED BY THE DEV, in the paragraph the erratum above reserved for exactly this. Reading a built
+        stepper — the label on the left, a separate «◀ small ▶» box on the right — he wrote: «Não faça essa coisa
+        estranha. Escreva "< Rounded corner: off >" e ao apertar para direita, "< Rounded corner: small >" e ao
+        apertar mais uma vez "< Rounded corner: large >". Este é o jeito certo de ciclar entre quantidade de opções
+        pequenas, e não por radio buttons agrupado como sugeri em ADR anterior. Acima de cinco itens deve ser
+        dropdown.» So rule 3 now reads: FIVE OR FEWER exclusive options are ONE CYCLE ROW whose whole text is
+        «◀ Label: value ▶», stepped with left/right and by the arrows; MORE THAN FIVE are a dropdown. No radio
+        group. The threshold — five — is the Dev's, and stops being a hypothesis; the gate in the confirmation reads
+        «five or fewer are cycle rows» instead of «radios».
   date: 2026-09-09
   decision-makers: [Dev]
   consulted:
