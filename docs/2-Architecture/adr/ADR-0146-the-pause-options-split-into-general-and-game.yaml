@@ -1,6 +1,11 @@
 ---
 metadata:
   status: "accepted"
+  superseded-in-part:
+    - by: ADR-0151
+      what: >-
+        the §3 name. «Configurações» becomes «Configurações de inclusão»; «Opções do jogo» stays, and the split
+        between what travels with the child and what belongs to the game is untouched.
   date: 2026-09-12
   decision-makers: [Dev]
   consulted:

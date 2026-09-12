@@ -1,6 +1,12 @@
 ---
 metadata:
   status: "accepted"
+  superseded-in-part:
+    - by: ADR-0151
+      what: >-
+        the NINE-item root. Nine overflow the 640×360 target by 64 px (measured), and the Dev cut the root to
+        six: «Acessibilidade» goes to the SELECT button, «Print» goes with it, and «Ajuda — Como jogar» moves
+        up. The engine actioning its own items (resume, help, quit) stands.
   date: 2026-09-12
   decision-makers: [Dev]
   consulted:
