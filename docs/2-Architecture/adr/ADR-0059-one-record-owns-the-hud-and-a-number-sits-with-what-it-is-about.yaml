@@ -1,6 +1,11 @@
 ---
 metadata:
   status: "accepted"
+  superseded-in-part:
+    - by: ADR-0168
+      what: "ONLY who builds the HUD (the engine mounts it; the game declares its numbers by band) and two addresses — the
+             clock moves to the top right, right of the quick bar; the learning bars sit centred in the footer, covered by
+             the explanation band when it shows. The RULE of §1 and the other addresses stay"
   date: 2026-09-04
   supersedes-in-part: [ADR-0049, ADR-0050]
   decision-makers: [Dev]

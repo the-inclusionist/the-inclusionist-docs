@@ -7,7 +7,8 @@ whatever comes next (ADR-0123, which decides this and declares this address).
 ## What is here today
 
 ```
-docs/2-Architecture/adr/     123 records (YADR) + README.md, the index
+docs/2-Architecture/adr/     the records (YADR) — one-way doors — + README.md, the index
+docs/2-Architecture/interface-log.md   the two-way doors of the interface, dated entries (ADR-0172)
 scripts/validate-adr.py      the validator: form, supersession pairs, and `confirmed-by`
 .github/workflows/ci.yml     the gate that runs it on every push
 ```

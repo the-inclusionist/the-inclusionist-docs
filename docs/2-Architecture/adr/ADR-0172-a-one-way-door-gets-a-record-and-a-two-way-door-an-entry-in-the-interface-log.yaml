@@ -1,0 +1,66 @@
+---
+metadata:
+  status: "accepted"
+  date: 2026-09-13
+  decision-makers: [Dev]
+  consulted:
+    - "M. Fowler, «Who Needs an Architect?», IEEE Software (2003) — architecture is the decisions that are hard to change"
+    - "J. Bezos, one-way and two-way doors"
+    - "`CLAUDE.md` §0 — a confirmed decision gets a durable home in the same turn: an ADR when architectural, otherwise
+       the canonical document"
+    - "ADR-0057 (supersession) and ADR-0128 (the two tempos of a record)"
+    - "the study of engineering principles delivered to the Dev on 2026-09-13, candidate 4"
+  informed: []
+
+title: A one-way door gets a record; a two-way door gets a dated entry in the interface log
+
+context-and-problem-statement: |
+  The Dev, on 2026-09-13, on the four candidates of the principles study: «As quatro.»
+
+  📏 Measured: 167 records, 113 of them written in September, 66 carrying a supersession marker. The visible numbering of
+  menu items lived one day (ADR-0158 → ADR-0167); the on-screen pad went through three records in two days (ADR-0157 →
+  0162 → 0166). They were interface choices a commit can reverse, carried with the full machinery of an architectural
+  record — supersession, pointers, an index row, a validator. `CLAUDE.md` §0 already says a non-architectural decision
+  goes to the canonical document; for the interface there was none, so everything became a record.
+
+decision-drivers:
+  - "D1 — THE COST OF A RECORD MATCHES THE COST OF REVERSING WHAT IT RECORDS"
+  - "D2 — NOTHING THE DEV DECIDES IS LOST. The durable home stays, same turn; only its form changes"
+
+considered-options:
+  - "A — every decision is a record"
+  - "B — a one-way door is a record; a two-way door is a dated entry in a log"
+
+pros-and-cons-of-the-options: |
+  **A.** ✅ One mechanism. ❌ Measured: records that live a day, and supersession chains for layout choices.
+  **B.** ✅ Records stay for what is costly to undo. ❌ Two homes, and the line between them is a judgement.
+
+decision-outcome:
+  chosen-option:
+    link: "B — records for one-way doors, the interface log for two-way doors"
+    justification: |
+      1. **A ONE-WAY DOOR is a record (ADR)**: what is costly to reverse once games or children depend on it — the
+         cartridge contract and the public surface (ADR-0170), persisted storage keys and their scopes, package names and
+         repository topology, licences, privacy and data, the pillars.
+      2. **A TWO-WAY DOOR is a dated entry in `docs/2-Architecture/interface-log.md`**: a choice of the interface a commit
+         can reverse — layout, order, wording, which items show, spacing. The entry quotes the Dev, says what was
+         decided, and names the commit or issue. It is written in the same turn, as a record would be.
+      3. **A two-way door that changes gets a new dated entry below the old one**; the old one stays, with no supersession
+         bookkeeping. The log is read top to bottom, newest last.
+      4. **When in doubt, a record.** The line is a judgement, and a record costs less than a lost decision.
+      5. **The records already written stay as they are** — they are the history of those days; this applies from now on.
+
+  consequences:
+    positive:
+      - "Records keep the weight of what is hard to undo"
+      - "Interface decisions stay quick to write and quick to change, and are still never lost"
+    negative:
+      - "Two homes to search for a decision, and a judgement at each"
+
+  confirmation: |
+    ⚠️ NOT BUILT YET. The log exists from this record's commit; its first entries are the next interface decisions.
+    `CLAUDE.md` §0 is updated to point here.
+
+more-information: |
+  This refines `CLAUDE.md` §0 rather than revoking it: «decisão confirmada ganha lar durável no mesmo turno» stays; the
+  architectural half keeps the record, the interface half gets the log that did not exist.

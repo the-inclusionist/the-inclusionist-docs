@@ -1,0 +1,62 @@
+---
+metadata:
+  status: "accepted"
+  date: 2026-09-13
+  decision-makers: [Dev]
+  consulted:
+    - "B. Kernighan and P. Plauger, «The Elements of Programming Style» (1974) — code is read far more than written;
+       comments explain why, not what"
+    - "P. Naur, «Programming as Theory Building» (1985) — the program is a theory; the code is its artefact"
+    - "`CLAUDE.md` §6 — «fato duplicado apodrece»; ADR-0057 — a record that keeps arguing a dead position argues against
+       the Dev again"
+    - "the study of engineering principles delivered to the Dev on 2026-09-13, candidate 3"
+  informed: []
+
+title: A code comment says the current why — the history of a decision lives in its commit and its record
+
+context-and-problem-statement: |
+  The Dev, on 2026-09-13, on the four candidates of the principles study: «As quatro.»
+
+  📏 Measured: `engine:app/js/boot/create-game.ts` has 2 920 lines, 50% of them comment, and much of it narrates dated
+  measurements («📏 Measured on 2026-09-12…») already in a commit message and a record. In the same day a comment was
+  removed that still argued `idiomaPronto()` did not use `i18n:change` «on purpose» — the opposite of what the code had
+  come to do. A comment that outlives its decision argues against the code, the failure ADR-0057 names for records.
+
+decision-drivers:
+  - "D1 — ONE HOME PER FACT. The measurement and the decision are in the commit and the record; a third copy drifts"
+  - "D2 — THE READER OF CODE NEEDS THE PRESENT. Why this line is as it is now, not the path it took"
+
+considered-options:
+  - "A — keep writing the history into comments"
+  - "B — a comment says the current why and points to its record or commit; the history stays there"
+
+pros-and-cons-of-the-options: |
+  **A.** ✅ Everything in one file. ❌ Measured: half a 2 920-line file, and a comment contradicting its code.
+  **B.** ✅ A comment stays true while its code does. ❌ A reader follows a pointer for the story.
+
+decision-outcome:
+  chosen-option:
+    link: "B — the current why in the comment; the history in commit and record"
+    justification: |
+      1. **A comment says why the code is as it is NOW** — the constraint, the trap it avoids, the rule it applies — in as
+         few sentences as that takes, and names the record or issue (`ADR-0163`, `#160`) where the decision lives.
+      2. **The measurement, the dates, the earlier versions and the defects on the way go to the commit message and the
+         record**, which already carry them. A comment does not retell them.
+      3. **When a decision changes, its comments change in the same commit** — rewritten to the new why, never left
+         describing the old one.
+      4. **Existing comments are trimmed when their code is next touched**, not in a sweep: a cleanup commit across the
+         tree would be the unreviewable diff the same study warns about.
+
+  consequences:
+    positive:
+      - "A comment is true as long as its code"
+      - "Files shrink to their code and its reasons"
+    negative:
+      - "The reasoning a reader used to find inline is one pointer away"
+
+  confirmation: |
+    ⚠️ NOT BUILT YET — **issue #165** in `the-inclusionist-engine`. The rule is applied commit by commit; the
+    issue tracks the share of comment in `create-game.ts` falling as it is touched.
+
+more-information: |
+  This rule is about code comments. The records keep their full reasoning — that is where it belongs.
