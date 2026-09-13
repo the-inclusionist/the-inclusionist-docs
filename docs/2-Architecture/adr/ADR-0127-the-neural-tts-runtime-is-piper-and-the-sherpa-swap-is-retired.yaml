@@ -3,6 +3,8 @@ metadata:
   status: "accepted"
   supersedes-in-part: [ADR-0065]
   superseded-in-part:
+    - by: ADR-0184
+      what: "ONLY where the runtime comes from: its download-catalogue entries leave, since the game bundles the provider and onnxruntime; piper stays the voice"
     - by: ADR-0132
       what: >-
         the clause naming what would bring sherpa back — «mintplex actually deprecated, a locale piper cannot

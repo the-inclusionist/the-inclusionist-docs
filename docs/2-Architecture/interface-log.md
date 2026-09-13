@@ -44,3 +44,7 @@ measured and named, since those are the ones to reduce. Issue #172.
 fixed 2600 ms; it now stays 500 ms a word (120 words a minute, the low end of the BBC subtitle guidelines' rate for children's
 programmes), never under 2600 ms. `engine:2bd2826`. A reading-pace preference for early readers would be a stored setting,
 and is a question, not this entry.
+
+## 2026-09-13 · The quick bar sits on the screen's top edge; speed and toggle keys are two buttons
+
+Asked where the game speed goes: «No painel de acessibilidade rápida (ícone de dedo, já existe no Platformer inclusive). Importante: eleve este painel para que compartilhe a borda com a tela e ceda mais pixels para o restante do jogo.» And, on reading that the finger icon's panel would hold the speed: «De forma alguma. Um botão para alternância e outro para velocidade.» The quick bar loses its 10 px from the top and sits on the edge, giving that room to the game; the game speed is its own ⏳ button (ADR-0180), beside ☝️ toggle keys. Issue #176.

@@ -1,6 +1,9 @@
 ---
 metadata:
   status: "accepted"
+  superseded-in-part:
+    - by: ADR-0179
+      what: "ONLY on a window where the whole multiple gives under 2 CSS px per logical pixel (a fractional display scale at the 640×360 minimum): the scale is exactly 2 CSS px, whole in real pixels or not, and the 2× minimum is counted in CSS pixels"
   errata:
     - date: 2026-07-04
       what: "corrects the first version of this ADR (v4.147.2), which was wrong — see more-information. This
