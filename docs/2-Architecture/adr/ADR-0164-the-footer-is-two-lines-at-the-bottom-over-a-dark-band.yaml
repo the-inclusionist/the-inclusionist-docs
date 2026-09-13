@@ -2,6 +2,9 @@
 metadata:
   status: "accepted"
   date: 2026-09-12
+  errata:
+    - date: 2026-09-12
+      what: "📌 THE BUTTON LEGEND ON THE PAUSE CARD (SELECT), measured to cover the card's last 44 px items at 640×360, is built as rule 3 says: the Dev, asked what gives, «Nada por enquanto. Primeiro implemente, depois eu analiso.»"
   decision-makers: [Dev]
   consulted:
     - "`CLAUDE.md` §4 — the three zones: the explanation lives in the FOOTER"

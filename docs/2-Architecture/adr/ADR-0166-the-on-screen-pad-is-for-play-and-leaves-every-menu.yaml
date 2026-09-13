@@ -3,6 +3,9 @@ metadata:
   status: "accepted"
   supersedes-in-part: [ADR-0157, ADR-0162]
   date: 2026-09-12
+  errata:
+    - date: 2026-09-12
+      what: "✅ THE OPEN POINT, ANSWERED BY THE DEV the same day, and the quiz's choice with it; both fill what this record left open (ADR-0057 §1). (1) QUICK PAUSE (START): the pad does NOT leave it — asked «o controle na tela também some nela?», the Dev: «Não.» Rule 2 covers the pause card and the panels, not the quick pause. (2) THE QUIZ asks for no on-screen pad («Sim»), and gets instead a MENU button of its own that opens the menus — «não faz sentido pausar um quiz»."
   decision-makers: [Dev]
   consulted:
     - "ADR-0157 — SUPERSEDED IN PART: §2 «a pad press drives the menus» and the #151 rule that the pad stays in view above
