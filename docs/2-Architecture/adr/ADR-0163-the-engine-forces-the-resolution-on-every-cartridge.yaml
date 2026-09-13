@@ -3,6 +3,9 @@ metadata:
   status: "accepted"
   supersedes-in-part: [ADR-0095]
   date: 2026-09-12
+  errata:
+    - date: 2026-09-12
+      what: "📌 MIS-RECORDED CONSEQUENCE. «On a window smaller than 640×360 the region does not shrink: the page scrolls (ADR-0001 already accepted this)» is false twice: the stylesheet carries the Dev's older rule «A página NUNCA rola (José)» (`body{overflow:hidden}`), and measured on 2026-09-12 in dist/quiz.html at 512×300 CSS (1024×600 at 200% zoom) the region is CUT — 64 px per side and 32 px top and bottom — with no scroll. At 683×384 (1366×768 at 200%) and 640×400 (1280×800 at 200%) it fits within ADR-0001's tolerance. What happens under 640×360 CSS is not decided: it is a question to the Dev (ADR-0159 rule 11 asks for no two-direction scrolling)."
   decision-makers: [Dev]
   consulted:
     - "ADR-0001 — the rule itself: 320×180 art, integer multiples of REAL pixels, at least 640×360, and a crop tolerance
