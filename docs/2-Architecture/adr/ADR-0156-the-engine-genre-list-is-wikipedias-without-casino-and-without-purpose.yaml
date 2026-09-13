@@ -1,6 +1,14 @@
 ---
 metadata:
   status: "accepted"
+  confirmed-by:
+    - engine:tests/generos.node.test.js
+    - engine:tests/boot-create-game.node.test.js
+  errata:
+    - date: 2026-09-13
+      what: "✅ CONFIRMED, pushed (issue #149 closed, `engine:5f0fd96`): `core/genres` holds exactly §1 in the Dev's order and
+             spelling and nothing from §4; `createGame` and `mount` refuse Casino game with the reason and any name outside
+             the list; Horror game boots and `problems` carries its «avoid» mark and why."
   supersedes-in-part: [ADR-0153]
   date: 2026-09-12
   decision-makers: [Dev]
@@ -86,7 +94,7 @@ decision-outcome:
          history now, and its genre-keyed measurements do not describe this list"
 
   confirmation: |
-    ⚠️ NOT BUILT YET — **issue #149** in `the-inclusionist-engine` (the optional genre). Gates, named now: the list in
+    The gates in `confirmed-by` (issue #149, closed). Gates, named now: the list in
     the engine is exactly §1 and nothing from §4; a cartridge declaring Casino game is refused with the reason; Horror
     game is accepted and carries its «avoid» mark; an unknown or §4 genre is refused as not in the list.
 

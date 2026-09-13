@@ -1,6 +1,19 @@
 ---
 metadata:
   status: "accepted"
+  confirmed-by:
+    - engine:tests/accommodations.node.test.js
+    - engine:tests/boot-create-game.node.test.js
+    - engine:tests/accommodation-subjects.node.test.js
+    - engine:tests/acomodacoes-montam-pela-resposta.browser.test.js
+  errata:
+    - date: 2026-09-13
+      what: "✅ CONFIRMED IN PART, pushed (issue #149 closed): a cartridge without the answer, or with one key missing, is
+             refused at boot (`engine:aa6f724`, `bae1ef1`); the fifteen contract-keyed accommodations are derived
+             (`22e1170`); what the cartridge says does not apply is absent from the document and does not leak into the next
+             cartridge; what applies carries the game's word (`160508a`). ⚠️ NOT BUILT, and not owed: the genre pre-fill. The
+             answer is complete and mandatory, and ADR-0156 made the genre a classification a cartridge may declare, so there
+             is nothing for a genre to fill."
   superseded-in-part:
     - by: ADR-0156
       what: >-
@@ -84,8 +97,7 @@ decision-outcome:
          `AccommodationPreset` — partial by design — has to grow a way to say «does not apply»"
 
   confirmation: |
-    ⚠️ NOT BUILT YET, so there is no `confirmed-by`. The work is **issue #149** in `the-inclusionist-engine`
-    (phase 2c). The gates, named now: a cartridge without the answer is REFUSED at boot; a GAME_KEYED entry the
+    The gates in `confirmed-by` (issue #149, closed). The gates, named now: a cartridge without the answer is REFUSED at boot; a GAME_KEYED entry the
     cartridge says does not apply is ABSENT from the document; one it says applies carries its word; a genre
     pre-fill is overridden by the cartridge's answer; two cartridges in one page do not leak answers (ADR-0142).
 
