@@ -27,3 +27,13 @@ alone (WCAG 1.4.1): green a dot, red stripes, an empty slot only its outline, a 
 Shown the demo page of the HUD (three ten-segment bars centred in the footer, Okabe-Ito with a cue besides colour): «As barras
 de ganho na parte de baixo estão bem posicionadas e num tamanho bom, aprovo.» The bars of `engine:a998e33` stay. The rest of
 that demo's layout changed by a record (ADR-0175).
+
+## 2026-09-13 · A face with a 20 px floor enlarges its own text, not the whole document
+
+Shown that at 640×360 the quiz's last option drops into the footer when a face with a 20 px floor (text 25% larger) is
+chosen, with three things that could yield — the gap between options, the footer band while no explanation shows, or the
+face enlarging only its own text: «Apertando ctrl + - até o zoom chegar a 25% a fonte não diminuiu de tamanho mais uma série
+de espaços sim, mantendo o design muito bom. Quais espaços diminuiram? Seja quais forem, estes é que devem ser atacados. Por
+isso minha intuição diz que a face de piso 20 deve aumentar só o próprio texto, sem aumentar o documento inteiro.» The floor
+scale applies to text, not to spacing; and the spaces that shrink under browser zoom-out while text holds its floor are
+measured and named, since those are the ones to reduce. Issue #172.

@@ -2,6 +2,17 @@
 metadata:
   status: "accepted"
   date: 2026-09-13
+  errata:
+    - date: 2026-09-13
+      what: "✅ POINT 7, THE OPEN ONE, ANSWERED BY THE DEV the same day. Asked whether the engine packages only the reading
+             menu's faces and a cartridge declares and fetches the rest at build: «Engine empacota tudo por enquanto.» The
+             engine packages every `ativo` family (R4 still keeps `removida` and `referencia_externa` out). ⚠️ «Por enquanto»
+             is the Dev's: the weight — 166 families not packaged yet, 60.2 MB as full TTF, before subsetting — is measured
+             again when packaged, against pillar 1. Fills what point 7 left open (ADR-0057 §1)."
+    - date: 2026-09-13
+      what: "✅ COVERAGE NOT MEASURED — iA Writer Quattro and OpenDyslexic have `cobertura: null` in the catalogue. Asked whether
+             they stay in the menu until measured: «Ficam.» Point 5 reads `cobertura`; a face whose coverage is null stays
+             offered, named as not verified, until the catalogue measures it. Fills what point 5 left open."
   decision-makers: [Dev]
   consulted:
     - "`engine:catalogo_tipografico.json` and `engine:catalogo_tipografico_INSTRUCOES.md` — written by the Dev; 260 families,
