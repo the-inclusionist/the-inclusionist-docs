@@ -1,6 +1,10 @@
 ---
 metadata:
   status: "accepted"
+  superseded-in-part:
+    - by: ADR-0167
+      what: "ONLY rule 4's «every option with its number» and rule 5's «items are numbered» — no item shows a number; the
+             options are read «Gato, 1 de 4», the rule-1 form"
   date: 2026-09-12
   errata:
     - date: 2026-09-13

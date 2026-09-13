@@ -1,6 +1,10 @@
 ---
 metadata:
   status: "accepted"
+  superseded-in-part:
+    - by: ADR-0167
+      what: "ONLY items 1–3's NUMBERS — no item shows a number, and «N de M» is spoken after the name (the quiz reads
+             «Gato, 1 de 4»); item 4, «Voltar» first with no «Fechar», stays"
   supersedes-in-part: [ADR-0130]
   date: 2026-09-12
   decision-makers: [Dev]
