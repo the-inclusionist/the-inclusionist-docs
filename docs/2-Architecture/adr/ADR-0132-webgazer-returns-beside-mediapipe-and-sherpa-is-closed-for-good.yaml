@@ -1,6 +1,11 @@
 ---
 metadata:
   status: "accepted"
+  superseded-in-part:
+    - by: ADR-0186
+      what: >-
+        «sherpa-onnx is closed, WITH KOKORO-MULTI-LANG» — Kokoro returns, through the browser runtime with WebGPU, and is a
+        default engine beside Piper. sherpa-onnx stays closed.
   supersedes-in-part: [ADR-0124, ADR-0127]
   date: 2026-09-09
   decision-makers: [Dev]

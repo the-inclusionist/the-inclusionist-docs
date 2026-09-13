@@ -1,6 +1,11 @@
 ---
 metadata:
   status: "accepted"
+  superseded-in-part:
+    - by: ADR-0186
+      what: >-
+        Kokoro as an AVAILABLE extra. Kokoro and Piper are both default engines; a Kokoro voice is still listed only
+        where it runs (§2 stands).
   supersedes-in-part: [ADR-0151, ADR-0183]
   date: 2026-09-13
   decision-makers: [Dev]

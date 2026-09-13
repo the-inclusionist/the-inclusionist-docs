@@ -7,6 +7,10 @@ metadata:
     - engine:tests/vozes-prontas.node.test.js
     - engine:tests/pesados.node.test.js
   superseded-in-part:
+    - by: ADR-0186
+      what: >-
+        the four PIPER voices as the whole guarantee. The engine guarantees Kokoro's voices beside them, both engines
+        default; the four Piper voices stand.
     - by: ADR-0117
       what: >-
         the LOCUS of the fetch — «the engine fetches them itself on first boot» meant each GAME's boot,
