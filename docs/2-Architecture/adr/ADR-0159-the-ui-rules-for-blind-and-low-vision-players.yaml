@@ -2,6 +2,24 @@
 metadata:
   status: "accepted"
   date: 2026-09-12
+  errata:
+    - date: 2026-09-13
+      what: "✅ **RULE 2 — WHICH INPUT REPEATS THE ITEM, answered by the Dev.** The rule said «from any input, the virtual
+             pad included», and ADR-0166 took the pad out of every menu. The Dev: «Deixar o dedo apertado ou o botão do
+             mouse apertado sobre o item deve dar a função de posicionar o cursor sem \"apertar\".» A press HELD on an
+             item puts the cursor there and speaks it, and releasing does not activate it; a short press still does.
+             📌 The hold threshold is 500 ms, the long-press default of iOS
+             (`UILongPressGestureRecognizer.minimumPressDuration`, 0.5 s). Keyboard and gamepad
+             keep reaching the item by moving to it."
+    - date: 2026-09-13
+      what: "✅ **RULE 11 — 200% TEXT, answered by the Dev**, and the negative consequence «meeting it will need reflow
+             and scrolling» no longer applies. The Dev: «como a resolução mínima é 640x360 e nesta resolução o texto já
+             está no tamanho 16 (WCAG 2.2 AA), uma vez que a resolução da maioria dos aparelhos é igual ou superior ao
+             dobro desta (1280x720) já atendemos ao pedido de 200% de aumento desde que o jogador jogue sozinho em seu
+             PC, em um tablet ou em um celular.» 📌 So the 200% is met by the ENGINE'S SCALE (ADR-0163: text grows with
+             the integer multiple, 16 px at 640×360 and 32 px at 1280×720), not by browser zoom reflow; below 640×360
+             CSS the region stays cut as ADR-0163's erratum records, and the page never scrolls. ⚠️ The Dev's own
+             boundary is part of the answer: ONE player on their own screen — split seats are not claimed."
   decision-makers: [Dev]
   consulted:
     - "Xbox Accessibility Guidelines 106 (screen narration), 112 (UI navigation), 101 (text display), 102 (contrast),

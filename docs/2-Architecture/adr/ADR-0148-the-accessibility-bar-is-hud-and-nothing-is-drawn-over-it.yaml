@@ -51,6 +51,14 @@ metadata:
              does not. ⚠️ But the bar is no longer ten seats: **ADR-0149 adds an ELEVENTH**, a typography cycle,
              at the Dev's request. The count in §1's table is the measurement of 2026-09-12 and stays as the
              record of that day; the roster it belongs to now lives in that record."
+    - date: 2026-09-13
+      what: "✅ **§3's reserved rectangle, answered by the Dev for the icon's NAME.** Measured in the quiz: while an icon
+             is pointed at, its name (the line under the row, on a dark chip) falls over the quiz statement, because
+             `--barra-a11y-h` counts the row and not that line; at 640×360 there are 4 px to spare. Asked whether it
+             may stay, the Dev: «Não, é necessário que exista um leve espaçamento abaixo da barra de acessibilidade
+             rápida.» 📌 Built as: the reserved region is the row, the name line under it, and a light gap — nothing of
+             the game starts before its end. ⚠️ The consequence at 640×360 (the quiz's options pushed toward the
+             footer) is measured when built and reported, not assumed. Fills what §3 left open (ADR-0057 §1)."
 
 title: The accessibility bar is HUD — it owns its space, and it mounts the icons that work
 
