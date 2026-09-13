@@ -3,6 +3,13 @@ metadata:
   status: "accepted"
   supersedes-in-part: [ADR-0059]
   date: 2026-09-13
+  errata:
+    - date: 2026-09-13
+      what: "✅ POINT 5, THE OPEN ONE, ANSWERED BY THE DEV the same day. Asked how the clock and the round band share the top
+             right: «Não. Superpoder e contador de objetivo ficam ABAIXO da barra de acessibilidade rápida.» The top right
+             corner is the clock's alone; the round band (super-power, a round's objective counter) sits BELOW the quick
+             bar. ⚠️ Below the bar is also the room issue #160 reserves for the pointed icon's name and a light gap — where
+             exactly the round band starts is measured when built. Fills what point 5 left open (ADR-0057 §1)."
   decision-makers: [Dev]
   consulted:
     - "ADR-0059 — SUPERSEDED IN PART: who builds the HUD (each game did) and two addresses — the clock at the top CENTRE and
