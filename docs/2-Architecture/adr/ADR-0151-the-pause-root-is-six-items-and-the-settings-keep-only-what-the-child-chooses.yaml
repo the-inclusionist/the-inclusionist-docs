@@ -38,6 +38,13 @@ metadata:
        child loses the accommodation"
   informed: []
   errata:
+    - date: 2026-09-13
+      what: "THE EMPATHY LIST, AS THE DEV NAMED IT. §2 item 2 read «blur, fog, tunnel, tunnel vision, central scotoma,
+             scattered scotomas», and asked whether «tunnel» and «tunnel vision» were two, the Dev listed the visual
+             simulations: «protano, deuterano, tritanopia, desfoque, névoa, visão de túnel, mancha central, manchas
+             dispersas e cegueira total» — one tunnel; the others: «perda auditiva (fracos abafados e agudos cortados), e
+             motora (um dedo / um botão por vez, dificuldade para segurar)». 📏 The engine's list is these nine, and its
+             hearing loss cuts the highs and muffles the weak sounds. Fills what the item left ambiguous (ADR-0057 §1)."
     - date: 2026-09-12
       what: "✅ THREE OF THE FOUR OPEN POINTS OF `more-information`, ANSWERED BY THE DEV the same day. Each was a
              reading this record declined to guess, so filling it contradicts nothing it decided (ADR-0057 §1).
