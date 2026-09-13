@@ -48,3 +48,7 @@ and is a question, not this entry.
 ## 2026-09-13 · The quick bar sits on the screen's top edge; speed and toggle keys are two buttons
 
 Asked where the game speed goes: «No painel de acessibilidade rápida (ícone de dedo, já existe no Platformer inclusive). Importante: eleve este painel para que compartilhe a borda com a tela e ceda mais pixels para o restante do jogo.» And, on reading that the finger icon's panel would hold the speed: «De forma alguma. Um botão para alternância e outro para velocidade.» The quick bar loses its 10 px from the top and sits on the edge, giving that room to the game; the game speed is its own ⏳ button (ADR-0180), beside ☝️ toggle keys. Issue #176.
+
+## 2026-09-13 · «Voz» sits after the narration volume
+
+⚠️ The row is the Dev's (ADR-0185); its PLACE was chosen while building and NOT YET SEEN by the Dev. «Voz» follows «Volume da narração» and precedes «Índice falado dos menus», so the voice block reads switch, volume, voice. Names shown are the middle of the provider's id («Faber», «Ryan», «Amy», «Claude»). `engine:9d0f5e5`, issue #180.
