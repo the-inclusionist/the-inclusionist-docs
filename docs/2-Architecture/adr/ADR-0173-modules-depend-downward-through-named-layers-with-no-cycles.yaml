@@ -1,6 +1,13 @@
 ---
 metadata:
   status: "accepted"
+  confirmed-by:
+    - engine:tests/direcao-das-dependencias.node.test.js
+  errata:
+    - date: 2026-09-13
+      what: "✅ CONFIRMED, pushed. The gate landed in `engine:2ee0d7c` with nine imports as named debt; all nine were paid the
+             same day (`engine:7d3f50e`, `2674264`, `d7e4131`, `bf4c831`, `371017d`, `61ed77f` — the last two by ADR-0174 and
+             ADR-0178) and the debt list is empty. Issue #167 closed."
   date: 2026-09-13
   decision-makers: [Dev]
   consulted:
@@ -67,8 +74,8 @@ decision-outcome:
       - "Nine imports to move, each a small refactor (inject, or move the helper down)"
 
   confirmation: |
-    ⚠️ NOT BUILT YET — **issue #167** in `the-inclusionist-engine`. Gates: no module cycle; no import from a
-    lower layer to a higher one outside the listed debt; the debt list has no entry that no longer exists.
+    `tests/direcao-das-dependencias.node.test.js` (issue #167, closed): no module cycle; no import from a lower layer to a
+    higher one outside the listed debt; the debt list has no entry that no longer exists. The debt list is empty.
 
 more-information: |
   The plan stays the plan (`engine:docs/5-Refactoring/plano-modularizacao.md`); this record is the rule it argued for,

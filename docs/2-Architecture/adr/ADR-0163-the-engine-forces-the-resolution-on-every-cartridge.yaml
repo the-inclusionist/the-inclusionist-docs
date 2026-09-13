@@ -2,8 +2,21 @@
 metadata:
   status: "accepted"
   supersedes-in-part: [ADR-0095]
+  confirmed-by:
+    - engine:tests/resolucao-imposta.browser.test.js
+    - engine:tests/pausa-44px.browser.test.js
+    - engine:tests/texto-cresce-com-a-escala.browser.test.js
+    - engine:tests/texto-nunca-abaixo-de-16.node.test.js
+    - engine:tests/piso-de-tamanho-da-fonte.node.test.js
+    - engine:tests/abaixo-do-piso.node.test.js
+    - engine:tests/quiz-abaixo-da-barra.browser.test.js
   date: 2026-09-12
   errata:
+    - date: 2026-09-13
+      what: "✅ CONFIRMED, pushed (issue #156 closed): the region (`engine:337b16a`), the 44 px floor growing with the scale
+             (`6142618`, quiz `0972387`), text growing with the scale (`afdae7e`), no text under 16 px nor in rem (`2d3e24d`),
+             a cartridge that resizes the region (`2683f80`) or draws under the floor (`99d307e`) named in `problems`. Under
+             640×360 CSS the region stays cut, the Dev's answer recorded in ADR-0159's erratum on rule 11."
     - date: 2026-09-12
       what: "📌 MIS-RECORDED CONSEQUENCE. «On a window smaller than 640×360 the region does not shrink: the page scrolls (ADR-0001 already accepted this)» is false twice: the stylesheet carries the Dev's older rule «A página NUNCA rola (José)» (`body{overflow:hidden}`), and measured on 2026-09-12 in dist/quiz.html at 512×300 CSS (1024×600 at 200% zoom) the region is CUT — 64 px per side and 32 px top and bottom — with no scroll. At 683×384 (1366×768 at 200%) and 640×400 (1280×800 at 200%) it fits within ADR-0001's tolerance. What happens under 640×360 CSS is not decided: it is a question to the Dev (ADR-0159 rule 11 asks for no two-direction scrolling)."
   decision-makers: [Dev]
@@ -65,10 +78,10 @@ decision-outcome:
       - "The 18 stylesheet declarations under 1em must each be raised or justified"
 
   confirmation: |
-    ⚠️ NOT BUILT YET — **issue #156** in `the-inclusionist-engine`. Gates, in a browser at several window sizes and
-    device pixel ratios: the region is an integer multiple of 320×180 in real pixels, never under 640×360, within the
-    crop tolerance; no engine target under 44 px; no computed font size under 16 px in engine UI; a cartridge that
-    resizes the region is named in `problems`.
+    The gates in `confirmed-by` (issue #156, closed), in a browser at several window sizes and device pixel ratios: the
+    region is an integer multiple of 320×180 in real pixels, never under 640×360, within the crop tolerance; no engine
+    target under 44 px; no computed font size under 16 px in engine UI; a cartridge that resizes the region, or draws text
+    or targets under the floor, is named in `problems`.
 
 more-information: |
   The Dev first wrote 42 px and corrected it the same day to 44 px; the record carries the correction. Built so far: the region (`engine:337b16a`), the 44 px floor (`engine:6142618`) and the quiz options (`engine:0972387`).

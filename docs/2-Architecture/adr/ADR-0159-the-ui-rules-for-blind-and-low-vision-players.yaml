@@ -6,7 +6,27 @@ metadata:
       what: "ONLY rule 4's «every option with its number» and rule 5's «items are numbered» — no item shows a number; the
              options are read «Gato, 1 de 4», the rule-1 form"
   date: 2026-09-12
+  confirmed-by:
+    - engine:tests/menu-nav.browser.test.js
+    - engine:tests/segurar-posiciona-o-cursor.browser.test.js
+    - engine:tests/menus-anunciam-contexto.browser.test.js
+    - engine:tests/quiz-le-as-opcoes.browser.test.js
+    - engine:tests/itens-sem-numero.browser.test.js
+    - engine:tests/rotulos-sem-parenteses.node.test.js
+    - engine:tests/settings-empathy.browser.test.js
+    - engine:tests/contraste-dos-menus.browser.test.js
+    - engine:tests/foco-visivel.browser.test.js
+    - engine:tests/estado-nao-so-por-cor.browser.test.js
+    - engine:tests/resolucao-imposta.browser.test.js
+    - engine:tests/menus-sem-glifo-no-nome.browser.test.js
   errata:
+    - date: 2026-09-13
+      what: "✅ CONFIRMED, pushed (issue #153 closed): one gate per rule — 1 and 5 `menu-nav` (label, role, value, «N de M»
+             spoken; linear, wrapping, «Voltar» first) with `itens-sem-numero` after ADR-0167; 2 the held press; 3 context
+             announcements; 4 options read after the statement; 6 labels without parentheses; 7 the empathy dropdown; 8
+             contrast; 9 focus indicator; 10 state not by colour alone; 11 the engine's integer scale; 12 no glyph in a name.
+             ⚠️ Rule 9 carries one open measurement: the SELECT legend covers 19 px of submenu item 7 at 640×360, which
+             the Dev analyses. The `NOT BUILT AS A WHOLE` confirmation below is history of 2026-09-12."
     - date: 2026-09-13
       what: "✅ **RULE 2 — WHICH INPUT REPEATS THE ITEM, answered by the Dev.** The rule said «from any input, the virtual
              pad included», and ADR-0166 took the pad out of every menu. The Dev: «Deixar o dedo apertado ou o botão do
@@ -140,8 +160,7 @@ decision-outcome:
          in one direction, measured, not assumed"
 
   confirmation: |
-    ⚠️ NOT BUILT AS A WHOLE — **issue #153** in `the-inclusionist-engine` carries the gates, one per rule. What is known
-    on 2026-09-12, and what is not:
+    The gates in `confirmed-by`, one per rule (issue #153, closed). What was known on 2026-09-12, before they were built:
       · MET, measured: the ring (rule 5, ADR-0044); the spoken index «N de M» (rule 1, part); the footer for step rows
         (rule 6, `engine:4a877ef`); the quiz statement below the bar (rule 6, `engine:cd3e0c1`); the 7:1 top contrast
         level (rule 8).

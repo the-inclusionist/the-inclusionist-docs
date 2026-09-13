@@ -1,6 +1,17 @@
 ---
 metadata:
   status: "accepted"
+  confirmed-by:
+    - engine:tests/superficie-da-pagina.node.test.js
+    - engine:tests/exports-sem-consumidor.node.test.js
+    - engine:docs/6-DevOps-SRE/public-page-surface.json
+    - engine:docs/6-DevOps-SRE/exports-without-consumer.json
+  errata:
+    - date: 2026-09-13
+      what: "✅ CONFIRMED, pushed (`engine:79814bf`, issue #164). Two readings the record left open, filled as built: TYPES are
+             outside the export check (a type costs no bytes and is judged by the public-shape gate), and a TEST counts as a
+             consumer — an export only a gate reads is still read. The page surface lists 8 variables, 14 classes, 6 ids,
+             5 `data-*` attributes and 8 keys, each with a reader measured in the sibling games or a record."
   date: 2026-09-13
   decision-makers: [Dev]
   consulted:
@@ -59,8 +70,8 @@ decision-outcome:
       - "A second list to keep beside the TypeScript snapshot"
 
   confirmation: |
-    ⚠️ NOT BUILT YET — **issue #164** in `the-inclusionist-engine`. Gates: the listed CSS variables, classes and
-    attributes are all still written; a new export without a named consumer is flagged.
+    `tests/superficie-da-pagina.node.test.js` and `tests/exports-sem-consumidor.node.test.js` (issue #164, closed): the listed
+    CSS variables, classes and attributes are all still written; a new export without a named consumer is flagged.
 
 more-information: |
   Parnas' question — «what does this module hide?» — is the test for point 3: an export that only exposes an internal
