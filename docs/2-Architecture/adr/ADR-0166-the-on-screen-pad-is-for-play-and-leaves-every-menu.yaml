@@ -1,9 +1,16 @@
 ---
 metadata:
   status: "accepted"
+  confirmed-by:
+    - engine:tests/controle-virtual-no-arranque.browser.test.js
+    - engine:tests/quiz-abaixo-da-barra.browser.test.js
   supersedes-in-part: [ADR-0157, ADR-0162]
   date: 2026-09-12
   errata:
+    - date: 2026-09-13
+      what: "✅ CONFIRMED, pushed (issue #159 closed; `engine:5025be2`, `e7aa5ee`): a cartridge that does not ask for the pad
+             gets none; the pad hides in the card and panels and returns in play; the quick pause keeps it (the Dev's
+             answer); the quiz, without a pad, has a Menu button; «Controller size» shows only with a pad."
     - date: 2026-09-12
       what: "✅ THE OPEN POINT, ANSWERED BY THE DEV the same day, and the quiz's choice with it; both fill what this record left open (ADR-0057 §1). (1) QUICK PAUSE (START): the pad does NOT leave it — asked «o controle na tela também some nela?», the Dev: «Não.» Rule 2 covers the pause card and the panels, not the quick pause. (2) THE QUIZ asks for no on-screen pad («Sim»), and gets instead a MENU button of its own that opens the menus — «não faz sentido pausar um quiz»."
   decision-makers: [Dev]
@@ -61,7 +68,7 @@ decision-outcome:
          pad — the cartridge's choice carries that"
 
   confirmation: |
-    ⚠️ NOT BUILT YET — **issue #159** in `the-inclusionist-engine`. Gates: a cartridge that does not ask for the pad gets
+    The gates in `confirmed-by` (issue #159, closed). Gates: a cartridge that does not ask for the pad gets
     none; with the pad, opening the pause card or a panel hides it and returning to play shows it; in a menu a touch on
     an item activates it; a keyboard arrow still moves the cursor with the pad hidden.
 

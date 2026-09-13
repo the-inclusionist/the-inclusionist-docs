@@ -1,6 +1,13 @@
 ---
 metadata:
   status: "accepted"
+  confirmed-by:
+    - engine:tests/hud-montado-pela-engine.browser.test.js
+  errata:
+    - date: 2026-09-13
+      what: "✅ CONFIRMED, pushed (issue #162 closed, `engine:bf828a9`): points and mission in the left column, the power in
+             the right column under where the clock goes, neither column reaching the quick bar; the bands `mission` and
+             `power` replace `round`. The clock itself is issue #94."
   supersedes-in-part: [ADR-0168]
   date: 2026-09-13
   decision-makers: [Dev]
@@ -55,7 +62,7 @@ decision-outcome:
       - "A game declares two bands where it declared one"
 
   confirmation: |
-    ⚠️ NOT BUILT YET — **issue #162** (reopened by this record in the engine's commits). Gates: the mission sits under the
+    The gates in `confirmed-by` (issue #162, closed). Gates: the mission sits under the
     points on the left, the power top right, neither column reaches the quick bar, and the game's room holds both.
 
 more-information: |

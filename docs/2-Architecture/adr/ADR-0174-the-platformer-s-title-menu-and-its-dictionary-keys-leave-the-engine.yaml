@@ -1,6 +1,15 @@
 ---
 metadata:
   status: "accepted"
+  confirmed-by:
+    - engine:tests/direcao-das-dependencias.node.test.js
+  errata:
+    - date: 2026-09-13
+      what: "✅ CONFIRMED, pushed (issue #171 closed): no engine module imports `educational` (`engine:371017d`, the
+             dependency gate); 161 keys left the engine's dictionaries and 15 stay because pages, tests or key prefixes name
+             them. The platformer carries the menu and its 176 keys (`game-platformer:636aa5b`, `e327b6e`; its gates
+             `tests/chaves-do-jogo.node.test.js` and `tests/activities-menu.node.test.js`, named here because the validator
+             admits no `game-platformer` prefix)."
   date: 2026-09-13
   decision-makers: [Dev]
   consulted:
@@ -55,7 +64,7 @@ decision-outcome:
       - "The platformer edits its code to take the next major version"
 
   confirmation: |
-    ⚠️ NOT BUILT YET — **issue #171** in `the-inclusionist-engine`. Gates: no engine module imports `educational`; no key of
+    The gates in `confirmed-by` (issue #171, closed). Gates: no engine module imports `educational`; no key of
     the engine's dictionaries is used by one sibling game alone and by no engine code (measured against the catalogue).
 
 more-information: |

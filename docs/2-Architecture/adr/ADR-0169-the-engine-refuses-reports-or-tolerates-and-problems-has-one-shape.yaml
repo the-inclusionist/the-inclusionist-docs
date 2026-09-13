@@ -1,6 +1,12 @@
 ---
 metadata:
   status: "accepted"
+  confirmed-by:
+    - engine:tests/boot-create-game.node.test.js
+  errata:
+    - date: 2026-09-13
+      what: "✅ CONFIRMED, pushed (issue #163 closed, `engine:55eb3a4`): the thirteen Portuguese lines of `problems` are
+             English, and each line names its subject, the cost to the child and the fix."
   date: 2026-09-13
   decision-makers: [Dev]
   consulted:
@@ -58,7 +64,7 @@ decision-outcome:
       - "The Portuguese lines change VALUE — a cartridge that matched their text must match the new one (migration note)"
 
   confirmation: |
-    ⚠️ NOT BUILT YET — **issue #163** in `the-inclusionist-engine`. Gates: no line of `problems` in Portuguese
+    The gates in `confirmed-by` (issue #163, closed). Gates: no line of `problems` in Portuguese
     (the pillar-3 raw-text gate already counts engine literals); each line names its subject and a fix.
 
 more-information: |

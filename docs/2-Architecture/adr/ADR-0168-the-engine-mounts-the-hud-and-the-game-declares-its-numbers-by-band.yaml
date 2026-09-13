@@ -1,6 +1,8 @@
 ---
 metadata:
   status: "accepted"
+  confirmed-by:
+    - engine:tests/hud-montado-pela-engine.browser.test.js
   supersedes-in-part: [ADR-0059]
   superseded-in-part:
     - by: ADR-0175
@@ -9,6 +11,11 @@ metadata:
              bars stay"
   date: 2026-09-13
   errata:
+    - date: 2026-09-13
+      what: "✅ CONFIRMED IN PART, pushed (issue #162 closed; `engine:2e83917`, `a998e33`, `84360fc`): the engine mounts the
+             HUD from the numbers the game declares by band, and the learning bars sit centred in the footer under the
+             explanation. ⚠️ NOT BUILT: the clock — nothing in the engine keeps a session's duration, so there is no producer
+             to mount (issue #94). The placement of the round band changed by ADR-0175."
     - date: 2026-09-13
       what: "✅ POINT 5, THE OPEN ONE, ANSWERED BY THE DEV the same day. Asked how the clock and the round band share the top
              right: «Não. Superpoder e contador de objetivo ficam ABAIXO da barra de acessibilidade rápida.» The top right
@@ -75,7 +82,7 @@ decision-outcome:
       - "The learning bars are hidden while an explanation shows"
 
   confirmation: |
-    ⚠️ NOT BUILT YET — **issue #162** in `the-inclusionist-engine`. Gates: a game that declares numbers gets them
+    The gates in `confirmed-by` (issue #162, closed). Gates: a game that declares numbers gets them
     in their bands without drawing a HUD; the clock sits right of the quick bar and intersects it nowhere; the learning bars
     sit centred in the footer and the explanation band covers them when shown.
 

@@ -1,8 +1,16 @@
 ---
 metadata:
   status: "accepted"
+  confirmed-by:
+    - engine:tests/barra-legenda-e-rodape.browser.test.js
+    - engine:tests/rodape-do-painel.browser.test.js
   date: 2026-09-12
   errata:
+    - date: 2026-09-13
+      what: "✅ CONFIRMED, pushed (issue #157 closed; `engine:5034980`, `d8f2426`, `1f4b863`): the footer spans the region at
+             its bottom edge over a dark band with at most two lines, the panels' explanation lives there, and the button
+             legend sits above it — in the SELECT card too, where at 640×360 it covers 19 px of submenu item 7 (the Dev
+             analyses)."
     - date: 2026-09-12
       what: "📌 THE BUTTON LEGEND ON THE PAUSE CARD (SELECT), measured to cover the card's last 44 px items at 640×360, is built as rule 3 says: the Dev, asked what gives, «Nada por enquanto. Primeiro implemente, depois eu analiso.»"
   decision-makers: [Dev]
@@ -63,7 +71,7 @@ decision-outcome:
       - "Explanations written for more room (some run three lines at 640×360) must be shortened"
 
   confirmation: |
-    ⚠️ NOT BUILT YET — **issue #157** in `the-inclusionist-engine`. Gates, on the real stylesheet at 640×360: the footer's
+    The gates in `confirmed-by` (issue #157, closed). Gates, on the real stylesheet at 640×360: the footer's
     bottom edge is the region's bottom edge and it spans the region's full width, for the screen footer and a panel's
     explanation alike; an explanation has a dark band, the button legend has none and a dark background behind each name;
     the button legend shows on the quick pause and changes on the menus; a caption sits above the explanation; each is at

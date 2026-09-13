@@ -1,6 +1,13 @@
 ---
 metadata:
   status: "accepted"
+  confirmed-by:
+    - engine:tests/controle-virtual-no-arranque.browser.test.js
+    - engine:tests/touch.browser.test.js
+  errata:
+    - date: 2026-09-13
+      what: "✅ CONFIRMED, pushed (issue #154 closed): the actions sit 1 4 over 2 3 (`engine:7981f6c`); the shoulders in the
+             top corners with the trigger over the bumper, wired through a touch transport of 13 slots (`engine:757392a`)."
   date: 2026-09-12
   decision-makers: [Dev]
   consulted:
@@ -49,7 +56,7 @@ decision-outcome:
       - "The action block needs two rows of the pad's height"
 
   confirmation: |
-    ⚠️ NOT BUILT YET — **issue #154** in `the-inclusionist-engine`. Gates: measured positions of the four action
+    The gates in `confirmed-by` (issue #154, closed). Gates: measured positions of the four action
     buttons (1 and 4 above 2 and 3; 1 and 2 left of 4 and 3), and of the shoulder buttons (L2 above L1 in the top-left
     corner, R2 above R1 in the top-right corner), on the real stylesheet.
 

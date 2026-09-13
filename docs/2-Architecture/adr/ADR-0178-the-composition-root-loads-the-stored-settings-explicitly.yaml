@@ -1,6 +1,14 @@
 ---
 metadata:
   status: "accepted"
+  confirmed-by:
+    - engine:tests/estado-carregado-pela-raiz.node.test.js
+    - engine:tests/estado-carregado-no-arranque.browser.test.js
+  errata:
+    - date: 2026-09-13
+      what: "✅ CONFIRMED, pushed (issue #174 closed, `engine:61ed77f`): `core` imports no storage; the root loads the stored
+             settings before anything reads them; a write before the load throws, naming the setter, and a setter asks for
+             the port before changing anything."
   date: 2026-09-13
   decision-makers: [Dev]
   consulted:
@@ -54,7 +62,7 @@ decision-outcome:
       - "A break for every root that reads settings before calling `createGame`"
 
   confirmation: |
-    ⚠️ NOT BUILT YET — **issue #174** in `the-inclusionist-engine`. Gates: `core` imports no storage; a write before the load
+    The gates in `confirmed-by` (issue #174, closed). Gates: `core` imports no storage; a write before the load
     throws; after the load, the stored values are the ones read.
 
 more-information: |

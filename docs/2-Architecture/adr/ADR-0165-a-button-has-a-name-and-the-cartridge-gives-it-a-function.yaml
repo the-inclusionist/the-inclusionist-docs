@@ -1,6 +1,12 @@
 ---
 metadata:
   status: "accepted"
+  confirmed-by:
+    - engine:tests/controle-virtual-no-arranque.browser.test.js
+  errata:
+    - date: 2026-09-13
+      what: "✅ CONFIRMED, pushed (issue #158 closed, `engine:32a1348`): the button's face is its name and its accessible name
+             is «name, function»; the game's word goes to the legend."
   supersedes-in-part: [ADR-0143, ADR-0162]
   date: 2026-09-12
   decision-makers: [Dev]
@@ -57,7 +63,7 @@ decision-outcome:
       - "A child who reads but does not open the legend sees «2» and not what it does"
 
   confirmation: |
-    ⚠️ NOT BUILT YET — **issue #158** in `the-inclusionist-engine`. Gates: a preset labelling action 2 «Confirm» draws a
+    The gates in `confirmed-by` (issue #158, closed). Gates: a preset labelling action 2 «Confirm» draws a
     button whose face text is «2» and never the label; its accessible name holds both; the legend reads «2: Confirm»; a
     position with no function is not drawn.
 

@@ -1,6 +1,16 @@
 ---
 metadata:
   status: "accepted"
+  confirmed-by:
+    - engine:tests/panel-shell.browser.test.js
+    - engine:tests/quiz-le-as-opcoes.browser.test.js
+    - engine:tests/rotulos-sem-parenteses.node.test.js
+  errata:
+    - date: 2026-09-13
+      what: "✅ CONFIRMED IN PART, pushed (issue #152 closed; `engine:e2d3225`, `d662f52`, `5196de7`, `ab7ffa7`): «Voltar» is
+             the first control with no close button after the rows, the quiz reads its options after the statement, and
+             labels carry no parentheses. The visible numbers of items 1–3 were superseded by ADR-0167: nothing shows a
+             number, the position is spoken."
   superseded-in-part:
     - by: ADR-0167
       what: "ONLY items 1–3's NUMBERS — no item shows a number, and «N de M» is spoken after the name (the quiz reads
@@ -70,7 +80,7 @@ decision-outcome:
       - "Every settings panel changes its shell: the close button at the bottom goes, and «Voltar» becomes the first row"
 
   confirmation: |
-    ⚠️ NOT BUILT YET — **issue #152** in `the-inclusionist-engine`. Gates: every item of the pause root
+    The gates in `confirmed-by` (issue #152, closed). Gates: every item of the pause root
     and submenu shows 1..n in order; the quiz options show 1..n; with narration on, opening a question narrates the
     statement and then «1 <option>, 2 <option>, …»; the pause card still fits 640×360; every engine panel has «Voltar» as
     its first item and no close button after its rows.
