@@ -66,3 +66,6 @@ decision-outcome:
     device pixel ratios: the region is an integer multiple of 320×180 in real pixels, never under 640×360, within the
     crop tolerance; no engine target under 44 px; no computed font size under 16 px in engine UI; a cartridge that
     resizes the region is named in `problems`.
+
+more-information: |
+  The Dev first wrote 42 px and corrected it the same day to 44 px; the record carries the correction. Built so far: the region (`engine:337b16a`), the 44 px floor (`engine:6142618`) and the quiz options (`engine:0972387`).

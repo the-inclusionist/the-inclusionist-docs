@@ -2,6 +2,8 @@
 metadata:
   status: "accepted"
   superseded-in-part:
+    - by: ADR-0161
+      what: "ONLY §5 for the pause card — an item with no action is shown locked with its reason, not hidden. The icons of the quick bar still follow §5"
     - by: ADR-0120
       what: >-
         the COLLISION this record named in its `more-information` and deliberately left open — «COLLIDES WITH

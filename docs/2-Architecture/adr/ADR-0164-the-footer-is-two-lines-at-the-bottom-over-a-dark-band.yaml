@@ -65,3 +65,6 @@ decision-outcome:
     explanation alike; an explanation has a dark band, the button legend has none and a dark background behind each name;
     the button legend shows on the quick pause and changes on the menus; a caption sits above the explanation; each is at
     most two lines; nothing intersects the workspace rows it would have covered.
+
+more-information: |
+  First cut in `engine:5034980`, before the Dev's three platformer screenshots; rules 1 and 3–4 came from them and are what issue #157 still owes.

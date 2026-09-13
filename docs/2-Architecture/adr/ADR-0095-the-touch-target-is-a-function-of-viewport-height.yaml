@@ -1,6 +1,9 @@
 ---
 metadata:
   status: "accepted"
+  superseded-in-part:
+    - by: ADR-0163
+      what: "The ruler by viewport height (24 / 34 px under 720). The engine forces the resolution, and the floor is 22 × k — 44 px at 640×360"
   # A régua saiu do registo para a folha de estilo em 07/09 (issue #117): `layout()` escreve `--alvo-min` e
   # o `.pm-btn` lê-o. O gate traz também o ESPAÇAMENTO que este registo nomeia — e anota, com número, que
   # ele não se deixa reprovar baixando a régua, porque a altura real do item vem do `padding` e da

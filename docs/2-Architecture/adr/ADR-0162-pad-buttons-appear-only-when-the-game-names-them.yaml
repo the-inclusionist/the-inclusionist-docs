@@ -1,6 +1,11 @@
 ---
 metadata:
   status: "accepted"
+  superseded-in-part:
+    - by: ADR-0166
+      what: "Whether a game has an on-screen pad at all — the cartridge asks for it"
+    - by: ADR-0165
+      what: "The reading of «names» — a button appears when the cartridge gives it a FUNCTION, and its face shows its own name"
   supersedes-in-part: [ADR-0157]
   date: 2026-09-12
   decision-makers: [Dev]
@@ -56,3 +61,6 @@ decision-outcome:
     ⚠️ NOT BUILT YET — **issue #154** in `the-inclusionist-engine`. Gates: a preset naming two actions draws those two
     buttons and no other; a named shoulder is drawn in its ADR-0160 corner and an unnamed one is not; SELECT and START
     are drawn in a game with no preset; the quiz declares its positions and its menus are navigable by touch.
+
+more-information: |
+  Built in `engine:7981f6c` and `engine:757392a`. What a button SAYS was later separated from whether it appears (ADR-0165), and whether a game has a pad at all (ADR-0166).

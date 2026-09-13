@@ -2,6 +2,8 @@
 metadata:
   status: "accepted"
   superseded-in-part:
+    - by: ADR-0165
+      what: "ONLY §2, «each button carries the game's word» — the face shows the button's name, the word is its function in the legend"
     - by: ADR-0157
       what: >-
         §2 «the shape comes from `preset`, and from nothing else» and §3 «a game with no `preset` gets no pad». The pad

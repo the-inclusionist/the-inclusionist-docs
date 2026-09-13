@@ -1,6 +1,11 @@
 ---
 metadata:
   status: "accepted"
+  superseded-in-part:
+    - by: ADR-0166
+      what: "ONLY §2 and the #151 rule that the pad stays over the menus — menus are touched directly and the pad leaves them"
+    - by: ADR-0162
+      what: "ONLY §1, the minimum pad — a button appears only when the game gives it a function"
   supersedes-in-part: [ADR-0143]
   date: 2026-09-12
   decision-makers: [Dev]

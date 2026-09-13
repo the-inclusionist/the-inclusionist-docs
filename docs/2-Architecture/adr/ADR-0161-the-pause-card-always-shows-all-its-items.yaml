@@ -63,3 +63,6 @@ decision-outcome:
     ⚠️ NOT BUILT YET — **issue #155** in `the-inclusionist-engine`. Gates: in a game that declares nothing, the root shows
     the six items in order and the submenu the seven; an item with no action is `aria-disabled`, not hidden, and
     activating it announces its reason without acting; «Conforto auditivo» names the former «Áudio» panel.
+
+more-information: |
+  The locked items and their reasons were built in `engine:f13c8e4`; the Visual and Empathy panels that unlocked two of them in `engine:f16bb63` and `engine:b6037e4`.
