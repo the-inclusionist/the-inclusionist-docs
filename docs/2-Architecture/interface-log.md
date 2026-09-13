@@ -13,3 +13,11 @@ issue. A changed decision gets a new entry below; the old one stays. Newest last
 
 Asked whether the quiz may keep its options 4 px apart with 2 px to spare above the footer (the cost of reserving the
 icon-name line under the quick bar, issue #160): «Ficou bom». The spacing of `engine:4f111ec` stays.
+
+## 2026-09-13 · The HUD's look: dark chips, and the learning bar's cues besides colour
+
+⚠️ Chosen while building issue #162 and NOT YET SEEN by the Dev — no Dev words to quote. Identity and round numbers are
+text on the same dark chip as the icon's name; the learning bar's segments are Okabe-Ito (blue #0072B2, green #009E73,
+red #D55E00; a purple #CC79A7 or orange #E69F00 bar covers them), with a second cue each so no state is told by colour
+alone (WCAG 1.4.1): green a dot, red stripes, an empty slot only its outline, a purple bar ▲ and an orange one ▼.
+`engine:2e83917`, `engine:a998e33`.
