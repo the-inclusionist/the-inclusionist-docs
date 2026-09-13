@@ -1,6 +1,11 @@
 ---
 metadata:
   status: "accepted"
+  superseded-in-part:
+    - by: ADR-0185
+      what: >-
+        §3's «at least two voices to choose from». The list holds the voices that speak the child's language, which
+        today is one in Portuguese and one in Spanish.
   date: 2026-09-13
   decision-makers: [Dev]
   consulted:

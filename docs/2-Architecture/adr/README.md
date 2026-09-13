@@ -277,6 +277,7 @@ One file per deliberate architectural decision, in **YADR** format — the YAML 
 | [ADR-0182](ADR-0182-the-cartridge-declares-its-game-options-as-rows-and-the-engine-draws-them.yaml) | **O cartucho declara as opções do jogo como linhas, e a engine as desenha.** O Dev: «Sim, para manter a identidade visual». Painel próprio só em casos especiais. Issue #178. |
 | [ADR-0183](ADR-0183-the-child-sets-the-pace-of-speech-and-captions.yaml) | **A criança escolhe o ritmo da fala e das legendas.** Fala 150–500 ppm de 35 em 35, volume, vozes com Kokoro fp32 (WebGPU); legenda 125/145/175 ppm, pesquisas revistas (175 não é conforto medido). Issue #179. |
 | [ADR-0184](ADR-0184-the-voice-runtime-leaves-the-download-catalogue.yaml) | **O runtime de voz sai do catálogo de descargas; roda o que o jogo empacota.** O Dev: «Se o que roda é o que o jogo empacota, tire estas entradas». Supersede em parte o ADR-0127. Issue #173. |
+| [ADR-0185](ADR-0185-the-child-picks-the-voice-among-those-that-speak-the-language.yaml) | **A criança escolhe a voz, entre as que falam o idioma.** Lista suspensa na Auditiva com as vozes Piper do idioma e as Kokoro fp32 que podem rodar; sem voz, narração, volume, índice falado, voz e o botão da barra ficam travados com o motivo. Supersede em parte os ADR-0151 e ADR-0183. Issue #180. |
 
 > ADRs 0011–0019 replaced the informal `REGISTRO-DE-DECISOES.md` log (a decision is an ADR). The exhaustive per-row
 > detail of the old log is in git history; these ADRs carry the decisions + rationale.

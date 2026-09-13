@@ -8,6 +8,10 @@ metadata:
         hidden». START now carries the quick bar (the quick pause, with PAUSED) and SELECT opens this record's menus;
         and the two pictogram systems are SKIPPED in the cycle. The six-item root, the seven-item submenu and every
         removal stand.
+    - by: ADR-0185
+      what: >-
+        §2's removal of the voice row («quem escolhe a voz é o jogo»). The hearing panel lists the voices that speak
+        the child's language, and locks the speech rows with the reason when none does.
   supersedes-in-part: [ADR-0147, ADR-0146, ADR-0149]
   date: 2026-09-12
   decision-makers: [Dev]
