@@ -2,6 +2,13 @@
 metadata:
   status: "accepted"
   date: 2026-09-13
+  errata:
+    - date: 2026-09-13
+      what: "§2 AND THE CONFIRMATION CITED A SUPERSEDED RULE. «The door appears only when the cartridge declared at least one
+             row (ADR-0146 §2)» — but ADR-0161 had already made the card show its six root items always, an item with nothing
+             behind it locked with its reason. The door is LIVE when the cartridge declares at least one row; with none it stays
+             on the card, locked, and says «Este jogo não tem opções próprias». The gate reads «a cartridge declaring none gets
+             the door locked with its reason». Found while building issue #178."
   decision-makers: [Dev]
   consulted:
     - "ADR-0146 — «opções do jogo» opens what this game declared; the record did not fix the declaration's form"
