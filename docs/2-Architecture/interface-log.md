@@ -21,3 +21,9 @@ text on the same dark chip as the icon's name; the learning bar's segments are O
 red #D55E00; a purple #CC79A7 or orange #E69F00 bar covers them), with a second cue each so no state is told by colour
 alone (WCAG 1.4.1): green a dot, red stripes, an empty slot only its outline, a purple bar ▲ and an orange one ▼.
 `engine:2e83917`, `engine:a998e33`.
+
+## 2026-09-13 · The learning bars: position and size approved
+
+Shown the demo page of the HUD (three ten-segment bars centred in the footer, Okabe-Ito with a cue besides colour): «As barras
+de ganho na parte de baixo estão bem posicionadas e num tamanho bom, aprovo.» The bars of `engine:a998e33` stay. The rest of
+that demo's layout changed by a record (ADR-0175).
