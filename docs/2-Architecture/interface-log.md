@@ -37,3 +37,10 @@ de espaços sim, mantendo o design muito bom. Quais espaços diminuiram? Seja qu
 isso minha intuição diz que a face de piso 20 deve aumentar só o próprio texto, sem aumentar o documento inteiro.» The floor
 scale applies to text, not to spacing; and the spaces that shrink under browser zoom-out while text holds its floor are
 measured and named, since those are the ones to reduce. Issue #172.
+
+## 2026-09-13 · A sound caption stays for its words
+
+⚠️ Chosen while building plan phase 5c and NOT YET SEEN by the Dev — no Dev words to quote. The sound caption left after a
+fixed 2600 ms; it now stays 500 ms a word (120 words a minute, the low end of the BBC subtitle guidelines' rate for children's
+programmes), never under 2600 ms. `engine:2bd2826`. A reading-pace preference for early readers would be a stored setting,
+and is a question, not this entry.
