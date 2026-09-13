@@ -1,6 +1,7 @@
 ---
 metadata:
   status: "accepted"
+  supersedes-in-part: [ADR-0150]
   date: 2026-09-13
   errata:
     - date: 2026-09-13
