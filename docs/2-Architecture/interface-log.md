@@ -80,3 +80,10 @@ would be a contract field, not drawn here. `engine:e9a24d1`.
 ⚠️ The slide's LAYOUT was chosen while building ADR-0195 and is NOT YET SEEN by the Dev. A cartridge's slide shows its figure on
 top (up to 16 em wide, 7 em tall) and its text under it, with the same arrows and dots as the button slides; the game's slides
 come first. The house quiz tells how to play in two slides, the second animating the marked option down. `engine:a85bfee`.
+
+## 2026-09-14 · «Ritmo da fala» sits after the narration volume, and starts at 150 PPM
+
+⚠️ The rate is the Dev's (ADR-0183 §1); its PLACE and its DEFAULT were chosen while building and are NOT YET SEEN by the Dev. The
+row is a list («150 PPM» … «500 PPM», eleven steps) after «Volume da narração», before «Voz». It starts at 150, the slowest step,
+as the caption rate starts at its slowest; at 150 the Faber voice (255 PPM of speech, measured) plays at about 0.59×.
+`engine:c3a0097`, issue #179.
