@@ -294,6 +294,7 @@ One file per deliberate architectural decision, in **YADR** format — the YAML 
 | [ADR-0199](ADR-0199-webcam-face-and-eyes-second-mappings.yaml) | **Webcam: rosto e olhos, segundos mapeamentos.** Boca aberta desce, bico confirma, inclinar para baixo não comanda; olhar para cima/baixo + piscar sobe/desce. Mãos ficam. Supersede em parte ADR-0197 §3–§4. Issue #189. |
 | [ADR-0200](ADR-0200-web-speech-first-neural-as-fallback.yaml) | **Web Speech primeiro; vozes e reconhecedores neurais são o recuo.** Síntese e reconhecimento pelo navegador onde houver, medido no aparelho; ⚠️ em aberto: só no aparelho ou também no servidor do Chrome. Supersede em parte ADR-0186 e ADR-0190. Issue #190. |
 | [ADR-0201](ADR-0201-reading-recognisers-moonshine-where-it-speaks-whisper-for-portuguese.yaml) | **Leitura: Moonshine onde fala a língua (en, es), Whisper só para pt.** Testar Whisper tiny/base/small e Moonshine base/small em inglês; ⚠️ em aberto: qual Moonshine espanhol (licença comunitária × MIT sem ONNX). Supersede em parte ADR-0190. Issue #185. |
+| [ADR-0202](ADR-0202-webcam-eyes-a-look-and-a-blink-pattern.yaml) | **Webcam: olhos — um olhar e um padrão de piscada.** Cima/baixo + duas piscadas sobe/desce; cima/baixo/frente + piscada lenta confirma/volta/menu; uma piscada não comanda. Supersede em parte ADR-0199. Issue #189. |
 
 > ADRs 0011–0019 replaced the informal `REGISTRO-DE-DECISOES.md` log (a decision is an ADR). The exhaustive per-row
 > detail of the old log is in git history; these ADRs carry the decisions + rationale.

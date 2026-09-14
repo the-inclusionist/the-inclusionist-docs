@@ -1,6 +1,11 @@
 ---
 metadata:
   status: "accepted"
+  superseded-in-part:
+    - by: ADR-0202
+      what: >-
+        §3 and §4's eye mappings, and the reading that one quick blink commands. Look up or down and blink twice → up or down; look up,
+        down or ahead and blink slowly → confirm, back or menu; one quick blink commands nothing.
   supersedes-in-part: [ADR-0197]
   date: 2026-09-14
   decision-makers: [Dev]
