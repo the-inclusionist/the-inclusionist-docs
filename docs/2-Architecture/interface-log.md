@@ -56,3 +56,21 @@ Asked where the game speed goes: «No painel de acessibilidade rápida (ícone d
 ## 2026-09-13 · Rates read «125 PPM», and a menu is not a manual
 
 «Em acessibilidade visual, o ritmo das legendas está com a explicação no lugar errado. E você deve abreviar palavras por minuto para PPM. Menu não é manual de instruções.» A rate's value is «125 PPM» (WPM in English), and a row's explanation is one short sentence, in the footer. `engine:` the commit after `e61d571`, issue #179.
+
+## 2026-09-13 · A settings panel wears the pause card, and every menu card has one height
+
+«Ao clicar em configurações de inclusão, o menu mantem a mesma altura e identidade visual. Para além disso, todos os submenus
+estão com outra identidade visual, com alturas menores, título maior e cores diferentes. Corrija.» A panel takes the pause card as
+it is — the whole height, the dark card with the gold border, the gold title at the text size, rows in the pause items' fill,
+border and radius with 2 px gaps — and is at least the pause card's width, wider only when a steps row needs it (the visual
+panel, 602 px at 640×360, because of the BDA spacing). The root card, whose six items had shrunk it 46 px, holds the whole height
+too. The panel runs under the explanation band, and its last row scrolls above it. `engine:d5b4c10`, `engine:36ca8d6`.
+
+## 2026-09-13 · The help is a slide show
+
+«Ao clicar em ajuda a tela se assemelha a um menu e inclusive tem um botão "restaurar padrões deste menu" quando na verdade deveria
+conter uma "apresentação de slides" (textos, figuras e no máximo animações).» One slide per position the game names: the child's
+key drawn as a key cap that presses itself now and then (off under reduced motion), the game's word and its sentence, dots for
+the place; left and right turn the page, the ends are walls. No reset, no footer band. ⚠️ The slide's LAYOUT was chosen while
+building and is NOT YET SEEN by the Dev; it shows what the engine knows (key, word, sentence) — a game's own «how to play» slides
+would be a contract field, not drawn here. `engine:e9a24d1`.
