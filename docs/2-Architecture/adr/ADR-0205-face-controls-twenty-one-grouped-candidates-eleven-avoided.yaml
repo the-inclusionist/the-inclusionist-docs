@@ -1,6 +1,9 @@
 ---
 metadata:
   status: "accepted"
+  errata:
+    - date: 2026-09-14
+      what: '📌 THE COLLISION FIGURES ARE NOT A MEASURE. The Dev, 2026-09-14, on the hands test (ADR-0206 erratum): during each try the Dev also explores other positions to see whether the reading holds, and the verdict rests on the reading being right when the movement is made. The face test counted peaks over the same whole «faça» window, open to the same exploring, so the collisions listed in the negative consequences are not evidence that two candidates collide. The Dev''s verdict per candidate stands.'
   supersedes-in-part: [ADR-0202]
   date: 2026-09-14
   decision-makers: [Dev]

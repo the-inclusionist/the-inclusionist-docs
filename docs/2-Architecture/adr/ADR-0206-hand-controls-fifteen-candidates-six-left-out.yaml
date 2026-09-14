@@ -1,6 +1,9 @@
 ---
 metadata:
   status: "accepted"
+  errata:
+    - date: 2026-09-14
+      what: '📌 THE COLLISIONS ARE NOT A MEASURE. The Dev, on how the test was run: «Eu olho, vejo se detecta, depois mexo a mão em posições diferentes para ver se a detecção é a mesma. Se eu coloco ok é porque está tudo certo, isto é, quando eu fiz a posição correta a detecção foi correta.» The frames of other gestures counted during each try come from those deliberate other positions; the collision figures in the negative consequences (Open_Palm → four fingers, I Love You → «cachorro», index up → Pointing_Up) say nothing about a gesture misreading while it is held, and nothing about the map. «Ok» means the gesture read correctly whenever it was made. Only the half heart read on Thumb_Down stands, as the Dev saw it. A collision is measured, if needed, by a protocol that records only frames held in the gesture.'
   date: 2026-09-14
   decision-makers: [Dev]
   consulted:
