@@ -52,3 +52,7 @@ Asked where the game speed goes: «No painel de acessibilidade rápida (ícone d
 ## 2026-09-13 · «Voz» sits after the narration volume
 
 ⚠️ The row is the Dev's (ADR-0185); its PLACE was chosen while building and NOT YET SEEN by the Dev. «Voz» follows «Volume da narração» and precedes «Índice falado dos menus», so the voice block reads switch, volume, voice. Names shown are the middle of the provider's id («Faber», «Ryan», «Amy», «Claude»). `engine:9d0f5e5`, issue #180.
+
+## 2026-09-13 · Rates read «125 PPM», and a menu is not a manual
+
+«Em acessibilidade visual, o ritmo das legendas está com a explicação no lugar errado. E você deve abreviar palavras por minuto para PPM. Menu não é manual de instruções.» A rate's value is «125 PPM» (WPM in English), and a row's explanation is one short sentence, in the footer. `engine:` the commit after `e61d571`, issue #179.

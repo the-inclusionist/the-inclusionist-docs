@@ -3,6 +3,12 @@ metadata:
   status: "accepted"
   supersedes-in-part: [ADR-0189]
   date: 2026-09-13
+  errata:
+    - date: 2026-09-13
+      what: "§4, THE OPEN POINT, ANSWERED BY THE DEV the same day: «Moonshine atualmente só tem Inglês, espanhol, mandarim, árabe,
+             japonês, coreano, ucraniano e vietnamita. Use Whisper.» Reading in Portuguese and Spanish uses Whisper; English
+             reading uses Moonshine. 📏 The Dev counts a Spanish Moonshine that `onnx-community` does not publish (measured the
+             same day): Spanish reading takes Whisper until one is found there. Fills what §4 left open (ADR-0057 §1)."
   decision-makers: [Dev]
   consulted:
     - "ADR-0189 — SUPERSEDED IN PART: Vosk as the ONLY recogniser. Vosk for commands stands"
