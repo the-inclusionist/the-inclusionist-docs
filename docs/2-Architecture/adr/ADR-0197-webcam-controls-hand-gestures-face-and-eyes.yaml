@@ -1,6 +1,11 @@
 ---
 metadata:
   status: "accepted"
+  errata:
+    - date: 2026-09-14
+      what: "📌 ONE GROUP AT A TIME, left open. The Dev, after the first camera run, where the lab read every group at once and a moving hand's shape fired its static command: «a câmera lê três configurações diferentes […] e o que é de uma não deve ser lido quando se está configurado para ler o que é de outra configuração». The camera reads ONE of four groups, chosen: (1) moving hand gestures (§2), (2) face and eyes (§3 and §4), (3) eyes only (§4), (4) static hand gestures (§1). What belongs to another group is not read. Issue #189."
+    - date: 2026-09-14
+      what: "📌 A HELD SIGNAL, left open (§5 said only the cool-down). The Dev: «prefiro nunca repetir, a não ser após voltar ao repouso». A command never repeats while its gesture, pose or look is held: the reader fires again only after returning to rest — the hand's shape released or still, the head back within its thresholds, the eyes back to the middle. Issue #189."
   date: 2026-09-14
   decision-makers: [Dev]
   consulted:
