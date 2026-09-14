@@ -1,6 +1,10 @@
 ---
 metadata:
   status: "accepted"
+  superseded-in-part:
+    - by: ADR-0199
+      what: >-
+        §3's «tilt up and down → up and down; open the mouth → confirm» and §4's «look up → up; look down → down». Open mouth → down, pucker → confirm, a tilt down commands nothing; the eyes command up and down with a look and a blink.
   errata:
     - date: 2026-09-14
       what: "📌 ONE GROUP AT A TIME, left open. The Dev, after the first camera run, where the lab read every group at once and a moving hand's shape fired its static command: «a câmera lê três configurações diferentes […] e o que é de uma não deve ser lido quando se está configurado para ler o que é de outra configuração». The camera reads ONE of four groups, chosen: (1) moving hand gestures (§2), (2) face and eyes (§3 and §4), (3) eyes only (§4), (4) static hand gestures (§1). What belongs to another group is not read. Issue #189."
