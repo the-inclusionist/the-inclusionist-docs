@@ -74,3 +74,9 @@ key drawn as a key cap that presses itself now and then (off under reduced motio
 the place; left and right turn the page, the ends are walls. No reset, no footer band. ⚠️ The slide's LAYOUT was chosen while
 building and is NOT YET SEEN by the Dev; it shows what the engine knows (key, word, sentence) — a game's own «how to play» slides
 would be a contract field, not drawn here. `engine:e9a24d1`.
+
+## 2026-09-14 · A game's «how to play» slide: figure above, text below
+
+⚠️ The slide's LAYOUT was chosen while building ADR-0195 and is NOT YET SEEN by the Dev. A cartridge's slide shows its figure on
+top (up to 16 em wide, 7 em tall) and its text under it, with the same arrows and dots as the button slides; the game's slides
+come first. The house quiz tells how to play in two slides, the second animating the marked option down. `engine:a85bfee`.
