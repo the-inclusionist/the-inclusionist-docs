@@ -4,6 +4,8 @@ metadata:
   supersedes-in-part: [ADR-0189]
   date: 2026-09-13
   errata:
+    - date: 2026-09-14
+      what: "📌 THE READING MODEL, left open. Measured on the Dev's reading of a poem (52 words): Whisper base q8 (onnx-community, 81 MB) 15.4 % WER, Whisper tiny 42.3 %, Vosk small pt 34.6 % (25 % guided by the text). Asked whether Whisper base is the reading recogniser for Portuguese and Spanish, the Dev: «Sim.» Reading in Portuguese and Spanish is recognised by Whisper base; commands stay with Vosk (ADR-0193, in-game: 7/7 against Whisper base 1/7). Issue #185."
     - date: 2026-09-13
       what: "§4, THE OPEN POINT, ANSWERED BY THE DEV the same day: «Moonshine atualmente só tem Inglês, espanhol, mandarim, árabe,
              japonês, coreano, ucraniano e vietnamita. Use Whisper.» Reading in Portuguese and Spanish uses Whisper; English
