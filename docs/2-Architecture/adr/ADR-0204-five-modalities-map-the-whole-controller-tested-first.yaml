@@ -1,0 +1,68 @@
+---
+metadata:
+  status: "accepted"
+  date: 2026-09-14
+  decision-makers: [Dev]
+  consulted:
+    - "ADR-0197, ADR-0199, ADR-0202 — the camera's first mappings, to navigation positions (up, down, left, right, confirm, back,
+       menu); they stand until the Dev's default map replaces them"
+    - "ADR-0193, ADR-0194, ADR-0200 — voice commands: Web Speech on the device first, Vosk small as the fallback"
+    - "ADR-0155, ADR-0162 — the positions: directions, START, SELECT, actions 1–4, L1/L2/R1/R2"
+    - "📏 The Dev's camera runs, 2026-09-14: the seven canned gestures (Closed_Fist, Open_Palm, Pointing_Up, Thumb_Down, Thumb_Up,
+       Victory, ILoveYou) all work well"
+    - "cvzone (evaluated 2026-09-14): a Python library over OpenCV and MediaPipe's Python API — it does not run in the browser; its
+       `fingersUp()` compares each fingertip with its middle joint (the thumb by x), the landmark geometry `input/camera-gestures` uses"
+  informed: []
+
+title: Five modalities map the whole controller — every candidate tested first
+
+context-and-problem-statement: |
+  The camera mappings so far drive menu navigation. The Dev, 2026-09-14: «Vamos fazer melhor e mapear o controle completo nas cinco
+  modalidades: Câmera: gestos estáticos; Câmera: gestos dinâmicos; Câmera: rosto (Face Landmarker); Câmera: olhos (Face Landmarker);
+  Fala. O controle consiste em quatro direções, start, select, quatro botões de ação e quatro botões laterais (L1, L2, R1, R2). Para
+  mapeá-lo, primeiro eu preciso testar todas as possibilidades do MediaPipe. Face Mesh: nosso primeiro alvo de teste, é preciso
+  descrever quais das 52 expressões funcionam bem sem deixar o usuário com fadiga.» And the hand gestures to test: the index pointing
+  in four directions, a pinch, three fingers, four fingers without the thumb, two fingers pointing in four directions, «cachorro»
+  (middle and ring pinched to the thumb, index and little extended), zero (all fingers closing a circle on the thumb), half heart,
+  Korean heart; beside the canned ones. «Primeiro vamos ver quais destes gestos e expressões funcionam bem para controle. O que
+  funcionar irá para mapeamento de controle e eu criarei um mapa padrão.»
+
+decision-drivers:
+  - "D1 — A CHILD PLAYS A WHOLE GAME, not only its menus: every position needs a way in, by any modality"
+  - "D2 — MEASURED BEFORE MAPPED: a candidate enters the map only after it activates reliably, stays apart from the others and does
+     not tire"
+  - "D3 — THE MAP IS THE DEV'S: the tests describe; the Dev chooses the default"
+
+considered-options:
+  - "A — extend the current navigation mappings position by position"
+  - "B — test every candidate of every modality, then the Dev makes the default map"
+
+pros-and-cons-of-the-options: |
+  **A.** ✅ Quick. ❌ Maps guessed signals; the eyes' first mapping already failed on a real face.
+  **B.** ✅ The map rests on measurements of activation, crosstalk and fatigue. ❌ A test round per modality before any new reader.
+
+decision-outcome:
+  chosen-option:
+    link: "B — test first, then the Dev's default map"
+    justification: |
+      1. **The controller**: four directions, START, SELECT, buttons 1–4, L1, L2 (trigger), R1, R2 (trigger).
+      2. **Five modalities**: static hand gestures, moving hand gestures, face, eyes, speech.
+      3. **Face first**: a guided test of MediaPipe's blendshapes on the Dev's face — for each, how reliably it rises above the calibrated
+         rest, which other blendshapes rise with it, and how tiring it is — described in a results table.
+      4. **Hands**: the canned gestures are measured as working. The Dev's gesture list is tested with a finger-state classifier written
+         in JavaScript, porting cvzone's `fingersUp` logic (cvzone itself is Python and cannot run in the browser), plus pinch and circle
+         distances measured in palm sizes.
+      5. **The Dev makes the default map** from what works; the map is recorded, then the readers are built.
+
+  consequences:
+    positive:
+      - "Every position of the controller can be reached without hands, voice or eyes alone"
+    negative:
+      - "The current navigation mappings are provisional until the default map"
+
+  confirmation: |
+    ⚠️ NOT BUILT YET — **issue #191** in `the-inclusionist-engine`. Gates: a results table per modality from the Dev's test runs
+    (activation, crosstalk, fatigue); the Dev's default map recorded; each mapping recognised from recorded frames raises its position.
+
+more-information: |
+  MediaPipe Face Landmarker gives 52 blendshape scores (`_neutral` and 51 expressions); the Dev's list names them by region.
