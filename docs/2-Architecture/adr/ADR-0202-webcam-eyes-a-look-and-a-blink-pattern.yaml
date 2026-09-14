@@ -2,6 +2,11 @@
 metadata:
   status: "accepted"
   supersedes-in-part: [ADR-0199]
+  superseded-in-part:
+    - by: ADR-0205
+      what: >-
+        §1's «look up and blink twice → up» and §2's «look up and blink slowly → confirm»: the look up is not a face candidate (the
+        Dev's test, «não detecta. Evitar o uso»); the eye commands wait for the Dev's default map.
   date: 2026-09-14
   decision-makers: [Dev]
   consulted:
