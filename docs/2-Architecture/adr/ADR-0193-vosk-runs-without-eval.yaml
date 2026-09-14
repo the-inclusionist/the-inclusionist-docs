@@ -1,6 +1,9 @@
 ---
 metadata:
   status: "accepted"
+  errata:
+    - date: 2026-09-13
+      what: "📌 THE FIRING MODE, left open by this record. Measured on the test page with the Dev's recordings: firing at the end of the utterance reached the game 1.3–1.4 s after the word, with no false command over 25.6 s of reading; firing on the partial hypothesis, 0.25–0.45 s, with one. The Dev, after trying both live: «Disparar no parcial ficou melhor. Ambos não entendem tudo que é dito.» Commands fire on the partial hypothesis; neither mode understood every word said."
   date: 2026-09-13
   decision-makers: [Dev]
   consulted:
