@@ -22,6 +22,8 @@ metadata:
        face in the cycle"
   informed: []
   errata:
+    - date: 2026-09-14
+      what: "📌 WHERE THE SPACING REACHES, which this record left implicit. Measured on 2026-09-13: the browser's own stylesheet gives every `<button>` `letter-spacing: normal`, so the pause card's items and the quiz's options had no BDA spacing while the panels' text had 2.88 px. Asked whether buttons follow, the Dev: «Onde houver ESCRITA ele precisa valer, não células ou bordas. Se dentro de um botão tem texto, as regras de espaçamento valem para este texto, mesmo que seja uma única palavra.» The spacing is the text's, wherever the text is — a button, a select, an input; a cell's or a border's size is not spacing. Issue #187."
     - date: 2026-09-12
       what: "⚠️ **§2 OVERSTATED THE HOLE, and building it corrected the number.** It says the default face «has
              no BDA spacing at all». The file says otherwise: `:root` already carried `--ls: 0.12em` /
