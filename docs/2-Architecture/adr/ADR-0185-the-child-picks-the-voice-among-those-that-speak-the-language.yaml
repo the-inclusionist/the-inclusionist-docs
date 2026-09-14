@@ -2,6 +2,10 @@
 metadata:
   status: "accepted"
   superseded-in-part:
+    - by: ADR-0198
+      what: >-
+        §2's Kokoro voices listed only where the model is cached and WebGPU runs. Every Kokoro voice of the
+        language is an option in any browser (WebGPU when its test synthesis speaks, else WASM), through the game's port.
     - by: ADR-0186
       what: >-
         Kokoro as an AVAILABLE extra. Kokoro and Piper are both default engines; a Kokoro voice is still listed only
