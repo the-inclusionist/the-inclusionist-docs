@@ -2,6 +2,9 @@
 metadata:
   shape: bundle          # consolidacao do REGISTRO-DE-DECISOES; ver README
   status: "accepted"
+  errata:
+    - date: 2026-09-14
+      what: '📌 NO YES/NO SWAP ON ANY PAD. The touch line said «only Sony/Nintendo flip yes/no culturally». The Dev, 2026-09-14, confirming the association by position: xinput · Xbox · PlayStation · Nintendo — 1 X · square · Y (west); 2 A · cross · B (south); 3 B · circle · A (east); 4 Y · triangle · X (north): «Esta é a associação correta. Corrija onde houver mal entendido.» Yes/confirm is button 2 (south) and no/back is button 3 (east) on every design, PlayStation and Nintendo included. The engine''s reading already worked this way (`input/gamepad` reads yes from action 2 and no from action 3, and `input/devices` labels the buttons by index); three comments, one test example and this line said otherwise, corrected in `engine:ab2656d`.'
   date: 2026-07-02
   decision-makers: [Dev, AI]
   consulted: []
