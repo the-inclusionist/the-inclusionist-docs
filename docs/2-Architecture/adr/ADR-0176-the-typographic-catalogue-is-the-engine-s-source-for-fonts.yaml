@@ -1,6 +1,11 @@
 ---
 metadata:
   status: "accepted"
+  superseded-in-part:
+    - by: ADR-0191
+      what: >-
+        §1's «at the engine repository root». The catalogue and its instructions live in `research/`, where the Dev put
+        them; everything else stands.
   supersedes-in-part: [ADR-0150]
   date: 2026-09-13
   errata:
