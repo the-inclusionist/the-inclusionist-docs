@@ -4,9 +4,10 @@ metadata:
   confirmed-by:
     - engine:tests/vozes-fora-do-pacote.node.test.js
     - engine:tests/nada-de-cdn-a-mao.node.test.js
-    - engine:tests/voice-plan.node.test.js
     - engine:scripts/check-precache.mjs
   errata:
+    - date: 2026-09-14
+      what: '📌 CONFIRMATION PATHS THAT LEFT WITH PIPER: `tests/voice-plan.node.test.js` and `tests/vozes-prontas.node.test.js` confirmed the Piper voice catalogue and its readiness; both left the engine with that catalogue (ADR-0207, `engine:913051b`), so they leave `confirmed-by`. The paths that remain still hold.'
     - date: 2026-09-09
       what: >-
         the confirmation opened with «NOT YET BUILT» while four of its five gates were built. MEASURED: no

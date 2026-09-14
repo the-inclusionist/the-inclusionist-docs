@@ -1,0 +1,66 @@
+---
+metadata:
+  status: "accepted"
+  supersedes-in-part: [ADR-0172]
+  confirmed-by:
+    - engine:CLAUDE.md
+  date: 2026-09-14
+  decision-makers: [Dev]
+  consulted:
+    - "ADR-0172 §4 — SUPERSEDED IN PART: «When in doubt, a record.»"
+    - "M. Nygard, «Documenting Architecture Decisions» (2011) — a record for an architecturally significant decision: structure,
+       non-functional characteristics, dependencies, interfaces, construction techniques"
+    - "J. Bezos, letter to shareholders (2015) — irreversible decisions deserve care, reversible ones should be light"
+    - "📏 Measured 2026-09-14: 28 records dated 2026-09-13 and 14 dated 2026-09-14, and 26 commits of errata on records in one day;
+       seven of the fourteen record camera mappings, a test plan, a lab verdict or an approach to try"
+  informed: []
+
+title: The tie-break is «what breaks if we reverse it next week?» — a lab verdict is never a record
+
+context-and-problem-statement: |
+  Asked why so many records appeared at once, the agent traced it to three rules applied together — «decisão confirmada ganha registro
+  no mesmo turno», «registrar é execução, não consulta» and ADR-0172's «na dúvida, registro» — with every answer treated as a one-way
+  door. Asked whether those practices are correct: the first two are, the third's tie-break sends every doubt to the heaviest form, and
+  for an agent often in doubt that is nearly «always a record». The Dev agreed to change the tie-break: «Sim, por favor.»
+
+decision-drivers:
+  - "D1 — NOTHING DECIDED IS LOST: the durable home in the same turn stays"
+  - "D2 — THE WEIGHT MATCHES THE COST OF REVERSING, measured by a question and not by the writer's doubt"
+  - "D3 — A RECORD SAYS WHAT WAS CHOSEN, not what is being tried: a result that changes hours later is not a decision yet"
+
+considered-options:
+  - "A — keep «when in doubt, a record»"
+  - "B — a mechanical test for the doubt, experiments out of the records, and promotion when a light entry turns out one-way"
+
+pros-and-cons-of-the-options: |
+  **A.** ✅ No decision can be under-recorded. ❌ Measured: records written for mappings and lab verdicts, then corrected the same day;
+  more records that keep arguing a dead position.
+  **B.** ✅ Records keep the weight of what is hard to undo; experiments stay where their results live. ❌ An entry recorded light may
+  later need promoting.
+
+decision-outcome:
+  chosen-option:
+    link: "B — the question decides; experiments out; promote when needed"
+    justification: |
+      1. **The tie-break is a question: «what breaks if we reverse it next week?»** A game, a stored key, a dependency or licence, a
+         child's privacy, a delivery → a record (ADR-0172 §1 lists these). Nothing outside the lab or the interface → the interface log
+         (ADR-0172 §2) or a comment on the issue.
+      2. **An experiment and its verdict are never a record**: the test plan, the candidates a test keeps, and what the Dev judged in a
+         lab run go to the issue and to a results document. The choice that comes out of them — a default map, a model kept for a
+         delivery — can be a record.
+      3. **Promotion**: an entry kept light that turns out to be a one-way door becomes a record when that is seen, quoting the entry.
+      4. ADR-0172 §1–§3 and §5 stand; the same-turn rule and «registrar é execução, não consulta» (`CLAUDE.md` §0) stand.
+
+  consequences:
+    positive:
+      - "Records keep meaning «costly to undo»; lab work stays quick to write and to correct"
+    negative:
+      - "A judgement remains at the edge; the question makes it answerable, not automatic"
+      - "The records written today for mappings and lab verdicts stay as history (ADR-0172 §5)"
+
+  confirmation: |
+    `CLAUDE.md` §0 of the engine carries the question in place of «Na dúvida, registro».
+
+more-information: |
+  The question is the one ADR-0172's D1 already implies — the cost of a record matches the cost of reversing what it records — asked at
+  the point of doubt instead of defaulting past it.

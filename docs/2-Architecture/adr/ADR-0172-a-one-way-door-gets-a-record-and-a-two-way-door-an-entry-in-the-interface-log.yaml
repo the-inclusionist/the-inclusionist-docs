@@ -1,6 +1,11 @@
 ---
 metadata:
   status: "accepted"
+  superseded-in-part:
+    - by: ADR-0209
+      what: >-
+        §4 «When in doubt, a record.» The doubt is settled by «what breaks if we reverse it next week?»; an experiment and its
+        verdict are never a record; a light entry that turns out one-way is promoted.
   date: 2026-09-13
   decision-makers: [Dev]
   consulted:
