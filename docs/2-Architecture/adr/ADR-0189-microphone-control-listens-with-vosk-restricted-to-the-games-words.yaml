@@ -1,6 +1,11 @@
 ---
 metadata:
   status: "accepted"
+  superseded-in-part:
+    - by: ADR-0190
+      what: >-
+        Vosk as the ONLY recogniser. The Dev saw many errors in his test: Vosk stays for commands, and Moonshine joins for
+        reading, both built and tested in a game.
   date: 2026-09-13
   decision-makers: [Dev]
   consulted:
