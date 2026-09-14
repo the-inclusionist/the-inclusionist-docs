@@ -1,6 +1,14 @@
 ---
 metadata:
   status: "accepted"
+  confirmed-by:
+    - engine:tests/ritmo-da-fala.node.test.js
+    - engine:tests/ritmo-da-legenda.browser.test.js
+    - engine:tests/escolha-da-voz.node.test.js
+    - engine:tests/kokoro.node.test.js
+  errata:
+    - date: 2026-09-14
+      what: '✅ CONFIRMED IN PART, pushed (issue #179 closed): the speech rate is stored and applied per utterance, the caption rate 125/145/175 is stored and a caption at 125 stays longer, the voice list offers the language''s voices and Kokoro is in the catalogue with sha256. The rate steps are ADR-0196''s (254…504 by 50), not §1''s; the speech volume row existed and has no gate of its own here.'
   superseded-in-part:
     - by: ADR-0196
       what: >-
@@ -68,9 +76,9 @@ decision-outcome:
       - "175 is not a measured comfortable rate; it is kept because the Dev chose it, and the record says so"
 
   confirmation: |
-    ⚠️ NOT BUILT YET — **issue #179** in `the-inclusionist-engine`. Gates: the rate list is 150…500 by 35 and stored;
-    the volume is stored and applied to speech only; the voice list offers at least two voices; a caption at 125 words per
-    minute stays longer than at 175; the Kokoro file is in the catalogue with its sha256.
+    The gates in `confirmed-by` (issue #179, closed), IN PART: the speech rate is stored and applied (steps by ADR-0196, not
+    150…500 by 35); a caption at 125 words per minute stays longer than at 175; the voice list offers the language's voices; the
+    Kokoro file is in the catalogue with its sha256. ⚠️ The speech volume (`#tts-vol`, older than this record) has no gate here.
 
 more-information: |
   The Web Speech API's `rate` is a multiplier, not words per minute: the mapping needs each voice's words per minute at rate 1,

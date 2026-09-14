@@ -1,8 +1,15 @@
 ---
 metadata:
   status: "accepted"
+  confirmed-by:
+    - engine:tests/kokoro.node.test.js
+    - engine:tests/kokoro-na-voz.browser.test.js
+    - engine:tests/kokoro-porta-do-quiz.node.test.js
+    - engine:tests/pesados.node.test.js
   supersedes-in-part: [ADR-0185, ADR-0186]
   errata:
+    - date: 2026-09-14
+      what: '✅ CONFIRMED, pushed (issue #181 closed, `engine:09b9492`, `1064e8c`, `2595bf2`, `2ed1bf7`, `f8fa77d`): the voice list, the marks, the WebGPU test synthesis and the port are gated; the model and voices are in the catalogue with sha256 and fetched only by a game with the port; the quiz demo fills the port and spoke «Narração ligada.» through Kokoro in `dist`. ⚠️ Not read: which device the engine kept on that machine.'
     - date: 2026-09-14
       what: "📌 THE ENGLISH FIRST VOICE, left open. The Dev: «Piper amy-medium.» In English `en_US-amy-medium` speaks first, then the other Piper voice, then Kokoro's (Heart and Bella marked)."
     - date: 2026-09-14
@@ -67,9 +74,9 @@ decision-outcome:
       - "Which of an English child's voices speaks first is still not decided"
 
   confirmation: |
-    ⚠️ NOT BUILT YET — **issue #181** in `the-inclusionist-engine`. Gates: in Portuguese the list starts with Faber and holds the
-    Kokoro Portuguese voices after it; in English Heart and Bella carry a heart and a Piper voice the feather; with WebGPU producing
-    non-speech the test synthesis falls back to WASM; without the port no Kokoro voice is listed and the line says why.
+    The gates in `confirmed-by` (issue #181, closed). Gates: in Portuguese Faber first, then Kokoro's Portuguese voices; in English
+    Amy first, Heart and Bella with a heart and the Piper voices with the feather; WebGPU returning noise falls back to WASM;
+    without the port no Kokoro voice is listed and no Kokoro file is fetched; the quiz demo's port asks the delivery for its files.
 
 more-information: |
   The Kokoro English order (Heart or a Piper voice first) is left open, as ADR-0186 left it.

@@ -1,6 +1,12 @@
 ---
 metadata:
   status: "accepted"
+  confirmed-by:
+    - engine:tests/help-panel.browser.test.js
+    - engine:tests/boot-create-game.browser.test.js
+  errata:
+    - date: 2026-09-14
+      what: '✅ CONFIRMED, pushed (issue #188 closed, `engine:a85bfee`): a cartridge''s slides show before the button slides, a figure stands still under reduced motion, a slide without text refuses the boot; the quiz demo declares two.'
   date: 2026-09-14
   decision-makers: [Dev]
   consulted:
@@ -49,9 +55,9 @@ decision-outcome:
       - "A new optional contract field, and the figure's drawing is the cartridge's code to write"
 
   confirmation: |
-    ⚠️ NOT BUILT YET — **issue #188** in `the-inclusionist-engine`. Gates: a cartridge declaring two slides shows them before the
-    button slides, in its words and in the page's language; a figure is drawn on the engine's surface and stands still under reduced
-    motion; a cartridge declaring none shows the button slides only; a slide without text refuses the boot.
+    The gates in `confirmed-by` (issue #188, closed). Gates: a cartridge declaring slides shows them before the button slides,
+    in its words; a figure is drawn on the engine's surface and stands still under reduced motion; none declared shows the button
+    slides only; a slide without text refuses the boot.
 
 more-information: |
   The figure's surface and signature are built with the field; this record decides who tells how to play and where it is shown.
