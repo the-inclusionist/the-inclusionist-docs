@@ -1,6 +1,10 @@
 ---
 metadata:
   status: "accepted"
+  superseded-in-part:
+    - by: ADR-0200
+      what: >-
+        the neural recognisers as the first route. Web Speech recognition first where available; Vosk and Moonshine/Whisper are the fallback.
   supersedes-in-part: [ADR-0189]
   date: 2026-09-13
   errata:
