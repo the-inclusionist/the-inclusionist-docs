@@ -1,6 +1,9 @@
 ---
 metadata:
   status: "accepted"
+  errata:
+    - date: 2026-09-14
+      what: '📌 §4, THE OPEN POINT, ANSWERED. Asked which Spanish Moonshine — the base model under the Moonshine AI Community License, or the MIT streaming models exported to ONNX here — the Dev: «Streaming com licença MIT.» Spanish reading uses `moonshine-ai/moonshine-streaming-tiny-es` or `-small-es` (MIT), exported to ONNX here for the browser. Issue #185.'
   supersedes-in-part: [ADR-0190]
   date: 2026-09-14
   decision-makers: [Dev]
@@ -46,7 +49,7 @@ decision-outcome:
       2. **Tried, before one is kept**: Whisper tiny, base and small; Moonshine base and small in English.
       3. **These recognise reading** — an activity assessing a child's reading aloud. Commands and menu names are Vosk's (ADR-0193).
       4. ⚠️ OPEN, for the Dev: which Spanish Moonshine — the base model under the Moonshine AI Community License, or the MIT streaming
-         models exported to ONNX here.
+         models exported to ONNX here. → Answered in the erratum: the MIT streaming models.
 
   consequences:
     positive:
