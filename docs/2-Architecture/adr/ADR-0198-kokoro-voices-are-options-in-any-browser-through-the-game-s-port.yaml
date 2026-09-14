@@ -2,6 +2,11 @@
 metadata:
   status: "accepted"
   supersedes-in-part: [ADR-0185, ADR-0186]
+  errata:
+    - date: 2026-09-14
+      what: "📌 THE ENGLISH FIRST VOICE, left open. The Dev: «Piper amy-medium.» In English `en_US-amy-medium` speaks first, then the other Piper voice, then Kokoro's (Heart and Bella marked)."
+    - date: 2026-09-14
+      what: "📌 WHERE IT IS TRIED. Asked about a real game filling the port to measure Kokoro in it, the Dev: «Não vamos fazer isso. Apenas teste neste quiz demo.» The engine's own quiz demo fills the Kokoro port and is where Kokoro is measured; and the model and voices enter the heavy-file catalogue with their sha256 («Faça»). Issue #181."
   date: 2026-09-14
   decision-makers: [Dev]
   consulted:
