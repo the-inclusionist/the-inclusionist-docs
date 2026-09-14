@@ -1,6 +1,9 @@
 ---
 metadata:
   status: "accepted"
+  errata:
+    - date: 2026-09-14
+      what: '📌 §4, THE OPEN POINT, ANSWERED. Asked whether Web Speech recognition counts as available only on the device (`processLocally`) or also through Chrome''s servers, the Dev: «Só local, voz da criança não deve sair do aparelho.» Recognition is available only when it runs on the device; Chrome''s server recognition is never used. Issue #190.'
   supersedes-in-part: [ADR-0186, ADR-0190]
   date: 2026-09-14
   decision-makers: [Dev]
@@ -47,7 +50,7 @@ decision-outcome:
          the browser's name.
       4. ⚠️ OPEN, for the Dev: whether recognition counts as available only on the device (`processLocally`), or also through
          Chrome's server recognition, where a child's voice leaves the device (ADR-0010 pillar 4; ADR-0190 said «neither sends audio
-         off the device»).
+         off the device»). → Answered in the erratum: on the device only.
 
   consequences:
     positive:
