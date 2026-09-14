@@ -3,6 +3,8 @@ metadata:
   status: "accepted"
   errata:
     - date: 2026-09-14
+      what: '📌 SEVENTEEN CANDIDATES. The Dev, 2026-09-14, agreeing with the 21 and the 11 avoided, then: «Bico e olhar para baixo não podem ser considerados: resultam em colisões demais» — kiss (mouthPucker) and look down (eyeLookDown L/R) leave the candidates. «Piscar e apertar os olhos devem ser considerados a mesma coisa» — read per eye, since each eye''s blink and squint were judged apart: close-or-squint left (eyeBlinkLeft + eyeSquintLeft) and close-or-squint right (eyeBlinkRight + eyeSquintRight), two candidates instead of four. The sideways look stays under test: «É possível que exista algum mal entendido em olhar de lado, e se não houver, acredito que o problema é que olhos humanos não param de se mexer e ao voltar da lateral para o centro, eles apontam para o outro lado antes, várias vezes até se recalibrarem. Vamos testar melhor isso.» The retest asks for a look to each side, shows both crossed pairs (both blendshapes of a pair must rise together), records which pair rises first and every time the other pair reaches its mark within 1.5 s of the first falling back (a rebound).'
+    - date: 2026-09-14
       what: '📌 THE COLLISION FIGURES ARE NOT A MEASURE. The Dev, 2026-09-14, on the hands test (ADR-0206 erratum): during each try the Dev also explores other positions to see whether the reading holds, and the verdict rests on the reading being right when the movement is made. The face test counted peaks over the same whole «faça» window, open to the same exploring, so the collisions listed in the negative consequences are not evidence that two candidates collide. The Dev''s verdict per candidate stands.'
   supersedes-in-part: [ADR-0202]
   date: 2026-09-14

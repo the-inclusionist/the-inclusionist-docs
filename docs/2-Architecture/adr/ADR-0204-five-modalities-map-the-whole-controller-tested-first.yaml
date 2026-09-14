@@ -1,6 +1,9 @@
 ---
 metadata:
   status: "accepted"
+  errata:
+    - date: 2026-09-14
+      what: '📌 THE SECOND TEST PROTOCOL. The Dev, 2026-09-14: «Recrie os dois testes mas desta vez com barra para que eu passe para o próximo e três avaliações: ok, cansativo, não me detecta e não consegui. O app é que deve detectar se consegui fazer ou não quando a barra enche até a marca, minha avaliação é sobre a realização.» No timed tries: for each candidate the Dev moves freely; a bar per reading fills and the APP detects the candidate when the bar reaches its mark and holds (face: a rise of 0.3 from the calibrated rest held 300 ms; hands: the gesture recognised for 300 ms); the space bar passes to the next; the Dev rates the doing with four ratings — ok, cansativo, não me detecta, não consegui (the message says three and lists four; four are offered). Recorded per candidate: detected or not, time to the first detection, how many detections, the peak level, the rating. The first protocol''s crosstalk figures are not recorded again (ADR-0205 and ADR-0206 errata).'
   date: 2026-09-14
   decision-makers: [Dev]
   consulted:
