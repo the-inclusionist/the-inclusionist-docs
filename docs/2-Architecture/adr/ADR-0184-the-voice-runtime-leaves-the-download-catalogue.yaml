@@ -1,6 +1,10 @@
 ---
 metadata:
   status: "accepted"
+  superseded-in-part:
+    - by: ADR-0207
+      what: >-
+        the Piper runtime run from the game's bundle: Piper leaves the engine.
   supersedes-in-part: [ADR-0127]
   confirmed-by:
     - engine:tests/pesados.node.test.js

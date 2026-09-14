@@ -8,6 +8,9 @@ metadata:
     - date: 2026-09-14
       what: '✅ CONFIRMED IN PART, pushed (issue #181 closed): Kokoro is back beside Piper, its model and voices in the catalogue with sha256, and a Kokoro voice picked speaks through the Kokoro runtime. The listing condition (model cached and WebGPU) was superseded by ADR-0198 and is not built.'
   superseded-in-part:
+    - by: ADR-0207
+      what: >-
+        Piper as a default beside Kokoro: Kokoro is the only neural voice.
     - by: ADR-0200
       what: >-
         «Kokoro and Piper are both default». Where the browser offers a Web Speech voice for the language it speaks first; Piper and Kokoro are the fallback.

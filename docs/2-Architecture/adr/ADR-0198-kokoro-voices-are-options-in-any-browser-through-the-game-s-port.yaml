@@ -1,6 +1,10 @@
 ---
 metadata:
   status: "accepted"
+  superseded-in-part:
+    - by: ADR-0207
+      what: >-
+        Piper first in Portuguese and Spanish and the 🪶 mark: Piper leaves the engine.
   confirmed-by:
     - engine:tests/kokoro.node.test.js
     - engine:tests/kokoro-na-voz.browser.test.js

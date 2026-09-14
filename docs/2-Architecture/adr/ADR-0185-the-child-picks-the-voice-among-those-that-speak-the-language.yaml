@@ -2,6 +2,9 @@
 metadata:
   status: "accepted"
   superseded-in-part:
+    - by: ADR-0207
+      what: >-
+        the Piper voices in the voice list: only the browser's voices and Kokoro's remain.
     - by: ADR-0198
       what: >-
         §2's Kokoro voices listed only where the model is cached and WebGPU runs. Every Kokoro voice of the

@@ -7,6 +7,9 @@ metadata:
     - engine:tests/vozes-prontas.node.test.js
     - engine:tests/pesados.node.test.js
   superseded-in-part:
+    - by: ADR-0207
+      what: >-
+        the four Piper voices the engine guaranteed and fetched: Piper leaves the engine; the neural voice is Kokoro, through the game's port.
     - by: ADR-0186
       what: >-
         the four PIPER voices as the whole guarantee. The engine guarantees Kokoro's voices beside them, both engines

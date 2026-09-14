@@ -4,6 +4,9 @@ metadata:
   date: 2026-08-27
   supersedes: [ADR-0022]
   superseded-in-part:
+    - by: ADR-0207
+      what: >-
+        the Piper voices the engine owned: Piper leaves the engine; the neural voice is Kokoro (the lessac licence chain).
     - by: ADR-0127
       what: >-
         §1's RUNTIME clause, and only it: «THE RUNTIME IS UNCHANGED — sherpa-onnx-wasm, as ADR-0022 chose it».
