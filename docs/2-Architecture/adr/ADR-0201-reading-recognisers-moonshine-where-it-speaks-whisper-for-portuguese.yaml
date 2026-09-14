@@ -3,6 +3,8 @@ metadata:
   status: "accepted"
   errata:
     - date: 2026-09-14
+      what: '📌 §2, THE MODELS KEPT. The Dev, after the table of the five on the Dev''s readings: «Vamos usar whisper small para pt, e moonshine streamming small para en e es. Eu não sou nativo, mas pelo desempenho é esperado que para nosso uso moonshine streaming small ofereça um resultado melhor que o base para nativos.» Portuguese: Whisper small (onnx-community, q8, 238 MB; 7.7 % WER, 22.0 s for 25.6 s of reading). English: Moonshine streaming small (`Workmind/moonshine-streaming-small-ONNX`, 158 MB; 19.3 % on a non-native reader, where Moonshine base read 16.9 %). Spanish: Moonshine streaming small-es exported here (encoder fp32, decoders q8, 310 MB; 7.2 %, 7.2 s). Tiny and base are not kept. Issue #185.'
+    - date: 2026-09-14
       what: '📌 §4, THE OPEN POINT, ANSWERED. Asked which Spanish Moonshine — the base model under the Moonshine AI Community License, or the MIT streaming models exported to ONNX here — the Dev: «Streaming com licença MIT.» Spanish reading uses `moonshine-ai/moonshine-streaming-tiny-es` or `-small-es` (MIT), exported to ONNX here for the browser. Issue #185.'
   supersedes-in-part: [ADR-0190]
   date: 2026-09-14
