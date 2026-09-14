@@ -2,6 +2,10 @@
 metadata:
   status: "accepted"
   superseded-in-part:
+    - by: ADR-0196
+      what: >-
+        §1's «150 to 500 words per minute in steps of 35». The steps are 254 to 504 by 50, the voice's normal speed the
+        minimum; the rate stays stored and measured per voice.
     - by: ADR-0185
       what: >-
         §3's «at least two voices to choose from». The list holds the voices that speak the child's language, which

@@ -87,3 +87,9 @@ come first. The house quiz tells how to play in two slides, the second animating
 row is a list («150 PPM» … «500 PPM», eleven steps) after «Volume da narração», before «Voz». It starts at 150, the slowest step,
 as the caption rate starts at its slowest; at 150 the Faber voice (255 PPM of speech, measured) plays at about 0.59×.
 `engine:c3a0097`, issue #179.
+
+## 2026-09-14 · The speech rate starts at the voice's normal speed
+
+The entry above chose 150 PPM as the default. The Dev: «Nada disso, velocidade normal é a mínima (254?, e deve poder aumentar de 50
+em 50 até ~500ppm, isto é, 504ppm)». The steps become 254–504 by 50, starting at 254, and no voice plays under 1× — a record
+(ADR-0196), since it changes ADR-0183's steps. The row keeps its place after the narration volume.
