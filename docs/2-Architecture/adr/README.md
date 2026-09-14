@@ -295,6 +295,7 @@ One file per deliberate architectural decision, in **YADR** format — the YAML 
 | [ADR-0200](ADR-0200-web-speech-first-neural-as-fallback.yaml) | **Web Speech primeiro; vozes e reconhecedores neurais são o recuo.** Síntese e reconhecimento pelo navegador onde houver, medido no aparelho; ⚠️ em aberto: só no aparelho ou também no servidor do Chrome. Supersede em parte ADR-0186 e ADR-0190. Issue #190. |
 | [ADR-0201](ADR-0201-reading-recognisers-moonshine-where-it-speaks-whisper-for-portuguese.yaml) | **Leitura: Moonshine onde fala a língua (en, es), Whisper só para pt.** Testar Whisper tiny/base/small e Moonshine base/small em inglês; ⚠️ em aberto: qual Moonshine espanhol (licença comunitária × MIT sem ONNX). Supersede em parte ADR-0190. Issue #185. |
 | [ADR-0202](ADR-0202-webcam-eyes-a-look-and-a-blink-pattern.yaml) | **Webcam: olhos — um olhar e um padrão de piscada.** Cima/baixo + duas piscadas sobe/desce; cima/baixo/frente + piscada lenta confirma/volta/menu; uma piscada não comanda. Supersede em parte ADR-0199. Issue #189. |
+| [ADR-0203](ADR-0203-engine-built-model-files-hosted-on-cloudflare-then-hugging-face.yaml) | **Modelos construídos pelo projeto: Cloudflare agora, Hugging Face após permissão da prefeitura.** Cada artefato com receita de reconstrução; uso documentado na engine; preparados em the-inclusionist-lfs. Issues #184, #185. |
 
 > ADRs 0011–0019 replaced the informal `REGISTRO-DE-DECISOES.md` log (a decision is an ADR). The exhaustive per-row
 > detail of the old log is in git history; these ADRs carry the decisions + rationale.
