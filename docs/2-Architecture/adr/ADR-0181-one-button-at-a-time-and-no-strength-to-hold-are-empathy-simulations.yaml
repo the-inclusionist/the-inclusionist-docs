@@ -1,6 +1,12 @@
 ---
 metadata:
   status: "accepted"
+  confirmed-by:
+    - engine:tests/simulacao-motora.node.test.js
+    - engine:tests/simulacoes-motoras.browser.test.js
+  errata:
+    - date: 2026-09-13
+      what: "✅ CONFIRMED, pushed (issue #177 closed, `engine:caf2ce1`): both rows are in the empathy panel; the keyboard passes through them. ⚠️ The touch pad and the gamepad do not pass through the filter."
   date: 2026-09-13
   decision-makers: [Dev]
   consulted:
@@ -46,7 +52,7 @@ decision-outcome:
       - "The soccer game reads `oneButton` to choose an easier charge route; under a simulation that choice is backwards"
 
   confirmation: |
-    ⚠️ NOT BUILT YET — **issue #177** in `the-inclusionist-engine`. Gates: with «um botão por vez» on, a second key
+    The gates in `confirmed-by` (issue #177, closed). Gates: with «um botão por vez» on, a second key
     held with the first is not accepted, and off it is; with «sem força para segurar» on, a key held for a second produces
     one press and no hold; both rows are in the empathy panel and absent from the accommodation panels.
 

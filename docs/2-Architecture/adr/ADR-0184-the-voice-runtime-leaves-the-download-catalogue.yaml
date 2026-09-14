@@ -2,6 +2,12 @@
 metadata:
   status: "accepted"
   supersedes-in-part: [ADR-0127]
+  confirmed-by:
+    - engine:tests/pesados.node.test.js
+    - engine:tests/nada-de-cdn-a-mao.node.test.js
+  errata:
+    - date: 2026-09-13
+      what: "✅ CONFIRMED, pushed (`engine:35dea11`): no catalogue entry names the voice runtime; the models and the phonemizer remain. Issue #173 stays open for its own last item (huggingface.co in `connect-src`)."
   date: 2026-09-13
   decision-makers: [Dev]
   consulted:
@@ -42,7 +48,7 @@ decision-outcome:
       - "None measured"
 
   confirmation: |
-    ⚠️ NOT BUILT YET — **issue #173** in `the-inclusionist-engine`. Gates: no catalogue entry names `piper-tts-web` or
+    The gates in `confirmed-by` (issue #173, open for other items). Gates: no catalogue entry names `piper-tts-web` or
     `onnxruntime-web`; the voice models and the phonemizer entries remain.
 
 more-information: |

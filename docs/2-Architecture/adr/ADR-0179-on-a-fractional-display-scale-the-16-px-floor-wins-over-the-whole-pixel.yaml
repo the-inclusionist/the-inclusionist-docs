@@ -2,6 +2,11 @@
 metadata:
   status: "accepted"
   supersedes-in-part: [ADR-0001]
+  confirmed-by:
+    - engine:tests/escala-fracionaria.node.test.js
+  errata:
+    - date: 2026-09-13
+      what: "✅ CONFIRMED, pushed (issue #175 closed, `engine:e038a18`): on a fractional display scale the region never goes under 2 CSS px a pixel, `--ui-fs` holds 16 px."
   date: 2026-09-13
   decision-makers: [Dev]
   consulted:
@@ -49,7 +54,7 @@ decision-outcome:
       - "Pixel art may blur on the minimum window at a fractional scale"
 
   confirmation: |
-    ⚠️ NOT BUILT YET — **issue #175** in `the-inclusionist-engine`. Gates:
+    The gates in `confirmed-by` (issue #175, closed). Gates:
     at 640×360 with device pixel ratios 1.1, 1.25 and 1.75 the region is 640×360 CSS, `--ui-fs` is 16 px and the region fits
     the window; at 1366×768 and 1920×1080 the whole multiple is unchanged.
 

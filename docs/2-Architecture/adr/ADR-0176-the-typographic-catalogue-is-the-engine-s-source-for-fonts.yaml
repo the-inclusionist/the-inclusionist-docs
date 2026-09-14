@@ -8,7 +8,14 @@ metadata:
         them; everything else stands.
   supersedes-in-part: [ADR-0150]
   date: 2026-09-13
+  confirmed-by:
+    - engine:tests/catalogo-tipografico.node.test.js
+    - engine:tests/fontes-empacotadas.node.test.js
+    - engine:tests/piso-de-tamanho-da-fonte.node.test.js
+    - engine:tests/fontes-carregam.node.test.js
   errata:
+    - date: 2026-09-13
+      what: "✅ CONFIRMED, pushed (issue #172 closed; `engine:a5e8534`, `192f777`, `0223db1`): every offered face is an active catalogue entry, the floors hold, and every active family is packaged. The catalogue's place is `research/` since ADR-0191."
     - date: 2026-09-13
       what: "✅ POINT 7, THE OPEN ONE, ANSWERED BY THE DEV the same day. Asked whether the engine packages only the reading
              menu's faces and a cartridge declares and fetches the rest at build: «Engine empacota tudo por enquanto.» The
@@ -78,7 +85,7 @@ decision-outcome:
       - "`ui/fonts.ts` and its tests are rebuilt on the catalogue's fields"
 
   confirmation: |
-    ⚠️ NOT BUILT YET — **issue #172** in `the-inclusionist-engine`. Gates: every face the engine offers is `ativo` and in the
+    The gates in `confirmed-by` (issue #172, closed). Gates: every face the engine offers is `ativo` and in the
     catalogue; no layer B face in the reading menu; no face used below its floor; a face offered for Portuguese covers pt_br.
 
 more-information: |

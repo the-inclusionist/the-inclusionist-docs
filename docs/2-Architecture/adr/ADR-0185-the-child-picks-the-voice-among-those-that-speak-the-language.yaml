@@ -7,6 +7,14 @@ metadata:
         Kokoro as an AVAILABLE extra. Kokoro and Piper are both default engines; a Kokoro voice is still listed only
         where it runs (§2 stands).
   supersedes-in-part: [ADR-0151, ADR-0183]
+  confirmed-by:
+    - engine:tests/voz-por-idioma.node.test.js
+    - engine:tests/escolha-da-voz.node.test.js
+    - engine:tests/escolha-da-voz.browser.test.js
+    - engine:tests/fala-sem-voz.browser.test.js
+  errata:
+    - date: 2026-09-13
+      what: "✅ CONFIRMED IN PART, pushed (issue #180 closed, `engine:9d0f5e5`): the list holds the Piper voices of the language, the choice is stored and speaks, and a language with no voice locks the four rows and the bar's button with the reason. ⚠️ No Kokoro voice is listed yet: that half is issue #181 (ADR-0186)."
   date: 2026-09-13
   decision-makers: [Dev]
   consulted:
@@ -68,7 +76,7 @@ decision-outcome:
       - "The Kokoro voices serve English only, and only on a device with WebGPU and the 326 MB model"
 
   confirmation: |
-    ⚠️ NOT BUILT YET — **issue #180** in `the-inclusionist-engine`. Gates: in Portuguese the list holds `pt_BR-faber-medium`
+    The gates in `confirmed-by` (issue #180, closed). Gates: in Portuguese the list holds `pt_BR-faber-medium`
     and no English voice; in English it holds the two Piper voices, and the Kokoro voices only when the model and WebGPU are
     there; the choice is stored and speaks; with a language that has no voice, the four rows and the quick-bar button are
     `aria-disabled` with the reason, never hidden.

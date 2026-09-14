@@ -2,7 +2,12 @@
 metadata:
   status: "accepted"
   date: 2026-09-13
+  confirmed-by:
+    - engine:tests/opcoes-do-jogo.node.test.js
+    - engine:tests/opcoes-do-jogo.browser.test.js
   errata:
+    - date: 2026-09-13
+      what: "✅ CONFIRMED, pushed (issue #178 closed, `engine:16e6bda`): declared rows get the door and are drawn in the cartridge's words; none keeps the door locked with its reason (ADR-0161, the erratum below); a malformed row refuses the boot."
     - date: 2026-09-13
       what: "§2 AND THE CONFIRMATION CITED A SUPERSEDED RULE. «The door appears only when the cartridge declared at least one
              row (ADR-0146 §2)» — but ADR-0161 had already made the card show its six root items always, an item with nothing
@@ -54,7 +59,7 @@ decision-outcome:
       - "Chess, whack, soccer and pinball move their settings into declared rows to gain the door"
 
   confirmation: |
-    ⚠️ NOT BUILT YET — **issue #178** in `the-inclusionist-engine`. Gates: a cartridge declaring two rows gets the
+    The gates in `confirmed-by` (issue #178, closed). Gates: a cartridge declaring two rows gets the
     door and both rows, in its words, with «Voltar» first; a cartridge declaring none gets no door; changing a row calls the
     cartridge's writer and reading it shows the cartridge's value; a malformed row refuses the boot.
 

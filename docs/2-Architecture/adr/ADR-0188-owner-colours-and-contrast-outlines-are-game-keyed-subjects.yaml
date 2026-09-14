@@ -1,6 +1,11 @@
 ---
 metadata:
   status: "accepted"
+  confirmed-by:
+    - engine:tests/dono-e-contornos.browser.test.js
+  errata:
+    - date: 2026-09-13
+      what: "✅ CONFIRMED, pushed (issue #183 closed, `engine:04f1e34`): an answer without the two refuses the boot; answered with a word, each row is in the visual panel with that word; answered «not here», no row."
   date: 2026-09-13
   decision-makers: [Dev]
   consulted:
@@ -47,7 +52,7 @@ decision-outcome:
       - "Every cartridge's accommodation answers grow by two, and the ones already published must be updated"
 
   confirmation: |
-    ⚠️ NOT BUILT YET — **issue #183** in `the-inclusionist-engine`. Gates: an answer without the two refuses the boot; answered
+    The gates in `confirmed-by` (issue #183, closed). Gates: an answer without the two refuses the boot; answered
     with a word, each row is in the visual panel with that word and writes its stored setting; answered «not here», no row.
 
 more-information: |
