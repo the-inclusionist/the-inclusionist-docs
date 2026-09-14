@@ -2,6 +2,8 @@
 metadata:
   status: "accepted"
   errata:
+    - date: 2026-09-14
+      what: '📌 THE BUILD KEPT, left open by §2 («compiled here or taken from a build already published»). The Dev, 2026-09-14: «vamos usar o do Lichess, tem permissão para baixar, um modelo de tamanho small que não erra comandos e nomes de menus é justamente o que precisamos como controle». The engine keeps `@lichess-org/vosk-browser` (0.0.3, Apache-2.0; its commit «untangle vosk-browser emscripten. now we can use wasm-unsafe-eval») with Vosk''s small models, for commands and menu names — once it loads under the engine''s policy with no violation. Issue #184.'
     - date: 2026-09-13
       what: "📌 THE FIRING MODE, left open by this record. Measured on the test page with the Dev's recordings: firing at the end of the utterance reached the game 1.3–1.4 s after the word, with no false command over 25.6 s of reading; firing on the partial hypothesis, 0.25–0.45 s, with one. The Dev, after trying both live: «Disparar no parcial ficou melhor. Ambos não entendem tudo que é dito.» Commands fire on the partial hypothesis; neither mode understood every word said."
   date: 2026-09-13
