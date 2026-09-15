@@ -1,6 +1,7 @@
 ---
 metadata:
-  status: "accepted"
+  status: "superseded"
+  superseded-by: ADR-0210
   date: 2026-09-14
   decision-makers: [Dev]
   consulted:

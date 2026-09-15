@@ -1,6 +1,7 @@
 ---
 metadata:
-  status: "accepted"
+  status: "superseded"
+  superseded-by: ADR-0210
   supersedes-in-part: [ADR-0199]
   superseded-in-part:
     - by: ADR-0205
