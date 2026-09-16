@@ -100,3 +100,11 @@ four regions sit at the edges of the game region and the middle at its centre, a
 the top and bottom edge, east and west 24% × 24% at 13% from the side edge, the middle 24% × 26%. A region nobody looks at is outlined and
 hatched faintly; a look that prepares draws it amber (#ffd23f), an armed look green (#3ddc84), with a 3 px outline. The face button's two
 circles sit side by side. Lab `apresentacao.js`; engine issue #194.
+
+## 2026-09-16 · The eye control in the engine: the eye lines and no dark wash
+
+⚠️ Chosen while porting the lab to `engine:ui/gaze-overlay` and not yet seen by the Dev in the engine. The eyes, irises and brows are drawn
+as white lines 2 px wide (growing with the text) with a soft black shadow, both eyes the same colour — the lab drew the left eye green and
+the right one red, which reads as a state colour beside the amber and green of a look. The lab's dark wash under each region (35% navy) is
+left out: over a game it would darken the game itself at every level; the outline, and at the hatched level the hatching, mark the
+regions instead. Engine issue #194.
