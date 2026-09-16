@@ -6,6 +6,7 @@ metadata:
     - engine:tests/origem-da-tecla.node.test.js
     - engine:tests/nome-abstrato-nao-chega-a-pessoa.node.test.js
     - engine:app/js/input/origem-sintetica.ts
+    - engine:tests/virtual-controller.node.test.js
   errata:
     - date: 2026-09-09
       what: >-
@@ -31,6 +32,11 @@ metadata:
         📏 Found by the Dev on the quiz demo the same day: the quiz read raw key codes (its arrows worked, the
         scheme's W and S did not), and the eye control reached it by dispatching synthetic keys — both against
         §1 and §4. Built in engine issue #197.
+    - date: 2026-09-16
+      what: >-
+        ✅ THE PUSH DELIVERY CONFIRMED, pushed (issue #197 closed, `engine:de2e77a`, `0cc20ac`): `input/virtual-controller` and
+        `CreateGameOptions.onCommand` are gated in `confirmed-by`; the quiz demo hears only `onCommand`. The Dev, on the quiz demo:
+        «controles funcionando corretamente».
   date: 2026-09-08
   decision-makers: [Dev]
   consulted:
