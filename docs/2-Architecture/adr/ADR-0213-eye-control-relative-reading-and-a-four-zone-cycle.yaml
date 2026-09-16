@@ -2,6 +2,10 @@
 metadata:
   status: "accepted"
   supersedes-in-part: [ADR-0210, ADR-0212]
+  errata:
+    - date: 2026-09-16
+      what: "the north face button's letter. The Dev had written «X» for it, and the other three follow the Xbox letters, whose north
+             button is «Y»; asked, the Dev: «Eu errei, siga o padrão do XBox». ERRATUM: north is «Y» and a triangle. Applied in the body."
   date: 2026-09-16
   decision-makers: [Dev]
   consulted:
@@ -71,7 +75,7 @@ decision-outcome:
       6. **The presentation**, over the game, never the camera image: five regions — the four at the edges and the middle — each **hatched**,
          with writing at **16 px on a 720×360 picture**, in proportion. The middle says to look at it while the rest is measured. A look that
          prepares says where to go: north «Desça!», east «Pra Esquerda!», south «Suba!», west «Pra Direita!». An armed look shows «Carregando...»,
-         then the Lucide arrow of its direction, then the face button as a letter and a shape each inside a circle (north «X» and a triangle,
+         then the Lucide arrow of its direction, then the face button as a letter and a shape each inside a circle (north «Y» and a triangle,
          east «B» and a circle, south «A» and an X, west «X» and a square), then the shoulder inside a square — and again. Every text is in
          pt/en/es.
       7. **The eyes' toggle** has three states: off · the regions' outlines + the eyes · outlines + hatching + the eyes. «The eyes» are the eyes
@@ -96,6 +100,6 @@ decision-outcome:
 
 more-information: |
   The lab modules this is built from (scratchpad `vosk/`): `relativo.js` 40 cases, `ciclo.js` 47, `apresentacao.js` 12, `sinais.js` 9, the
-  synthetic face `rosto-falso.js` 11, each with its mutation plan. The plan of the work is «Plano · Câmera na engine». The north button's
-  letter follows the Dev's text («X»); the other three are the Xbox letters, and the Xbox north button is «Y» — to be confirmed with the Dev.
+  synthetic face `rosto-falso.js` 11, each with its mutation plan. The plan of the work is «Plano · Câmera na engine». The face buttons'
+  letters are the Xbox ones on every side (see the erratum).
   WebGazer is not used by this control; its removal (ADR-0132) is a separate decision.
