@@ -93,3 +93,10 @@ as the caption rate starts at its slowest; at 150 the Faber voice (255 PPM of sp
 The entry above chose 150 PPM as the default. The Dev: «Nada disso, velocidade normal é a mínima (254?, e deve poder aumentar de 50
 em 50 até ~500ppm, isto é, 504ppm)». The steps become 254–504 by 50, starting at 254, and no voice plays under 1× — a record
 (ADR-0196), since it changes ADR-0183's steps. The row keeps its place after the narration volume.
+## 2026-09-16 · The eye control's regions: where they sit, their size, and the colours of a look
+
+⚠️ Chosen in the lab while building the Dev's presentation (ADR-0213 §6) and seen by the Dev only through the lab, not in the engine. The
+four regions sit at the edges of the game region and the middle at its centre, as fractions of it: north and south 26% × 18% at 10% from
+the top and bottom edge, east and west 24% × 24% at 13% from the side edge, the middle 24% × 26%. A region nobody looks at is outlined and
+hatched faintly; a look that prepares draws it amber (#ffd23f), an armed look green (#3ddc84), with a 3 px outline. The face button's two
+circles sit side by side. Lab `apresentacao.js`; engine issue #194.
