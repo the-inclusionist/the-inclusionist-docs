@@ -20,6 +20,17 @@ metadata:
         A `confirmed-by` was added so the claim is opened by the validator instead of asserted in prose.
         Errata and not supersession: nothing was decided differently — the record went on saying its work was
         undone after it was done, which is the defect the debt census now counts.
+    - date: 2026-09-16
+      what: >-
+        ✅ THE OPEN POINT «how a cartridge asks about a command» (more-information), ANSWERED BY THE DEV, which
+        fills what this record left open (ADR-0057 §1): «a engine lida com o hardware e passa para o jogo o nome
+        virtual do botão, o jogo por sua vez devolve o nome do que é executado ao apertar cada botão (nome dos
+        comandos). Tanto a Engine quanto o jogo têm o mapa dos botões a serem usados, a engine leva o evento para
+        o jogo». So it is PUSH: the engine calls the cartridge with the position, whether it was pressed or
+        released, and the source; the cartridge's map is its `preset` (the position → the word of its command).
+        📏 Found by the Dev on the quiz demo the same day: the quiz read raw key codes (its arrows worked, the
+        scheme's W and S did not), and the eye control reached it by dispatching synthetic keys — both against
+        §1 and §4. Built in engine issue #197.
   date: 2026-09-08
   decision-makers: [Dev]
   consulted:
