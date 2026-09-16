@@ -1,7 +1,15 @@
 ---
 metadata:
   status: "accepted"
+  confirmed-by:
+    - engine:tests/piper-left-the-engine.node.test.js
+    - engine:docs/notices/2026-09-14-piper-voices-withdrawn.md
   supersedes: [ADR-0127]
+  errata:
+    - date: 2026-09-16
+      what: '✅ CONFIRMED, pushed (issue #193 closed, `engine:913051b`, `9b75371`): the gate reads the tree for Piper, its voices and its
+             phonemizer; the public notice is in the repository. Measured on dist/ built 2026-09-16: no Piper, Faber, Amy, Ryan or phonemizer
+             file, and no bundle names `piper-tts-web` or `piper_phonemize`.'
   supersedes-in-part: [ADR-0065, ADR-0110, ADR-0184, ADR-0185, ADR-0186, ADR-0198]
   date: 2026-09-14
   decision-makers: [Dev]
@@ -68,7 +76,7 @@ decision-outcome:
       - "Earlier builds keep the files they copied; the notice says so, the project cannot recall them"
 
   confirmation: |
-    ⚠️ NOT BUILT YET — **issue #193** in `the-inclusionist-engine`. Gates: no source, test, catalogue entry, dependency or header in
+    The gates in `confirmed-by` (issue #193 in `the-inclusionist-engine`, closed). Gates: no source, test, catalogue entry, dependency or header in
     the engine names Piper, its voices or its phonemizer (a gate reads the tree); a built delivery contains no Piper file; the notice
     is in the repository.
 
