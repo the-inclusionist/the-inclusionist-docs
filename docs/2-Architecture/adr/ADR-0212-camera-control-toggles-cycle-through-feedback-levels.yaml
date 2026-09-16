@@ -6,6 +6,10 @@ metadata:
       what: >-
         §1, the eyes' cycle. It has three states — off · the regions' outlines + the eyes · outlines + hatching + the eyes — and no gaze
         dot, since the relative reading has no point on the screen. The hand-gesture and face cycles stand.
+    - by: ADR-0215
+      what: >-
+        §1–§3 and §6, one toggle per mode. One camera icon cycles off · hands · face · eyes, every playing position draws its lines (no
+        «on» without them), and the choice is one key. §4 and §5 stand.
   date: 2026-09-15
   decision-makers: [Dev]
   consulted:

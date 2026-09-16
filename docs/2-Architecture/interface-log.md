@@ -114,3 +114,17 @@ regions instead. Engine issue #194.
 The Dev: «O ícone para jogar por gestos é 🤟, a partir de agora o ícone da pessoa surda deve ser 🦻». The Libras / deaf-mode icon changed
 its glyph from 🤟 to 🦻 (`engine:ui/pause-icons`); its key, name and behaviour did not. 🤟 is kept for the hand-gestures toggle, which the
 bar does not have yet (issue #191). Seen by the Dev only as this decision, not yet in the engine.
+
+## 2026-09-16 · Menu is the quick bar's first icon, and the icons touch
+
+The Dev: «Menu deve ser o primeiro ícone. A distância entre os ícones deve ser zero.» The bar opens with a Menu icon (☰) that opens
+the menus of its seat, the same door as SELECT; the quiz's own Menu button, top left, leaves. The gap between the bar's icons is zero.
+The camera icons became one in the same message (ADR-0215). Issue #199.
+
+## 2026-09-16 · The language button: three drawn flags, last on the bar
+
+The Dev: «Adicione um último botão à barra de acessibilidade rápida e coloque três bandeiras que se intercalam cada vez que o botão é
+apertado: Brasil, Estados Unidos e México.» The button is the bar's last and cycles pt → en → es. The flags are drawn as SVG, since
+flag emoji render as the letters BR, US, MX on Windows (measured: zero coloured pixels). Each language is named in itself with its
+place — «Português (Brasil)», «English (United States)», «Español (México)» — and the tag given to speech and recognition carries that
+region: pt-BR, en-US, es-MX (English and Spanish went without a region before). Seen by the Dev only as this decision.

@@ -2,6 +2,11 @@
 metadata:
   status: "accepted"
   supersedes-in-part: [ADR-0210, ADR-0212]
+  superseded-in-part:
+    - by: ADR-0215
+      what: >-
+        §7, the eyes' toggle. The eyes are one position of the single camera icon, drawing the eye lines and the regions' outlines, never
+        hatched; the hatching of §6 leaves with it. The reading and the cycle stand.
   errata:
     - date: 2026-09-16
       what: "the north face button's letter. The Dev had written «X» for it, and the other three follow the Xbox letters, whose north
