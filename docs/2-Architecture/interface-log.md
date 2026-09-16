@@ -108,3 +108,9 @@ as white lines 2 px wide (growing with the text) with a soft black shadow, both 
 the right one red, which reads as a state colour beside the amber and green of a look. The lab's dark wash under each region (35% navy) is
 left out: over a game it would darken the game itself at every level; the outline, and at the hatched level the hatching, mark the
 regions instead. Engine issue #194.
+
+## 2026-09-16 · The quick bar's hand icons: 🤟 is gestures, 🦻 is the deaf person
+
+The Dev: «O ícone para jogar por gestos é 🤟, a partir de agora o ícone da pessoa surda deve ser 🦻». The Libras / deaf-mode icon changed
+its glyph from 🤟 to 🦻 (`engine:ui/pause-icons`); its key, name and behaviour did not. 🤟 is kept for the hand-gestures toggle, which the
+bar does not have yet (issue #191). Seen by the Dev only as this decision, not yet in the engine.
