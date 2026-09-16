@@ -2,6 +2,10 @@
 metadata:
   status: "accepted"
   superseded-in-part:
+    - by: ADR-0214
+      what: >-
+        WebGazer's return. Eye control is MediaPipe's relative reading (ADR-0213) and needs no gaze point on the screen; WebGazer
+        leaves the engine. The closing of sherpa-onnx stands.
     - by: ADR-0186
       what: >-
         «sherpa-onnx is closed, WITH KOKORO-MULTI-LANG» — Kokoro returns, through the browser runtime with WebGPU, and is a
