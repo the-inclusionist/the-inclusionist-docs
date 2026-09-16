@@ -1,6 +1,11 @@
 ---
 metadata:
   status: "accepted"
+  superseded-in-part:
+    - by: ADR-0213
+      what: >-
+        §1, the eyes' cycle. It has three states — off · the regions' outlines + the eyes · outlines + hatching + the eyes — and no gaze
+        dot, since the relative reading has no point on the screen. The hand-gesture and face cycles stand.
   date: 2026-09-15
   decision-makers: [Dev]
   consulted:
