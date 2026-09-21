@@ -2,6 +2,10 @@
 metadata:
   status: "accepted"
   superseded-in-part:
+    - by: ADR-0216
+      what: >-
+        §5, the PORT: the game no longer fills `carregarKokoro`. The engine loads the neural voice itself, lazily, and the
+        cartridge only declares that it speaks with one. The voice list, the marks and the device test stand.
     - by: ADR-0207
       what: >-
         Piper first in Portuguese and Spanish and the 🪶 mark: Piper leaves the engine.
