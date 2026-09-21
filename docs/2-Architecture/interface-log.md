@@ -140,3 +140,13 @@ toque»): hidden where the game holds no key at all, locked with its reason wher
 the face, gestures, speech), and writing the same value the ☝️ writes. The platformer's sentences left the engine's words with it —
 «toque a direção para andar», «o pulo não interrompe a caminhada» described a game the engine does not have.
 
+
+## 2026-09-21 · ☝️ is called «Jeito de apertar», and its three positions are named
+
+The Dev: «vamos ciclar entre controle padrão > teclas de aderência > jogar com um botão só, ícone de acessibilidade: ☝️» (ADR-0218).
+⚠️ The WORDS were chosen while building and are NOT YET SEEN by the Dev. A cycle cannot be named after one of its positions, so the
+icon and the panel row stop being called «Não precisa segurar» — the entry above, from earlier the same day — and become **«Jeito de
+apertar»** / «How you press» / «Cómo pulsar», the subject; the three positions are what the child reads beside it: **«padrão»**,
+**«não precisa segurar»**, **«um botão só»** (standard · no holding needed · one button only). The one sentence under it names the
+three in the order they come. The panel row changes shape with them, from a switch to «◀ Jeito de apertar: padrão ▶», because a
+switch cannot hold three positions and two surfaces of one setting must say the same thing. `engine:0cae5c0`.
