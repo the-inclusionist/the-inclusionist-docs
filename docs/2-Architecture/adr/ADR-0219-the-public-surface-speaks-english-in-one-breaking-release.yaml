@@ -1,11 +1,21 @@
 ---
 metadata:
-  status: "proposed"
+  status: "accepted"
+  errata:
+    - date: 2026-09-21
+      what: >-
+        🔴 ACCEPTED, AND THE CODEMOD IS OUT. The Dev, reading this record: «Pode renomear e nada de mexer nos outros
+        repositórios, quando eu for consertá-los eu adequo o código à nova versão da engine». So item 3 of the outcome below
+        loses `npx inclusionist-rename <repo>` and the confirmation loses «the seven games compile after the codemod» — what
+        the games get is the TABLE, and when each one is adapted is his call, not this release's. ⚠️ The consequence he
+        accepted with it is that a game stays on the old engine until he touches it, which is exactly what a major release is
+        for; what this record must not do is pretend somebody else's repository was made ready.
   date: 2026-09-21
   decision-makers: [Dev]
   consulted:
     - "the Dev, 2026-09-14: the artefacts are in English because the project is open-source and English is what attracts contribution — and he has protested more than once that they are not"
     - "the Dev, 2026-09-21: «Se está como tarefa o assunto já está aberto» — the cleanup plan, written for «later», is open"
+    - "the Dev, 2026-09-21, deciding this record: «Pode renomear e nada de mexer nos outros repositórios, quando eu for consertá-los eu adequo o código à nova versão da engine»"
     - "engine:CLAUDE.md §0 — docs, comments, UI strings in source and commit messages in English; pt-BR only in i18n, in the educational layer and in CLAUDE.md itself"
     - "ADR-0172 — a one-way door (contract, public surface, stored keys, packages) is a registro; an interface choice a commit undoes is a line in the interface log"
     - "ADR-0170 §3 — the public surface is a promise: `docs/6-DevOps-SRE/public-surface.json` and the gate that refuses a name disappearing"
@@ -60,7 +70,7 @@ pros-and-cons-of-the-options: |
 
 decision-outcome:
   chosen-option:
-    link: "A — one major release, with a generated table and a codemod the games run"
+    link: "A — one major release, with a generated table; nothing outside this repository is touched"
     justification: |
       1. **One major, one note.** Every public name that carries a Portuguese word is renamed in the same release. The note in
          `docs/6-DevOps-SRE/Breaking-Changes.md` carries the complete old→new table, which is GENERATED from the rename map and
@@ -68,8 +78,9 @@ decision-outcome:
       2. **No deprecated aliases.** They would double the surface, break the gate that refuses exports with no consumer, and
          buy a safety net for seven repositories the same person releases.
       3. **The rename map is a FILE, and the map is what does the work** (`scripts/rename-map.json`): the engine renames itself
-         from it, the migration table is printed from it, and a `npx inclusionist-rename <repo>` applies the same map to a game.
-         A rename map that a script consumes cannot lose a name the way a hand-written table does.
+         from it and the migration table is printed from it, so a name cannot be renamed without being written down — which a
+         hand-typed table cannot promise. ⚠️ **And nothing outside this repository is touched** (the Dev, 2026-09-21): the games
+         get the table, and each one is adapted when he goes to it.
       4. **One commit per layer**, in the direction the dependencies run (`i18n → core → platform → input/render → ui → boot`),
          each one green on `tsc`, both suites, `build` and `build:pkg`. The layers are the only cut that keeps every commit
          compiling; a cut by module would not.
@@ -100,8 +111,9 @@ decision-outcome:
     do not exist yet: the language inventory (`scripts/language-inventory.mjs`) reports ZERO Portuguese identifiers in the
     public portrait; the portrait's own gate is green after a regenerated snapshot with the complete old→new table in
     `Breaking-Changes.md`; the printed table and the rename map have exactly the same entries (so a name cannot be renamed
-    without being written down); each layer commit is green on `tsc`, node, browser, `build` and `build:pkg`; and the seven
-    game repositories compile against `dist-pkg` after the codemod — measured from OUTSIDE, as `ADR-0120` taught.
+    without being written down); and each layer commit is green on `tsc`, node, browser, `build` and `build:pkg`.
+    📌 What is NOT confirmed here, by the Dev's decision: that the seven games compile. They stay on the engine they have until
+    he adapts each one, and this record would be lying if it claimed a repository it does not touch was made ready.
 
 more-information: |
   📌 THE MEASUREMENT THAT CHANGED THE SIZE OF THIS WORK. The plan said «~286 exports», counted in 2026-09-14 by a scan of this
