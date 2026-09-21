@@ -1,6 +1,17 @@
 ---
 metadata:
   status: "accepted"
+  confirmed-by:
+    - engine:tests/reading.node.test.js
+    - engine:tests/reading-model.node.test.js
+    - engine:tests/reading-runtime.node.test.js
+    - engine:tests/microphone.node.test.js
+    - engine:tests/reading-no-createGame.browser.test.js
+    - engine:tests/kokoro-runtime.node.test.js
+    - engine:tests/tts.node.test.js
+    - engine:tests/quiz-declara-o-que-usa.node.test.js
+    - engine:tests/pesados-na-entrega.node.test.js
+    - engine:tests/boot-create-game.node.test.js
   supersedes-in-part:
     - ADR-0198
   date: 2026-09-21
@@ -82,10 +93,17 @@ decision-outcome:
       - "A game that declares neither ability has no neural voice and no listening, which is a silence somebody must notice: it goes to `problems`"
 
   confirmation: |
-    ⚠️ NOT BUILT YET — **issue #200**. Gates, each red by mutation before it counts: a game that declares it listens gets text from
-    `listen()` with the recogniser injected; a game that declares nothing has no reading and no neural voice, and the delivery copies
-    neither; nothing heavy is imported before the first request; a recogniser that would leave the device is never built; the child's
-    language decides which model is asked for, and an unsupported language says so instead of failing silently.
+    The gates in `confirmed-by` (issue #200), each red by mutation before it counted: a game that declares it listens gets text from
+    `listen()`; a game that declares nothing has no reading and no neural voice, and the delivery copies neither; nothing heavy is
+    imported before the first request; a recogniser that would leave the device is never built; the child's language decides which model
+    is asked for, and an unsupported language says so instead of failing silently. The demo is the measurement of the promise: it asks
+    for the voice in one line and to listen in one more, and no file of it names a phonemizer, a runtime, a microphone, a model or a path.
+    🔴 TWO MUTATIONS SURVIVED FIRST and neither was a hole in the code: the demo's declaration and its `listen()` could both be DELETED
+    with the gate still green, because the comment beside each one quotes it. The gate now reads the tree with its comments stripped —
+    prose about code is the one thing prose can always produce.
+    ⚠️ TWO THINGS THIS DOES NOT YET CONFIRM, and both are named in issue #185: a reading transcribed from a REAL microphone (the round is
+    the Dev's), and the transcription running in a worker — today it runs on the main thread, where the lab measured Whisper cutting the
+    audio into 4 s gaps.
 
 more-information: |
   The reading models are mirrored and checked (issue #192, `models.md`): Whisper small for Portuguese, Moonshine streaming small for

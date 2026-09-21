@@ -1,6 +1,11 @@
 ---
 metadata:
   status: "accepted"
+  confirmed-by:
+    - engine:tests/input-cooldown.node.test.js
+    - engine:tests/nao-precisa-segurar.browser.test.js
+    - engine:tests/fronteira-de-entrada.node.test.js
+    - engine:tests/controle-virtual-no-arranque.browser.test.js
   date: 2026-09-21
   decision-makers: [Dev]
   consulted:
@@ -63,10 +68,13 @@ decision-outcome:
       - "A child who turns it on and plays something that needs two fast presses will find it in her way — which is why it is off by default and one row away"
 
   confirmation: |
-    ⚠️ NOT BUILT YET when this was written — the gates, each red by mutation before it counts: a second press inside the window
-    is refused and a release is not; a key held that repeats is not refused; the same press once the window has passed is
-    accepted; nothing is refused while the setting is off; the row is hidden in a game that holds no key; the choice survives to
-    the next day. Issue #182 carries the work.
+    The gates in `confirmed-by`, 9 of 9 red by mutation: a press that BEGINS inside the window is refused and a release is not; a key
+    held that repeats is not refused; the same press once the window has passed is accepted; the window counts from the last ACCEPTED
+    press, so ten presses in a tremor do not push it ten times; nothing is refused while the setting is off; the row sits beside the
+    sticky-keys one and the choice survives to the next day in `incl_input_cooldown`.
+    📌 One of the nine was measured EQUIVALENT — a `ms <= 0` guard that changed nothing — and was deleted rather than kept with a case
+    written around it; another was red for the wrong reason (it named an undeclared variable, so it failed to compile) and was rewritten
+    as code that compiles. Issue #182 carries the panel row it sits in.
 
 more-information: |
   The measurement that prompted this: `inputCooldown` entered `core/accommodations` with the other 53 ids and, alone among the
