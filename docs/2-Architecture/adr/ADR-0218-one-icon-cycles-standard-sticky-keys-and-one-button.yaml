@@ -3,6 +3,26 @@ metadata:
   status: "accepted"
   supersedes-in-part:
     - ADR-0211
+  errata:
+    - date: 2026-09-21
+      what: >-
+        ✅ THE SKIP IS THE DEV'S NOW, not an inference of mine. Shown that the ☝️ offers two positions in the quiz demo — which
+        holds no key, so «no holding needed» has nothing to hold — and asked whether the three should appear everywhere anyway:
+        «Fica o salto». What driver D3 argued from ADR-0155 and ADR-0106 §5 is confirmed as a decision.
+    - date: 2026-09-21
+      what: >-
+        🔴 THE ROW LEFT THE MOTOR PANEL on the day it arrived: «Tire a linha de acessibilidade motora». Item 6 of the decision
+        above put the same three positions in a row beside the cool-down; the Dev chose the icon as the only surface of this
+        setting. ⚠️ With the row went the one place that SAID why the latch is locked on a device that sends one command at a
+        time — which stays honest only because the cycle no longer OFFERS what is locked (see the erratum below).
+    - date: 2026-09-21
+      what: >-
+        📌 A SECOND THING TAKES A POSITION AWAY, and the decision above named only the first. A device that sends one command at
+        a time — the eyes, the face, gestures, speech — always latches and cannot be asked not to (ADR-0113 clause 3), so
+        `standard` is unreachable there and the cycle offers «no holding needed» and «one button only». 🔴 Until this was built,
+        that case GREYED THE WHOLE ICON OUT, which with three positions would have taken the one-button scan away from the child
+        playing with her eyes — the likeliest of all to need it. The lock is the latch's, not the scan's; the reason it is
+        locked is still read on the motor panel's row.
   date: 2026-09-21
   decision-makers: [Dev]
   consulted:
