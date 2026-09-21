@@ -14,6 +14,18 @@ metadata:
        name espeak-ng, onnxruntime-web, the model, the tokenizer, the voice table and the paths under `pesados/`. Every game that wants a
        neural voice copies them."
   informed: []
+  errata:
+    - date: 2026-09-21
+      what: >-
+        📏 THE COST IS SMALLER THAN THIS RECORD SAYS, measured while building it. The negative consequence «the engine's package
+        gains espeak-ng and an ONNX runtime; a consumer's build carries those chunks» assumed the engine would IMPORT them from
+        npm, as the quiz's port does. It does not have to: the vision runtime already shows the other way (ADR-0177) — the files
+        are catalogued, the build puts them in the delivery, and the page loads them from `pesados/` on its own origin. Measured:
+        espeak-ng 1.0.2 (glue 178 386 bytes, wasm 18 485 010) and onnxruntime-web 1.27.0 (ESM 113 035, jsep glue 46 614, jsep wasm
+        26 827 543) — 45.5 MiB, all from jsDelivr, which the network inventory already declares, and all already on the build
+        machine from the dev dependency, so nothing new is downloaded to pin them. So: the published package gains NO runtime
+        dependency, a game that declares neither ability carries none of it, and the `?url` imports of the quiz's port (which only
+        a Vite build understands) never enter the package.
 
 title: The engine offers speaking and listening as objects, as it offers the controller
 
