@@ -128,3 +128,15 @@ apertado: Brasil, Estados Unidos e México.» The button is the bar's last and c
 flag emoji render as the letters BR, US, MX on Windows (measured: zero coloured pixels). Each language is named in itself with its
 place — «Português (Brasil)», «English (United States)», «Español (México)» — and the tag given to speech and recognition carries that
 region: pt-BR, en-US, es-MX (English and Spanish went without a region before). Seen by the Dev only as this decision.
+
+## 2026-09-21 · Sticky keys are called «Não precisa segurar», and the motor panel offers them
+
+The Dev: «a aderência existe (ADR-0211, padrão em câmera e fala) e falta oferecê-la como opção para teclado e toque, com nome que a
+criança entenda». ⚠️ The WORDS were chosen while building and are NOT YET SEEN by the Dev. The setting had two names, both the
+mechanism's and neither the child's — the quick bar said «Teclas de alternância» and the panel «Movimento por alternância», for one
+stored value. Both become **«Não precisa segurar»** / «No holding needed» / «No hace falta mantener», with one sentence under it: «Um
+toque liga e outro desliga, em vez de manter o botão pressionado.» The motor panel gains the row (`#opt-sticky`, after «Mapear
+toque»): hidden where the game holds no key at all, locked with its reason where the device sends one command at a time (the eyes,
+the face, gestures, speech), and writing the same value the ☝️ writes. The platformer's sentences left the engine's words with it —
+«toque a direção para andar», «o pulo não interrompe a caminhada» described a game the engine does not have.
+
