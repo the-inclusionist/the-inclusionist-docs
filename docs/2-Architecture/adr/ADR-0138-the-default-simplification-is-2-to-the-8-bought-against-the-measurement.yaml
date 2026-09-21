@@ -61,7 +61,7 @@ pros-and-cons-of-the-options:
     good: ["📏 Worst error 7 per channel anywhere in the folder — invisible under NEAREST (ADR-0027).",
            "Nobody can be surprised by a colour they did not ask to change."]
     bad: ["564 positions where 274 would do, in every file, for every consumer.",
-          "⚠️ It is not what the Dev decided, and the decision is his."]
+          "⚠️ It is not what the Dev decided, and the decision is theirs."]
   L2:
     good: ["🎯 The procedural drawing is half again simpler: 1056 → 274 across the folder, 253 → 38 on the
             `Skeleton`.",

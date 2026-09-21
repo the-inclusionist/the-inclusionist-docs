@@ -137,8 +137,8 @@ decision-outcome:
 
       The divergence is worth one sentence of reason, because divergence normally is a defect: a package name is
       read by strangers in a dependency line, and that is the one place ADR-0071 spent a whole record thinking
-      about. `game-2048` tells such a reader what the thing is; `pixi-2048` tells him which renderer it used,
-      which is not what he was asking.
+      about. `game-2048` tells such a reader what the thing is; `pixi-2048` tells them which renderer it used,
+      which is not what they were asking.
 
       ⚠️ ERRATA DE 05/09: isto foi escrito como se fosse uma escolha a justificar, e **já era o padrão em
       exercício**. `hartwig-zdog-chess` publica `@the-inclusionist/game-chess` — mesma divergência, mesma

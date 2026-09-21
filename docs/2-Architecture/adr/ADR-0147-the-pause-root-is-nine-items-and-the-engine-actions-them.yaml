@@ -68,7 +68,7 @@ context-and-problem-statement: |
   does nothing. It was never meant to say «the engine offers a pause and then most of it is missing». ADR-0122
   says the pause is not declinable; a card with three items honours the letter of that and not the sentence.
 
-  🎯 **The Dev read the mounted card and dictated the whole composition**, on 2026-09-12. His words, and each
+  🎯 **The Dev read the mounted card and dictated the whole composition**, on 2026-09-12. Their words, and each
   one changes something that is written down somewhere:
 
     · «Ao invés de "adicionar jogador", coloque no menu de pausa "número de jogadores", com uma flecha para a
@@ -231,7 +231,7 @@ more-information: |
   typography icon on the HUD bar» (a restriction, no work, and the reading the surrounding points favour,
   since they are all about the bar) or as «the general options are reachable only from the title screen» —
   which would be a large decision and would contradict the stopping criterion of the current plan. It waits
-  for his word rather than being guessed at.
+  for their word rather than being guessed at.
 
   📌 **And the accessibility bar is a separate subject**, recorded next door: which icons it mounts and the
   fact that a game must not draw over it.

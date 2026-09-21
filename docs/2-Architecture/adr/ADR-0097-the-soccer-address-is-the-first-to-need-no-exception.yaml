@@ -8,7 +8,7 @@ metadata:
   decision-makers: [Dev]
   consulted:
     - "ADR-0067 §5 — a repository is created when a record declares its address. This is that declaration:
-       the Dev named `https://github.com/the-inclusionist/game-soccer` when he asked for the game, and the
+       the Dev named `https://github.com/the-inclusionist/game-soccer` when they asked for the game, and the
        repository has existed on disk since, with no record saying so"
     - "ADR-0082 — a game repository is named `game-<slug>` and mirrors its package. This address obeys it
        without needing a suspension or an exception, which is what a rule is for"
@@ -39,7 +39,7 @@ context-and-problem-statement: |
   was owed.
 
 decision-drivers:
-  - "The address is the Dev's to declare and he declared it; what is in question is only whether it is
+  - "The address is the Dev's to declare and they declared it; what is in question is only whether it is
      recorded, and under which rule."
   - "⚠️ A repository that exists without a record is the defect ADR-0067 names, and it is worse here than
      for a scaffold: this one already holds a working game, so the gap is not 'nothing has happened yet'."

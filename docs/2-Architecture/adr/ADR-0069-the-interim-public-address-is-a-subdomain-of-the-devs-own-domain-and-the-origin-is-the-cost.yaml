@@ -28,7 +28,7 @@ context-and-problem-statement: |
   transferred to a pessoa jurídica. It is a one-way street. The generic categories (`.com.br`, `.org.br`)
   do transfer, CPF to CNPJ, by ordinary procedure — so the shortcut existed, but not the one first proposed.
 
-  The Dev chose a third thing, and it is better than either: **a subdomain of a domain he already has**.
+  The Dev chose a third thing, and it is better than either: **a subdomain of a domain they already has**.
 
 decision-drivers:
   - "The address must not read as the Município's. ADR-0066 §2 decided that for the organisation name; an
@@ -72,7 +72,7 @@ pros-and-cons-of-the-options:
     bad: ["⚠️ MEASURED AND DECISIVE: it does not transfer to a pessoa jurídica. On the day of the ato the
            Município cannot receive the address; somebody has to CHANGE the address, and a changed address
            breaks everything already written on it.",
-          "A new `.br` registration publishes the Dev's name and part of his CPF in a WHOIS that no proxy may
+          "A new `.br` registration publishes the Dev's name and part of their CPF in a WHOIS that no proxy may
            hide, attached to a service used by children."]
   D4:
     good: ["Short AND transferable: generic categories accept both CPF and CNPJ, and CPF → CNPJ is an

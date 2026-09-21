@@ -20,13 +20,13 @@ context-and-problem-statement: |
   very mode that exists to raise contrast.
 
   The vignette was made to yield that day. THE SCANLINE WAS NOT, and it was left as a written question rather than
-  a silent omission, because the Dev had ruled: "Scanline não deverá ceder a acessibilidade por enquanto." He had
+  a silent omission, because the Dev had ruled: "Scanline não deverá ceder a acessibilidade por enquanto." They had
   also said, earlier and warmly, "CRT deve ser mantido, o visual é lindo."
 
   That left the project in the worst of the three possible states: a NON-NEGOTIABLE PILLAR with an exception that
   existed in practice and nowhere in writing. The pillar loses force and nobody can say why.
 
-  On 2026-08-27 he closed it, in TWO STEPS, and both belong here because the second only became possible after
+  On 2026-08-27 they closed it, in TWO STEPS, and both belong here because the second only became possible after
   seeing the first one run:
 
     (1) "ceda o scanline e o CRT à acessibilidade, mas deixe uma opção de não ceder para cada um no menu conforto
@@ -80,7 +80,7 @@ pros-and-cons-of-the-options:
             default, and it persists like every other visual setting."]
     bad: ["Two more rows in a panel that is already long, and a row is not free: a child navigating by ear sweeps
            past it on the way to something she needs (ADR-0044).",
-          "BUILT AND THEN WITHDRAWN by the Dev once he saw the plain yield running — see the outcome. The switches
+          "BUILT AND THEN WITHDRAWN by the Dev once they saw the plain yield running — see the outcome. The switches
            were answering a fear, and the fear did not survive contact with the screen."]
   E5:
     good: ["Answers the Dev's own reading of the word: 'Eu entendo ceder como se adaptar, e não desligar.'",
@@ -104,7 +104,7 @@ decision-outcome:
       describes what the code does, for the first time since 2026-07-06, and pillar 2 has no exception again.
 
       E4 WAS BUILT FIRST, at the Dev's own request ("deixe uma opção de não ceder para cada um no menu conforto
-      visual"), and he withdrew it in the next turn after seeing it run: "Cedi e vou além: pedi para deixar opções de
+      visual"), and they withdrew it in the next turn after seeing it run: "Cedi e vou além: pedi para deixar opções de
       não ceder no menu conforto visual, mas pode removê-las. Ceder fez muito bem ao jogo nos modos de acessibilidade."
 
       THAT SEQUENCE IS THE RECORD, not something to tidy away. The switches were built to answer a fear — that
@@ -113,7 +113,7 @@ decision-outcome:
       for whoever reads the code next.
 
       ===== 2. WHAT "YIELD" MEANS, BECAUSE THE DEV ASKED AND THE ANSWER IS NOT OBVIOUS =====
-      His question: "o que significa ceder CRT na prática? Por que não deveria manter CRT durante todo o jogo,
+      Their question: "o que significa ceder CRT na prática? Por que não deveria manter CRT durante todo o jogo,
       independente de estar no modo visual ou não? Eu entendo ceder como se adaptar, e não desligar."
 
       IN PRACTICE TODAY: the CSS class is not added while a visual accessibility mode is on — the effect is not

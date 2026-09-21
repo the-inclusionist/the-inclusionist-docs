@@ -46,7 +46,7 @@ context-and-problem-statement: |
   accommodations the engine cannot derive — the rest hang on things no genre says. Three options went to the
   Dev: A (mandatory genre), B (an optional field where the game names its own), C (five new mandatory fields).
 
-  🎯 **His answer, in three sentences:**
+  🎯 **Their answer, in three sentences:**
   1. «NÃO vamos fazer os 300 jogos» (recorded as ADR-0152).
   2. «Gênero não é obrigatório, mas dificilmente um jogo não tem gênero, levando em consideração a lista que
      realmente vale, ou seja, a da Wikipedia.»
@@ -84,7 +84,7 @@ decision-outcome:
       3. **Genre is optional**, a value of the pinned Wikipedia taxonomy. Where present it can pre-fill the answers
          it knows; the cartridge's answer wins where they differ.
       4. **The categories of the catalogue that have no single genre get one by the Dev's decision**, game by game
-         (he asked to see them with options). That is data for the taxonomy, not a change to this rule.
+         (they asked to see them with options). That is data for the taxonomy, not a change to this rule.
 
   consequences:
     positive:

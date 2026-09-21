@@ -40,7 +40,7 @@ metadata:
     - "The Dev's decision of 2026-09-09, verbatim: «Você está entendendo como jogo o platformer, certo? Não é
        esta a ideia. O «jogo» deve ser o the-inclusionist-site, que ao ser carregado carrega tudo que é da
        engine, incluindo fontes e vozes e todos os jogos criados.»"
-    - "And its consequence, in his words: «Assim não se carregam as vozes por jogo, mas pela plataforma onde
+    - "And its consequence, in their words: «Assim não se carregam as vozes por jogo, mas pela plataforma onde
        estão os vários cartuchos.»"
     - "ADR-0110 — SUPERSEDED IN PART: the engine fetches the four voices «itself on first boot». The guarantee
        and the ownership stand; WHERE the fetch happens moves from each cartridge's boot to the platform"
@@ -113,7 +113,7 @@ decision-outcome:
     link: "U3 — the site is the PWA, and the platform loads everything once"
     justification: |
       **THE UNIT OF INSTALLATION IS `the-inclusionist-site`.** In the Dev's words, it «carrega tudo que é da
-      engine, incluindo fontes e vozes e todos os jogos criados», and the consequence he drew himself:
+      engine, incluindo fontes e vozes e todos os jogos criados», and the consequence they drew themselves:
       «Assim não se carregam as vozes por jogo, mas pela plataforma onde estão os vários cartuchos.»
 
       1. **A GAME IS A CARTRIDGE, NOT A PWA.** It keeps its own repository, version and licence (ADR-0068 §1,

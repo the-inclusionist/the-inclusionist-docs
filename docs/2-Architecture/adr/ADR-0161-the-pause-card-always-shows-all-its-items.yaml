@@ -28,7 +28,7 @@ title: The pause card always shows all its items — an item with no action is d
 context-and-problem-statement: |
   The Dev opened the pause card in the quiz and found three items — «Back to the game», «Inclusion settings», «Quit the
   game» — instead of the six ADR-0151 lists, and a settings submenu without «Modo empatia» and «Acessibilidade visual».
-  He listed both menus in full.
+  They listed both menus in full.
 
   📏 Measured: the engine HIDES every item nothing acts on (`refrescarItensDaPausa`, ADR-0106 §5). In the quiz that is
   «Ajuda» (no `preset`), «Número de jogadores» (the game does not act on it), «Opções do jogo» (the game declares none),

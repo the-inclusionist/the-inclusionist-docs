@@ -25,10 +25,10 @@ context-and-problem-statement: |
   The Dev, on the quiz with the quick bar's explanation showing: «O rodapé deve ocupar no máximo duas linhas de texto e
   estar na parte mais baixa da tela (canvas), na frente de uma faixa escurecida para ter contraste.»
 
-  📏 Seen on his screenshot: the explanation of the colour-correction icon took three lines, sat above the pad's height
+  📏 Seen on their screenshot: the explanation of the colour-correction icon took three lines, sat above the pad's height
   in the middle of the screen, and was drawn over the quiz's third option with outlined letters and no background.
 
-  Later the same day, on three screenshots of the platformer, he set the footer apart from what is right and wrong in
+  Later the same day, on three screenshots of the platformer, they set the footer apart from what is right and wrong in
   each: (1) a settings panel's explanation — «duas linhas, fundo escurecido» right, but «está ajustado ao menu, não ao
   canvas»; (2) the button legend under the title menu — two lines right, but «usa só o centro da tela ao invés de usar de
   um lado ao outro da tela», and «no caso de uso da barra de explicação para botões, não precisa escurecer com uma

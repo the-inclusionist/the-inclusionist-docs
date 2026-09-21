@@ -73,7 +73,7 @@ context-and-problem-statement: |
   `platform/audio.setHearingLossGraph`, `core/state.setOneButtonValue`, `core/state.setWheelchairValue`,
   `setCbSafeValue`, `setOwnerColorsValue`, `setOutlineFgValue`/`Bg`, `render/lq-filter.setLq`.
 
-  🔴 **AND THE DEV READ THAT MEASUREMENT AND SAID IT IS WORSE THAN IT LOOKS**, in his own words:
+  🔴 **AND THE DEV READ THAT MEASUREMENT AND SAID IT IS WORSE THAN IT LOOKS**, in their own words:
 
       «Não faz sentido um modo cadeira de rodas num xadrez ou num snake. […] Modo empatia cadeira de rodas só
        pode aparecer no gênero plataforma, ou seja, é uma opção própria deste gênero, assim como peças
@@ -151,7 +151,7 @@ decision-outcome:
       What a genre has and the catalogue does not, it declares as its OWN entry — «peças» for the board
       games, and whatever the next genre brings. Nothing in the engine is renamed to accommodate it.
 
-      📌 This is the Dev's clause, in his words: «Não precisaria renomeá-los, mas fornecer uma lista de
+      📌 This is the Dev's clause, in their words: «Não precisaria renomeá-los, mas fornecer uma lista de
       "traduções" por gêneros assim como novas opções quando necessário.» So `jumpEdge`, `swapEdge` and
       `specialEdge` keep their names on `Player`; a genre that does not jump simply never declares them, and
       the platformer's translation is what turns `jumpEdge` into the word a child reads.

@@ -38,13 +38,13 @@ title: The 2048's address is `the-inclusionist/game-2048`, and the repository na
 
 context-and-problem-statement: |
   ADR-0073 recorded the address the Dev declared on 2026-09-05, `the-inclusionist/pixi-2048`, and wrote down
-  what it cost. On 2026-09-06 he changed it to **`the-inclusionist/game-2048`**.
+  what it cost. On 2026-09-06 they changed it to **`the-inclusionist/game-2048`**.
 
   ⚠️ THIS IS A SUPERSESSION AND NOT AN ERRATUM, and the distinction is the one ADR-0057 spent a record on.
-  The test is *would the original author, given the same facts he had that day, have written the same
+  The test is *would the original author, given the same facts they had that day, have written the same
   sentence?* — and the answer is YES: ADR-0073 said correctly what was decided on the 5th. The decision
   changed. That is the definition of what supersession is for, and ADR-0057 names "the decision-maker changed
-  his mind" as always a supersession, never an amendment.
+  their mind" as always a supersession, never an amendment.
 
   ⚠️ AND IT IS SUPERSEDED WHOLE, not in part, because the old address was in the TITLE. The index's rule is
   explicit and it is about identity rather than volume: *"se o que foi substituído está afirmado no TÍTULO, o

@@ -23,7 +23,7 @@ metadata:
 title: ONE menu per screen, the exit first, and narration that can be interrupted — the quick accessibility bar leaves the pause card and becomes HUD
 
 context-and-problem-statement: |
-  The Dev looked at the pause card and said it did not seem right for a blind child. He was reading a
+  The Dev looked at the pause card and said it did not seem right for a blind child. They were reading a
   structure, not a bug report, and measuring it turned the intuition into numbers.
 
   MEASURED on the built game (`main-875a43c`), pause card open:

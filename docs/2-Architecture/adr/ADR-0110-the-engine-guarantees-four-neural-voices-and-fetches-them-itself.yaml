@@ -62,7 +62,7 @@ context-and-problem-statement: |
        the school pay 200 MB so that the machines which need it are ready — the cost lands on everyone and the
        benefit on few, and the few are the ones the project exists for."
 
-  ⚠️ THE DEV DID NOT CONTRADICT THAT REASONING. He withdrew its premise:
+  ⚠️ THE DEV DID NOT CONTRADICT THAT REASONING. They withdrew its premise:
 
       "Baixar ~200MB é o preço para deixar o jogo inclusivo, e vale a pena. Sem falar que o jogo é educativo e
        precisa de leitor de tela mesmo para pessoas não cegas."
@@ -139,7 +139,7 @@ decision-outcome:
       ⚠️ A CORRECTION THAT MATTERS AND IS NOT A QUIBBLE: the Dev's links for the two English voices pointed at
       the `ncnn-` mirrors. `ncnn` is a different INFERENCE ENGINE — the models are `.param`/`.bin`, not
       `.onnx` — and this project runs sherpa-onnx. ADR-0065 §5 already forbids it ("`vits-piper` only, never
-      `ncnn`") and that clause is untouched. The voices he chose exist in the ONNX form; only the mirror was
+      `ncnn`") and that clause is untouched. The voices they chose exist in the ONNX form; only the mirror was
       wrong, so the choice is honoured and the format corrected.
 
       📌 `es_MX-claude-high` is `high` and the others are `medium`. `high` costs real-time factor, which on a

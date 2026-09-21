@@ -147,12 +147,12 @@ decision-outcome:
       ===== 6-old. WHAT WAS DECIDED HERE AND NOT BUILT (superseded above) =====
       The Dev's ask also described picking up, carrying and throwing an object with the same button. That mechanism
       does not exist in the game — there is no pickable object anywhere. The BUTTON ROUTING is decided and
-      implemented as a pure function (`game/carry.ts`), deliberately UNWIRED, because his answer to "where do the
+      implemented as a pure function (`game/carry.ts`), deliberately UNWIRED, because their answer to "where do the
       objects come from" was "Objetos eu ainda não adicionei aos cenários, farei isso no futuro".
 
       ⚠️ AND IT CARRIES A COST, written down so that nobody meets it on screen: with the toggle on and an object
       within reach, JUMP PICKS UP INSTEAD OF JUMPING. It is the direct consequence of the contract the Dev dictated,
-      and it is his choice — but whoever touches it next needs to know it was chosen, not forgotten.
+      and it is their choice — but whoever touches it next needs to know it was chosen, not forgotten.
 
       ⚠️ AMENDED 2026-08-28 — THE MECHANISM HAS OBJECTS NOW, AND THE CONTRACT GREW A THIRD ACTION. The recycling
       (ADR-0049 §1) is the first carryable thing in the game, so `game/carry` stopped being code with no caller. Two
@@ -248,7 +248,7 @@ decision-outcome:
 more-information: |
   ⚠️ CORRECTION 2026-08-27 — THIS RECORD IS AN INSTANCE, NOT THE RULE. As written it presents the latch as an answer
   to the movement toggle, born from the Dev's request of 2026-08-26. That is where the WORK started; it is not where
-  the DECISION started. He had already stated the general rule while defining the console profile, and
+  the DECISION started. They had already stated the general rule while defining the console profile, and
   corrected its shape the same day: HOLDING a button is allowed only in the default mode on keyboard or gamepad, and
   every other input mode — toggle-keys, face, eyes, voice, touch — receives the latch automatically. The rule lives
   in ADR-0033; what follows here is its first worked instance, and the one that measured what the rule costs (the

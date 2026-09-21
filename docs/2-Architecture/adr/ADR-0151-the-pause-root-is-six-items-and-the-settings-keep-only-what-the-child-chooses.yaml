@@ -80,7 +80,7 @@ context-and-problem-statement: |
   floor (the `[Zero]` case of `pausa-44px`: «tela menor mostra menos itens, não alvos menores»), so there was no
   room to find — only items to move. The work of phase 1b stopped there and was put back to the Dev.
 
-  🎯 **His answer went further than the root.** He recomposed the root AND the settings submenu under one
+  🎯 **Their answer went further than the root.** They recomposed the root AND the settings submenu under one
   test: an item stays where the CHILD chooses something that no other place already offers. What the quick
   bar already reaches, what the game decides, and what the browser cannot do well, leave.
 

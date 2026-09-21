@@ -7,9 +7,9 @@ metadata:
   errata:
     - date: 2026-09-11
       what: >-
-        🔴 §5 WAS BEING READ AS A PERMISSION GATE ON THE DEV, AND IT NEVER SAID THAT. He asked why this record
-        obstructs him every time he creates a repository, and the answer is that it does not — the AI does,
-        by quoting §5 at him. ⚠️ MEASURED AGAINST THE RECORD'S OWN STRUCTURE: §1 argues the trigger, §2 lists
+        🔴 §5 WAS BEING READ AS A PERMISSION GATE ON THE DEV, AND IT NEVER SAID THAT. They asked why this record
+        obstructs them every time they create a repository, and the answer is that it does not — the AI does,
+        by quoting §5 at them. ⚠️ MEASURED AGAINST THE RECORD'S OWN STRUCTURE: §1 argues the trigger, §2 lists
         the files, §3 answers the «reads as progress» objection and §4 answers the termo objection. **§5 is
         the only section with no argument of its own**, none of the four decision-drivers mentions it, and
         none of R1–R4 is about WHO authorises a repository. It sits under the heading «WHAT THIS DOES NOT
@@ -21,8 +21,8 @@ metadata:
         the second clause as one contradicts the rest of the governance — `CLAUDE.md` says REGISTERING IS
         EXECUTION, NOT CONSULTATION, and ADR-0128 puts the decision and its record in the same TURN rather
         than the same instant. When the Dev creates a repository the decision has already been taken, because
-        he is who takes them; the record follows in the same turn and writing it is the AI's work, not a lock
-        on his.
+        they are who takes them; the record follows in the same turn and writing it is the AI's work, not a lock
+        on theirs.
         📌 **THE DECISION DOES NOT CHANGE, WHICH IS WHY THIS IS ERRATA AND NOT SUPERSESSION** (ADR-0057 §1):
         the trigger stays, the four files stay, the README debt stays, and accretion stays refused. What the
         sentence gains is a property the decision already had and failed to carry. Applied to §5 below.
@@ -174,7 +174,7 @@ decision-outcome:
       ⚠️ AND THIS IS A LIMIT ON THE RULE, NOT A GATE ON THE DEV — amended 2026-09-11, see the errata. It
       states when ADR-0067 OBLIGES an address to exist, so that §1 could not be read as «create repositories
       freely»; what it refuses is ACCRETION, which in this project means the AI proposing addresses. **The
-      Dev's decision to create a repository IS the declaration**, because he is who takes decisions here; the
+      Dev's decision to create a repository IS the declaration**, because they are who takes decisions here; the
       record follows in the SAME TURN and writing it is the AI's work (ADR-0128, and `CLAUDE.md`: registering
       is execution, not consultation). 🎯 The operational form of this, which keeps the section honest instead
       of merely permissive: **the scaffold script refuses to run without a record identifier**, so the record

@@ -13,7 +13,7 @@ metadata:
   decision-makers: [Dev]
   consulted:
     - "ADR-0106 §1 — the Dev's standing rule about the pause menu and the accessibility icons being OFFERED
-       BY THE ENGINE. This record extends the same sentence to the virtual control, in his words on
+       BY THE ENGINE. This record extends the same sentence to the virtual control, in their words on
        2026-09-11: «Além dos menus, o controle virtual também deve ser oferecido pela engine»"
     - "ADR-0106 §5 — «no stage may ship a dead button». It is what forbids the obvious reading of this
        record: a fixed d-pad mounted into a game that has no directions is nine dead buttons, not a gift"

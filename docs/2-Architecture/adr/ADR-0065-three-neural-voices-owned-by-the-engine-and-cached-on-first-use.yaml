@@ -22,7 +22,7 @@ metadata:
              runtime cache on FIRST USE over precache, and the argument it gave is what expired: «neural speech
              is an ACCOMMODATION, not a feature everyone uses; precaching would make every machine pay 200 MB
              so that the few which need it are ready». The Dev did not contradict that reasoning on 2026-09-08
-             — he withdrew its premise: «o jogo é educativo e precisa de leitor de tela mesmo para pessoas não
+             — they withdrew its premise: «o jogo é educativo e precisa de leitor de tela mesmo para pessoas não
              cegas». When the answer is EVERY child, cost and benefit land in the same place and «few benefit»
              stops being true. ⚠️ §3 (the voices belong to the ENGINE), §5 (one source, `vits-piper` only, never
              `ncnn`, no `int8` — with the measured reason that int8 runs ~3x SLOWER in the WASM backend) and §6
@@ -50,7 +50,7 @@ title: THREE neural voices, owned by the ENGINE, arriving on FIRST USE — becau
 context-and-problem-statement: |
   ADR-0022 chose sherpa-onnx-wasm as the neural TTS runtime, and that choice stands. What did not stand is
   almost everything around it: on 2026-08-27 the Dev changed the roster, the quantisation, the ownership and the
-  delivery — four things, in one afternoon, once the arithmetic was in front of him — and the changes went into
+  delivery — four things, in one afternoon, once the arithmetic was in front of them — and the changes went into
   the accepted record as an in-place amendment.
 
   ⚠️ AND THE ARITHMETIC IS THE WHOLE RECORD, so it goes first. Measured in this repository:

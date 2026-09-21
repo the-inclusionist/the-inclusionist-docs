@@ -341,7 +341,7 @@ decision-outcome:
 
       ===== 3b. THE SERVER DOES NOT LINK ONE id TO ANOTHER =====
       A student who changes teacher gets a new id, so the server holds EPISODES and not lifetimes. It was proposed
-      that behaviour could re-link them; the Dev then narrowed it himself, and the narrowing is the decision:
+      that behaviour could re-link them; the Dev then narrowed it themselves, and the narrowing is the decision:
       the objective is to find behaviour patterns and SEGMENT INTO GROUPS, not to personalise absolutely.
 
       ⚠️ AND A GROUP CURVE DOES NOT NEED THE LINK. A student who changes id contributes two episodes, and the
@@ -359,7 +359,7 @@ decision-outcome:
       share with a certified account on the network directly, peer to peer, for a period set at share time (weeks,
       months, to the end of the school or fiscal year), under contract and terms of acceptance.
 
-      ⚠️ "NOT END-TO-END" IS NOT "IN THE CLEAR", and the Dev corrected his own wording here: the transport IS
+      ⚠️ "NOT END-TO-END" IS NOT "IN THE CLEAR", and the Dev corrected their own wording here: the transport IS
       encrypted on the intranet. P2P on a school LAN without TLS means any machine on that LAN reads student data;
       WebRTC data channels carry DTLS by default, and another transport has to earn the same.
 

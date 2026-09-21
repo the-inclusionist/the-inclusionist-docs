@@ -41,7 +41,7 @@ context-and-problem-statement: |
   from opening the page to earning something — and the pedagogical half, which is the point of the product, had
   no record at all.
 
-  A PROTOTYPE EXISTS and the Dev pointed at it: `Inclusionista-Jornada.dc.html`. His words: "está com a ideia
+  A PROTOTYPE EXISTS and the Dev pointed at it: `Inclusionista-Jornada.dc.html`. Their words: "está com a ideia
   próxima da correta, mas contém alguns erros." Read against this project's own decisions, the errors are
   specific and they are corrected by this record:
 
@@ -244,8 +244,8 @@ decision-outcome:
         · They **reset at the end of the day**; what is kept is the day's total.
         · Visible to the adult and, from 13, to the student.
 
-      ✅ SETTLED: POINTS ARE WORK, NEVER CURRENCY. Two of his sentences had conflicted — one had points unlocking
-      story text, the other had them earning "absolutamente nada". He confirmed the second: "Pontos só devem
+      ✅ SETTLED: POINTS ARE WORK, NEVER CURRENCY. Two of their sentences had conflicted — one had points unlocking
+      story text, the other had them earning "absolutamente nada". They confirmed the second: "Pontos só devem
       significar trabalho realizado, não moeda." The story-unlock is not built, and the reason it should not be is
       now on the record rather than in a flag: anything points BUY turns them into an accumulation to chase, which
       is the shape ADR-0049 exists to keep out.

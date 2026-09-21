@@ -89,24 +89,24 @@ more-information: |
   and the quantisation after listening to all of them, and the change never reached here. What is FACT goes in now;
   what still needs a number is marked as such rather than written as if settled.
 
-  **JEFF IS OUT.** His word, after the listening round: "Remova jeff." His notes on why: jeff and faber sounded like
+  **JEFF IS OUT.** Their word, after the listening round: "Remova jeff." Their notes on why: jeff and faber sounded like
   the same model — "Parece ser o mesmo modelo. Mesmo ritmo, mesmo sotaque" — so it was a duplicate, not a choice.
   MEASURED TODAY: the game ships exactly one voice, `pt_BR-faber-medium` (`app/js/platform/tts.ts`); jeff survives
-  only as lab files under `docs/research/sherpa-wasm/`. The code had already followed him; only the record had not.
+  only as lab files under `docs/research/sherpa-wasm/`. The code had already followed them; only the record had not.
   ⚠️ `docs/CREDITS.md` still credits jeff. Left alone on purpose — a wrong attribution removal is worse than a stale
   one, and the lab files are still there. It is a separate pass, not a side effect of this amendment.
 
   **ONE SOURCE.** "Usaremos somente modelos de fangjun (csukuangfj)" — https://huggingface.co/csukuangfj/models.
   vits-piper only, never ncnn.
 
-  **`int8` IS OUT, and the reason is the valuable part** — he asked for it in writing ("Documente isso e remova
-  int8") and it was never written down. In the WASM backend, int8 runs ~3× SLOWER than fp32, measured in his own log
+  **`int8` IS OUT, and the reason is the valuable part** — they asked for it in writing ("Documente isso e remova
+  int8") and it was never written down. In the WASM backend, int8 runs ~3× SLOWER than fp32, measured in their own log
   (int8 RTF 5.6 against fp32 2.5); and int8 on ORT-web produces incorrect or silent output, a known problem of the
   WASM backend with the quantised ops (MatMulInteger / DynamicQuantizeLinear). Quantising does not shrink the wait
   here — it lengthens it. Without this paragraph the next person tries int8 believing it is an optimisation.
 
   **THE ROSTER IS THREE, AND THEY BELONG TO THE ENGINE.** The seven-locale target was cut by the Dev the moment the
-  sum was put in front of him. His words: "deixe somente três modelos para offline: en_US, pt_BR e es_MX (latino-
+  sum was put in front of them. Their words: "deixe somente três modelos para offline: en_US, pt_BR e es_MX (latino-
   americano neutro) e empacote-os no PWA. Eles fazem parte da engine, e não do jogo em si, uma vez que se abre a
   engine, isso deve permanecer dentro dela."
 
@@ -134,7 +134,7 @@ more-information: |
     · RUNTIME CACHE keeps the same end state — the voice lives on the machine and works offline forever after — but
       pays for it on first use, per voice, and only for the locale actually in use.
 
-  ✅ **DECIDED 2026-08-27: RUNTIME CACHE, ON FIRST USE.** The Dev, once the sum was in front of him: "Ok, cachear
+  ✅ **DECIDED 2026-08-27: RUNTIME CACHE, ON FIRST USE.** The Dev, once the sum was in front of them: "Ok, cachear
   conforme primeiro uso, assim somente alunos que precisam baixam."
 
   And that last clause is the argument, not a side effect. Neural speech is not a feature every child uses — it is

@@ -87,7 +87,7 @@ decision-outcome:
 
       ⚠️ WHAT IS THE DEV'S AND IS NOT DONE HERE: renaming the repository on GitHub is an outward-facing act on
       a shared address, and so is retiring the empty one. This record decides the ROLE; the addresses follow
-      when he moves them.
+      when they move them.
 
       📌 AND ADR-0117'S DECISION IS UNTOUCHED — the PWA is the platform, and the platform loads the fonts, the
       voices and the cartridges once. What changes is that it has somewhere to live, and its gates stop being

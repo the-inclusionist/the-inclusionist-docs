@@ -41,8 +41,8 @@ context-and-problem-statement: |
   owns the code by law and is obliged by law to work with open source. ⚠️ **This record does not rest on that
   claim, and says so deliberately** — it is a question for a lawyer, not for an architecture record, and the
   premise that would activate it (a signed transfer) has not happened. What follows without needing any of it:
-  **while the papers are unsigned, the code is the Dev's, the choice is the Dev's, and he has made it.** If
-  the obligation he describes is real, publication is where the code was going anyway; if it is not,
+  **while the papers are unsigned, the code is the Dev's, the choice is the Dev's, and they have made it.** If
+  the obligation they describe is real, publication is where the code was going anyway; if it is not,
   publication is still what AGPL-3.0 already implies.
 
   📌 THE ONE THING THAT MAKES THIS DIFFERENT FROM A SETTING: **publication does not undo.** A repository made
@@ -78,7 +78,7 @@ pros-and-cons-of-the-options:
     good:
       - "Nothing to audit; no exposure risk."
     bad:
-      - "🔴 The Dev keeps paying for it, and he has said plainly that he does not insist on the privacy."
+      - "🔴 The Dev keeps paying for it, and they have said plainly that they do not insist on the privacy."
       - "The condition has no date, so this is an indefinite hold dressed as a milestone."
   C:
     good:
@@ -158,8 +158,8 @@ more-information: |
 
   📌 The legal premise the Dev states — that the municipality owns the code by law and is obliged by law to
   work with open source — is recorded as HIS statement and is not load-bearing here. This record stands on
-  two things that need no lawyer: the papers are unsigned, so the choice is his today; and privacy has a
-  price he is paying and nobody is refunding.
+  two things that need no lawyer: the papers are unsigned, so the choice is their today; and privacy has a
+  price they are paying and nobody is refunding.
 
   Deliberately NOT decided here: when the flip happens; whether the games go out at the same moment as the
   engine; whether any repository stays private for a reason not yet named; and anything about the ato itself,

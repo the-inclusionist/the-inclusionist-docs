@@ -6,12 +6,12 @@ metadata:
   decision-makers: [Dev]
   consulted:
     - "The Dev's decision of 2026-09-09, verbatim: «a ADR deveria ser PWA offline após o primeiro dia.»"
-    - "His objection that produced it, verbatim: «ESTOU PRA COMEÇAR A BRIGAR QUE PRIMEIRO USO NÃO PODE SER
+    - "Their objection that produced it, verbatim: «ESTOU PRA COMEÇAR A BRIGAR QUE PRIMEIRO USO NÃO PODE SER
        CONSIDERADO REDE PORQUE O PRÓPRIO SISTEMA ESTÁ SENDO BAIXADO! NÃO FAZ SENTIDO BAIXAR ALGO VIA PWA, E
        CONSIDERAR QUE SE É PRA USAR VIA PWA OFFLINE NÃO É PRA BAIXAR NADA NO PRIMEIRO USO!»"
-    - "His second question, which broke the technical claim the superseded clause rested on, verbatim: «me
+    - "Their second question, which broke the technical claim the superseded clause rested on, verbatim: «me
        explique COMO É POSSÍVEL HAVER RUNTIME EM CDN SEM REDE?!»"
-    - "His preference of 2026-09-08, which ADR-0114 recorded verbatim and then overrode: «Concordo com 3
+    - "Their preference of 2026-09-08, which ADR-0114 recorded verbatim and then overrode: «Concordo com 3
        (buscado na rede com os modelos) e se conseguir usar cdnjs/jsdelivr é ótimo»"
     - "ADR-0114 — SUPERSEDED IN PART: the clause that a CDN fetch is disqualifying because it is «a network
        dependency at first use», and the attribution of that reason to the Dev"
@@ -28,12 +28,12 @@ title: A PWA is offline AFTER THE FIRST DAY — installing is itself a network a
 context-and-problem-statement: |
   🔴 THE DEV CAUGHT A REASON ATTRIBUTED TO HIM THAT HE NEVER GAVE. ADR-0114 justified refusing cdnjs/jsDelivr
   for the runtime «for the reason he himself gave in the same message: a CDN fetch is a network dependency at
-  first use». The same record stores his actual words two paragraphs above: «Concordo com 3 (buscado na rede
-  com os modelos) e se conseguir usar cdnjs/jsdelivr é ótimo». He asked for the CDN. The reason was the AI's,
-  and it was written back as his after he had said «E assim eu sigo sua recomendação» — a recommendation
+  first use». The same record stores their actual words two paragraphs above: «Concordo com 3 (buscado na rede
+  com os modelos) e se conseguir usar cdnjs/jsdelivr é ótimo». They asked for the CDN. The reason was the AI's,
+  and it was written back as their after they had said «E assim eu sigo sua recomendação» — a recommendation
   quoting itself as the authority for the recommendation.
 
-  ⚠️ AND THE ARGUMENT ITSELF DOES NOT HOLD, which is what his second question exposed: «me explique COMO É
+  ⚠️ AND THE ARGUMENT ITSELF DOES NOT HOLD, which is what their second question exposed: «me explique COMO É
   POSSÍVEL HAVER RUNTIME EM CDN SEM REDE?!» There is no such state. A PWA arrives over the network — that IS
   the install. Requiring that nothing be downloaded on first use is requiring that the application not be
   installed.
@@ -46,7 +46,7 @@ context-and-problem-statement: |
 
 decision-drivers:
   - "Pillar 8 has to state something a machine can be measured against, not an impossible purity"
-  - "A record must not put a reason in the Dev's mouth — a decision resting on that is not his decision"
+  - "A record must not put a reason in the Dev's mouth — a decision resting on that is not their decision"
   - "The distinction that MATTERS offline is WHEN the bytes arrive, not from WHOSE origin"
   - "Three hundred games deploy this; a rule that costs each of them 32 MB needs a real reason"
 
@@ -62,7 +62,7 @@ pros-and-cons-of-the-options:
       - "Nothing to reach at install beyond the app itself."
     bad:
       - "🔴 It rests on a state that cannot exist — a PWA with no network was never installed."
-      - "It was justified by a reason attributed to the Dev that he did not give, and against the preference he did."
+      - "It was justified by a reason attributed to the Dev that they did not give, and against the preference they did."
       - "It makes every one of three hundred deploys carry ~32 MB to satisfy a rule that measures nothing."
   O2:
     good:
@@ -75,7 +75,7 @@ pros-and-cons-of-the-options:
       - "It states something testable: after the install completes, the machine plays with no network."
       - "It restores the Dev's own preference — cdnjs/jsDelivr become admissible, judged on their real merits."
       - "It keeps the distinction that carries weight: PRECACHED AT INSTALL versus FETCHED LAZILY AT FIRST USE."
-      - "It matches his pillar-8 clarification exactly: a floor at install, extras accumulating afterwards."
+      - "It matches their pillar-8 clarification exactly: a floor at install, extras accumulating afterwards."
     bad:
       - "«The first day» is a human phrase; the gate has to translate it into «is in the precache manifest»."
       - "A third-party origin has to answer at install time, and a school whitelist may not include it."

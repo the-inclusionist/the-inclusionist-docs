@@ -144,7 +144,7 @@ decision-outcome:
 more-information: |
   This closes finding §1 of ADR-0080 and the first half of issue #108. Findings §2 and §4 were closed by
   ADR-0084 and ADR-0087. §3 — the grid metric, and space beyond two dimensions — is the one still open, and it
-  is the Dev's: he rejected the options offered and asked for a measure the ENGINE chooses and performs,
+  is the Dev's: they rejected the options offered and asked for a measure the ENGINE chooses and performs,
   working at any orientation in the plane and in space, with the narration in geographic terms.
 
   ⚠️ ONE THING THIS RECORD DOES NOT DO: it does not give the engine a way to KNOW which game is running. Only

@@ -36,8 +36,8 @@ context-and-problem-statement: |
   that there is no hiring and the only labour is volunteer, and drew the consequence that **discovery is the
   production line** — how many people find the project is an input, not vanity. A volunteer who finds the
   project, clones a game and types `npm install` is exactly the person that record is about. Under GitHub
-  Packages his first command fails, and it fails as a `401` that says nothing about tokens. Under npmjs it
-  succeeds and he never learns a registry was involved.
+  Packages their first command fails, and it fails as a `401` that says nothing about tokens. Under npmjs it
+  succeeds and they never learns a registry was involved.
 
   The same sentence binds every CI that is not ours: a fork's pipeline, a school building its own copy, a
   Secretaria auditing what it is about to install. ADR-0068 §4 already refused three hundred copies of a
@@ -96,7 +96,7 @@ decision-outcome:
       The argument is one measured sentence and one accepted record set next to each other: GitHub Packages
       requires a token to install a public package, and ADR-0070 says the only labour there will ever be is
       the labour of people who found the project and tried it. A registry that asks a stranger for credentials
-      before showing him the code is not neutral about that — it is a filter, and it filters in the direction
+      before showing them the code is not neutral about that — it is a filter, and it filters in the direction
       this project cannot afford.
 
       ===== 2. WHAT THIS COSTS, SAID PLAINLY AND ACTED ON THE SAME DAY =====

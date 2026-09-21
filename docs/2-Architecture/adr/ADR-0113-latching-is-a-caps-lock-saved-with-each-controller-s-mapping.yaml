@@ -30,7 +30,7 @@ metadata:
     - by: ADR-0115
       what: >-
         the assumption that latching is a control EVERY game offers, with a factory default. The Dev revoked
-        his own clause of the same day: «ERREI E ERREI FEIO! Nem todo jogo precisa de alternância, somente os
+        their own clause of the same day: «ERREI E ERREI FEIO! Nem todo jogo precisa de alternância, somente os
         que precisam de tecla segurando. Logo, cabe ao jogo decidir o mapeamento padrão de cada dispositivo, e
         isso vale para teclas de alternância.» ⚠️ WHAT THIS RECORD GOT RIGHT SURVIVES INTACT — where latching
         exists, the value belongs to the controller's mapping like a caps-lock, the icon stays reachable, and
@@ -46,7 +46,7 @@ metadata:
        alternância devem ser entendido como uma espécie de caps-lock que fica salva para aquele controle como
        parte do mapeamento. isso faz com que ela ainda precise de um botão para ligar e desligar de fácil
        acesso, sendo apenas impossível desligá-la em modos que não tem como funcionar sem ela (voz e câmera)»"
-    - "The problem he was answering, in his own framing of issue #127: «Retirar da criança um controle de
+    - "The problem they were answering, in their own framing of issue #127: «Retirar da criança um controle de
        acessibilidade que ela hoje tem»"
     - "ADR-0109 — SUPERSEDED IN PART: the clause that latching «stops being a SAVED CHOICE»"
     - "ADR-0104 §C — latching is saved PER TRANSPORT, always on for eyes/face/gestures/speech. This record

@@ -44,7 +44,7 @@ considered-options:
   - "B — Vosk for commands and Moonshine for reading, both built and tested in a game"
 
 pros-and-cons-of-the-options: |
-  **A.** ✅ One model per language. ❌ The Dev saw many errors in his test; open reading is what it does worst.
+  **A.** ✅ One model per language. ❌ The Dev saw many errors in their test; open reading is what it does worst.
   **B.** ✅ Each task gets its recogniser, and the choice is tried in play. ❌ Two runtimes and two sets of models.
 
 decision-outcome:

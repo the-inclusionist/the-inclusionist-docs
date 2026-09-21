@@ -20,7 +20,7 @@ metadata:
   decision-makers: [Dev]
   consulted:
     - "The Dev's decision of 2026-09-09: «piper-tts, mediapipe (webgazer não), e LPCP: devem acompanhar a
-       engine.» He named PIPER as the TTS runtime that travels with the engine, while three accepted records
+       engine.» They named PIPER as the TTS runtime that travels with the engine, while three accepted records
        said the runtime is sherpa-onnx-wasm. This record settles which, because the two produce different work"
     - "ADR-0065 §1 — SUPERSEDED IN PART: «THE RUNTIME IS UNCHANGED — sherpa-onnx-wasm, as ADR-0022 chose it».
        ⚠️ IT IS 0065 AND NOT 0022 THAT THIS RECORD SUPERSEDES, and the distinction was nearly got wrong:

@@ -65,7 +65,7 @@ pros-and-cons-of-the-options:
     - "Zero change, zero risk today."
     bad:
     - "⚠️ A getter that satisfies an interface is not a contract - nothing tells the next author, and nothing
-       fails when he does not. The comment would be the only enforcement, and a comment is not a gate."
+       fails when they do not. The comment would be the only enforcement, and a comment is not a gate."
     - "`conformanceProblems` still reads once; a caching consumer still goes stale in silence."
   R3:
     good:

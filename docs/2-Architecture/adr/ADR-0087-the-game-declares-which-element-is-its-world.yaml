@@ -143,9 +143,9 @@ decision-outcome:
 more-information: |
   This is the third of the three contract decisions the 15-puzzle's debt report forced. ADR-0084 answered the
   first (`topology` is a function). The second - the grid metric, and space beyond two dimensions - is still
-  open and is the Dev's to close: he rejected the options offered and asked for a measure the ENGINE chooses
+  open and is the Dev's to close: they rejected the options offered and asked for a measure the ENGINE chooses
   and performs, working at any orientation in the plane and in three dimensions, with the narration in
-  geographic terms. A proposal (O4) is written and with him.
+  geographic terms. A proposal (O4) is written and with them.
 
   ⚠️ AND ONE THING IS DELIBERATELY LEFT UNDECIDED HERE: what the engine does with `{kind:'none'}` beyond not
   offering empathy and sonar. Whether the selection screen must SAY so before the child starts - the way

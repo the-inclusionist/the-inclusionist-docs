@@ -5,7 +5,7 @@ metadata:
   date: 2026-09-09
   decision-makers: [Dev]
   consulted:
-    - "The Dev's decision of 2026-09-09. He asked the question first — «O ideal não seria escrever como ADR
+    - "The Dev's decision of 2026-09-09. They asked the question first — «O ideal não seria escrever como ADR
        somente após testes? Após a verificação que o caminho foi o certo e a arquitetura deve permanecer a
        escolhida?» — then read the split back and said «Por favor, implemente isso.»"
     - "ADR-0057 — a decision changes by supersession, errata only when the record never said what was decided.

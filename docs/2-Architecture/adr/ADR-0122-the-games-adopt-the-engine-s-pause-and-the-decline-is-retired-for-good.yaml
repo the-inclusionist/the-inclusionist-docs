@@ -12,7 +12,7 @@ metadata:
        measurement; its METHOD lesson (measure the catalogue) is re-affirmed and is what produced this record"
     - "ADR-0120 — the retirement itself, whose outcome this record restores"
     - "ADR-0106 — the standing rule that the engine offers the pause and the accessibility bar to every game
-       from the first screen; this is the Dev's own framing, quoted above, in his own words"
+       from the first screen; this is the Dev's own framing, quoted above, in their own words"
     - "issue #132 — where the choice lived, with the two options A and B measured"
     - "`ui/menu-nav.ts:485` and `input/gamepad.ts:619` — the two readers of the pause card, both gated on
        `!menu.hidden`; `ui/pause-icons.ts:1180` — `sp.hidden = true`, the card is born hidden"
@@ -24,7 +24,7 @@ context-and-problem-statement: |
   Issue #132 asked one question with two answers: either the four games that decline the engine's pause ADOPT
   it (A), or the engine keeps the escape hatch under a truer name — `semPausaDaEngine`, «I mount my own» (B).
 
-  The Dev answered A, and re-stated the reason he had already given when ADR-0106 was written: the pause menu
+  The Dev answered A, and re-stated the reason they had already given when ADR-0106 was written: the pause menu
   and the quick accessibility buttons in the HUD are supposed to be in EVERY game, and that is precisely why
   they are the engine's responsibility rather than each cartridge's.
 

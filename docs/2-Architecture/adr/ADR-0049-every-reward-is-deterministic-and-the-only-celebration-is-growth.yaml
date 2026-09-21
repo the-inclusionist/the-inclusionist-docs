@@ -229,7 +229,7 @@ decision-outcome:
         · **ALL ORANGE** — four reds in a row, or five scattered: the level drops.
         · **ALL PURPLE** — eight blues: the level rises, and the count resets.
 
-      ✅ ONE SEGMENT IS ONE QUESTION, AND "ERRO" HAS A DEFINITION. Settled by the Dev, and his wording is the
+      ✅ ONE SEGMENT IS ONE QUESTION, AND "ERRO" HAS A DEFINITION. Settled by the Dev, and their wording is the
       clarification: **two wrong attempts are not an "erro"** — they are the tolerance. A segment turns RED only
       after the THIRD wrong attempt, which is the point at which the question counts as failed.
       That is what makes every number in ADR-0048 §5 line up: eight blues is 8/10 first-try; four reds in a row is

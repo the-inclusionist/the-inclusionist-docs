@@ -59,7 +59,7 @@ context-and-problem-statement: |
   BCP-47 tag — `pt-BR` → Playwrite BR — and, for a tag with no region or a country with no face, fell back to
   **Playwrite US Modern**, because that is what the Dev had said.
 
-  🔴 **He changed it the next day, and the new rule is better for the reason that makes it uncomfortable:**
+  🔴 **They changed it the next day, and the new rule is better for the reason that makes it uncomfortable:**
   «o fallback deve ser do colonizador quando o país não tem seu próprio playwrite, isto é, Playwrite Espana
   para países que falam espanhol, Playwrite Portugal para os países que falam Português, e playwrite england
   joined para países que falam inglês».
@@ -70,7 +70,7 @@ context-and-problem-statement: |
   from. For a child in Angola or Bolivia, that is a true statement about how she was taught to write; US
   Modern was an arbitrary default wearing a country's name.
 
-  ⚠️ **And a second half of his instruction reaches further than the fallback:** «Para países com mais de um
+  ⚠️ **And a second half of their instruction reaches further than the fallback:** «Para países com mais de um
   playwrite, deve aparecer ambas». 📏 MEASURED against the Google catalogue before writing this, because the
   literal reading would have been wrong: **fourteen countries have a `Playwrite XX Guides`** — and it is not a
   second hand. It is the SAME hand with the handwriting rules drawn through it. Asked directly, the Dev
@@ -82,7 +82,7 @@ context-and-problem-statement: |
   whoever wants a ninth to build the arrival first. 📏 The seven new faces measure **430 KB**. Two gates went
   red when they were first added, which is the gates working.
 
-  ✅ His answer: «estas fontes devem ser baixadas no primeiro dia para fazer parte do PWA. Se valer a pena
+  ✅ Their answer: «estas fontes devem ser baixadas no primeiro dia para fazer parte do PWA. Se valer a pena
   empacotar em vez de baixar, vamos empacotar». And on the framing: «a palavra "pagar" é desproporcional pela
   quantidade tão baixa de dados».
 

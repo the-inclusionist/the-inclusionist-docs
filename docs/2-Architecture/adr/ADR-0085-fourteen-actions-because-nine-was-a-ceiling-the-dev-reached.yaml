@@ -40,7 +40,7 @@ context-and-problem-statement: |
   say. This record says.
 
   There are two things to decide and they are not the same. The first is the SIZE of the set, which is the
-  Dev's to state and he stated it. The second is what the new positions are CALLED — and the request arrived
+  Dev's to state and they stated it. The second is what the new positions are CALLED — and the request arrived
   in the vocabulary of a gamepad.
 
   ⚠️ AND THE MEASUREMENT THAT MAKES THIS NOT PURELY ADDITIVE. `input/gamepad.ts:111` reads
@@ -51,7 +51,7 @@ context-and-problem-statement: |
   double action rather than as an error.
 
 decision-drivers:
-- "The Dev stated the need; the size of the action set is his call and is not in question here."
+- "The Dev stated the need; the size of the action set is their call and is not in question here."
 - "⚠️ ADR-0074 exists BECAUSE `jump` and `run` were platformer meaning inside the engine. `L1` would be the
    same defect facing the other way: gamepad meaning. On a keyboard scheme L1 is some key; on touch it is a
    slot; on a speech recogniser it is a word."
@@ -165,8 +165,8 @@ decision-outcome:
 
 more-information: |
   A COUNT THAT DISAGREED WITH A LIST, AND THE ANSWER: the Dev's message said "four buttons" and named five.
-  Rather than choose silently, the discrepancy was put back to him with the reading being taken — that the
-  NAMES are the specification and the count is the slip — and he confirmed the same day: *"são realmente
+  Rather than choose silently, the discrepancy was put back to them with the reading being taken — that the
+  NAMES are the specification and the count is the slip — and they confirmed the same day: *"são realmente
   cinco"*. It is written here because the alternative was an engine with a button nobody asked for, arrived at
   without anyone noticing the arithmetic; a specification read twice costs one sentence.
 

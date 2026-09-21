@@ -100,7 +100,7 @@ more-information: |
     APPEAR.** This is the structural half of the amendment, and it is new: until now the catalogue was one list and
     every font in it could be chosen for the whole interface. The Dev cut it by ROLE.
 
-    **TIER 1 — CALLIGRAPHIC. Inside ACTIVITIES only, never in the system.** His words: \"usadas somente dentro das
+    **TIER 1 — CALLIGRAPHIC. Inside ACTIVITIES only, never in the system.** Their words: \"usadas somente dentro das
     atividades, nunca no sistema (hud, menus), por isso não aparecem nos menus para escolhas, mas sim em botões
     dentro das atividades escolares.\" They are TEACHING MATERIAL — a child learns to read cursive by meeting
     cursive — and they are the opposite of legible-by-default, so they may not carry a HUD, a menu or a warning.
@@ -153,7 +153,7 @@ more-information: |
         And **Noto Color Emoji** — which is the FIFTH, confirmed by the Dev; it had been written on a separate
         line and I had guessed Atkinson Hyperlegible Mono instead. It is a font and it is not a choice: the
         interface uses emoji as labels, so it is bundled for the same reason the other four are.
-        And **Atkinson Hyperlegible Mono** is the SIXTH, added when the question was put to him: it is the
+        And **Atkinson Hyperlegible Mono** is the SIXTH, added when the question was put to them: it is the
         canonical face for MATHS in this record, the file is already in the repository (20 KB), and maths is not
         an optional part of the product.
       · **FETCHED BY CURRICULUM EVENT — and this tier is new.** **Noto Sans Math** and **Noto Sans Mono** download
@@ -169,7 +169,7 @@ more-information: |
 
         ⚠️ AND THE BNCC CODES ARE NOT CONFIRMED. The Dev named the eighth-year content from memory and it is
         plausible; which skill codes actually carry it has to be read from the Base when the curriculum layer is
-        populated (issue #2), because the TRIGGER is a skill code and not a year label. Recorded as his rationale,
+        populated (issue #2), because the TRIGGER is a skill code and not a year label. Recorded as their rationale,
         not as a verified mapping.
       · **ON DEMAND:** Source Sans 3 · Inter · Open Sans · Lato · Literata · Source Serif 4 · Newsreader ·
         **OpenDyslexic**. This list may grow or shrink as the game evolves; nothing in it is load-bearing.
@@ -196,7 +196,7 @@ more-information: |
       · MISSING AND NEEDED: **OpenDyslexic** · **Fondamento** · **Playwrite**.
 
     PLAYWRITE WAS THE LINE THAT NEEDED A NUMBER, AND THE DEV BOUNDED IT THE SAME DAY. Playwrite is not one family:
-    it is a family PER REGION, on the order of fifty across all languages (Playwrite NL, NO, TZ, DE, FR, …). His
+    it is a family PER REGION, on the order of fifty across all languages (Playwrite NL, NO, TZ, DE, FR, …). Their
     rule cuts it to the languages this project ships: \"somente fontes de países que falam inglês, espanhol e
     português\". At the roster's measured cost (20–90 KB per family) that lands in the low hundreds of KB rather
     than 1,5–2 MB, which the 29 MB budget absorbs.

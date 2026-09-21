@@ -6,7 +6,7 @@ metadata:
   decision-makers: [Dev]
   consulted:
     - "The Dev's decision of 2026-09-09: «Que tal termos um repositório próprio somente para a árvore de ADR
-       que é usada por todo o projeto?», and then, with the measurement in front of him and against this AI's
+       que é usada por todo o projeto?», and then, with the measurement in front of them and against this AI's
        recommendation of a partial move: «https://github.com/the-inclusionist/the-inclusionist-docs criados.
        Vamos de A.»"
     - "ADR-0068 §5 — SUPERSEDED IN PART: «A game repository has NO `adr/` folder and never will. The records
@@ -106,7 +106,7 @@ decision-outcome:
          that checks nothing and prints «all sound» is worse than no sieve — it is the false report this
          project has caught three times. Passing `--repo engine=<path>` checks them for real, and it was
          proved to: 122 sound with the root, 9 failing with a wrong one.
-      4. 🔴 **THE TREE IS CONCENTRATED; THE VALIDATOR AND THE GATES ARE NOT.** The Dev's correction, in his
+      4. 🔴 **THE TREE IS CONCENTRATED; THE VALIDATOR AND THE GATES ARE NOT.** The Dev's correction, in their
          words: *«ADR foi concentrada, validador não precisa ser»* and *«Cada repositório precisa ter seus
          validadores e gates para ADRs»*. So every repository keeps an `adr` job of its own, and the engine's
          job is the one that can do what this repository cannot: it has the CODE, so it checks the

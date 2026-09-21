@@ -94,7 +94,7 @@ decision-outcome:
       operation from simulation; this is that line applied to where a control sits.
 
       ⚠️ AND IF THE CURRENT PLACEMENT IS DELIBERATE, THIS RECORD IS STILL THE RIGHT ARTEFACT — option C is
-      written above with its own cost. ADR-0028 lists the eight menus as the Dev sees them, and if he sees
+      written above with its own cost. ADR-0028 lists the eight menus as the Dev sees them, and if they see
       them this way for a reason, the reason belongs here rather than being rediscovered by the next person
       who maps the panels.
 

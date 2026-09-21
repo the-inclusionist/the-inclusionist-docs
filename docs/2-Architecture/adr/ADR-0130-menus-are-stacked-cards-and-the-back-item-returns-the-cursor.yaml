@@ -11,7 +11,7 @@ metadata:
     - date: 2026-09-09
       what: >-
         🔴 THIS RECORD OVER-COMMITTED, and the Dev caught it within the hour: «por que já registrou como ADR ao
-        invés de implementar primeiro e ver se dá certo?». He is right about two of the six rules, and the
+        invés de implementar primeiro e ver se dá certo?». They are right about two of the six rules, and the
         reason ADR-0128 did not prevent it is that ADR-0128 splits the RECORD into decision-before and
         confirmation-after without splitting the CONTENT. There are three kinds of thing here, not two.
         A DECISION is a choice among alternatives with different consequences for a person, which no test
@@ -32,7 +32,7 @@ metadata:
     - date: 2026-09-12
       what: >-
         🔴 RULE 3 IS REVISED BY THE DEV, in the paragraph the erratum above reserved for exactly this. Reading a built
-        stepper — the label on the left, a separate «◀ small ▶» box on the right — he wrote: «Não faça essa coisa
+        stepper — the label on the left, a separate «◀ small ▶» box on the right — they wrote: «Não faça essa coisa
         estranha. Escreva "< Rounded corner: off >" e ao apertar para direita, "< Rounded corner: small >" e ao
         apertar mais uma vez "< Rounded corner: large >". Este é o jeito certo de ciclar entre quantidade de opções
         pequenas, e não por radio buttons agrupado como sugeri em ADR anterior. Acima de cinco itens deve ser
@@ -43,9 +43,9 @@ metadata:
   date: 2026-09-09
   decision-makers: [Dev]
   consulted:
-    - "The Dev's specification of 2026-09-09, given as six numbered rules after he read ADR-0129 and asked what
+    - "The Dev's specification of 2026-09-09, given as six numbered rules after they read ADR-0129 and asked what
        the menu vocabulary actually meant. The rules are transcribed verbatim in the decision below"
-    - "ADR-0044 — the three zones of the screen: the explanation lives in the FOOTER. His rule 2 restates it,
+    - "ADR-0044 — the three zones of the screen: the explanation lives in the FOOTER. Their rule 2 restates it,
        which matters because that rule has already failed twice in code"
     - "ADR-0129 (proposed) — one row builder and one dispatch hook. This record does not decide it, but it
        changes what the builder would have to emit: five control types rather than four"

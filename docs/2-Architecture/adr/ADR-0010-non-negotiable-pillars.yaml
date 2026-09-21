@@ -25,9 +25,9 @@ metadata:
              by the AI, in ADR-0114 — as forbidding any fetch at first use. The pillar never said that, which is
              why this is ERRATUM under ADR-0057 §1 and not supersession: the record never said what was decided.
              ⚠️ AND THE OVER-READING WAS SELF-CONTRADICTORY, which is what the Dev pointed at: a PWA arrives over
-             the network, so `PWA` already contained `first day online`. His words: «NÃO FAZ SENTIDO BAIXAR ALGO
+             the network, so `PWA` already contained `first day online`. Their words: «NÃO FAZ SENTIDO BAIXAR ALGO
              VIA PWA, E CONSIDERAR QUE SE É PRA USAR VIA PWA OFFLINE NÃO É PRA BAIXAR NADA NO PRIMEIRO USO!», and
-             the shape he asked for: «a ADR deveria ser PWA offline após o primeiro dia» · «o correto é PWA first
+             the shape they asked for: «a ADR deveria ser PWA offline após o primeiro dia» · «o correto é PWA first
              day online then offline first». The line now says it, and what it demands is measurable: after the
              install, no network is needed to play. ADR-0116 is the record that decided it; this erratum is the
              pillar catching up with its own name. 📌 Same instrument and same reason as the pillar-6 erratum
@@ -100,13 +100,13 @@ more-information: |
     8. Offline — **PWA first day ONLINE, then OFFLINE-FIRST** (base) + Tauri/Tauri Mobile; never duplicate logic per target.
        ⚠️ CLARIFIED 2026-09-09 by the Dev (ADR-0116), and the clarification is of AMBIGUITY, not of policy: this
        line read `Offline — PWA (base)` and never said anything about the first day, so it was read as forbidding
-       any fetch at first use. It never forbade one. In his words: «NÃO FAZ SENTIDO BAIXAR ALGO VIA PWA, E
+       any fetch at first use. It never forbade one. In their words: «NÃO FAZ SENTIDO BAIXAR ALGO VIA PWA, E
        CONSIDERAR QUE SE É PRA USAR VIA PWA OFFLINE NÃO É PRA BAIXAR NADA NO PRIMEIRO USO!» — installing a PWA
        IS a network act, and a PWA with no network was never installed.
        📌 What the pillar demands, and what a gate can measure: AFTER the install the machine plays with NO
        network. The rule that carries the weight is about TIMING, not origin — **precached at install, never
        fetched lazily at first use**. Extras (neural voice models, a heavy TTS runtime) accumulate in the cache
-       afterwards, which is the same phrase he used for pillar 8 on 2026-09-08: `o cache acumulando mais
+       afterwards, which is the same phrase they used for pillar 8 on 2026-09-08: `o cache acumulando mais
        recursos conforme vai se baixando os extras pela internet`.
     9. LAN + store-and-forward telemetry — playing needs no internet; queue + batch on reconnect.
     10. Open + free + funded — AGPL-3.0 code; free; no dark patterns (ADR-0006). THE ART IS NOT OURS TO LICENCE.

@@ -27,7 +27,7 @@ metadata:
         to `platform/pesados`, the same mechanism as the voices, so the child plays while it comes down.
         ⚠️ AND THE REASON HAS TO BE STATED CAREFULLY, because half of it died the same day: ADR-0124 rejected
         the precache partly as «arithmetically impossible» against a 2048 KiB budget, and the Dev REMOVED that
-        budget hours later — it was never his number, it entered in `af35a7d` from this AI, in no record at
+        budget hours later — it was never their number, it entered in `af35a7d` from this AI, in no record at
         all. What survives is the reason that never depended on it: a precached runtime must finish installing
         before the worker is ready, while a background download lets the child play meanwhile.
     - by: ADR-0117
@@ -58,11 +58,11 @@ metadata:
     - "The Dev's decision of 2026-09-08, verbatim: «Concordo com 3 (buscado na rede com os modelos) e se
        conseguir usar cdnjs/jsdelivr é ótimo», followed by «E assim eu sigo sua recomendação», quoting the
        runtime-in-the-PWA option in full"
-    - "His pillar-8 clarification, verbatim: «O jogo deve ser possível de jogar sozinho sem internet, mas
+    - "Their pillar-8 clarification, verbatim: «O jogo deve ser possível de jogar sozinho sem internet, mas
        recursos extras só estão disponíveis via internet. Isso significa que o primeiro bloco a ser armazenado
        em cache para PWA deve conter todo o necessário para jogar sozinho, com o cache acumulando mais
        recursos conforme vai se baixando os extras pela internet»"
-    - "His scope cut, verbatim: «Jogar on LAN não neste primeiro momento»"
+    - "Their scope cut, verbatim: «Jogar on LAN não neste primeiro momento»"
     - "ADR-0110 — four neural voices, fetched by the engine. It decided about the MODELS and said nothing
        about the RUNTIME; this record is the half it left open"
     - "ADR-0094 — SUPERSEDED IN PART: the neural voice arrives through a DOOR THE GAME OPENS. The 135 MB
@@ -151,10 +151,10 @@ decision-outcome:
       3. **THE FIRST PRECACHE BLOCK IS A PLAYABLE GAME.** In the Dev's words: everything needed to play alone
          goes in the first block, and the cache ACCUMULATES as extras are downloaded. Offline is not «the whole
          catalogue or nothing»; it is a floor that always holds, plus extras that arrive when there is a network.
-      4. **LAN IS OUT OF SCOPE FOR NOW** — his cut, recorded so it is a decision and not an omission. Pillar 9
+      4. **LAN IS OUT OF SCOPE FOR NOW** — their cut, recorded so it is a decision and not an omission. Pillar 9
          is unchanged; what changes is that nothing in this delivery waits for it.
 
-      📏 WHERE THE MODELS COME FROM — MEASURED, not assumed, because he asked. `https://piper.ttstool.com/` was
+      📏 WHERE THE MODELS COME FROM — MEASURED, not assumed, because they asked. `https://piper.ttstool.com/` was
       read on 2026-09-08: it serves its own runtime from its own origin (`piper_phonemize.js`, `bundle.js`,
       `inference-worker.js`) and fetches models from
       **`https://huggingface.co/rhasspy/piper-voices/resolve/main/`**. All four voices ADR-0110 named answer 200
@@ -178,9 +178,9 @@ decision-outcome:
 
       🔴 ERRATUM, 2026-09-09 — A MISQUOTE, CORRECTED IN PLACE AND LEFT VISIBLE. The paragraph above ended, as
       written, with «and for the reason HE HIMSELF GAVE in the same message». The Dev never gave that reason.
-      His words are recorded verbatim in `consulted` above and say the opposite — «se conseguir usar
-      cdnjs/jsdelivr é ótimo» — and the argument that overrode them was the AI's own, written back as his
-      after he had said «E assim eu sigo sua recomendação». A recommendation cited as its own authority.
+      Their words are recorded verbatim in `consulted` above and say the opposite — «se conseguir usar
+      cdnjs/jsdelivr é ótimo» — and the argument that overrode them was the AI's own, written back as their
+      after they had said «E assim eu sigo sua recomendação». A recommendation cited as its own authority.
       ⚠️ ONLY THE ATTRIBUTION IS ERRATUM, because ADR-0057 leaves a wrong citation to erratum and nothing else.
       The DECISION the paragraph carried is superseded by ADR-0116 — the author with the facts of that day
       would have written the same sentence, which is the test that says supersession and not amendment.

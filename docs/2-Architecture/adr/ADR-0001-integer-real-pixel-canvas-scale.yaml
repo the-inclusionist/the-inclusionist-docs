@@ -12,7 +12,7 @@ metadata:
       what: "the record kept only the HARD half of the Dev's ruler — that the factor is an integer in PHYSICAL
              pixels — and left out three clauses the decision already had: a minimum of 640x360 in use
              (`MIN_K = 2`), rises in INTEGER multiples, and the tolerance of losing up to five logical pixels
-             per side. He had to repeat them in anger (`eu expliquei a oito prompts atrás`), which is the
+             per side. They had to repeat them in anger (`eu expliquei a oito prompts atrás`), which is the
              signature of a rule not written where people look. ERRATUM under ADR-0057 §1: the sentence failed
              to carry properties the decision already had, and all three were MEASURED in `ui/layout.ts` before
              being written, so none is intention presented as fact. Applied in the body 2026-08-27; DECLARED
@@ -81,7 +81,7 @@ decision-outcome:
 more-information: |
   ===== EMENDA 2026-08-27 — A RÉGUA INTEIRA, MEDIDA NO CÓDIGO ANTES DE SER ESCRITA =====
   This record kept only the hard half — the factor is an integer in PHYSICAL pixels, not CSS. The Dev's ruler has
-  three more clauses, and he had to repeat them in anger after an auto-resize broke them ("eu expliquei a oito
+  three more clauses, and they had to repeat them in anger after an auto-resize broke them ("eu expliquei a oito
   prompts atrás"). A rule that has to be repeated is a rule that is not written where people look. Measured in
   `app/js/ui/layout.ts` before writing this, so none of it is intention presented as fact:
 
@@ -101,14 +101,14 @@ more-information: |
   multiplication.
 
   ⚠️ ONE CLAUSE OF HIS IS RULE AND NOT YET FACT, said here rather than left to be discovered: **"os botões que se
-  espalhem" — the canvas has priority over the buttons.** His words: "o canvas deve ocupar o maior espaço possível
+  espalhem" — the canvas has priority over the buttons.** Their words: "o canvas deve ocupar o maior espaço possível
   sem que haja barra de rolagem, e no centro… você dá mais prioridade aos botões do que ao canvas do jogo". The
   formula honours whatever `wrap.clientHeight` gives it; who wins the space before that is CSS, and this record does
   NOT verify it. It is written as the rule it is, and the check is owed.
 
   Lesson (the mistake not to repeat): the FIRST version of this ADR (v4.147.2) said "never put dpr in the formula;
   lock to integer CSS." That was WRONG — it came from misreading the Dev's reaction to the "4.8x" CSS label, when the
-  real pixels drawn by kDev were already the integer multiple he wanted. Several rounds were spent "fixing" the wrong
+  real pixels drawn by kDev were already the integer multiple they wanted. Several rounds were spent "fixing" the wrong
   problem (blur) while the real one (uneven spacing from non-integer real-pixel scale) persisted. The target is the
   screen's REAL pixel; the CSS number is noise. Vector DOM fonts at fractional px are still crisp — the feared blur
   does not exist.

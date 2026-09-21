@@ -36,7 +36,7 @@ metadata:
              the metrics of every screen in the catalogue moved at once."
     - date: 2026-09-12
       what: "🔴 §5's FALLBACK is superseded. It said a tag with no region, or a country with no face, falls
-             back to **Playwrite US Modern** — which is what the Dev had said at the time. He changed it the
+             back to **Playwrite US Modern** — which is what the Dev had said at the time. They changed it the
              next day: the fallback is the COLONISER's hand, by language — Spanish → Playwrite ES,
              Portuguese → Playwrite PT, English → Playwrite GB J. 📌 It follows ADR-0012's own sentence («the
              hand a child is taught is NATIONAL») rather than contradicting it: what that record never said is
@@ -56,7 +56,7 @@ title: The eleventh quick-bar button cycles five typography presets — and the 
 context-and-problem-statement: |
   🎯 **The Dev closed ADR-0147's open question and opened a bigger one in the same sentence.** Asked whether
   «tipografia não aparecendo durante o jogo» meant «no typography icon on the bar» or «general options only
-  from the title screen», he answered the first — and then asked for the bar to carry typography ANYWAY, as a
+  from the title screen», they answered the first — and then asked for the bar to carry typography ANYWAY, as a
   cycle rather than a door:
 
     · a) fully UPPERCASE with Andika
@@ -167,7 +167,7 @@ decision-outcome:
       Playwrite has eight vendored variants (BR, US Trad, US Modern, CA, MX, AR, CL, CO) and the engine's
       locale is `pt` | `en` | `es` — a LANGUAGE, not a country. So the choice reads the REGION of the BCP-47
       tag (`pt-BR` → Playwrite BR, `es-MX` → Playwrite MX), and falls back to **Playwrite US Modern** when the
-      tag carries no region or names a country with no variant. 📌 That fallback is the Dev's, stated by him.
+      tag carries no region or names a country with no variant. 📌 That fallback is the Dev's, stated by them.
 
       ===== 6. FOUR FACES JOIN THE ROSTER =====
       Fredoka, Comfortaa, Quicksand and Nunito, at the Dev's request. All four are SIL OFL 1.1 and self-hosted

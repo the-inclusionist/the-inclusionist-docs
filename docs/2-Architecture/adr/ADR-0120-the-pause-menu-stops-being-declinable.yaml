@@ -86,7 +86,7 @@ decision-outcome:
          now gets the engine's pause card, which offers only what it can action.
 
       📌 AND THE RECORD EXISTS BECAUSE ADR-0106 ASKED FOR IT. That record named the collision and said it was
-      the Dev's; leaving his answer in a chat would make the next reader of ADR-0106 believe the collision is
+      the Dev's; leaving their answer in a chat would make the next reader of ADR-0106 believe the collision is
       still open, and argue from it.
   consequences:
     good:

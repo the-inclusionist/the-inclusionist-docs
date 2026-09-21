@@ -58,7 +58,7 @@ context-and-problem-statement: |
     says what was decided — BECAUSE THE DECISION-MAKER CHANGED HIS MIND, or because the record was written down
     wrong.
 
-  ⚠️ THE FOUR CAPITALISED WORDS ARE THE DEFECT. "Because the decision-maker changed his mind" is the definition
+  ⚠️ THE FOUR CAPITALISED WORDS ARE THE DEFECT. "Because the decision-maker changed their mind" is the definition
   of what supersession exists for. The two categories therefore overlap completely on the commonest case, and a
   reader picks whichever side they prefer. ADR-0055 went through that hole.
 
@@ -78,7 +78,7 @@ decision-drivers:
      decided before it, because the rejected alternative is what stops the same proposal returning."
   - "A rule whose two branches overlap is not a rule — it is a preference with a procedure attached."
   - "The Dev's objection of 2026-08-27 is correct and must survive this record: a document that keeps stating a
-     position its author abandoned argues against him in every later conversation. Speed of correction is not
+     position its author abandoned argues against them in every later conversation. Speed of correction is not
      negotiable; only the mechanism is."
   - "A convention that only a careful reader can follow will be broken by a tired one. It has to be gated."
   - "Nothing is lost by choosing wrongly here in only one direction: git holds every overwritten byte, so a
@@ -87,7 +87,7 @@ decision-drivers:
 
 considered-options:
   - "E1 — Nygard in the strict form: never edit an accepted record for any reason, including a typo"
-  - "E2 — keep the current exception as written (amend when the decision-maker changed his mind OR the record
+  - "E2 — keep the current exception as written (amend when the decision-maker changed their mind OR the record
      was written down wrong)"
   - "E3 — split by TRUTH: an erratum is amended in place, a replaced decision is superseded, and the test is
      whether the record was ever true"
@@ -99,7 +99,7 @@ pros-and-cons-of-the-options:
            "Maximum fidelity of the historical record."]
     bad: ["A superseding record to fix `§49.j` → `§51.j` is ceremony that buries the real supersessions among
            clerical ones — after ten of those, nobody reads the chain.",
-          "It answers the Dev's objection with 'then leave the error standing', which is the option he named as
+          "It answers the Dev's objection with 'then leave the error standing', which is the option they named as
            the worst of the three."]
   E2:
     good: ["Already written, already in force, costs nothing to keep."]
@@ -135,12 +135,12 @@ decision-outcome:
         · **SUPERSESSION — a new record, both pointers set.** The record said what was decided, correctly, and
           then the decision changed. There IS history, and it is the part worth keeping.
 
-      ⚠️ THE TEST, and it needs nobody's memory of intent: **would the original author, given the same facts he
+      ⚠️ THE TEST, and it needs nobody's memory of intent: **would the original author, given the same facts they
       had that day, have written the same sentence?**
         · YES, and it is wrong today → the world moved → SUPERSEDE.
         · NO → the record was defective when written → ERRATUM.
 
-      "The decision-maker changed his mind" is a YES to that test, and therefore always a supersession. That
+      "The decision-maker changed their mind" is a YES to that test, and therefore always a supersession. That
       phrase is struck from the convention.
 
       ===== 1b. AN ACCEPTED RECORD DOES NOT GROW =====
@@ -273,7 +273,7 @@ decision-outcome:
          produced most of the in-place edits."
     negative:
       - "More files. Fifty-seven records become sixty-something within a week, and a reader following a chain
-         opens two or three documents where before he opened one."
+         opens two or three documents where before they opened one."
       - "The retrofit is real work: five records were edited in place on 2026-08-28 and three more carry prose
          in `status`, and each needs a judgement of erratum versus supersession."
       - "The bidirectional-pointer check makes every supersession a TWO-file edit, and a half-applied one now

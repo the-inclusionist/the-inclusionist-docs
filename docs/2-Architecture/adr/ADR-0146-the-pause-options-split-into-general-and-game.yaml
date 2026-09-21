@@ -29,7 +29,7 @@ metadata:
              required the distinguishing word to come FIRST so the two doors do not share a spoken prefix —
              and «opções gerais» / «opções do jogo», the words in §1, fail it: a child navigating by ear hears
              «opções…» twice and only breaks the tie on the second word. 📏 That was measured against the
-             record when the work started, and put to the Dev. His answer renames BOTH: **«Configurações» /
+             record when the work started, and put to the Dev. Their answer renames BOTH: **«Configurações» /
              «Settings»** for the general half, **«Opções» / «Options»** for what belongs to the game — «ou
              seja, opinável». 🎯 The two no longer share a syllable, and the distinction stops being
              positional and becomes semantic: what is CONFIGURED is the child's own, carried between games;
@@ -37,7 +37,7 @@ metadata:
              names; everything else in §1–§3 stands."
     - date: 2026-09-12
       what: "🔴 **§4 IS REVOKED — the remapping panel goes to the ROOT, not into «opções gerais».** The Dev,
-             hours after this record was accepted and with the mounted card in front of him: «A opção controle
+             hours after this record was accepted and with the mounted card in front of them: «A opção controle
              deve aparecer neste primeiro nível do menu de pausa». The reasoning of §4 is not contradicted, it
              is finished: §4 argued that nesting remapping under «motora» would put it three levels deep for
              the child who cannot reach a key, the one who plays with one hand and the one with a foreign
@@ -175,8 +175,8 @@ decision-outcome:
          one no visual check catches.
 
 more-information: |
-  📌 **This record exists because the Dev drew the consequence himself**, in the same message that corrected
-  the accommodation classification: the menu split is not an inference from ADR-0145, it is the clause he
+  📌 **This record exists because the Dev drew the consequence themselves**, in the same message that corrected
+  the accommodation classification: the menu split is not an inference from ADR-0145, it is the clause they
   attached to it with «logo».
 
   ⚠️ **The cost this record is most likely to be wrong about is the eighth item.** ADR-0044 §2 cut the root

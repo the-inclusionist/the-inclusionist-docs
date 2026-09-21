@@ -195,7 +195,7 @@ decision-outcome:
 
       Collapsing them back would supersede ADR-0013 in part and undo a migration that was already paid for.
       It is not done here. The three-vs-four question is the Dev's, and the record names it rather than
-      resolving it by reading his sentence as a decision he did not make.
+      resolving it by reading their sentence as a decision they did not make.
 
       ===== 5. WHAT THIS RECORD IS NOT =====
       It is the CONTRACT, not the implementation. It does not rename a single symbol today. The rename of
