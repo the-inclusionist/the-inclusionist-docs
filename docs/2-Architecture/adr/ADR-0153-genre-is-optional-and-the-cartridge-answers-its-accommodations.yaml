@@ -31,7 +31,7 @@ metadata:
        `engine:app/js/core/accommodations.ts` — three families: 23 GENERAL, 15 CONTRACT_KEYED, 16 GAME_KEYED. A
        genre answers only 5 of the 16; the other 10 hang on the avatar, the text, the pieces, timing precision
        and repeated input"
-    - "`engine:scripts/lib/taxonomia.mjs` — the genre vocabulary is the Wikipedia list pinned at revision
+    - "`engine:scripts/lib/taxonomy.mjs` — the genre vocabulary is the Wikipedia list pinned at revision
        1367745358, not the catalogue's categories"
     - "ADR-0152 — the 300 games are not the MVP, so a mandatory field is weighed against the real consumers"
     - "The `holdsAtOnce` rubric (`core/contract.ts`) — a field with no safe default whose absence fails silently
@@ -102,6 +102,6 @@ decision-outcome:
     pre-fill is overridden by the cartridge's answer; two cartridges in one page do not leak answers (ADR-0142).
 
 more-information: |
-  📌 The genre the Dev called «a lista que realmente vale» is pinned in `engine:scripts/lib/taxonomia.mjs`. Three
+  📌 The genre the Dev called «a lista que realmente vale» is pinned in `engine:scripts/lib/taxonomy.mjs`. Three
   catalogue categories have no single genre there — Multiplayer Local (10 games), Experimental / Art (8) and
   Hybrids (15) — and the options for each game went to the Dev on 2026-09-12.

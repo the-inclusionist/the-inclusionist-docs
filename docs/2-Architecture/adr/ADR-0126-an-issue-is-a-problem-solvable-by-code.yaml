@@ -3,7 +3,7 @@ metadata:
   status: "accepted"
   confirmed-by:
     - engine:CLAUDE.md
-    - engine:scripts/censo-de-issues.mjs
+    - engine:scripts/issue-census.mjs
     - engine:tests/censo-de-issues.node.test.js
     - docs:scripts/divida-dos-registos.py
     - docs:scripts/test-divida-dos-registos.py
