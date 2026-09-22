@@ -17,6 +17,24 @@ metadata:
   errata:
     - date: 2026-09-22
       what: >-
+        ✅ **«SIM» — `createGame` PASSA A MONTAR O GAMEPAD**, decidido pelo Dev no mesmo dia, respondendo à pergunta que a
+        errata abaixo tinha deixado nomeada em aberto. O gamepad deixa de ser o único transporte montado de fora: a raiz
+        monta os seis.
+        🎯 Isto SUPERSEDE a parte da errata abaixo que fazia de `GamepadCtx.press`/`release` a forma final — eles foram o
+        passo intermédio que aterrou em `engine:103843c`, e ficam a valer até a montagem mudar de dono. O que NÃO muda é
+        `Engine.controller`: continua publicado, porque a razão dele é ADR-0216 («a engine oferece o objeto de controle»)
+        e não a montagem do pad — um cartucho que monte um transporte próprio continua a precisar da porta.
+        📏 O tamanho do trabalho, medido antes de começar: `GamepadCtx` tem 27 membros e a raiz já sabe responder a
+        dezanove. Os OITO que só um cartucho sabe — `modalInput`, `hasModal`, `joinPlayer`, `respawnPlayer`,
+        `clearWaitingBadge`, `rotuloDaAcao`, `getPlayers`, `spriteBase` — são a decisão dentro da decisão: cada um vira
+        campo declarado pelo cartucho, ausência declarada, ou sai. ⏸ Essa repartição escreve-se quando o trabalho começar,
+        e é ela que o passo 7f do ADR-0221 estava à espera de poder ler.
+        ⚠️ E uma imprecisão minha, corrigida aqui porque foi escrita num registo: eu disse que esta era «a mesma pergunta»
+        que a interface de família `Transport`. Não é. A família pergunta O QUE os seis transportes partilham — e isso só
+        se pode declarar depois de todos apertarem a mesma porta, que é o que estes três commits fizeram. Esta pergunta é
+        ONDE um transporte é montado. São vizinhas, não a mesma.
+    - date: 2026-09-22
+      what: >-
         🔴 THE GAMEPAD IS NOT MOUNTED BY THE ENGINE, AND THIS RECORD DID NOT KNOW IT. Item 1 of the outcome says
         `input/gamepad` presses the controller «instead of raising edges», written as if the two transports were symmetric.
         📏 Measured while building the touch half: `createGame` mounts the touch pad, the eyes, the face, the hands, the
