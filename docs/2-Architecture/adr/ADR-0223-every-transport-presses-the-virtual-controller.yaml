@@ -1,6 +1,9 @@
 ---
 metadata:
   status: "accepted"
+  superseded-in-part:
+    - by: ADR-0224
+      what: "ONLY who ASSEMBLES the gamepad, and with it the shape of the door reaching it. The second erratum below made `GamepadCtx.press`/`release` the final answer, because the cartridge mounts that transport; the Dev then decided that `createGame` mounts it, like the other five. The decision of this record — every transport presses the virtual controller — is unchanged, and `press`/`release` keep working for a cartridge that assembles a transport of its own"
   date: 2026-09-22
   decision-makers: [Dev]
   consulted:
