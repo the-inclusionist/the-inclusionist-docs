@@ -14,6 +14,43 @@ metadata:
     - "📏 Measured the same day — the two doors disagree in three places: with a menu open the controller delivers nothing while the listener still delivers the `keyup`; the controller keeps a `held` map so a release is only delivered for a press the game heard, and the listener has no memory; and the listener delivers for a synthetic event nobody signed (`sourceOfEvent` answers `undefined`, which is not in its exclusion list)"
     - "📏 Measured the same day: `keydown`, `gamepad` and `touch-bindings` change together in 40–53% of the commits that touch them — the co-change that a shared door should collapse (ADR-0221 step 7e)"
   informed: []
+  errata:
+    - date: 2026-09-22
+      what: >-
+        🔴 THE GAMEPAD IS NOT MOUNTED BY THE ENGINE, AND THIS RECORD DID NOT KNOW IT. Item 1 of the outcome says
+        `input/gamepad` presses the controller «instead of raising edges», written as if the two transports were symmetric.
+        📏 Measured while building the touch half: `createGame` mounts the touch pad, the eyes, the face, the hands, the
+        voice and the scan — and does NOT call `initGamepad`. The CARTRIDGE calls it, which the root's own comment already
+        said («quem chama `initGamepad` é o cartucho»). So the root cannot hand the gamepad a door it owns privately: the
+        controller is a local of `createGame`. The decision does not change — it is the same door — but the path to it does,
+        and nobody had counted this.
+        🎯 **And the answer is already decided, in the Dev's words, in ADR-0216: «Assim como a engine oferece o OBJETO DE
+        CONTROLE, ela deve oferecer objetos de leitura e TTS.»** The engine offers objects; the cartridge asks. So
+        `Engine.controller` is published beside `keyboard`, `nav`, `overlays`, `sonar` and `scenes`, and `GamepadCtx` gains
+        `press`/`release` as REQUIRED members — required, because an optional door is a field a game can forget, and
+        forgetting it returns the silence this record exists to end. ⚠️ Publishing it is a one-way door, which is why it is
+        written here before the code (ADR-0128).
+        📌 What this errata deliberately does NOT decide: whether `createGame` should mount the gamepad itself, the way it
+        mounts every other transport. That is a bigger question — 27 of `GamepadCtx`'s members, eight of which only a
+        cartridge can answer (`modalInput`, `hasModal`, `joinPlayer`, `respawnPlayer`, `clearWaitingBadge`, `rotuloDaAcao`,
+        `getPlayers`, `spriteBase`) — and it is the same question the `Transport` family interface of ADR-0221 step 7f is
+        waiting on. It is named here so it stops being invisible.
+        📏 Also measured, and out of scope here: the gamepad reads EIGHT positions (four directions and four actions) plus
+        start and pause. The shoulders and triggers a cartridge can declare are not read by this transport at all, so «every
+        position reaches the cartridge» is true of the six that press this door and not yet of the pad.
+    - date: 2026-09-22
+      what: >-
+        ✅ THE TOUCH HALF LANDED (`engine:a1e4d3e0`, migration note BM). Three things the outcome did not spell out came out
+        of building it, and they are facts rather than changes of mind.
+        (1) **`VirtualController.press` had to start ANSWERING** whether the press reached play. Item 4 says edges «stop
+        being the gamepad's only output» and become «a consequence of a press»; the consequence a transport actually needs is
+        knowing whether there WAS a press, because the pad asked its own `emMenu()` first — a second answer to a question
+        the controller had just answered, and two answers to one question is how the two doors came to disagree.
+        (2) **The touch door takes no seat.** A first draft carried `player?` through it; a mutation fixing it to 0 survived,
+        because nothing could exercise it. Multiplayer is on separate screens (pillar 7), so a device with a pad has one
+        finger and one seat.
+        (3) **A position with no key bound reaching the cartridge** — listed under option A as a virtue — turned out to be a
+        behaviour CHANGE on the touch path, where it used to be silence. It is in note BM.
 
 title: Every transport presses the virtual controller — the engine has ONE door to the cartridge
 
