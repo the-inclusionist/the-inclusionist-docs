@@ -7,7 +7,7 @@ metadata:
         the Piper runtime run from the game's bundle: Piper leaves the engine.
   supersedes-in-part: [ADR-0127]
   confirmed-by:
-    - engine:tests/pesados.node.test.js
+    - engine:tests/heavy.node.test.js
     - engine:tests/nada-de-cdn-a-mao.node.test.js
   errata:
     - date: 2026-09-13

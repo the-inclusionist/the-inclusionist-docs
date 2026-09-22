@@ -13,7 +13,7 @@ metadata:
     - engine:tests/kokoro.node.test.js
     - engine:tests/kokoro-na-voz.browser.test.js
     - engine:tests/quiz-declara-o-que-usa.node.test.js
-    - engine:tests/pesados.node.test.js
+    - engine:tests/heavy.node.test.js
   supersedes-in-part: [ADR-0185, ADR-0186]
   errata:
     - date: 2026-09-14

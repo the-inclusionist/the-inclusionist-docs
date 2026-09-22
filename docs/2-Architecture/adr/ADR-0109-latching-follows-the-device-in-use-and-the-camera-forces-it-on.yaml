@@ -2,12 +2,12 @@
 metadata:
   status: "accepted"
   confirmed-by:
-    - engine:tests/transporte-em-uso.node.test.js
+    - engine:tests/transport-in-use.node.test.js
     - engine:tests/origem-da-tecla.node.test.js
     - engine:tests/latch-scope.node.test.js
     - engine:tests/latch-sync.node.test.js
     - engine:tests/latch-edge.node.test.js
-    - engine:app/js/input/transporte-em-uso.ts
+    - engine:app/js/input/transport-in-use.ts
   errata:
     - date: 2026-09-09
       what: >-

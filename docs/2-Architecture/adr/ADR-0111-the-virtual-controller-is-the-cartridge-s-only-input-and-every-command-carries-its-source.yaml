@@ -5,7 +5,7 @@ metadata:
     - engine:tests/engine-boundary.node.test.js
     - engine:tests/origem-da-tecla.node.test.js
     - engine:tests/nome-abstrato-nao-chega-a-pessoa.node.test.js
-    - engine:app/js/input/origem-sintetica.ts
+    - engine:app/js/input/synthetic-source.ts
     - engine:tests/virtual-controller.node.test.js
   errata:
     - date: 2026-09-09

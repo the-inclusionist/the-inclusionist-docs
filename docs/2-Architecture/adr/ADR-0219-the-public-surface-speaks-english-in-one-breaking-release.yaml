@@ -7,6 +7,17 @@ metadata:
     - engine:tests/portuguese-stays-out.node.test.js
     - engine:tests/heavy-files-through-the-service-worker.node.test.js
   errata:
+    - date: 2026-09-22
+      what: >-
+        🔴 «PHASE 3 IS INTERNAL» WAS WRONG, AND IT WAS NEVER MEASURED. This record said file names could land at any time
+        because they were internal. 📏 Measured on 2026-09-21, by reading the import statements of the seven repositories
+        rather than assuming: five module PATHS the games import carried a Portuguese word — `core/anel.js`,
+        `core/rotulo-acessivel.js`, `platform/pesados.js`, `render/cenario-data.js` and `render/set-cenario.js`. A game
+        writes `from '@the-inclusionist/engine/core/anel.js'`, so moving the file breaks it exactly as renaming the export
+        does. Phase 3's module half therefore landed in the SAME major as phase 2, on 2026-09-22, with its own notes (AT, AU,
+        AV, AW) and its own tables — so a consumer edits an import once instead of twice. ⚠️ What stays true is the ORDER: phase
+        2 first, because moving a file that phase 2 renames makes two histories to follow. And what remains genuinely internal
+        is the rest of phase 3 — 136 tests, 5 scripts, one tool and the docs, which no consumer imports.
     - date: 2026-09-21
       what: >-
         🔴 ACCEPTED, AND THE CODEMOD IS OUT. The Dev, reading this record: «Pode renomear e nada de mexer nos outros
@@ -135,6 +146,7 @@ more-information: |
   where this is more than an afternoon; the chess imports one. The other 393 public Portuguese names are renamed in the same
   release because they are published, not because anybody outside is using them.
 
-  ⚠️ THIS IS PHASE 2 OF THE CLEANUP PLAN, and it is the only phase that breaks anything. Phase 3 (file names, `git mv`), phase 4
-  (comments, at the rhythm of whoever touches a module) and phase 5 (docs) are internal and can land at any time — but phase 3
-  moving a file that phase 2 renames would make two histories to follow instead of one, so phase 2 goes first.
+  ⚠️ THIS IS PHASE 2 OF THE CLEANUP PLAN. Phase 4 (comments, at the rhythm of whoever touches a module) and phase 5 (docs) are
+  internal and can land at any time. 🔴 PHASE 3 IS NOT — see the erratum of 2026-09-22: a file name is a path, and a path a game
+  imports is as much a contract as a name. Phase 2 still goes first, because moving a file that phase 2 renames would make two
+  histories to follow instead of one.

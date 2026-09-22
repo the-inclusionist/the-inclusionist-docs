@@ -5,7 +5,7 @@ metadata:
     - engine:tests/alternancia-por-transporte.node.test.js
     - engine:tests/latch-scope.node.test.js
     - engine:tests/latch-sync.node.test.js
-    - engine:tests/settings-motor.browser.test.js
+    - engine:tests/settings-mobility.browser.test.js
     - engine:tests/entrada-por-jogador.node.test.js
     - engine:app/js/input/latch-sync.ts
   errata:

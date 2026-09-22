@@ -2,7 +2,7 @@
 metadata:
   status: "accepted"
   confirmed-by:
-    - engine:tests/simulacao-motora.node.test.js
+    - engine:tests/empathy-filter.node.test.js
     - engine:tests/simulacoes-motoras.browser.test.js
   errata:
     - date: 2026-09-13
