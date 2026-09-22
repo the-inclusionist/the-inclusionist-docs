@@ -6,7 +6,7 @@ metadata:
   # envelheceu, e esta chave é a forma que o ADR-0057 não tinha. A prosa é história; isto é o facto de hoje.
   confirmed-by:
     - engine:scripts/check-annual-report.mjs
-    - engine:tests/relatorio-anual.node.test.js
+    - engine:tests/annual-report.node.test.js
     - engine:docs/compliance/README.md
   errata:
     - date: 2026-09-04

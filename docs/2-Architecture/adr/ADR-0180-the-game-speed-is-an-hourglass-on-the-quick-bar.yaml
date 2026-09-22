@@ -2,7 +2,7 @@
 metadata:
   status: "accepted"
   confirmed-by:
-    - engine:tests/velocidade-do-jogo.node.test.js
+    - engine:tests/game-speed.node.test.js
     - engine:tests/hourglass-on-the-bar.node.test.js
     - engine:tests/hourglass-on-the-bar.browser.test.js
   errata:

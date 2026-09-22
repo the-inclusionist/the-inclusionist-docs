@@ -8,16 +8,16 @@ metadata:
   date: 2026-09-12
   confirmed-by:
     - engine:tests/menu-nav.browser.test.js
-    - engine:tests/segurar-posiciona-o-cursor.browser.test.js
+    - engine:tests/holding-places-the-cursor.browser.test.js
     - engine:tests/menus-announce-context.browser.test.js
     - engine:tests/the-quiz-reads-its-options.browser.test.js
     - engine:tests/items-without-numbers.browser.test.js
-    - engine:tests/rotulos-sem-parenteses.node.test.js
+    - engine:tests/labels-without-parentheses.node.test.js
     - engine:tests/settings-empathy.browser.test.js
     - engine:tests/menu-contrast-floors.browser.test.js
     - engine:tests/visible-focus.browser.test.js
     - engine:tests/state-never-by-colour-alone.browser.test.js
-    - engine:tests/resolucao-imposta.browser.test.js
+    - engine:tests/forced-resolution.browser.test.js
     - engine:tests/a-glyph-is-not-part-of-the-name.browser.test.js
   errata:
     - date: 2026-09-13

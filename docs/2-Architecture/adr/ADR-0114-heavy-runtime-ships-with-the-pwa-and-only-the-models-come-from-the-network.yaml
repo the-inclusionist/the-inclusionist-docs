@@ -2,7 +2,7 @@
 metadata:
   status: "accepted"
   confirmed-by:
-    - engine:tests/vozes-fora-do-pacote.node.test.js
+    - engine:tests/no-voice-model-in-the-package.node.test.js
     - engine:tests/no-hand-written-cdn.node.test.js
     - engine:scripts/check-precache.mjs
   errata:

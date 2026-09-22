@@ -15,7 +15,7 @@ metadata:
         where it runs (§2 stands).
   supersedes-in-part: [ADR-0151, ADR-0183]
   confirmed-by:
-    - engine:tests/voz-por-idioma.node.test.js
+    - engine:tests/voice-per-language.node.test.js
     - engine:tests/voice-choice.node.test.js
     - engine:tests/voice-choice.browser.test.js
     - engine:tests/a-language-with-no-voice.browser.test.js

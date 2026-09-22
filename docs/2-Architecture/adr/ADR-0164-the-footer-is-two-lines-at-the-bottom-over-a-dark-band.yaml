@@ -3,7 +3,7 @@ metadata:
   status: "accepted"
   confirmed-by:
     - engine:tests/bar-caption-and-footer.browser.test.js
-    - engine:tests/rodape-do-painel.browser.test.js
+    - engine:tests/the-panel-footer-is-the-screens.browser.test.js
   date: 2026-09-12
   errata:
     - date: 2026-09-13
