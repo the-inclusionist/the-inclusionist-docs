@@ -1,6 +1,17 @@
 ---
 metadata:
-  status: "proposed"
+  status: "accepted"
+  errata:
+    - date: 2026-09-22
+      what: "THE STATUS. This record said `proposed` from the day it was written until today, and that was never true of
+             anything but the field. 📏 Measured on 2026-09-22 while answering issue #137: **53 other records cite it**, the
+             whole engine is built on its console filter and on 320×180 as a CONSOLE SPECIFICATION rather than a platformer's
+             inheritance, and ADR-0088 supersedes it IN PART — which is something one does only to a record that is in force.
+             The Dev's ruling, on being shown that: «accepted com a data de hoje e uma errata a dizer que a aceitação foi
+             tácita desde agosto». So: accepted, tacitly since 2026-08-23, and the date above now says so.
+             ⚠️ ERRATUM under ADR-0057 §1 and NOT a supersede: nothing decided here changed. The record affirmed a fact about
+             itself — its own standing — that had stopped being true the first time the tree obeyed it. What a `proposed`
+             record costs is exactly what issue #137 said: whoever opens it by chance cannot tell whether it governs."
   superseded-in-part:
     - by: ADR-0088
       what: "the OWNER of the round scope in passo 7's two namespaces, and nothing else. This record put
