@@ -94,7 +94,7 @@ decision-outcome:
          SELECT does not find them — the same cost ADR-0151 recorded for the bar, now on the menus"
       - "The touch pad draws only a START pill today, so a touch-only child has no SELECT until the pad draws one"
       - "A cartridge loses `select` as well as `start`"
-      - "`engine:tests/pausa-abre-pelo-start.browser.test.js` (twelve cases) describes the old door and is rewritten"
+      - "`engine:tests/the-two-doors-of-the-pause.browser.test.js` (twelve cases) describes the old door and is rewritten"
 
   confirmation: |
     ⚠️ NOT BUILT YET — the work is **issue #148** in `the-inclusionist-engine`. Gates, named now: START freezes the

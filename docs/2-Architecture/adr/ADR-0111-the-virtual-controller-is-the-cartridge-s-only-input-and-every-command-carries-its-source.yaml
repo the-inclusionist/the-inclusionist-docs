@@ -3,8 +3,8 @@ metadata:
   status: "accepted"
   confirmed-by:
     - engine:tests/engine-boundary.node.test.js
-    - engine:tests/origem-da-tecla.node.test.js
-    - engine:tests/nome-abstrato-nao-chega-a-pessoa.node.test.js
+    - engine:tests/the-keys-source-survives-the-door.node.test.js
+    - engine:tests/no-abstract-name-reaches-a-person.node.test.js
     - engine:app/js/input/synthetic-source.ts
     - engine:tests/virtual-controller.node.test.js
   errata:

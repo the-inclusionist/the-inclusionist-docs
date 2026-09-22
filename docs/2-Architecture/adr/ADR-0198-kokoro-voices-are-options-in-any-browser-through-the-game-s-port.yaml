@@ -12,7 +12,7 @@ metadata:
   confirmed-by:
     - engine:tests/kokoro.node.test.js
     - engine:tests/kokoro-in-the-voice.browser.test.js
-    - engine:tests/quiz-declara-o-que-usa.node.test.js
+    - engine:tests/the-quiz-declares-what-it-uses.node.test.js
     - engine:tests/heavy.node.test.js
   supersedes-in-part: [ADR-0185, ADR-0186]
   errata:

@@ -11,7 +11,7 @@ metadata:
   confirmed-by:
     - engine:tests/catalogo-tipografico.node.test.js
     - engine:tests/fontes-empacotadas.node.test.js
-    - engine:tests/piso-de-tamanho-da-fonte.node.test.js
+    - engine:tests/font-size-floor.node.test.js
     - engine:tests/fontes-carregam.node.test.js
   errata:
     - date: 2026-09-13

@@ -4,7 +4,7 @@ metadata:
   confirmed-by:
     - engine:tests/switch-scan.node.test.js
     - engine:tests/pause-icons.node.test.js
-    - engine:tests/nao-precisa-segurar.browser.test.js
+    - engine:tests/no-need-to-hold.browser.test.js
     - engine:tests/boot-create-game.browser.test.js
   supersedes-in-part:
     - ADR-0211

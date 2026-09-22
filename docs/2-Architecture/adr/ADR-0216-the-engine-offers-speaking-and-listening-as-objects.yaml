@@ -9,7 +9,7 @@ metadata:
     - engine:tests/reading-no-createGame.browser.test.js
     - engine:tests/kokoro-runtime.node.test.js
     - engine:tests/tts.node.test.js
-    - engine:tests/quiz-declara-o-que-usa.node.test.js
+    - engine:tests/the-quiz-declares-what-it-uses.node.test.js
     - engine:tests/heavy-into-the-delivery.node.test.js
     - engine:tests/boot-create-game.node.test.js
   supersedes-in-part:

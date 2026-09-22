@@ -7,7 +7,7 @@ metadata:
     - engine:tests/voice-listener.node.test.js
     - engine:tests/voice-control.node.test.js
     - engine:tests/pause-icons.node.test.js
-    - engine:tests/nao-precisa-segurar.browser.test.js
+    - engine:tests/no-need-to-hold.browser.test.js
   superseded-in-part:
     - by: ADR-0190
       what: >-

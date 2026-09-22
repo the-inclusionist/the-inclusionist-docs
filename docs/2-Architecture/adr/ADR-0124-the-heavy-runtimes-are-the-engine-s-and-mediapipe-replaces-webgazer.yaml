@@ -16,7 +16,7 @@ metadata:
   confirmed-by:
     - engine:app/js/platform/heavy-catalogue.ts
     - engine:tests/heavy.node.test.js
-    - engine:tests/nada-vem-de-fora.node.test.js
+    - engine:tests/nothing-comes-from-outside.node.test.js
   errata:
     - date: 2026-09-09
       what: >-

@@ -3,7 +3,7 @@ metadata:
   status: "accepted"
   confirmed-by:
     - engine:tests/panel-shell.browser.test.js
-    - engine:tests/quiz-le-as-opcoes.browser.test.js
+    - engine:tests/the-quiz-reads-its-options.browser.test.js
     - engine:tests/rotulos-sem-parenteses.node.test.js
   errata:
     - date: 2026-09-13

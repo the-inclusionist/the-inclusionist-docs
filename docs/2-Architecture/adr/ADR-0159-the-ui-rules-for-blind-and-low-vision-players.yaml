@@ -10,7 +10,7 @@ metadata:
     - engine:tests/menu-nav.browser.test.js
     - engine:tests/segurar-posiciona-o-cursor.browser.test.js
     - engine:tests/menus-announce-context.browser.test.js
-    - engine:tests/quiz-le-as-opcoes.browser.test.js
+    - engine:tests/the-quiz-reads-its-options.browser.test.js
     - engine:tests/items-without-numbers.browser.test.js
     - engine:tests/rotulos-sem-parenteses.node.test.js
     - engine:tests/settings-empathy.browser.test.js
@@ -18,7 +18,7 @@ metadata:
     - engine:tests/visible-focus.browser.test.js
     - engine:tests/state-never-by-colour-alone.browser.test.js
     - engine:tests/resolucao-imposta.browser.test.js
-    - engine:tests/menus-sem-glifo-no-nome.browser.test.js
+    - engine:tests/a-glyph-is-not-part-of-the-name.browser.test.js
   errata:
     - date: 2026-09-13
       what: "✅ CONFIRMED, pushed (issue #153 closed): one gate per rule — 1 and 5 `menu-nav` (label, role, value, «N de M»

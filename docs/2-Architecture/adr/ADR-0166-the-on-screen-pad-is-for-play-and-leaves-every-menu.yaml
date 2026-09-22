@@ -3,7 +3,7 @@ metadata:
   status: "accepted"
   confirmed-by:
     - engine:tests/virtual-controller-at-boot.browser.test.js
-    - engine:tests/quiz-abaixo-da-barra.browser.test.js
+    - engine:tests/quiz-below-the-bar.browser.test.js
   supersedes-in-part: [ADR-0157, ADR-0162]
   date: 2026-09-12
   errata:

@@ -10,7 +10,7 @@ metadata:
   # entrelinha. O que ele guarda é o `gap`, e isso está escrito no caso em vez de suposto.
   confirmed-by:
     - engine:app/js/ui/layout.ts
-    - engine:tests/pausa-44px.browser.test.js
+    - engine:tests/pause-target-44px.browser.test.js
   date: 2026-09-06
   supersedes-in-part: [ADR-0044]
   decision-makers: [Dev]

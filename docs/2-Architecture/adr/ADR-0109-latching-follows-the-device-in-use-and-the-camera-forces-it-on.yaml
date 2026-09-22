@@ -3,7 +3,7 @@ metadata:
   status: "accepted"
   confirmed-by:
     - engine:tests/transport-in-use.node.test.js
-    - engine:tests/origem-da-tecla.node.test.js
+    - engine:tests/the-keys-source-survives-the-door.node.test.js
     - engine:tests/latch-scope.node.test.js
     - engine:tests/latch-sync.node.test.js
     - engine:tests/latch-edge.node.test.js

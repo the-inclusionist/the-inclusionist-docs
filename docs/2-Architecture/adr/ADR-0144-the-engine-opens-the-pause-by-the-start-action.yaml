@@ -11,7 +11,7 @@ metadata:
   confirmed-by:
     - engine:app/js/boot/create-game.ts
     - engine:app/js/core/actions.ts
-    - engine:tests/pausa-abre-pelo-start.browser.test.js
+    - engine:tests/the-two-doors-of-the-pause.browser.test.js
     - engine:tests/boot-create-game.node.test.js
     - engine:tests/the-pause-card-does-not-eat-keys.browser.test.js
   date: 2026-09-12
@@ -174,7 +174,7 @@ decision-outcome:
     ✅ BUILT AND GATED on 2026-09-12, issue #142. The four gates this record named are the first four below,
     and they exist; the rest came from the erratum and from measuring what else sees the key.
 
-    **`engine:tests/pausa-abre-pelo-start.browser.test.js`** — twelve cases, one composition root for the
+    **`engine:tests/the-two-doors-of-the-pause.browser.test.js`** — twelve cases, one composition root for the
     whole file. ⚠️ One root, and that is a finding rather than tidiness: every `createGame` hangs a listener
     on the window and nothing takes it off, so a file that calls it per case leaves the OLDEST root opening
     the card and the current cartridge's hook is never called. The cartridge is swapped by `mount()` instead,

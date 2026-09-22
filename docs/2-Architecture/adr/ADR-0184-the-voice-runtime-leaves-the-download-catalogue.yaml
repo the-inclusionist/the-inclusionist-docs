@@ -8,7 +8,7 @@ metadata:
   supersedes-in-part: [ADR-0127]
   confirmed-by:
     - engine:tests/heavy.node.test.js
-    - engine:tests/nada-de-cdn-a-mao.node.test.js
+    - engine:tests/no-hand-written-cdn.node.test.js
   errata:
     - date: 2026-09-13
       what: "✅ CONFIRMED, pushed (`engine:35dea11`): no catalogue entry names the voice runtime; the models and the phonemizer remain. Issue #173 stays open for its own last item (huggingface.co in `connect-src`)."
