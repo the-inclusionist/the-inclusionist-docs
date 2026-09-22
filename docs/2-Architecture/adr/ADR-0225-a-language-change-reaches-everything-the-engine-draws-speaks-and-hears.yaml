@@ -92,14 +92,27 @@ decision-outcome:
       - "The delivery grows for a school that wants two languages, and that cost is the Dev's to accept per install (`--commands`, `--reading`)"
 
   confirmation: |
-    ⏸ **NOT YET BUILT — this record is the decision (ADR-0128), and the work is the next commits.** What will confirm
-    it: a case showing that a language change WHILE THE RECOGNISER IS LISTENING re-chooses the model, the vocabulary
-    and the grammar; a case showing that a language whose model is not in the delivery becomes a line in `problems`
-    instead of a microphone listening in the wrong language; and a case showing that the speaking and the reading keep
-    following, so this work cannot quietly break what already worked. Each red by mutation before it counts.
-    📏 The three that already follow were measured before the work and are the baseline this must not lose: `tts`
-    reading `bcp47()` per utterance and per voice list, `reading` reading it per `listen()`, and the root's
-    `i18n:change` listener repainting the bar, the legend, the PAUSED word and the pad.
+    ✅ **BUILT on 2026-09-22** — `engine:573d9a65`, migration note BQ. `VoiceControl.languageChanged()` re-chooses the
+    model, the vocabulary and the grammar; the root calls it on `i18n:change`. 5 of 5 mutations red.
+    · **While it is LISTENING**, a change opens the new language's model and stops the old recogniser, and the grammar
+      that reaches the microphone is the new language's — the half that made the defect worse than stopping.
+    · **While it is OFF**, nothing happens and the next start reads the new language: a change must not open a
+      microphone nobody asked for.
+    · **A language whose model is not in the delivery** becomes a line in `problems` and the 👄 goes back to off.
+    · **A change WHILE IT IS STARTING** replaces the start in flight instead of racing it — the start in flight is in
+      the OLD language.
+    🔴 **And the fifth mutation is the one worth recording, because it survived the first round**: the ROOT no longer
+    telling the control passed with the whole suite green. ⚠️ The case that holds it READS THE SOURCE, and says why: the
+    👄 is only mounted where there is a microphone to ask for, and in a test boot it is never ON at the moment of the
+    change — the model is not in the delivery, so it fails to start and switches itself off.
+    📏 The two that already followed were measured BEFORE the work, precisely so this could not quietly lose them, and
+    they still do: `tts` reads the language per utterance and per voice list, `reading` reads it per `listen()`.
+    ⏸ **What is NOT built**: the delivery half. The heavy files are still chosen at boot for the boot language, so a
+    school that wants two languages passes `--commands`/`--reading` twice; what changed is that the gap is now SAID
+    instead of being a microphone listening in the wrong language.
+  confirmed-by:
+    - engine:tests/voice-control.node.test.js
+    - engine:tests/boot-create-game.node.test.js
 
 more-information: |
   📌 What this record does NOT decide: whether a cartridge's own drawn text is the engine's problem. It is not — the
