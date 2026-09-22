@@ -1,6 +1,8 @@
 ---
 metadata:
   status: "accepted"
+  confirmed-by:
+    - engine:tests/code-health.node.test.js
   date: 2026-09-22
   decision-makers: [Dev]
   consulted:
@@ -94,12 +96,19 @@ decision-outcome:
       - "One more file to regenerate when a module is legitimately split, which is the cost of every ratchet this repository has"
 
   confirmation: |
-    ⏸ **NOT YET BUILT — this record is the decision, and the work is step 7a/7b of the plan and issue #203.** The gate that will confirm it does
-    not exist: `engine:tests/code-health.node.test.js` will read `engine:docs/6-DevOps-SRE/code-health.json` and refuse a module
-    that got worse on any of the four measures, refuse a new module above the ceiling, and refuse a baseline entry for a module
-    that no longer exists. Each rule red by mutation before it counts, as every gate here.
-    📌 What this record will NOT claim when it is built: that the code is good. It will claim that it stopped getting worse, and
-    the difference is the whole reason the paper's ICC 0.52 is quoted above.
+    ✅ **BUILT on 2026-09-22, `engine:b98338d`**, and grown twice the same day — see the errata below, which are part of this
+    confirmation and not a footnote to it. `engine:tests/code-health.node.test.js` reads
+    `engine:docs/6-DevOps-SRE/code-health.json` and refuses a module that got worse on any measure, refuses a NEW module above
+    the ceiling, and refuses a baseline entry for a module that no longer exists. Every rule red by mutation before it counted.
+    🔴 And one mutation caught a defect this house already knew, this time at birth: `git ls-files` answers «what is already
+    stored» and the question is «what exists», so a new module was invisible until somebody indexed it — the same shape that let
+    six Portuguese identifiers through on 2026-09-21. The measurement now counts untracked files too (honouring `.gitignore`),
+    and a module born big reddens the minute it is born, which is when splitting it is still cheap.
+    📌 A second mutation survived and became a CASE instead of a patch: with the tree standing still nothing gets worse, so the
+    exemption is never exercised and deleting it stayed green. What it carries is an ASSERTION — the root is exempt from wiring,
+    not from debt — and a case now says it out loud.
+    📌 What this record does NOT claim: that the code is good. It claims it stopped getting worse, and that difference is the
+    whole reason the paper's ICC 0.52 is quoted above.
 
 more-information: |
   The paper is `arXiv:2409.15152`, already cited by `engine:CLAUDE.md` §3 as the foundation of the modularization. What is taken
@@ -108,3 +117,57 @@ more-information: |
   hours from a commit changes no decision here.
   📌 The two debts this will have to face first are already named in `engine:docs/ARCHITECTURE.md` §3.4, measured rather than
   supposed: there are two doors to the cartridge, and four of the nine settings panels use the panel kit.
+
+  ---
+
+  ## 🔴 ERRATUM of 2026-09-22 — the record says FOUR measures, and there are SIX
+
+  This is an erratum and not a supersession by the test of ADR-0057: the decision did not change — measure, write a baseline,
+  ratchet it, never score. What changed is the SET of measures, and each addition carries its own reason. Written here because
+  a record that says «four» while the build checks six is a record that stops being read.
+
+  **E1 · The fifth measure is what a module REACHES** (`globalReach`, `engine:4cc6b05`). 📏 Measured the same day: **24 of 188
+  modules reach a browser global** — `document`, `window`, `localStorage`, `navigator`, `performance` — without receiving it.
+  ⚠️ The layer gate can never see this, which is why the measure had to exist: `dependencies-point-downward` inspects IMPORTS,
+  and a module that imports nobody and touches `document` passes green. Its ceiling is **ZERO and not a p90**, for the reason
+  already written in driver D3's exception above: a new module that reaches a global is undoing a decision (ADR-0178,
+  ADR-0173), not sitting above an average. The 24 that already do are frozen by the ratchet — debt does not become a licence —
+  and the baseline records WHICH globals, not just how many, because a ratchet over a number says it got worse while that line
+  says what to pay. 🔴 And the finding was architectural: `core/i18n` reached `document`, `window` and `navigator`, and
+  `core/state` reached `window` — in the very layer ADR-0173 describes as «what the engine IS, WITHOUT a browser». That was
+  paid by splitting the module (`engine:2a5e1b7d`), not by an exemption.
+
+  **E2 · The sixth measure is the cyclomatic complexity of the WORST FUNCTION** (`worstFunction`, ceiling **10**), and it
+  NARROWS driver D3 rather than contradicting it. D3 said the ceiling comes from this tree because «the paper prescribes no
+  threshold, and borrowing one would dress it in an authority it never gave». That reasoning holds exactly where the
+  literature is silent — and for this measure it is not. 📌 The Dev asked for it in those words: «Por que teto de linha quando
+  a literatura dá definições melhores como uma responsabilidade por módulo?», then «Para esta engine eu colocaria um teto de
+  200 linhas, mas isso é arbitrário, precisamos de uma referência melhor», and he approved what came back with «Concordo».
+  🎯 The literature has no ceiling for a FILE; it has one for a FUNCTION: McCabe (1976) proposed 10, and NIST SP 500-235
+  (Watson & McCabe, 1996) codified it, admitting up to 15 when the reason is written down. So D3 reads, from today:
+  **the ceiling comes from this tree wherever the literature gives none, and from the source wherever it does** — and taking
+  a p90 of this tree for a measure that HAS a source would be the worse error, because it would draw the limit from the defect.
+  ⚠️ Per FUNCTION, and a nested function's branches do not count for the one around it: a factory returning an object of ten
+  methods is not complex for having them, and summing them would make every factory here look like its worst module.
+  📏 Measured before the rule existed: **2496 functions, 71 above 10 and 36 above 15, across 46 modules** — so it is a ratchet
+  like everything else. The worst three: `boot/create-game.createGame` **68**, `render/scene-sky.stepV3Decor` **57**,
+  `core/contract.conformanceProblems` **53**.
+
+  **E3 · WHEN THE ROOT'S DEBT IS PAID, which this record decided to charge without ever saying.** Point 4 of the outcome
+  exempts `boot/create-game.ts` from fan-out and refuses to exempt it from lines, branches and depth — correct, and silent
+  about the finish line. The composition-root literature gives it: a root is EXPECTED to be large, because wiring an object
+  graph costs statements; what it may not contain is behaviour (Seemann, *Dependency Injection Principles, Practices, and
+  Patterns*; Fowler, *Inversion of Control Containers and the Dependency Injection Pattern*). 🎯 Therefore **the criterion is
+  the BRANCHES tending to zero, not the lines** — wiring has no `if`. 📏 Today the root has **2095 lines, 309 decision nodes,
+  fan-out 80 and a worst function of 68**; it opened at 2185/330/77. Lines falling is a side effect; branches falling is the
+  payment.
+
+  **E4 · The closing criterion stopped being measured by hand** (`engine:scripts/co-change.mjs`, `engine:91025803`). Point 6
+  says a debt is paid when the files an abstraction unified stop changing together, and until now that was computed once per
+  question in a scratchpad — which is how a criterion quietly becomes whatever the person measuring wants. 📏 What it says
+  about the root over the last 300 commits: it changes in **118 of them (39%)**, and **51 of those 118 (43%) also touch a
+  dictionary**. That is the measured form of «the root changes because it writes the interface's sentences» — a sentence this
+  plan had been asserting without a number. ⚠️ And the script had to learn that a CUT is not measured like an ADOPTION: in a
+  group born from a split the «before» is always 0%, because a module that did not exist changed with nobody. The honest
+  question is whether the file that was SPLIT is dragged into fewer commits, and that line is now printed apart, with a
+  warning when the window is short.
