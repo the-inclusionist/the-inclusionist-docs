@@ -2,7 +2,7 @@
 metadata:
   status: "accepted"
   confirmed-by:
-    - engine:tests/alternancia-por-transporte.node.test.js
+    - engine:tests/latching-per-transport.node.test.js
     - engine:tests/latch-scope.node.test.js
     - engine:tests/latch-sync.node.test.js
     - engine:tests/settings-mobility.browser.test.js

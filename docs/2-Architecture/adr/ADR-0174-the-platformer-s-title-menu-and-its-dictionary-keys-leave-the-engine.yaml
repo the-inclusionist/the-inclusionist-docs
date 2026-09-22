@@ -2,7 +2,7 @@
 metadata:
   status: "accepted"
   confirmed-by:
-    - engine:tests/direcao-das-dependencias.node.test.js
+    - engine:tests/dependencies-point-downward.node.test.js
   errata:
     - date: 2026-09-13
       what: "✅ CONFIRMED, pushed (issue #171 closed): no engine module imports `educational` (`engine:371017d`, the

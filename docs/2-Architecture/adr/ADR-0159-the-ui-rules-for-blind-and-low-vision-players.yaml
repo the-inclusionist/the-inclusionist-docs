@@ -14,7 +14,7 @@ metadata:
     - engine:tests/itens-sem-numero.browser.test.js
     - engine:tests/rotulos-sem-parenteses.node.test.js
     - engine:tests/settings-empathy.browser.test.js
-    - engine:tests/contraste-dos-menus.browser.test.js
+    - engine:tests/menu-contrast-floors.browser.test.js
     - engine:tests/foco-visivel.browser.test.js
     - engine:tests/estado-nao-so-por-cor.browser.test.js
     - engine:tests/resolucao-imposta.browser.test.js

@@ -5,7 +5,7 @@ metadata:
     - engine:tests/input-cooldown.node.test.js
     - engine:tests/nao-precisa-segurar.browser.test.js
     - engine:tests/fronteira-de-entrada.node.test.js
-    - engine:tests/controle-virtual-no-arranque.browser.test.js
+    - engine:tests/virtual-controller-at-boot.browser.test.js
   date: 2026-09-21
   decision-makers: [Dev]
   consulted:

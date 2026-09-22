@@ -5,7 +5,7 @@ metadata:
     - engine:tests/accommodations.node.test.js
     - engine:tests/boot-create-game.node.test.js
     - engine:tests/accommodation-subjects.node.test.js
-    - engine:tests/acomodacoes-montam-pela-resposta.browser.test.js
+    - engine:tests/rows-follow-the-answer.browser.test.js
   errata:
     - date: 2026-09-13
       what: "✅ CONFIRMED IN PART, pushed (issue #149 closed): a cartridge without the answer, or with one key missing, is

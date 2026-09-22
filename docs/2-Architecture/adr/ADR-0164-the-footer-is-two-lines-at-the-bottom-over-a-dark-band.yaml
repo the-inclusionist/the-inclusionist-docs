@@ -2,7 +2,7 @@
 metadata:
   status: "accepted"
   confirmed-by:
-    - engine:tests/barra-legenda-e-rodape.browser.test.js
+    - engine:tests/bar-caption-and-footer.browser.test.js
     - engine:tests/rodape-do-painel.browser.test.js
   date: 2026-09-12
   errata:

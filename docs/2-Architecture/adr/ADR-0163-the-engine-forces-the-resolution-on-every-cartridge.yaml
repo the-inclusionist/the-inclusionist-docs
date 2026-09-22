@@ -8,7 +8,7 @@ metadata:
     - engine:tests/texto-cresce-com-a-escala.browser.test.js
     - engine:tests/texto-nunca-abaixo-de-16.node.test.js
     - engine:tests/piso-de-tamanho-da-fonte.node.test.js
-    - engine:tests/abaixo-do-piso.node.test.js
+    - engine:tests/below-the-floor.node.test.js
     - engine:tests/quiz-abaixo-da-barra.browser.test.js
   date: 2026-09-12
   errata:

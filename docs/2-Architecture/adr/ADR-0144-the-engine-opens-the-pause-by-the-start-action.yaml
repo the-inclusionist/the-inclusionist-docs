@@ -13,7 +13,7 @@ metadata:
     - engine:app/js/core/actions.ts
     - engine:tests/pausa-abre-pelo-start.browser.test.js
     - engine:tests/boot-create-game.node.test.js
-    - engine:tests/cartao-de-pausa-nao-come-teclas.browser.test.js
+    - engine:tests/the-pause-card-does-not-eat-keys.browser.test.js
   date: 2026-09-12
   decision-makers: [Dev]
   consulted:
