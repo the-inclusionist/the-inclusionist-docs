@@ -1,6 +1,7 @@
 ---
 metadata:
-  status: "proposed"
+  status: "superseded"
+  superseded-by: ADR-0222
   supersedes-in-part: []
   date: 2026-09-09
   decision-makers: [Dev]
