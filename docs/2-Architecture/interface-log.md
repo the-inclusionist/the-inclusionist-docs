@@ -150,3 +150,22 @@ apertar»** / «How you press» / «Cómo pulsar», the subject; the three posit
 **«não precisa segurar»**, **«um botão só»** (standard · no holding needed · one button only). The one sentence under it names the
 three in the order they come. The panel row changes shape with them, from a switch to «◀ Jeito de apertar: padrão ▶», because a
 switch cannot hold three positions and two surfaces of one setting must say the same thing. `engine:0cae5c0`.
+
+## 2026-09-22 · The remapping row shows the KEY on the button, and an arrow key shows its arrow
+
+Two changes to the same screen, both the Dev's, both seen by him.
+
+**The key moved onto the button.** Asked whether the word «Alterar» was worth keeping on screen, he answered «Não vale, vamos de B».
+The row was «Esquerda: A [Alterar]» and is now «Esquerda [A]» — the current key IS the button's face, and «Alterar» survives only
+where a position has no key bound, which is where the word still means something. 🔴 The reason was measured, not preferred: with the
+keys inside the label's `<span>`, `fillExplain` does `span.innerHTML = strong.outerHTML` and **zero of the two `<kbd>` survive** — the
+panel would stop showing what is mapped. 📌 And the house had answered this once already: `mountSteps` puts the value inside the
+control for exactly this reason. `engine:964daa3d`.
+
+**Each arrow shows its own arrow.** The Dev, seeing a screenshot: «Por que está escrevendo "↔Up", "↔Down" etc ao invés de simplesmente
+"↑", "↓", "←" e "→"? Não escolha poluir a UI, por favor.» They are now **↑ ↓ ← →**, one glyph each and all four distinct. 📏 The same
+defect reached further than the arrows — `Digit1` read «Digit1» and `Numpad5` read «Numpad5» — because the function was a chain of
+`replace` over the physical code, which is a hidden table that writes what nobody chose. They are now «1» and «Num 5»; the numpad keeps
+its word because it is a different physical key and two identical labels in one list send the child to the wrong one. What is not
+recognised still passes untouched: «Comma» is ugly and honest, and guessing a name on the remapping screen is worse.
+`engine:4d03a321`.
