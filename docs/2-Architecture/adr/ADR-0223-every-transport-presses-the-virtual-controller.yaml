@@ -152,13 +152,30 @@ decision-outcome:
       - "The gamepad's path becomes longer: a button now resolves to a position, the position to a key, and the key to the state — three hops where there was one"
 
   confirmation: |
-    ⏸ **NOT YET BUILT — this record is the decision (ADR-0128), and the work is the next commits.** What will confirm it:
-    a case per transport showing that a press reaches `onCommand` with its source; a case showing a release is delivered
-    only for a press the game heard, with a menu opening in between; and a case showing that a position with no key bound
-    still reaches the cartridge. Each red by mutation before it counts.
-    📏 And the closing criterion is already fixed, with its number taken before the work: `node scripts/co-change.mjs
-    --group transports` says 25% before the virtual controller and 50% after over four commits — not a result, and the
-    script says so. It becomes one when there are commits to read.
+    ✅ **BUILT on 2026-09-22, in three commits, one per half** — `engine:a1e4d3e0` (touch, note BM), `engine:103843c`
+    (gamepad, note BN) and `engine:04b61db6` (keyboard, note BO). After the third, `deliver` is called from ONE place.
+    What holds it, each red by mutation before it counted (21 mutations over the three):
+    · **a press reaches `onCommand` with its source** — the touch and the gamepad through their own doubles
+      (`touch-bindings`, `gamepad`), the keyboard and the control object end to end at boot
+      (`virtual-controller-at-boot`), where a press through `motor.controller` also finds the child's key held
+      underneath, which is driver D5;
+    · **a release is delivered only for a press the game heard, with a menu opening in between** — the case that was
+      one of the three measured disagreements, now on the keyboard path where the second door used to deliver it;
+    · **a position with no key bound still reaches the cartridge** — on the touch path, where it used to be silence.
+    🔴 **And three of the cases exist because a mutation survived first**, each naming a hole rather than a remedy: the
+    controller's ANSWER being read at all (two sides of one hole — the controller lying, and the pad ignoring it), the
+    root wiring the release, and an unsigned key inventing `teclado` as its producer instead of erasing the old one.
+    📏 **The closing criterion is fixed and NOT yet readable, which is the honest state.** `node scripts/co-change.mjs
+    --group transports` now draws its line at `04b61db6`, where the door became single, and reads **36% before** (22 of
+    61 commits). The «after» has one commit. ⚠️ And the first readings will be pessimistic by construction: the three
+    commits of the unification touch several of these files at once, which is precisely what the abstraction exists to
+    stop happening afterwards.
+  confirmed-by:
+    - engine:tests/virtual-controller.node.test.js
+    - engine:tests/touch-bindings.node.test.js
+    - engine:tests/touch-bindings.browser.test.js
+    - engine:tests/gamepad.node.test.js
+    - engine:tests/virtual-controller-at-boot.browser.test.js
 
 more-information: |
   📌 What this record does NOT decide: whether the cartridge keeps receiving keys at all. It does — `holdKey` stays, because

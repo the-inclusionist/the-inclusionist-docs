@@ -85,12 +85,25 @@ decision-outcome:
       - "The engine now mounts a transport that reads the Gamepad API on every frame even where no cartridge asked for one — measured cost to be reported when it lands"
 
   confirmation: |
-    ⏸ **NOT YET BUILT — this record is the decision (ADR-0128), and the work is the next commit.** What will confirm it:
-    a case showing that a cartridge which declares NOTHING still has a working controller (a press reaches `onCommand`
-    with the source `gamepad` and the seat); one case per answered absence showing the engine keeps working and does the
-    written thing; and a case showing that a declared answer is the one used. Each red by mutation before it counts.
-    📏 And the closing number is the one ADR-0223 already fixed: the co-change of `keydown`, `gamepad` and
-    `touch-bindings`, 40–53% of the commits that touch them before this work.
+    ✅ **BUILT on 2026-09-22** — `engine:ebf83ec7`, migration note BP. 6 of 6 mutations red over nine new cases.
+    · **A cartridge that declares NOTHING still has a working controller**, held in a browser file of its own where a
+      press reaches `onCommand` with the source `gamepad` and the seat, the release follows it, and the edge the
+      physics reads is still raised — the door did not REPLACE it (item 4 of ADR-0223).
+    · **Every answered absence does the written thing**, and a declared answer wins over the table; a field a cartridge
+      writes as `undefined` is an absence and not a hole, which is the silent defect the table exists to prevent.
+    · **The loop only exists while a controller is connected** — pillar 1, measured as a case: after the last one
+      leaves, a press reaches nobody.
+    🔴 **And two of the cases exist because building found what reading would not**: the seat is the ENGINE's to seed
+    (a cartridge declares `{ ctrl }`, and the first version's cast to the pad's view was a lie — nothing ever took a
+    seat, in silence), and the answers table must be spread UNDER the declared ones with `undefined` stripped.
+    📏 Verified in the built `dist`, which is the point demonstrated where it can be seen: the demo quiz declares
+    nothing about controllers and never called `initGamepad`, and a d-pad press moved its cursor through `onCommand`.
+    The controller was simulated through `navigator.getGamepads`; ⏸ **a physical one is the Dev's run.**
+    📏 The closing number is the one ADR-0223 fixed and it is not readable yet: 36% co-change before the single door,
+    one commit after.
+  confirmed-by:
+    - engine:tests/the-engine-mounts-the-gamepad.browser.test.js
+    - engine:tests/gamepad.node.test.js
 
 more-information: |
   📌 What this record does NOT decide: whether `initGamepad` should eventually stop being published. It stays, because a
