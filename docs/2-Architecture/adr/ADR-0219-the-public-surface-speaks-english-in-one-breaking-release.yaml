@@ -1,6 +1,11 @@
 ---
 metadata:
   status: "accepted"
+  confirmed-by:
+    - engine:tests/rename-map.node.test.js
+    - engine:tests/superficie-publica.node.test.js
+    - engine:tests/portuguese-stays-out.node.test.js
+    - engine:tests/heavy-files-through-the-service-worker.node.test.js
   errata:
     - date: 2026-09-21
       what: >-
@@ -107,13 +112,17 @@ decision-outcome:
       - "Git blame moves for every renamed line; the history is kept by `--follow` only for file renames, which are phase 3"
 
   confirmation: |
-    ⏸ **NOT YET BUILT — this registro is the decision, and the work is issue #202.** The gates that will confirm it, and that
-    do not exist yet: the language inventory (`scripts/language-inventory.mjs`) reports ZERO Portuguese identifiers in the
-    public portrait; the portrait's own gate is green after a regenerated snapshot with the complete old→new table in
-    `Breaking-Changes.md`; the printed table and the rename map have exactly the same entries (so a name cannot be renamed
-    without being written down); and each layer commit is green on `tsc`, node, browser, `build` and `build:pkg`.
-    📌 What is NOT confirmed here, by the Dev's decision: that the seven games compile. They stay on the engine they have until
-    he adapts each one, and this record would be lying if it claimed a repository it does not touch was made ready.
+    ✅ **DONE on 2026-09-21, in eight commits — one per layer plus the delivery folder.** 📏 The measurement that closes it:
+    **zero of the 1620 public names carries a Portuguese word**, against 454 of 1612 the day it started; the tree's own debt
+    (every identifier, not only the published ones) fell from 1487 to 1020. Every layer landed green on `tsc`, both suites,
+    `build` and `build:pkg`, and the tables of notes AL, AM, AN, AO, AP, AQ and AR are PRINTED from the rename map, so a
+    name cannot have been renamed without appearing in one.
+    🔴 What the work cost, and it is the part worth reading: the tool was wrong five times, always in the same shape — it
+    could not tell a NAME from a WORD. A glob read as a comment, a regex read as a string, a sentence read as a name, the
+    gate's own dictionary rewritten, and a compound VALUE («dentro-da-zona») half-translated. Each one is now a case in
+    `engine:tests/rename-map.node.test.js`, and the scanner is TypeScript's parser rather than a heuristic.
+    📌 What is NOT confirmed, by the Dev's decision: that the seven games compile. They stay on the engine they have until he
+    adapts each one — this record would be lying if it claimed a repository it never touches was made ready.
 
 more-information: |
   📌 THE MEASUREMENT THAT CHANGED THE SIZE OF THIS WORK. The plan said «~286 exports», counted in 2026-09-14 by a scan of this
