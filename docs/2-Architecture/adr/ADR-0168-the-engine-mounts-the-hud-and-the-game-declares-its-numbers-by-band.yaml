@@ -2,7 +2,7 @@
 metadata:
   status: "accepted"
   confirmed-by:
-    - engine:tests/hud-montado-pela-engine.browser.test.js
+    - engine:tests/hud-mounted-by-the-engine.browser.test.js
   supersedes-in-part: [ADR-0059]
   superseded-in-part:
     - by: ADR-0175

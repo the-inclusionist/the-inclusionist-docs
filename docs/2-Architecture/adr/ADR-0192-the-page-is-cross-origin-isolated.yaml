@@ -2,7 +2,7 @@
 metadata:
   status: "accepted"
   confirmed-by:
-    - engine:tests/isolamento-entre-origens.node.test.js
+    - engine:tests/cross-origin-isolation.node.test.js
     - engine:tests/revisao-das-paginas.node.test.js
   errata:
     - date: 2026-09-14

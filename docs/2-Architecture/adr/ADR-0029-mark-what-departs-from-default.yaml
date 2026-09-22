@@ -7,7 +7,7 @@ metadata:
   confirmed-by:
     - engine:app/js/ui/changed-mark.ts
     - engine:tests/changed-mark.browser.test.js
-    - engine:tests/marca-alterado-contraste.node.test.js
+    - engine:tests/changed-mark-contrast.node.test.js
   date: 2026-08-24
   decision-makers: [Dev]
   consulted: [ADR-0028 (the DEFAULTS this marker reads), ADR-0010 pillars 2/11, WCAG 1.4.1 and 1.4.11]

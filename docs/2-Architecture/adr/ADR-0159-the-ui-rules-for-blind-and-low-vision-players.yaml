@@ -9,14 +9,14 @@ metadata:
   confirmed-by:
     - engine:tests/menu-nav.browser.test.js
     - engine:tests/segurar-posiciona-o-cursor.browser.test.js
-    - engine:tests/menus-anunciam-contexto.browser.test.js
+    - engine:tests/menus-announce-context.browser.test.js
     - engine:tests/quiz-le-as-opcoes.browser.test.js
-    - engine:tests/itens-sem-numero.browser.test.js
+    - engine:tests/items-without-numbers.browser.test.js
     - engine:tests/rotulos-sem-parenteses.node.test.js
     - engine:tests/settings-empathy.browser.test.js
     - engine:tests/menu-contrast-floors.browser.test.js
-    - engine:tests/foco-visivel.browser.test.js
-    - engine:tests/estado-nao-so-por-cor.browser.test.js
+    - engine:tests/visible-focus.browser.test.js
+    - engine:tests/state-never-by-colour-alone.browser.test.js
     - engine:tests/resolucao-imposta.browser.test.js
     - engine:tests/menus-sem-glifo-no-nome.browser.test.js
   errata:
