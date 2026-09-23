@@ -169,3 +169,17 @@ defect reached further than the arrows — `Digit1` read «Digit1» and `Numpad5
 its word because it is a different physical key and two identical labels in one list send the child to the wrong one. What is not
 recognised still passes untouched: «Comma» is ugly and honest, and guessing a name on the remapping screen is worse.
 `engine:4d03a321`.
+
+## 2026-09-23 · The sign-language interpreter says hello instead of an identifier
+
+⚠️ **My words, and the Dev has not seen them.** When the deaf mode turns on, the engine hands the VLibras widget a sentence to be
+SIGNED — and it had been handing it the key `sr.libras.on`, which no dictionary ever declared. 📏 The call arrived with the code in
+`engine:b0239e91` and has been broken since, so the first thing the interpreter signed to a child who had just called it was an
+identifier. It now signs **«Olá! O intérprete de Libras está ligado.»** (en «Hello! The sign-language interpreter is on.», es «¡Hola!
+El intérprete de lengua de señas está activado.»).
+
+📌 Three choices inside that sentence, and each could be undone by one commit, which is why they are here and not in a record. It is a
+**greeting** and not a system state, because the thing that says it is a person on screen and «interpreter enabled» is what a settings
+row would say, not what someone who has just appeared would say. It is **short**, because it is signed and a signed sentence costs
+seconds the child is waiting through. And it **names itself**, because the widget may take a moment to appear and the child needs to
+know that the figure that arrived is the one they asked for. `engine:f2c544a2`.
