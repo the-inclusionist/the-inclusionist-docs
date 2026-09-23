@@ -9,9 +9,14 @@ metadata:
   # erro de cópia leve a criança para outra sala (verificação EXAUSTIVA sobre os dois erros de cópia).
   confirmed-by:
     - engine:tests/no-stored-history.node.test.js
-    - engine:tests/password.node.test.js
+    - game-platformer:tests/password.node.test.js
   date: 2026-08-25
   errata:
+    - date: 2026-09-23
+      what: "The password half of the confirmation CHANGED REPOSITORY, not meaning. `core/password` and its test
+             left the engine with the tile world (ADR-0228) and live in `game-platformer`; the address of the proof
+             moved, the decision did not, so this is an erratum and not a supersession (ADR-0057's test). Found by
+             `validate-adr.py --repo`, with the engine's whole suite green while the path pointed at nothing."
     - date: 2026-09-04
       what: "cited the governing document by FILE NAME AND VERSION. An ADR cites a CLAUSE, never a version:
              the document is a living draft, so a version-pinned citation is wrong from the next release

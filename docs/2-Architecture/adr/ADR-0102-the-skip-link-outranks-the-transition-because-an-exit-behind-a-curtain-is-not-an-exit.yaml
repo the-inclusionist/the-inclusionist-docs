@@ -5,10 +5,18 @@ metadata:
   # aferidos e qual está em dívida — não existe transição nesta árvore para medir a quarta. Esta chave lista
   # o que de facto confirma; ela não promete o que o corpo já declarou por pagar.
   confirmed-by:
-    - engine:app/js/core/layers.ts
+    - engine:app/css/style.css
     - engine:app/quiz.html
-    - engine:tests/z-order-css.node.test.js
-    - engine:tests/layers.node.test.js
+    - engine:tests/the-skip-link-outranks-the-transition.node.test.js
+  errata:
+    - date: 2026-09-23
+      what: "🔴 THE PROOF DIED AND WAS REPLACED, it did not only move. `core/layers.ts` (the `Z` table) and its test
+             left the engine with the tile world (ADR-0228) — the table was the platformer's world order. And
+             `tests/z-order-css.node.test.js`, which tied the stylesheet's `--z-*` slots to that table, was DELETED
+             rather than moved, because half of what it checked was no longer the engine's. The half that IS the
+             engine's — the slots in `app/css/style.css` and the skip link adopting one — stayed behind with
+             nothing holding it. `tests/the-skip-link-outranks-the-transition.node.test.js` holds the order this
+             record decides, read from the stylesheet alone (4 of 4 mutations red). The decision did not change."
   # A parte substituída é a colocação do skip-link em `CAPTIONS`; o QUE está escrito do outro lado, no
   # `superseded-in-part` do ADR-0020, que é onde o leitor daquele registo precisa de o encontrar.
   supersedes-in-part: [ADR-0020]
