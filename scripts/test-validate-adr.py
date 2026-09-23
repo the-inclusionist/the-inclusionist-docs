@@ -18,6 +18,7 @@
 #
 # MUTAÇÕES CONFERIDAS (no fim do ficheiro).
 import os
+import shutil
 import subprocess
 import sys
 import tempfile
@@ -158,6 +159,88 @@ with tempfile.TemporaryDirectory() as base:
     codigo, saida = corre(adr)
     exige(codigo == 0, f"com os dois no índice devia sair 0; saiu {codigo}. Saída:\n{saida}")
 
+    # ============ CITAÇÕES ENTRE ÁRVORES (ADR-0229): um registo mudou-se para um jogo ============
+    # A árvore de casa (`adr`) cita o 0005, que mora no jogo; a árvore do jogo cita o 0001, que ficou em casa.
+    jogo = os.path.join(base, "jogo")
+    arvore_do_jogo = os.path.join(jogo, "docs", "2-Architecture", "adr")
+    os.makedirs(arvore_do_jogo)
+    escreve(arvore_do_jogo, 5, "o registo do jogo, que cita o ADR-0001 que ficou em casa")
+    escreve(adr, 4, "cita o ADR-0005, que se mudou para o jogo")
+    casa_sem_linha = ("| ADR | Decision | Status |\n|---|---|---|\n"
+                      "| [ADR-0001](ADR-0001-fixture.yaml) | a primeira | accepted |\n"
+                      "| [ADR-0002](ADR-0002-fixture.yaml) | a segunda | accepted |\n"
+                      "| [ADR-0004](ADR-0004-fixture.yaml) | a quarta | accepted |\n")
+    linha_movida = ("| [ADR-0005](game-platformer:docs/2-Architecture/adr/ADR-0005-fixture.yaml) "
+                    "| mudou-se | accepted |\n")
+    with open(indice, "w", encoding="utf-8") as fh:
+        fh.write(casa_sem_linha)
+
+    # 🔴 [Boundary] sem linha nem `--repo`, a citação ao 0005 REPROVA — nunca vira «não conferido», senão o
+    # erro de um dígito do ADR-0010 passaria a viver dentro da mensagem de que está tudo bem.
+    codigo, saida = corre(adr)
+    exige(codigo != 0 and "cites ADR-0005" in saida,
+          f"uma citação que nenhuma árvore responde passou; saiu {codigo}. Saída:\n{saida}")
+
+    # 🎯 [Zero] com a linha «mudou-se» e SEM a raiz do jogo: verde, e a linha é CONTADA e dita.
+    with open(indice, "w", encoding="utf-8") as fh:
+        fh.write(casa_sem_linha + linha_movida)
+    codigo, saida = corre(adr)
+    exige(codigo == 0, f"a linha «mudou-se» devia responder pela citação; saiu {codigo}. Saída:\n{saida}")
+    exige("index rows moved to `game-platformer` NOT checked" in saida,
+          f"a linha movida não foi conferida e o validador calou-se. Saída:\n{saida}")
+
+    # [Right] COM a raiz do jogo: confere o ficheiro do outro lado, e deixa de avisar.
+    codigo, saida = corre(adr, "--repo", f"game-platformer={jogo}")
+    exige(codigo == 0 and "index rows moved" not in saida,
+          f"com a raiz do jogo devia conferir e calar; saiu {codigo}. Saída:\n{saida}")
+
+    # 🔴 [Inverse] a linha aponta para um ficheiro que não está lá: reprova o ÍNDICE.
+    os.rename(os.path.join(arvore_do_jogo, "ADR-0005-fixture.yaml"), os.path.join(arvore_do_jogo, "fora.yaml"))
+    codigo, saida = corre(adr, "--repo", f"game-platformer={jogo}")
+    exige(codigo != 0 and "FAIL README.md" in saida,
+          f"a linha «mudou-se» aponta para nada e passou; saiu {codigo}. Saída:\n{saida}")
+    os.rename(os.path.join(arvore_do_jogo, "fora.yaml"), os.path.join(arvore_do_jogo, "ADR-0005-fixture.yaml"))
+
+    # 🔴 [Boundary] um rótulo que ninguém declarou na linha «mudou-se» reprova, pela mesma razão do
+    # `confirmed-by`: contá-lo como «não conferido» esconderia o erro de escrita na mensagem do dia a dia.
+    with open(indice, "w", encoding="utf-8") as fh:
+        fh.write(casa_sem_linha + linha_movida.replace("game-platformer:", "game-platfromer:"))
+    codigo, saida = corre(adr)
+    exige(codigo != 0 and "not a declared repository" in saida,
+          f"uma linha com rótulo errado passou; saiu {codigo}. Saída:\n{saida}")
+    with open(indice, "w", encoding="utf-8") as fh:
+        fh.write(casa_sem_linha + linha_movida)
+
+    # 🔴 [Inverse] o ficheiro ficou em casa E a linha diz que se mudou: uma das duas está velha.
+    escreve(adr, 5, "a cópia que ficou para trás")
+    codigo, saida = corre(adr, "--repo", f"game-platformer={jogo}")
+    exige(codigo != 0 and "one of the two is stale" in saida,
+          f"um registo em duas casas passou; saiu {codigo}. Saída:\n{saida}")
+    os.remove(os.path.join(adr, "ADR-0005-fixture.yaml"))
+
+    # O outro lado: a árvore do JOGO cita o 0001. Sem a casa declarada reprova; com ela, é são.
+    codigo, saida = corre(arvore_do_jogo)
+    exige(codigo != 0 and "cites ADR-0001" in saida,
+          f"a árvore do jogo citou o que não tem e passou sem `--repo`; saiu {codigo}. Saída:\n{saida}")
+    # A árvore de casa é copiada para a forma de um repositório (`<raiz>/docs/2-Architecture/adr`), que é
+    # onde o validador procura — a fixture `adr` solta não tem essa forma.
+    casa = os.path.join(base, "casa")
+    shutil.copytree(adr, os.path.join(casa, "docs", "2-Architecture", "adr"))
+    codigo, saida = corre(arvore_do_jogo, "--repo", f"docs={casa}")
+    exige(codigo == 0, f"com a casa declarada a árvore do jogo devia ser sã; saiu {codigo}. Saída:\n{saida}")
+
+    # 🔴 [Boundary] declarar a PRÓPRIA árvore não a deixa responder por si: o índice dela tem uma linha para o
+    # 0009 sem ficheiro nenhum, e essa linha não pode passar a valer como prova só porque o `--repo` a aponta.
+    escreve(arvore_do_jogo, 6, "cita o ADR-0009, que não existe em lado nenhum")
+    with open(os.path.join(arvore_do_jogo, "README.md"), "w", encoding="utf-8") as fh:
+        fh.write("| ADR | Decision | Status |\n|---|---|---|\n"
+                 "| [ADR-0005](ADR-0005-fixture.yaml) | a quinta | accepted |\n"
+                 "| [ADR-0006](ADR-0006-fixture.yaml) | a sexta | accepted |\n"
+                 "| [ADR-0009](ADR-0009-fixture.yaml) | uma linha sem ficheiro | accepted |\n")
+    codigo, saida = corre(arvore_do_jogo, "--repo", f"docs={casa}", "--repo", f"game-platformer={jogo}")
+    exige(codigo != 0 and "cites ADR-0009" in saida,
+          f"um número que nenhuma árvore tem passou; saiu {codigo}. Saída:\n{saida}")
+
 if falhas:
     for f in falhas:
         print(f"FAIL {f}")
@@ -179,3 +262,15 @@ print("validador: o que não é conferido é dito, e o que é conferido reprova 
 #    linhas, e um crivo assim teria dito «está tudo indexado» durante os sete.
 # 5. trocar o `os.path.exists(indice)` por `True` → o [Vácuo] reprova com um traceback em vez de saltar.
 #    Ao contrário, fixá-lo em `False` deixa o bloco inteiro verde para sempre — e é o [Right] que a apanha.
+#
+# CITAÇÕES ENTRE ÁRVORES (ADR-0229), 9 de 9 vermelhas em 2026-09-23:
+# 6. a outra árvore declarada deixar de responder → a árvore do jogo, com a casa declarada, reprova.
+# 7. a linha «mudou-se» deixar de responder → o [Zero] da casa reprova.
+# 8. a árvore que se valida responder por si quando o `--repo` a aponta → o [Boundary] do 0009 fica verde.
+# 9. um registo com ficheiro em casa E linha «mudou-se» passar → o [Inverse] das duas casas reprova.
+# 10. um rótulo errado na linha «mudou-se» ser CONTADO em vez de reprovar → o [Boundary] do rótulo reprova.
+# 11. o ficheiro do outro lado não ser conferido → o [Inverse] do ficheiro em falta reprova.
+# 12. calar a contagem das linhas movidas → o [Zero] reprova. É a mutação 1, um andar abaixo.
+# 13. a reprovação do índice sair 0, e 14. deixar de a imprimir → o [Inverse] do ficheiro em falta reprova.
+#    O índice não é um registo e não entra na conta «N records», mas uma linha que aponta para nada é a
+#    mesma mentira que um `confirmed-by` a apontar para nada.
