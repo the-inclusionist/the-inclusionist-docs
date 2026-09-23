@@ -15,6 +15,14 @@ metadata:
     - "The measurement that shaped the choice: renaming tests left NINE records with `confirmed-by` pointing at
        nothing, with the engine's whole suite green (2026-09-22)"
   informed: []
+  errata:
+    - date: 2026-09-23
+      what: >-
+        🔴 «SEVEN» WAS SIX. The triage named ADR-0034 among the records that move, and ADR-0034 is `superseded` by
+        ADR-0037, which stays: moving it would split a supersession pair across two repositories, and the old half
+        would sit in a game's tree pointing at a successor that game does not have. A superseded record belongs where
+        its successor is. 📏 Found by copying the files and running the validator on the platformer's tree, not by
+        reading. The confirmation's «7 of 7» therefore reads 6 of 6, and the triage says why ADR-0034 stays.
 
 title: The records stay in their own repository, and only a game's own records move to that game
 

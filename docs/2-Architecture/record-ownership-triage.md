@@ -48,21 +48,27 @@ regardless of which repositories they name:
 - **the engine's own** — the 70 with engine-only confirmations, and the decisions about what the engine draws,
   speaks, hears and refuses.
 
-## The SEVEN that move to `game-platformer`
+## The SIX that move to `game-platformer`
 
 Each line is the sentence in the record that settles it.
+
+> 🔴 **Correction, same day: this section said SEVEN, and ADR-0034 does not move.** It decides the password split
+> `core/password` / `game/progress`, and that module did leave with the tile world (ADR-0228) — but ADR-0034 is
+> `superseded` by **ADR-0037**, which stays. Moving it splits a supersession pair across two repositories: the
+> old half would sit in a game's tree pointing at a successor that game does not have. **A superseded record
+> belongs where its successor is.** 📏 Found by copying the files and running the validator on the game's tree,
+> not by reading — which is the argument for the order ADR-0229 fixes.
 
 | record | what it decides | the evidence |
 |---|---|---|
 | **ADR-0016** City scenario & themes | the city level and its themes | «Level-design detail in `../../game-design/plano-cenario-cidade.md`» |
-| **ADR-0034** Progression survives the restored machine | the password split `core/password` / `game/progress` | the module it decides about left with the tile world (ADR-0228) |
 | **ADR-0041** The letter grid splits | `core/letter-grid` mechanics vs. screen | same — `core/letter-grid` is the platformer's since ADR-0228 |
 | **ADR-0042** The City parallax is generated art | `render/city-tiles`, `cenarios/cidade/c2..c4.png` | «both City tiles are data in `render/city-tiles.ts`» |
 | **ADR-0061** The no-littering sign bars the CHILD | the recycling activity's rule and its level data | «put a PROIBIDO JOGAR LIXO sign in the platformer level» |
 | **ADR-0062** The tenth coin closes a LAP | the round's lifecycle | «The platformer has ten coins as its round objective… `win()` in `game/session`» |
 | **ADR-0174** The platformer's title menu leaves the engine | that menu and its 161 dictionary keys | the title says it |
 
-📌 **Four of the seven are ADR-0228's wake**: they decide about modules that were the engine's when the record was
+📌 **Three of the six are ADR-0228's wake**: they decide about modules that were the engine's when the record was
 written and are the platformer's now. That is the fifth cause the dead-pointer book learned during F12 — a pointer
 that did not die and was not renamed, but changed REPOSITORY — and it applies to records exactly as it applied to
 test files.
@@ -85,7 +91,7 @@ repository where the proof now lives. That is the repair, and it is separate fro
 
 ## What happens next, in order
 
-1. The seven move, with their `confirmed-by` paths rewritten from `engine:` to `game-platformer:`.
+1. The six move, with their `confirmed-by` paths rewritten from `engine:` to `game-platformer:`.
 2. ADR-0037 and ADR-0102 get their confirmations repaired in place — an erratum, not a supersession: the decision
    did not change, the address of its proof did (ADR-0057's test).
 3. The validator runs again with `--repo` on both sides. The number to beat is **228 · 226 · 2**.
