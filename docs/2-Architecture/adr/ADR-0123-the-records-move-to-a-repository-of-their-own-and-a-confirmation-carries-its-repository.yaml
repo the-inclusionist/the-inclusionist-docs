@@ -2,6 +2,9 @@
 metadata:
   status: "accepted"
   supersedes-in-part: [ADR-0068]
+  superseded-in-part:
+    - by: ADR-0226
+      what: "ONLY the CONCENTRATION — one tree for the whole project. Every repository now keeps the records about itself and the engine's return to the engine. The other three clauses stand and matter more under N trees: a confirmation carries its repository, what cannot be opened is counted and SAID on every run, and the validator and the gates run in every repository"
   date: 2026-09-09
   decision-makers: [Dev]
   consulted:
