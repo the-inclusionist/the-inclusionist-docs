@@ -1,14 +1,14 @@
 #!/usr/bin/env python3
 # SPDX-License-Identifier: AGPL-3.0-or-later
-"""O CENSO DA DIVIDA CONTINUA VIVO — um relatorio que morre em silencio imprime «0» para sempre.
+"""THE DEBT CENSUS STAYS ALIVE — a report that dies in silence prints «0» forever.
 
-O `divida-dos-registos.py` REPORTA e nunca reprova, de proposito (ADR-0126). E precisamente por isso precisa
-deste ficheiro: um gate que reprova e lido no dia em que fica vermelho; um relatorio cujo detector morreu
-continua a imprimir numeros — zeros — e ninguem volta a olhar. Este repositorio ja pagou isso: uma varredura
-devolveu ZERO e quase virou «nao ha CDN nenhum».
+`divida-dos-registos.py` REPORTS and never fails, on purpose (ADR-0126). And precisely because of that it needs
+this file: a gate that fails is read on the day it goes red; a report whose detector died keeps printing numbers
+— zeros — and nobody looks again. This repository has already paid for that: a sweep returned ZERO and nearly
+became «there is no CDN at all».
 
-Os casos correm sobre uma arvore TEMPORARIA, escrita aqui, com o VACUO primeiro.
-MUTACOES CONFERIDAS no fim do ficheiro.
+The cases run over a TEMPORARY tree, written here, with the VACUUM first.
+MUTATIONS CHECKED at the end of the file.
 """
 import subprocess
 import sys
@@ -30,7 +30,7 @@ decision-outcome:
   confirmation: |
     {conf}
 more-information: |
-  nada
+  nothing
 """
 
 
@@ -54,55 +54,55 @@ def main() -> int:
     with tempfile.TemporaryDirectory() as td:
         vazio = Path(td)
 
-        # 🎯 O VACUO PRIMEIRO: uma arvore sem registos nao pode ser lida como «sem dividas». Este e o caso
-        # que apanha o detector morto, e e a razao de ele ser o primeiro e nao o ultimo.
+        # 🎯 THE VACUUM FIRST: a tree with no records cannot be read as «no debts». This is the case that
+        # catches the dead detector, and it is the reason it comes first and not last.
         cod, saida = correr(vazio)
-        if "DORMENTE" not in saida:
-            falhas.append("[Vacuo] arvore vazia nao anunciou DORMENTE — leria zero como «tudo bem»")
+        if "DORMANT" not in saida:
+            falhas.append("[Vacuum] an empty tree did not announce DORMANT — it would read zero as «all fine»")
         if cod != 0:
-            falhas.append(f"[Vacuo] o censo reprovou (codigo {cod}); ele nunca pode reprovar")
+            falhas.append(f"[Vacuum] the census failed (code {cod}); it can never fail")
 
-        # Um registo que DEVE e nao tem por onde ser seguido: tem de aparecer.
-        escrever(vazio, "ADR-9001-deve-sem-rastro.yaml", "⚠️ NOT YET BUILT. The gates this owes: uma coisa.")
+        # A record that OWES and has no way to be followed: it has to show up.
+        escrever(vazio, "ADR-9001-deve-sem-rastro.yaml", "⚠️ NOT YET BUILT. The gates this owes: one thing.")
         cod, saida = correr(vazio)
-        if "SEM RASTRO — nem issue nomeada, nem `confirmed-by`: 1" not in saida:
-            falhas.append("[Zero] divida sem rastro nao foi contada")
+        if "NO TRAIL — neither a named issue nor a `confirmed-by`: 1" not in saida:
+            falhas.append("[Zero] debt with no trail was not counted")
         if "ADR-9001" not in saida:
-            falhas.append("[Zero] o registo devedor nao foi NOMEADO — um numero sozinho nao se persegue")
+            falhas.append("[Zero] the owing record was not NAMED — a number on its own cannot be chased")
 
-        # ⚠️ O PAR: uma divida COM issue nomeada nao e «sem rastro». Sem este caso, o crivo podia contar
-        # todos os devedores e a distincao que o ADR-0126 pede desaparecia.
-        escrever(vazio, "ADR-9002-deve-com-issue.yaml", "⚠️ NOT YET BUILT. Ver a issue #42, que faz o trabalho.")
+        # ⚠️ THE PAIR: a debt WITH a named issue is not «no trail». Without this case, the sieve could count
+        # every debtor and the distinction ADR-0126 asks for would disappear.
+        escrever(vazio, "ADR-9002-deve-com-issue.yaml", "⚠️ NOT YET BUILT. See issue #42, which does the work.")
         cod, saida = correr(vazio)
         if "`confirmed-by`: 1" not in saida:
-            falhas.append("[Boundary] a issue nomeada nao tirou o registo de «sem rastro»")
+            falhas.append("[Boundary] the named issue did not take the record out of «no trail»")
 
-        # E o outro par: `confirmed-by` tambem e rastro — e o mais forte, porque o validador ABRE os caminhos.
-        escrever(vazio, "ADR-9003-deve-confirmado.yaml", "⚠️ NOT YET BUILT. Nada mais.", confirmado=True)
+        # And the other pair: `confirmed-by` is a trail too — the strongest one, because the validator OPENS the paths.
+        escrever(vazio, "ADR-9003-deve-confirmado.yaml", "⚠️ NOT YET BUILT. Nothing more.", confirmado=True)
         cod, saida = correr(vazio)
         if "`confirmed-by`: 1" not in saida:
-            falhas.append("[Boundary] `confirmed-by` nao contou como rastro")
+            falhas.append("[Boundary] `confirmed-by` did not count as a trail")
 
-        # Um registo que NAO deve nada nao pode ser acusado — um crivo que acusa tudo e desligado.
-        escrever(vazio, "ADR-9004-nao-deve.yaml", "O gate E a confirmacao: corre na CI todos os dias.")
+        # A record that owes NOTHING cannot be accused — a sieve that accuses everything gets switched off.
+        escrever(vazio, "ADR-9004-nao-deve.yaml", "The gate IS the confirmation: it runs in CI every day.")
         cod, saida = correr(vazio)
-        if "declaram divida na confirmacao: 3" not in saida:
-            falhas.append("[Zero] um registo sem divida foi contado como devedor")
+        if "declare debt in the confirmation: 3" not in saida:
+            falhas.append("[Zero] a record with no debt was counted as a debtor")
 
     for f in falhas:
-        print(f"FALHA {f}")
-    print(f"\ncenso da divida: {'OK' if not falhas else str(len(falhas)) + ' falha(s)'}")
+        print(f"FAIL {f}")
+    print(f"\ndebt census: {'OK' if not falhas else str(len(falhas)) + ' failure(s)'}")
     return 1 if falhas else 0
 
 
 if __name__ == "__main__":
     raise SystemExit(main())
 
-# ================================ MUTACOES CONFERIDAS ================================
-# 1. 🎯 o `DEVE` a deixar de casar «NOT YET BUILT» -> reprovam TRES casos. E a mutacao inteira: o censo
-#    passaria a dizer «0 devedores» sobre 126 registos, que e o zero falso que este ficheiro existe para
-#    impedir.
-# 2. o ramo do DORMENTE removido (arvore vazia a imprimir «0 dividas») -> o [Vacuo] reprova, e o defeito e o
-#    pior de todos: um caminho errado passa a ser lido como saude.
-# 3. `tem_issue or tem_confirmacao` -> so `tem_issue` -> o [Boundary] do `confirmed-by` reprova. Sem ele, a
-#    forma MAIS forte de rastro — a que o validador abre de verdade — contaria como ausencia.
+# ================================ MUTATIONS CHECKED ================================
+# 1. 🎯 `DEVE` no longer matching «NOT YET BUILT» -> THREE cases fail. It is the whole mutation: the census
+#    would start saying «0 debtors» over 126 records, which is the false zero this file exists to
+#    prevent.
+# 2. the DORMANT branch removed (an empty tree printing «0 debts») -> [Vacuum] fails, and the defect is the
+#    worst of all: a wrong path comes to be read as health.
+# 3. `tem_issue or tem_confirmacao` -> only `tem_issue` -> the `confirmed-by` [Boundary] fails. Without it, the
+#    STRONGEST form of trail — the one the validator really opens — would count as absence.

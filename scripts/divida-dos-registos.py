@@ -1,26 +1,27 @@
 #!/usr/bin/env python3
 # SPDX-License-Identifier: AGPL-3.0-or-later
-"""A DIVIDA DOS REGISTOS — um registo que deve trabalho tem de dizer QUEM o faz (ADR-0126).
+"""THE RECORDS' DEBT — a record that owes work has to say WHO does it (ADR-0126).
 
-=========================== POR QUE ISTO EXISTE, MEDIDO E NAO SUPOSTO ===========================
-O ADR-0126 fechou com uma clausula: «EVERY RECORD THAT OWES WORK NAMES THE ISSUE THAT DOES IT», e a razao
-escrita era manter «a decisao e um registo» de virar o sitio onde trabalho e arquivado sem ninguem o agendar.
+=========================== WHY THIS EXISTS, MEASURED AND NOT ASSUMED ===========================
+ADR-0126 closed with a clause: «EVERY RECORD THAT OWES WORK NAMES THE ISSUE THAT DOES IT», and the reason
+written was to keep «a decisao e um registo» from becoming the place where work is filed without anyone
+scheduling it.
 
-MEDIDO em 2026-09-09, e a medicao mudou a forma do gate: dos 126 registos, DOZE declaram divida na
-confirmacao e DEZ nao nomeiam issue nenhuma. Mas ao abrir tres deles, a divida era TEXTO VELHO — o ADR-0110,
-o 0111 e o 0115 abriam com «NOT YET BUILT» sobre trabalho que ja estava construido.
+MEASURED on 2026-09-09, and the measurement changed the shape of the gate: of the 126 records, TWELVE declare
+debt in the confirmation and TEN name no issue at all. But on opening three of them, the debt was OLD TEXT —
+ADR-0110, 0111 and 0115 opened with «NOT YET BUILT» over work that was already built.
 
-E O PIOR DE TUDO: o validador dava «126 sound, 0 problems» — porque esses registos nao tinham `confirmed-by`
-NENHUM. Um registo que declara divida e nunca a confirma fica SAO PARA SEMPRE. A divida e invisivel a maquina
-exactamente enquanto ninguem a paga, que e o oposto do que se quer.
+AND WORST OF ALL: the validator said «126 sound, 0 problems» — because those records had NO `confirmed-by` at
+all. A record that declares debt and never confirms it stays SOUND FOREVER. The debt is invisible to the machine
+exactly while nobody pays it, which is the opposite of what is wanted.
 
-Entao o crivo pergunta duas coisas, nao uma:
-  1. o registo declara divida?  (texto: NOT YET BUILT / NOT YET EXECUTED / gates this owes / caixa vazia)
-  2. se sim, ha por onde a seguir? — uma ISSUE nomeada, OU um `confirmed-by` (que o validador ABRE).
+So the sieve asks two things, not one:
+  1. does the record declare debt?  (text: NOT YET BUILT / NOT YET EXECUTED / gates this owes / empty box)
+  2. if so, is there a way to follow it? — a named ISSUE, OR a `confirmed-by` (which the validator OPENS).
 
-REPORTA E NAO REPROVA. Corrigir doze registos historicos nao e trabalho de um commit, e um gate que nasce
-vermelho e fica vermelho e um gate que alguem desliga — a licao que o `check-annual-report` ja carrega. O
-numero e um TECTO QUE SO DESCE, e sai 0 sempre.
+IT REPORTS AND DOES NOT FAIL. Fixing twelve historical records is not the work of one commit, and a gate that is
+born red and stays red is a gate someone switches off — the lesson `check-annual-report` already carries. The
+number is a CEILING THAT ONLY GOES DOWN, and it always exits 0.
 """
 import re
 import sys
@@ -33,7 +34,7 @@ ISSUE = re.compile(r"(?:issue\s+)?#\d+|[a-z][a-z0-9-]*#\d+", re.I)
 
 
 def confirmacao(texto: str) -> str:
-    """O bloco `confirmation`, ate ao `more-information` seguinte. Vazio se nao houver."""
+    """The `confirmation` block, up to the next `more-information`. Empty if there is none."""
     i = texto.find("confirmation:")
     if i < 0:
         return ""
@@ -44,10 +45,10 @@ def confirmacao(texto: str) -> str:
 def main() -> int:
     ficheiros = sorted(p for p in RAIZ.glob("ADR-*.yaml"))
     if not ficheiros:
-        # DORMENTE E EM VOZ ALTA: zero ficheiros nao e zero dividas, e dizer «tudo bem» aqui seria o falso
-        # relatorio que este projecto ja apanhou tres vezes.
-        print(f"divida dos registos: DORMENTE — nenhum ADR-*.yaml em {RAIZ}")
-        print("  ⚠️ isto NAO e «zero dividas»: e zero medicoes.")
+        # DORMANT AND OUT LOUD: zero files is not zero debts, and saying «all fine» here would be the false
+        # report this project has already caught three times.
+        print(f"records' debt: DORMANT — no ADR-*.yaml in {RAIZ}")
+        print("  ⚠️ this is NOT «zero debts»: it is zero measurements.")
         return 0
 
     devedores, sem_rastro = [], []
@@ -62,26 +63,26 @@ def main() -> int:
         if not tem_issue and not tem_confirmacao:
             sem_rastro.append(p.name)
 
-    # ⏳ E AS DECISOES A ESPERA DO DEV, que sao a outra forma de uma coisa ficar quieta. Um registo
-    # `proposed` nao deve gates — nao ha decisao para os dever — entao os contadores acima nao o veem. Sem esta
-    # linha, uma proposta medida e escrita fica no mesmo silencio de que uma issue fechada a tiraria.
+    # ⏳ AND THE DECISIONS WAITING FOR THE DEV, which are the other way for something to sit still. A `proposed`
+    # record owes no gates — there is no decision to owe them — so the counters above do not see it. Without this
+    # line, a measured and written proposal sits in the same silence that a closed issue would take it out of.
     propostas = [
         p.name for p in ficheiros
         if re.search(r'^\s*status:\s*"?proposed', p.read_text(encoding="utf-8")[:400], re.M)
     ]
 
-    print(f"divida dos registos · {len(ficheiros)} registos")
+    print(f"records' debt · {len(ficheiros)} records")
     if propostas:
-        print(f"  ⏳ A ESPERA DE DECISAO ({len(propostas)}): " + ", ".join(n[:12] for n in propostas))
-    print(f"  declaram divida na confirmacao: {len(devedores)}")
-    print(f"  🔴 SEM RASTRO — nem issue nomeada, nem `confirmed-by`: {len(sem_rastro)}")
+        print(f"  ⏳ WAITING FOR A DECISION ({len(propostas)}): " + ", ".join(n[:12] for n in propostas))
+    print(f"  declare debt in the confirmation: {len(devedores)}")
+    print(f"  🔴 NO TRAIL — neither a named issue nor a `confirmed-by`: {len(sem_rastro)}")
     for n in sem_rastro:
         print(f"     {n[:16]}")
     print()
-    print("  ⚠️ «sem rastro» nao quer dizer «por fazer»: quer dizer que ninguem consegue SABER, daqui, se")
-    print("     esta feito. Tres deles em 2026-09-09 estavam FEITOS e o texto continuava a dizer que nao —")
-    print("     e o validador aprovava-os, porque um registo sem `confirmed-by` nao tem o que conferir.")
-    print("  (relatorio: nunca reprova — ver o cabecalho e o ADR-0126)")
+    print("  ⚠️ «no trail» does not mean «not done»: it means nobody can KNOW, from here, whether it")
+    print("     is done. Three of them on 2026-09-09 were DONE and the text still said they were not —")
+    print("     and the validator passed them, because a record with no `confirmed-by` has nothing to check.")
+    print("  (report: never fails — see the header and ADR-0126)")
     return 0
 
 

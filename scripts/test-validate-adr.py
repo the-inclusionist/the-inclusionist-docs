@@ -1,22 +1,22 @@
 #!/usr/bin/env python3
 # SPDX-License-Identifier: AGPL-3.0-or-later
 #
-# O GATE DO GATE — que o que NÃO foi conferido seja DITO (ADR-0123 §3).
+# THE GATE OF THE GATE — that what was NOT checked be SAID (ADR-0123 §3).
 #
-# ========================= POR QUE ISTO EXISTE =========================
-# 🔴 Desde que os registos deixaram de morar ao lado do código, um `confirmed-by: engine:app/js/x.ts` só se
-# confere quando alguém passa a raiz da engine. Sem ela, o validador não pode abrir o ficheiro — e a única
-# coisa que separa isso de um carimbo é a linha que diz «24 caminhos NÃO conferidos».
+# ========================= WHY THIS EXISTS =========================
+# 🔴 Since the records stopped living next to the code, a `confirmed-by: engine:app/js/x.ts` is only checked
+# when someone passes the engine's root. Without it, the validator cannot open the file — and the only thing
+# that separates that from a rubber stamp is the line that says «24 paths NOT checked».
 #
-# ⚠️ UMA DEFESA SEM TESTE É UM COMENTÁRIO. Apagar aquele `print` deixa o validador a imprimir «123 sãos, 0
-# problemas» sem ter aberto um único artefacto, e nada em lado nenhum reprova. É a forma exacta do falso
-# relatório que este projecto já apanhou três vezes: uma varredura vazia lida como ausência.
+# ⚠️ A DEFENCE WITHOUT A TEST IS A COMMENT. Deleting that `print` leaves the validator printing «123 sound, 0
+# problems» without having opened a single artefact, and nothing anywhere fails. It is the exact shape of the
+# false report this project has already caught three times: an empty sweep read as absence.
 #
-# 📌 SEM DEPENDÊNCIAS E SEM RUNNER: este repositório guarda registos, não uma aplicação. `python
-# scripts/test-validate-adr.py` corre, sai 0 ou 1, e a CI lê o código de saída — que é o mesmo contrato do
-# validador ao lado.
+# 📌 NO DEPENDENCIES AND NO RUNNER: this repository keeps records, not an application. `python
+# scripts/test-validate-adr.py` runs, exits 0 or 1, and CI reads the exit code — which is the same contract as
+# the validator beside it.
 #
-# MUTAÇÕES CONFERIDAS (no fim do ficheiro).
+# MUTATIONS CHECKED (at the end of the file).
 import os
 import shutil
 import subprocess
@@ -37,12 +37,12 @@ metadata:
 {confirmed}
 title: {titulo}
 context-and-problem-statement: |
-  Um registo de fixture. Existe para o validador ter o que ler.
+  A fixture record. It exists so the validator has something to read.
 decision-outcome:
   justification: |
-    Nada a decidir: este registo existe para exercitar o crivo.
+    Nothing to decide: this record exists to exercise the sieve.
 more-information: |
-  Nada.
+  Nothing.
 """
 
 
@@ -54,9 +54,9 @@ def escreve(pasta, numero, titulo, confirmed=""):
 
 
 def corre(*args):
-    # ⚠️ `encoding="utf-8"` E NÃO O PADRÃO: o validador imprime ⚠️ e 📌, e em Windows o `text=True` decodifica
-    # com o cp1252 da consola — o que rebenta com `UnicodeDecodeError` antes de qualquer asserção correr.
-    # Apanhado a correr, na primeira tentativa. `errors="replace"` para o caso nunca morrer por um byte.
+    # ⚠️ `encoding="utf-8"` AND NOT THE DEFAULT: the validator prints ⚠️ and 📌, and on Windows `text=True` decodes
+    # with the console's cp1252 — which blows up with `UnicodeDecodeError` before any assertion runs.
+    # Caught while running, on the first attempt. `errors="replace"` so the case never dies over one byte.
     r = subprocess.run(
         [sys.executable, VALIDADOR, *args],
         capture_output=True, text=True, encoding="utf-8", errors="replace",
@@ -78,199 +78,199 @@ with tempfile.TemporaryDirectory() as base:
     os.makedirs(adr)
     os.makedirs(engine)
     with open(os.path.join(engine, "existe.ts"), "w", encoding="utf-8") as fh:
-        fh.write("// o artefacto que confirma o registo\n")
+        fh.write("// the artefact that confirms the record\n")
 
-    escreve(adr, 1, "com confirmação noutro repositório",
+    escreve(adr, 1, "with a confirmation in another repository",
             "  confirmed-by:\n    - engine:existe.ts")
-    escreve(adr, 2, "sem confirmação nenhuma")
+    escreve(adr, 2, "with no confirmation at all")
 
-    # [Vácuo] — antes de tudo: o crivo ACHA a fixture. Sem isto, um validador que não lesse nada passaria
-    # todos os casos abaixo por não ter o que reprovar.
+    # [Vacuum] — before anything: the sieve FINDS the fixture. Without this, a validator that read nothing would
+    # pass every case below for having nothing to fail.
     codigo, saida = corre(adr)
-    exige("2 records" in saida, f"o validador não leu a fixture — mediria o nada. Saída:\n{saida}")
+    exige("2 records" in saida, f"the validator did not read the fixture — it would measure nothing. Output:\n{saida}")
 
-    # 🎯 [Zero] SEM a raiz da engine: são sãos, E a linha do que não foi conferido aparece.
-    exige(codigo == 0, f"a fixture devia ser sã sem `--repo`; saiu {codigo}. Saída:\n{saida}")
+    # 🎯 [Zero] WITHOUT the engine's root: they are sound, AND the line about what was not checked shows up.
+    exige(codigo == 0, f"the fixture should be sound without `--repo`; it exited {codigo}. Output:\n{saida}")
     exige("NOT checked" in saida,
-          "o validador CALOU-SE sobre o que não conferiu — é um carimbo, não um crivo. "
-          f"Saída:\n{saida}")
-    exige("`engine`" in saida, f"a linha não nomeia o repositório que falta. Saída:\n{saida}")
+          "the validator went SILENT about what it did not check — it is a rubber stamp, not a sieve. "
+          f"Output:\n{saida}")
+    exige("`engine`" in saida, f"the line does not name the missing repository. Output:\n{saida}")
 
-    # [Right] COM a raiz certa: confere de verdade, e deixa de avisar.
+    # [Right] WITH the right root: it really checks, and stops warning.
     codigo, saida = corre(adr, "--repo", f"engine={engine}")
-    exige(codigo == 0, f"com a raiz certa devia sair 0; saiu {codigo}. Saída:\n{saida}")
+    exige(codigo == 0, f"with the right root it should exit 0; it exited {codigo}. Output:\n{saida}")
     exige("NOT checked" not in saida,
-          f"avisou que não conferiu, com a raiz na mão. Saída:\n{saida}")
+          f"it warned that it did not check, with the root in hand. Output:\n{saida}")
 
-    # 🔴 [Boundary] UM PREFIXO QUE NINGUÉM DECLAROU é problema, e não «não conferido». Era o caso que o
-    # ADR-0123 dizia não poder pagar, e a frase estava mal posta: o risco não é o repositório mudar de nome, é
-    # o rótulo nunca ter existido — e um erro de escrita ficava a viver dentro da mensagem do dia a dia.
-    escreve(adr, 3, "com um prefixo que não existe",
+    # 🔴 [Boundary] A PREFIX NOBODY DECLARED is a problem, and not «not checked». It was the case ADR-0123 said it
+    # could not pay for, and the sentence was badly put: the risk is not the repository changing its name, it is
+    # the label never having existed — and a typo would go on living inside the everyday message.
+    escreve(adr, 3, "with a prefix that does not exist",
             "  confirmed-by:\n    - enigne:existe.ts")
     codigo, saida = corre(adr)
-    exige(codigo != 0, f"prefixo desconhecido devia reprovar; saiu {codigo}. Saída:\n{saida}")
+    exige(codigo != 0, f"an unknown prefix should fail; it exited {codigo}. Output:\n{saida}")
     exige("not a declared repository" in saida,
-          f"reprovou, mas não pela razão certa. Saída:\n{saida}")
+          f"it failed, but not for the right reason. Output:\n{saida}")
     os.remove(os.path.join(adr, "ADR-0003-fixture.yaml"))
 
-    # 🔴 [Inverse] COM a raiz errada: reprova, e a mensagem diz contra o que mediu.
+    # 🔴 [Inverse] WITH the wrong root: it fails, and the message says what it measured against.
     codigo, saida = corre(adr, "--repo", f"engine={os.path.join(base, 'nao-existe')}")
-    exige(codigo != 0, f"raiz errada devia reprovar; saiu {codigo}. Saída:\n{saida}")
-    exige("existe.ts" in saida, f"a reprovação não nomeia o caminho. Saída:\n{saida}")
+    exige(codigo != 0, f"a wrong root should fail; it exited {codigo}. Output:\n{saida}")
+    exige("existe.ts" in saida, f"the failure does not name the path. Output:\n{saida}")
     exige("nao-existe" in saida,
-          f"a reprovação não diz contra QUE raiz mediu — parece um registo mentiroso. Saída:\n{saida}")
+          f"the failure does not say against WHICH root it measured — it looks like a lying record. Output:\n{saida}")
 
-    # ======================= o ÍNDICE, que drenou sete registos em silêncio =======================
+    # ======================= the INDEX, which drained seven records in silence =======================
     indice = os.path.join(adr, "README.md")
 
-    # [Vácuo] PRIMEIRO, e é o caso que importa mais: sem `README.md` o crivo SALTA, e tem de saltar —
-    # uma árvore de registos sem índice não é uma árvore partida. ⚠️ Mas um salto que ninguém afirma é
-    # como um crivo desligado: se o `os.path.exists` virasse `True` constante, nada abaixo notava.
+    # [Vacuum] FIRST, and it is the case that matters most: without `README.md` the sieve SKIPS, and it has to
+    # skip — a records tree with no index is not a broken tree. ⚠️ But a skip nobody asserts is like a sieve
+    # switched off: if `os.path.exists` became a constant `True`, nothing below would notice.
     codigo, saida = corre(adr)
-    exige(codigo == 0, f"sem índice nenhum devia saltar e sair 0; saiu {codigo}. Saída:\n{saida}")
+    exige(codigo == 0, f"with no index at all it should skip and exit 0; it exited {codigo}. Output:\n{saida}")
     exige("no row in the index" not in saida,
-          f"acusou índice em falta numa árvore que não tem índice nenhum. Saída:\n{saida}")
+          f"it reported a missing index row in a tree that has no index at all. Output:\n{saida}")
 
-    # [Right] com um índice que nomeia UM dos dois, o outro é acusado — e o acusado é o que falta.
+    # [Right] with an index that names ONE of the two, the other is reported — and the one reported is the missing one.
     with open(indice, "w", encoding="utf-8") as fh:
         fh.write("| ADR | Decision | Status |\n|---|---|---|\n"
-                 "| [ADR-0001](ADR-0001-fixture.yaml) | a que está | accepted |\n")
+                 "| [ADR-0001](ADR-0001-fixture.yaml) | the one that is there | accepted |\n")
     codigo, saida = corre(adr)
-    exige(codigo != 0, f"registo fora do índice devia reprovar; saiu {codigo}. Saída:\n{saida}")
-    exige("ADR-0002" in saida, f"reprovou sem nomear QUAL registo falta. Saída:\n{saida}")
+    exige(codigo != 0, f"a record outside the index should fail; it exited {codigo}. Output:\n{saida}")
+    exige("ADR-0002" in saida, f"it failed without naming WHICH record is missing. Output:\n{saida}")
     exige("ADR-0001" not in saida.replace("ADR-0001-fixture.yaml", ""),
-          f"acusou também o registo que TEM linha. Saída:\n{saida}")
+          f"it also reported the record that HAS a row. Output:\n{saida}")
 
-    # 🎯 [Boundary] SER MENCIONADO NÃO É TER LINHA, e é exactamente assim que os sete se esconderam:
-    # um registo citado dentro da prosa de outra linha aparece a um `grep` e continua sem entrada.
+    # 🎯 [Boundary] BEING MENTIONED IS NOT HAVING A ROW, and that is exactly how the seven hid:
+    # a record cited inside the prose of another row shows up to a `grep` and still has no entry.
     with open(indice, "w", encoding="utf-8") as fh:
         fh.write("| ADR | Decision | Status |\n|---|---|---|\n"
-                 "| [ADR-0001](ADR-0001-fixture.yaml) | supersede em parte o ADR-0002 | accepted |\n")
+                 "| [ADR-0001](ADR-0001-fixture.yaml) | supersedes ADR-0002 in part | accepted |\n")
     codigo, saida = corre(adr)
     exige(codigo != 0,
-          f"o ADR-0002 só é MENCIONADO na prosa de outra linha e mesmo assim passou; saiu {codigo}. "
-          f"Saída:\n{saida}")
+          f"ADR-0002 is only MENTIONED in the prose of another row and it passed anyway; it exited {codigo}. "
+          f"Output:\n{saida}")
 
-    # [Inverse] com os dois indexados, verde outra vez — senão seria um gate que nunca pode ficar verde.
+    # [Inverse] with both indexed, green again — otherwise it would be a gate that can never go green.
     with open(indice, "w", encoding="utf-8") as fh:
         fh.write("| ADR | Decision | Status |\n|---|---|---|\n"
-                 "| [ADR-0001](ADR-0001-fixture.yaml) | a primeira | accepted |\n"
-                 "| [ADR-0002](ADR-0002-fixture.yaml) | a segunda | accepted |\n")
+                 "| [ADR-0001](ADR-0001-fixture.yaml) | the first | accepted |\n"
+                 "| [ADR-0002](ADR-0002-fixture.yaml) | the second | accepted |\n")
     codigo, saida = corre(adr)
-    exige(codigo == 0, f"com os dois no índice devia sair 0; saiu {codigo}. Saída:\n{saida}")
+    exige(codigo == 0, f"with both in the index it should exit 0; it exited {codigo}. Output:\n{saida}")
 
-    # ============ CITAÇÕES ENTRE ÁRVORES (ADR-0229): um registo mudou-se para um jogo ============
-    # A árvore de casa (`adr`) cita o 0005, que mora no jogo; a árvore do jogo cita o 0001, que ficou em casa.
+    # ============ CITATIONS ACROSS TREES (ADR-0229): a record moved to a game ============
+    # The home tree (`adr`) cites 0005, which lives in the game; the game's tree cites 0001, which stayed home.
     jogo = os.path.join(base, "jogo")
     arvore_do_jogo = os.path.join(jogo, "docs", "2-Architecture", "adr")
     os.makedirs(arvore_do_jogo)
-    escreve(arvore_do_jogo, 5, "o registo do jogo, que cita o ADR-0001 que ficou em casa")
-    escreve(adr, 4, "cita o ADR-0005, que se mudou para o jogo")
+    escreve(arvore_do_jogo, 5, "the game's record, which cites ADR-0001 that stayed home")
+    escreve(adr, 4, "cites ADR-0005, which moved to the game")
     casa_sem_linha = ("| ADR | Decision | Status |\n|---|---|---|\n"
-                      "| [ADR-0001](ADR-0001-fixture.yaml) | a primeira | accepted |\n"
-                      "| [ADR-0002](ADR-0002-fixture.yaml) | a segunda | accepted |\n"
-                      "| [ADR-0004](ADR-0004-fixture.yaml) | a quarta | accepted |\n")
+                      "| [ADR-0001](ADR-0001-fixture.yaml) | the first | accepted |\n"
+                      "| [ADR-0002](ADR-0002-fixture.yaml) | the second | accepted |\n"
+                      "| [ADR-0004](ADR-0004-fixture.yaml) | the fourth | accepted |\n")
     linha_movida = ("| [ADR-0005](game-platformer:docs/2-Architecture/adr/ADR-0005-fixture.yaml) "
-                    "| mudou-se | accepted |\n")
+                    "| moved | accepted |\n")
     with open(indice, "w", encoding="utf-8") as fh:
         fh.write(casa_sem_linha)
 
-    # 🔴 [Boundary] sem linha nem `--repo`, a citação ao 0005 REPROVA — nunca vira «não conferido», senão o
-    # erro de um dígito do ADR-0010 passaria a viver dentro da mensagem de que está tudo bem.
+    # 🔴 [Boundary] with no row and no `--repo`, the citation of 0005 FAILS — it never becomes «not checked»,
+    # otherwise ADR-0010's one-digit error would come to live inside the message that all is well.
     codigo, saida = corre(adr)
     exige(codigo != 0 and "cites ADR-0005" in saida,
-          f"uma citação que nenhuma árvore responde passou; saiu {codigo}. Saída:\n{saida}")
+          f"a citation no tree answers passed; it exited {codigo}. Output:\n{saida}")
 
-    # 🎯 [Zero] com a linha «mudou-se» e SEM a raiz do jogo: verde, e a linha é CONTADA e dita.
+    # 🎯 [Zero] with the «moved» row and WITHOUT the game's root: green, and the row is COUNTED and said.
     with open(indice, "w", encoding="utf-8") as fh:
         fh.write(casa_sem_linha + linha_movida)
     codigo, saida = corre(adr)
-    exige(codigo == 0, f"a linha «mudou-se» devia responder pela citação; saiu {codigo}. Saída:\n{saida}")
+    exige(codigo == 0, f"the «moved» row should answer for the citation; it exited {codigo}. Output:\n{saida}")
     exige("index rows moved to `game-platformer` NOT checked" in saida,
-          f"a linha movida não foi conferida e o validador calou-se. Saída:\n{saida}")
+          f"the moved row was not checked and the validator kept quiet. Output:\n{saida}")
 
-    # [Right] COM a raiz do jogo: confere o ficheiro do outro lado, e deixa de avisar.
+    # [Right] WITH the game's root: it checks the file on the other side, and stops warning.
     codigo, saida = corre(adr, "--repo", f"game-platformer={jogo}")
     exige(codigo == 0 and "index rows moved" not in saida,
-          f"com a raiz do jogo devia conferir e calar; saiu {codigo}. Saída:\n{saida}")
+          f"with the game's root it should check and keep quiet; it exited {codigo}. Output:\n{saida}")
 
-    # 🔴 [Inverse] a linha aponta para um ficheiro que não está lá: reprova o ÍNDICE.
+    # 🔴 [Inverse] the row points at a file that is not there: it fails the INDEX.
     os.rename(os.path.join(arvore_do_jogo, "ADR-0005-fixture.yaml"), os.path.join(arvore_do_jogo, "fora.yaml"))
     codigo, saida = corre(adr, "--repo", f"game-platformer={jogo}")
     exige(codigo != 0 and "FAIL README.md" in saida,
-          f"a linha «mudou-se» aponta para nada e passou; saiu {codigo}. Saída:\n{saida}")
+          f"the «moved» row points at nothing and passed; it exited {codigo}. Output:\n{saida}")
     os.rename(os.path.join(arvore_do_jogo, "fora.yaml"), os.path.join(arvore_do_jogo, "ADR-0005-fixture.yaml"))
 
-    # 🔴 [Boundary] um rótulo que ninguém declarou na linha «mudou-se» reprova, pela mesma razão do
-    # `confirmed-by`: contá-lo como «não conferido» esconderia o erro de escrita na mensagem do dia a dia.
+    # 🔴 [Boundary] a label nobody declared on the «moved» row fails, for the same reason as
+    # `confirmed-by`: counting it as «not checked» would hide the typo in the everyday message.
     with open(indice, "w", encoding="utf-8") as fh:
         fh.write(casa_sem_linha + linha_movida.replace("game-platformer:", "game-platfromer:"))
     codigo, saida = corre(adr)
     exige(codigo != 0 and "not a declared repository" in saida,
-          f"uma linha com rótulo errado passou; saiu {codigo}. Saída:\n{saida}")
+          f"a row with a wrong label passed; it exited {codigo}. Output:\n{saida}")
     with open(indice, "w", encoding="utf-8") as fh:
         fh.write(casa_sem_linha + linha_movida)
 
-    # 🔴 [Inverse] o ficheiro ficou em casa E a linha diz que se mudou: uma das duas está velha.
-    escreve(adr, 5, "a cópia que ficou para trás")
+    # 🔴 [Inverse] the file stayed home AND the row says it moved: one of the two is stale.
+    escreve(adr, 5, "the copy that was left behind")
     codigo, saida = corre(adr, "--repo", f"game-platformer={jogo}")
     exige(codigo != 0 and "one of the two is stale" in saida,
-          f"um registo em duas casas passou; saiu {codigo}. Saída:\n{saida}")
+          f"a record in two homes passed; it exited {codigo}. Output:\n{saida}")
     os.remove(os.path.join(adr, "ADR-0005-fixture.yaml"))
 
-    # O outro lado: a árvore do JOGO cita o 0001. Sem a casa declarada reprova; com ela, é são.
+    # The other side: the GAME's tree cites 0001. Without home declared it fails; with it, it is sound.
     codigo, saida = corre(arvore_do_jogo)
     exige(codigo != 0 and "cites ADR-0001" in saida,
-          f"a árvore do jogo citou o que não tem e passou sem `--repo`; saiu {codigo}. Saída:\n{saida}")
-    # A árvore de casa é copiada para a forma de um repositório (`<raiz>/docs/2-Architecture/adr`), que é
-    # onde o validador procura — a fixture `adr` solta não tem essa forma.
+          f"the game's tree cited what it does not have and passed without `--repo`; it exited {codigo}. Output:\n{saida}")
+    # The home tree is copied into the shape of a repository (`<root>/docs/2-Architecture/adr`), which is where the
+    # validator looks — the loose `adr` fixture does not have that shape.
     casa = os.path.join(base, "casa")
     shutil.copytree(adr, os.path.join(casa, "docs", "2-Architecture", "adr"))
     codigo, saida = corre(arvore_do_jogo, "--repo", f"docs={casa}")
-    exige(codigo == 0, f"com a casa declarada a árvore do jogo devia ser sã; saiu {codigo}. Saída:\n{saida}")
+    exige(codigo == 0, f"with home declared the game's tree should be sound; it exited {codigo}. Output:\n{saida}")
 
-    # 🔴 [Boundary] declarar a PRÓPRIA árvore não a deixa responder por si: o índice dela tem uma linha para o
-    # 0009 sem ficheiro nenhum, e essa linha não pode passar a valer como prova só porque o `--repo` a aponta.
-    escreve(arvore_do_jogo, 6, "cita o ADR-0009, que não existe em lado nenhum")
+    # 🔴 [Boundary] declaring the tree ITSELF does not let it answer for itself: its index has a row for
+    # 0009 with no file at all, and that row cannot come to count as proof just because `--repo` points at it.
+    escreve(arvore_do_jogo, 6, "cites ADR-0009, which exists nowhere")
     with open(os.path.join(arvore_do_jogo, "README.md"), "w", encoding="utf-8") as fh:
         fh.write("| ADR | Decision | Status |\n|---|---|---|\n"
-                 "| [ADR-0005](ADR-0005-fixture.yaml) | a quinta | accepted |\n"
-                 "| [ADR-0006](ADR-0006-fixture.yaml) | a sexta | accepted |\n"
-                 "| [ADR-0009](ADR-0009-fixture.yaml) | uma linha sem ficheiro | accepted |\n")
+                 "| [ADR-0005](ADR-0005-fixture.yaml) | the fifth | accepted |\n"
+                 "| [ADR-0006](ADR-0006-fixture.yaml) | the sixth | accepted |\n"
+                 "| [ADR-0009](ADR-0009-fixture.yaml) | a row with no file | accepted |\n")
     codigo, saida = corre(arvore_do_jogo, "--repo", f"docs={casa}", "--repo", f"game-platformer={jogo}")
     exige(codigo != 0 and "cites ADR-0009" in saida,
-          f"um número que nenhuma árvore tem passou; saiu {codigo}. Saída:\n{saida}")
+          f"a number no tree has passed; it exited {codigo}. Output:\n{saida}")
 
 if falhas:
     for f in falhas:
         print(f"FAIL {f}")
-    print(f"\n{len(falhas)} problema(s)")
+    print(f"\n{len(falhas)} problem(s)")
     raise SystemExit(1)
-print("validador: o que não é conferido é dito, e o que é conferido reprova quando falta")
+print("validator: what is not checked is said, and what is checked fails when it is missing")
 
-# ================================ MUTAÇÕES CONFERIDAS ================================
-# 1. apagar o laço que imprime `NOT checked` no `main()` → o caso [Zero] reprova. É a mutação inteira: sem
-#    ela, o validador diz «tudo são» sem ter aberto um artefacto, e nenhum outro caso nota.
-# 2. contar o não-conferido como PROBLEMA em vez de o saltar → o caso [Zero] reprova pelo código de saída.
-#    Seria a outra maneira de errar: um repositório que só tem registos ficaria vermelho para sempre, e um
-#    gate que nunca pode ficar verde é um gate que alguém desliga.
-# 3. tirar o `--repo` do parser (voltar a resolver tudo contra o `cwd`) → o [Right] reprova: os caminhos
-#    qualificados deixariam de ser encontrados mesmo com a raiz correcta.
-# 4. o crivo do índice a procurar `ADR-\d{4}` em qualquer posição da linha em vez de `^\| \[ADR-\d{4}\]`
-#    → o [Boundary] reprova. É a mutação que mais importa deste bloco, porque é a forma REAL do defeito:
-#    os sete registos que faltavam apareciam todos a um `grep` por número, citados na prosa de outras
-#    linhas, e um crivo assim teria dito «está tudo indexado» durante os sete.
-# 5. trocar o `os.path.exists(indice)` por `True` → o [Vácuo] reprova com um traceback em vez de saltar.
-#    Ao contrário, fixá-lo em `False` deixa o bloco inteiro verde para sempre — e é o [Right] que a apanha.
+# ================================ MUTATIONS CHECKED ================================
+# 1. deleting the loop that prints `NOT checked` in `main()` → the [Zero] case fails. It is the whole mutation:
+#    without it, the validator says «all sound» without having opened an artefact, and no other case notices.
+# 2. counting the unchecked as a PROBLEM instead of skipping it → the [Zero] case fails on the exit code.
+#    It would be the other way to get it wrong: a repository that only has records would be red forever, and a
+#    gate that can never go green is a gate someone switches off.
+# 3. taking `--repo` out of the parser (going back to resolving everything against the `cwd`) → [Right] fails: the
+#    qualified paths would stop being found even with the correct root.
+# 4. the index sieve looking for `ADR-\d{4}` at any position in the line instead of `^\| \[ADR-\d{4}\]`
+#    → [Boundary] fails. It is the mutation that matters most in this block, because it is the REAL shape of the
+#    defect: the seven missing records all showed up to a `grep` by number, cited in the prose of other rows,
+#    and a sieve like that would have said «everything is indexed» during all seven.
+# 5. swapping `os.path.exists(indice)` for `True` → [Vacuum] fails with a traceback instead of skipping.
+#    Conversely, fixing it at `False` leaves the whole block green forever — and it is [Right] that catches it.
 #
-# CITAÇÕES ENTRE ÁRVORES (ADR-0229), 9 de 9 vermelhas em 2026-09-23:
-# 6. a outra árvore declarada deixar de responder → a árvore do jogo, com a casa declarada, reprova.
-# 7. a linha «mudou-se» deixar de responder → o [Zero] da casa reprova.
-# 8. a árvore que se valida responder por si quando o `--repo` a aponta → o [Boundary] do 0009 fica verde.
-# 9. um registo com ficheiro em casa E linha «mudou-se» passar → o [Inverse] das duas casas reprova.
-# 10. um rótulo errado na linha «mudou-se» ser CONTADO em vez de reprovar → o [Boundary] do rótulo reprova.
-# 11. o ficheiro do outro lado não ser conferido → o [Inverse] do ficheiro em falta reprova.
-# 12. calar a contagem das linhas movidas → o [Zero] reprova. É a mutação 1, um andar abaixo.
-# 13. a reprovação do índice sair 0, e 14. deixar de a imprimir → o [Inverse] do ficheiro em falta reprova.
-#    O índice não é um registo e não entra na conta «N records», mas uma linha que aponta para nada é a
-#    mesma mentira que um `confirmed-by` a apontar para nada.
+# CITATIONS ACROSS TREES (ADR-0229), 9 of 9 red on 2026-09-23:
+# 6. the other declared tree stopping answering → the game's tree, with home declared, fails.
+# 7. the «moved» row stopping answering → home's [Zero] fails.
+# 8. the tree being validated answering for itself when `--repo` points at it → the 0009 [Boundary] goes green.
+# 9. a record with a file at home AND a «moved» row passing → the two-homes [Inverse] fails.
+# 10. a wrong label on the «moved» row being COUNTED instead of failing → the label [Boundary] fails.
+# 11. the file on the other side not being checked → the missing-file [Inverse] fails.
+# 12. silencing the count of moved rows → [Zero] fails. It is mutation 1, one floor down.
+# 13. the index failure exiting 0, and 14. no longer printing it → the missing-file [Inverse] fails.
+#    The index is not a record and does not enter the «N records» count, but a row that points at nothing is the
+#    same lie as a `confirmed-by` pointing at nothing.
