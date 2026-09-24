@@ -1,6 +1,6 @@
 ---
-# ⚠️ LIDO CONTRA A ARVORE DE 2026-09-07. E' registo de FACTO — o endereco existe e o Dev declarou-o —,
-# nao proposta, e por isso entra `accepted`. Nao supersede nada.
+# ⚠️ READ AGAINST THE TREE OF 2026-09-07. It is a record of FACT — the address exists and the Dev declared it —,
+# not a proposal, and that is why it enters `accepted`. It supersedes nothing.
 metadata:
   status: "accepted"
   date: 2026-09-07
@@ -111,16 +111,16 @@ decision-outcome:
     `git remote -v` in the game repository reports `the-inclusionist/game-soccer`, and its `package.json`
     reports `@the-inclusionist/game-soccer`. The repository holds no `adr/` folder (ADR-0068 §5).
 
-    ⚠️ CONFERIDO NA ENTRADA, 2026-09-07, e não pela memória de quem redigiu: `gh repo view
-    the-inclusionist/game-soccer` responde `isPrivate: true`, criado em 2026-09-06T14:34:22Z. O endereço
-    existe, a organização é a certa, e o registo que faltava é este.
+    ⚠️ CHECKED ON ENTRY, 2026-09-07, and not from the memory of whoever drafted it: `gh repo view
+    the-inclusionist/game-soccer` answers `isPrivate: true`, created on 2026-09-06T14:34:22Z. The address
+    exists, the organisation is the right one, and the record that was missing is this one.
 
-    ⚠️ E A CONTAGEM DE INSTÂNCIAS MUDOU ENTRE O RASCUNHO E AGORA. O texto acima diz «a segunda instância» do
-    ADR-0082; medido na organização em 07/09, há SEIS repositórios `game-<slug>` — `game-15puzzle`,
-    `game-2048`, `game-chess`, `game-platformer`, `game-soccer` e `game-whackwhack`. O argumento não muda de
-    sinal — este continua a ser o primeiro cujo endereço a regra produziu sem exceção nem supersessão —, mas
-    a frase «uma regra com uma instância é descrição; com duas é algo em que confiar» tem hoje seis, e o
-    `game-platformer` nasceu ontem já pelo padrão.
+    ⚠️ AND THE COUNT OF INSTANCES CHANGED BETWEEN THE DRAFT AND NOW. The text above says «a segunda instância» of
+    ADR-0082; measured in the organisation on 07/09, there are SIX `game-<slug>` repositories — `game-15puzzle`,
+    `game-2048`, `game-chess`, `game-platformer`, `game-soccer` and `game-whackwhack`. The argument does not change
+    sign — this is still the first whose address the rule produced with no exception and no supersession —, but
+    the sentence «uma regra com uma instância é descrição; com duas é algo em que confiar» has six today, and
+    `game-platformer` was born yesterday already following the pattern.
 
 more-information: |
   The game is a clean reimplementation of the feature set of `modelence/open-soccer`, which carries no

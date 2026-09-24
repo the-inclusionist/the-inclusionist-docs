@@ -4,103 +4,103 @@ metadata:
   date: 2026-09-06
   decision-makers: [Dev]
   consulted:
-    - "A especificação do Dev, verbatim, as quatorze posições para dois jogadores: `direcional: awsd | up,
+    - "The Dev's specification, verbatim, the fourteen positions for two players: `direcional: awsd | up,
        left, down, right · action 1: u | 8 · action 2: j | 5 · action 3: k | 6 · action 4: i | 9 · left
        shoulder: 7 (alphanumeric) | / (numeric) · left trigger: y | 7 (numeric) · right shoulder: 8
        (alphanumeric) | * (numeric) · right trigger: o | + (numeric) · start: h | 1 (numeric) · select: f |
        0 (numeric)`"
-    - "ADR-0085 — as quatorze posições do CONTROLE_ENGINE; os nomes FÍSICOS são binding e vivem no transporte"
-    - "`input/default-bindings.ts` — o lar declarado das tabelas, e o `KEYBOARD_SOLO` que já existia"
-    - "`input/keyboard.ts` — o esquema `p2` VIVO, que tem OITO posições das quatorze"
-    - "ADR-0074 §1 — a dívida do `start`, que faltava no teclado e o `KEYBOARD_SOLO` fechou"
+    - "ADR-0085 — the fourteen positions of CONTROLE_ENGINE; the PHYSICAL names are binding and live in the transport"
+    - "`input/default-bindings.ts` — the declared home of the tables, and the `KEYBOARD_SOLO` that already existed"
+    - "`input/keyboard.ts` — the LIVE `p2` scheme, which has EIGHT of the fourteen positions"
+    - "ADR-0074 §1 — the `start` debt, which was missing from the keyboard and `KEYBOARD_SOLO` closed"
   informed: []
 
-title: O teclado de dois jogadores é a MESMA geometria duas vezes — e as setas mudam de dono
+title: The two-player keyboard is the SAME geometry twice — and the arrows change owner
 
 context-and-problem-statement: |
-  O Dev especificou o teclado de dois jogadores nas quatorze posições. Antes de registrar, foi conferido
-  contra o que já existe, e o resultado tem duas metades:
+  The Dev specified the two-player keyboard in the fourteen positions. Before recording it, it was checked against
+  what already exists, and the result has two halves:
 
-  ⚠️ O JOGADOR 1 DELE É EXATAMENTE O `KEYBOARD_SOLO` QUE JÁ ESTAVA REGISTRADO — as quatorze, tecla por tecla.
-  Não é decisão nova; é a confirmação de uma que já estava escrita, o que é informação e não redundância.
+  ⚠️ THEIR PLAYER 1 IS EXACTLY THE `KEYBOARD_SOLO` THAT WAS ALREADY RECORDED — all fourteen, key by key. It is not a
+  new decision; it is the confirmation of one that was already written, which is information and not redundancy.
 
-  ⚠️ O JOGADOR 2 É NOVO, E PREENCHE UMA LACUNA MEDIDA: o esquema `p2` vivo em `input/keyboard.ts` tem OITO
-  posições das quatorze — quatro direcionais e quatro ações. Faltavam os dois ombros, os dois gatilhos, o
-  `start` e o `select`, para os DOIS jogadores. E as oito que lá estão batem exatamente com as oito
-  correspondentes da especificação, o que diz que o Dev está a completar o próprio esquema, não a trocá-lo.
+  ⚠️ PLAYER 2 IS NEW, AND FILLS A MEASURED GAP: the live `p2` scheme in `input/keyboard.ts` has EIGHT of the fourteen
+  positions — four directionals and four actions. The two shoulders, the two triggers, `start` and `select` were
+  missing, for BOTH players. And the eight that are there match exactly the corresponding eight of the
+  specification, which says the Dev is completing their own scheme, not replacing it.
 
 decision-drivers:
-- "⚠️ A geometria do jogador 2 é a do jogador 1 TRANSPOSTA para o teclado numérico, e isso é o argumento da
-   tabela e não um enfeite: `U I / J K` e `8 9 / 5 6` têm a mesma forma, os ombros ficam na linha DE CIMA nos
-   dois (`7 8` · `/ *`) e os gatilhos nas PONTAS da linha das ações (`Y … O` · `7 … +`). O padrão ensina-se
-   uma vez e serve aos dois lados da mesa."
-- "⚠️ E ISSO ESTENDE A ROTAÇÃO DE 45° que o `default-bindings` já documentava para o Xbox: se `U I / J K`
-   pousa no losango do controle girando um oitavo de volta, `8 9 / 5 6` pousa igual."
-- "⚠️ O Dev escreveu «alphanumeric» e «numeric» POR EXTENSO, e o esquema só fecha por causa disso:
-   `Digit7` é o L1 do jogador 1 e `Numpad7` é o L2 do jogador 2. São teclas distintas em
-   `KeyboardEvent.code` e a MESMA em `key` — mais uma razão de este projeto nunca ler `key`."
+- "⚠️ Player 2's geometry is player 1's TRANSPOSED onto the numeric keypad, and that is the table's argument and
+   not an ornament: `U I / J K` and `8 9 / 5 6` have the same shape, the shoulders sit on the TOP row in both
+   (`7 8` · `/ *`) and the triggers at the ENDS of the action row (`Y … O` · `7 … +`). The pattern is taught once
+   and serves both sides of the table."
+- "⚠️ AND THAT EXTENDS THE 45° ROTATION that `default-bindings` already documented for the Xbox: if `U I / J K`
+   lands on the controller's diamond by turning an eighth of a turn, `8 9 / 5 6` lands the same way."
+- "⚠️ The Dev wrote «alphanumeric» and «numeric» IN FULL, and the scheme only closes because of that:
+   `Digit7` is player 1's L1 and `Numpad7` is player 2's L2. They are distinct keys in `KeyboardEvent.code` and
+   the SAME in `key` — one more reason for this project never to read `key`."
 
 considered-options:
-- "K1 - registrar a tabela como veio, e aferir cada esquema como já se afere qualquer tabela"
-- "K2 - registrar e reutilizar o `KEYBOARD_SOLO` para o jogador 1"
+- "K1 - record the table as it came, and check each scheme the way any table is already checked"
+- "K2 - record it and reuse `KEYBOARD_SOLO` for player 1"
 
 pros-and-cons-of-the-options:
   K1:
     good:
-    - "É o que o Dev especificou, e o gate cruzado apanha o único ponto onde os dois esquemas podem colidir."
+    - "It is what the Dev specified, and the cross gate catches the only point where the two schemes can collide."
   K2:
     bad:
-    - "⚠️ REFUTADA POR UMA TECLA: o `KEYBOARD_SOLO` tem as SETAS como segundo caminho do direcional do jogador
-       1, e em dupla as setas são o direcional do jogador 2. Reutilizar a tabela inteira faria os dois bonecos
-       andarem juntos — e é um defeito que não produz erro em lado nenhum, passa em `bindingProblems` (cada
-       esquema é são SOZINHO) e só aparece jogando a dois."
+    - "⚠️ REFUTED BY ONE KEY: `KEYBOARD_SOLO` has the ARROWS as the second path of player 1's directional, and in
+       a pair the arrows are player 2's directional. Reusing the whole table would make the two characters walk
+       together — and it is a defect that produces no error anywhere, passes `bindingProblems` (each scheme is
+       sound ON ITS OWN) and only shows up playing as two."
 
 decision-outcome:
   chosen-option:
-    link: "K1 - `KEYBOARD_DUO` em `input/default-bindings`, dois esquemas de quatorze, com um crivo CRUZADO"
+    link: "K1 - `KEYBOARD_DUO` in `input/default-bindings`, two schemes of fourteen, with a CROSS sieve"
     justification: |
-      ===== O QUE MUDA DO SOLO PARA A DUPLA É UMA COISA SÓ =====
-      As setas saem do jogador 1. Todo o resto do esquema dele é o `KEYBOARD_SOLO`, e um caso do gate afirma
-      essa igualdade posição a posição — para que a dupla não vire, com o tempo, um segundo esquema que
-      ninguém decidiu.
+      ===== WHAT CHANGES FROM SOLO TO PAIR IS ONE THING ONLY =====
+      The arrows leave player 1. All the rest of their scheme is `KEYBOARD_SOLO`, and one case of the gate asserts
+      that equality position by position — so that the pair does not turn, over time, into a second scheme nobody
+      decided.
 
-      ===== O CRIVO CRUZADO É DE OUTRA FAMÍLIA QUE O CRIVO DE DUPLO =====
-      `bindingProblems` olha UMA tabela e apanha a mesma tecla em duas ações. `conflitosEntreTabelas` olha
-      DUAS e apanha a mesma tecla em dois JOGADORES. O segundo precisou de existir porque o primeiro dá verde
-      sobre o defeito das setas: cada esquema é impecável por si.
+      ===== THE CROSS SIEVE IS OF A DIFFERENT FAMILY FROM THE DUPLICATE SIEVE =====
+      `bindingProblems` looks at ONE table and catches the same key in two actions. `conflitosEntreTabelas` looks at
+      TWO and catches the same key in two PLAYERS. The second had to exist because the first gives green over the
+      arrows defect: each scheme is flawless by itself.
 
-      ===== O QUE FICOU DE FORA, DITO =====
-      `NumpadEnter` NÃO entra no jogador 2. `ui/menu-nav` já o usa como CONFIRMAR em qualquer menu (`KEY_YES`)
-      e `input/keydown` registra, verbatim, que ele não pausa. Dar-lhe um terceiro trabalho seria sobrepor
-      duas decisões existentes para poupar uma tecla que não falta.
+      ===== WHAT WAS LEFT OUT, SAID =====
+      `NumpadEnter` does NOT go into player 2. `ui/menu-nav` already uses it as CONFIRM in any menu (`KEY_YES`) and
+      `input/keydown` records, verbatim, that it does not pause. Giving it a third job would overlap two existing
+      decisions to save a key that is not missing.
 
   consequences:
     positive:
-    - "As quatorze posições passam a existir para DOIS jogadores, e não oito."
-    - "O padrão é ensinável uma vez: a mesma forma de mão dos dois lados da mesa."
+    - "The fourteen positions come to exist for TWO players, and not eight."
+    - "The pattern is teachable once: the same hand shape on both sides of the table."
     negative:
-    - "⚠️ O jogador 2 depende do teclado NUMÉRICO, que muitos portáteis de escola não têm. Isso não é defeito
-       desta tabela — é exatamente o que o aviso de alcance da issue #112 existe para dizer ANTES de começar,
-       e a régua do ADR-0091 já sabe contá-lo."
+    - "⚠️ Player 2 depends on the NUMERIC keypad, which many school laptops do not have. That is not a defect of
+       this table — it is exactly what issue #112's reach notice exists to say BEFORE starting, and ADR-0091's
+       ruler already knows how to count it."
     neutral:
-    - "O `Space` continua no `action2` do jogador 1 e o `Enter` no `start` dele; nenhum colide com o numérico."
+    - "`Space` stays on player 1's `action2` and `Enter` on their `start`; neither collides with the numeric keypad."
   confirmation: |
-    ⚠️ HÁ DUAS TABELAS DE TECLADO NA ÁRVORE, E ESTE REGISTRO NÃO AS UNE: `input/keyboard.ts` tem o esquema
-    `p2` VIVO com oito posições, e `input/default-bindings.ts` tem o `KEYBOARD_DUO` novo com quatorze. As
-    oito coincidem, o que torna a divergência benigna HOJE e não amanhã. A união é trabalho à parte, com
-    issue própria — e fica escrito aqui para não passar por descuido.
+    ⚠️ THERE ARE TWO KEYBOARD TABLES IN THE TREE, AND THIS RECORD DOES NOT UNITE THEM: `input/keyboard.ts` has the
+    LIVE `p2` scheme with eight positions, and `input/default-bindings.ts` has the new `KEYBOARD_DUO` with
+    fourteen. The eight coincide, which makes the divergence benign TODAY and not tomorrow. The union is separate
+    work, with its own issue — and it is written here so it does not pass as carelessness.
 
-    O gate é `tests/default-bindings.node.test.js`, e o caso que importa nasceu vermelho sob mutação
-    confirmada: devolver `ArrowUp` ao jogador 1 reprova em TRÊS casos, incluindo o crivo cruzado. O crivo tem
-    ainda um caso próprio que lhe passa uma tabela com a seta repetida e exige que ele nomeie os DOIS donos —
-    senão ele poderia estar a devolver lista vazia por não olhar.
+    The gate is `tests/default-bindings.node.test.js`, and the case that matters was born red under a confirmed
+    mutation: giving `ArrowUp` back to player 1 fails in THREE cases, including the cross sieve. The sieve also
+    has a case of its own that passes it a table with the arrow repeated and demands that it name BOTH owners —
+    otherwise it could be returning an empty list for not looking.
 
 more-information: |
-  ⚠️ ESTE REGISTRO EXISTE PORQUE UMA ESPECIFICAÇÃO NO CHAT É UMA DECISÃO PERDIDA — é a frase que o próprio
-  `default-bindings.ts` já carregava no cabeçalho, escrita quando a primeira metade deste padrão chegou. A
-  segunda metade chegou hoje e teve o mesmo destino.
+  ⚠️ THIS RECORD EXISTS BECAUSE A SPECIFICATION IN THE CHAT IS A LOST DECISION — it is the sentence that
+  `default-bindings.ts` itself already carried in its header, written when the first half of this pattern arrived.
+  The second half arrived today and had the same fate.
 
-  E vale registrar o que a CONFERÊNCIA deu, além do registro: a especificação bateu tecla a tecla com o que
-  já estava escrito para o jogador 1, e completou — em vez de contradizer — as oito posições que o
-  `keyboard.ts` já tinha para o jogador 2. Da última vez que um padrão destes chegou, a simetria denunciou um
-  `I` atribuído duas vezes. Desta vez não havia o que denunciar.
+  And it is worth recording what the CHECK yielded, beyond the record: the specification matched key by key what
+  was already written for player 1, and completed — instead of contradicting — the eight positions that
+  `keyboard.ts` already had for player 2. The last time a pattern like this arrived, the symmetry exposed an `I`
+  assigned twice. This time there was nothing to expose.

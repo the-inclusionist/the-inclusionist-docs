@@ -4,139 +4,143 @@ metadata:
   date: 2026-09-06
   decision-makers: [Dev]
   consulted:
-    - "A proposta do Dev, verbatim: `que tal criarmos uma abstração para layers de tela e os elementos em
+    - "The Dev's proposal, verbatim: `que tal criarmos uma abstração para layers de tela e os elementos em
        cada um? É provável que tenhamos só quatro camadas com leitura: a camada de ação, a camada de
        atividade escolar, a camada de HUD do jogo e a camada de HUD do minigame. Todas as outras camadas são
        para design gráfico`"
-    - "ADR-0020 — a escala de `z-index`. Ela ordena PINTURA; isto é outro eixo, e os dois vivem hoje juntos"
-    - "ADR-0030 — o contrato declarado: `nameAt`/`objectiveOf`/`targetsOf` JÁ são a leitura da camada de ação"
-    - "ADR-0087 e issue #82 — `AlcanceDoFiltro` é `'mundo' | 'mundo-e-menus'`, que é uma afirmação sobre
-       CAMADAS escrita como enum de dois valores"
-    - "ADR-0044 e ADR-0028 — as três zonas da tela e `todo menu persiste`: as regras de a11y de menu que já
-       existem, e que hoje não têm onde se declarar"
-    - "issue #106 — o censo dos 37 sinks de markup, que é metade da medida deste registro"
+    - "ADR-0020 — the `z-index` scale. It orders PAINTING; this is another axis, and the two live together today"
+    - "ADR-0030 — the declared contract: `nameAt`/`objectiveOf`/`targetsOf` ALREADY are the reading of the action layer"
+    - "ADR-0087 and issue #82 — `AlcanceDoFiltro` is `'mundo' | 'mundo-e-menus'`, which is a statement about
+       LAYERS written as a two-value enum"
+    - "ADR-0044 and ADR-0028 — the three zones of the screen and `every menu persists`: the menu a11y rules that
+       already exist, and that today have nowhere to declare themselves"
+    - "issue #106 — the census of the 37 markup sinks, which is half of this record's measurement"
   informed: []
 
-title: As camadas com LEITURA são seis, e a maior delas são os menus — medido, não desenhado
+title: The READABLE layers are six, and the biggest of them is the menus — measured, not designed
 
 context-and-problem-statement: |
-  O Dev propôs para a tela a mesma abstração que o CONTROLE_ENGINE é para a entrada: em vez de cada elemento
-  ser um caso, declarar as CAMADAS e o que vive em cada uma. E arriscou o número: provavelmente quatro com
-  leitura — ação, atividade escolar, HUD do jogo, HUD do minigame —, sendo todas as outras design gráfico.
+  The Dev proposed for the screen the same abstraction that CONTROLE_ENGINE is for input: instead of each element
+  being a case, declare the LAYERS and what lives in each one. And they ventured the number: probably four with
+  reading — action, school activity, game HUD, minigame HUD —, all the others being graphic design.
 
-  ⚠️ O MÉTODO É O QUE DEU AO CONTROLE_ENGINE EXATAMENTE CATORZE POSIÇÕES: não desenhar o número, MEDIR se ele
-  fecha. Foram contadas as duas superfícies onde conteúdo legível existe — os 37 sinks de markup do censo da
-  issue #106, e as ~190 chamadas de `srSay`/`srAlert`/`narrate`.
+  ⚠️ THE METHOD IS THE ONE THAT GAVE CONTROLE_ENGINE EXACTLY FOURTEEN POSITIONS: do not design the number, MEASURE
+  whether it closes. The two surfaces where readable content exists were counted — the 37 markup sinks of issue
+  #106's census, and the ~190 calls to `srSay`/`srAlert`/`narrate`.
 
-  O NÚMERO NÃO FECHA, E A DIFERENÇA NÃO É DE MARGEM:
+  THE NUMBER DOES NOT CLOSE, AND THE DIFFERENCE IS NOT ONE OF MARGIN:
 
-      dentro das quatro:   7 sinks de markup ·  76 anúncios
-      FORA das quatro:    30 sinks de markup · 116 anúncios, em 26 módulos
+      inside the four:    7 markup sinks ·  76 announcements
+      OUTSIDE the four:  30 markup sinks · 116 announcements, in 26 modules
 
-  ⚠️ E O QUE SOBRA NÃO É RUÍDO DISPERSO — AGRUPA-SE SOZINHO. Quase tudo são MENUS E DIÁLOGOS:
-  `activities-menu` (5 markup, 12 falas), os sete painéis `settings-*`, `pause-icons` (2 e 16), `map-hub`,
-  `menu-nav`, `shell`. É a superfície onde a acessibilidade deste produto de facto mora — e é justamente ela
-  que a proposta manda para «design gráfico».
+  ⚠️ AND WHAT IS LEFT OVER IS NOT SCATTERED NOISE — IT GROUPS ITSELF. Almost all of it is MENUS AND DIALOGUES:
+  `activities-menu` (5 markup, 12 utterances), the seven `settings-*` panels, `pause-icons` (2 and 16), `map-hub`,
+  `menu-nav`, `shell`. It is the surface where this product's accessibility actually lives — and it is precisely
+  the one the proposal sends to «design gráfico».
 
-  Um segundo grupo, menor e diferente dos dois: os AVISOS DO SISTEMA — o cartão de alcance (#112) e o banner
-  de queda do laço (ADR-0054). Não são menu e não são HUD.
+  A second group, smaller and different from both: the SYSTEM NOTICES — the reach card (#112) and the loop-crash
+  banner (ADR-0054). They are not menu and they are not HUD.
 
 decision-drivers:
-- "⚠️ Medido: 30 dos 37 sinks e 116 dos 192 anúncios caem fora das quatro camadas propostas."
-- "⚠️ E medido também que a intuição do Dev acerta no ponto mais difícil: a camada de AÇÃO tem ZERO markup e
-   38 anúncios. A leitura dela já é o CONTRATO (`nameAt`/`objectiveOf`/`targetsOf`) — o que significa que esta
-   abstração não inventa nada para o mundo; ela ESTENDE AO DOM o que o contrato já faz pela canvas."
-- "A `HUD DO MINIGAME` está vazia hoje: `winsDots` devolve DADO desde a issue #106 e vive dentro de
-   `game/quiz`. A camada existe conceptualmente e não tem casa — o que é informação, não objeção."
-- "O que distingue as camadas não é a posição na tela: é DE QUEM ELAS FALAM."
+- "⚠️ Measured: 30 of the 37 sinks and 116 of the 192 announcements fall outside the four proposed layers."
+- "⚠️ And measured too that the Dev's intuition is right on the hardest point: the ACTION layer has ZERO markup and
+   38 announcements. Its reading already is the CONTRACT (`nameAt`/`objectiveOf`/`targetsOf`) — which means this
+   abstraction invents nothing for the world; it EXTENDS TO THE DOM what the contract already does for the canvas."
+- "The `MINIGAME HUD` is empty today: `winsDots` returns DATA since issue #106 and lives inside `game/quiz`. The
+   layer exists conceptually and has no home — which is information, not objection."
+- "What distinguishes the layers is not the position on screen: it is WHO THEY SPEAK FOR."
 
 considered-options:
-- "L1 - ficar com as quatro, e o resto é design gráfico"
-- "L2 - SEIS camadas, com menus e avisos do sistema nomeados"
-- "L3 - nenhuma abstração; cada sink continua a ser um caso"
+- "L1 - keep the four, and the rest is graphic design"
+- "L2 - SIX layers, with menus and system notices named"
+- "L3 - no abstraction; each sink goes on being a case"
 
 pros-and-cons-of-the-options:
   L1:
     good:
-    - "Menos peças, e a proposta original tem a virtude de caber numa frase."
+    - "Fewer pieces, and the original proposal has the virtue of fitting in one sentence."
     bad:
-    - "⚠️ REFUTADA PELA MEDIDA, e não por gosto: mandaria para «design gráfico» 30 dos 37 sinks e a maior
-       parte da fala do produto. Os menus são onde o ADR-0044, o ADR-0028 e o rodapé de explicação vivem —
-       chamar-lhes decoração tornaria a abstração falsa no primeiro uso."
+    - "⚠️ REFUTED BY THE MEASUREMENT, and not by taste: it would send 30 of the 37 sinks and most of the product's
+       speech to «design gráfico». The menus are where ADR-0044, ADR-0028 and the explanation footer live —
+       calling them decoration would make the abstraction false on first use."
   L2:
     good:
-    - "Fecha: toda a superfície legível cai numa das seis, e o que fica de fora é genuinamente decoração
-       (parallax, clima, scanline, vinheta, transição)."
-    - "⚠️ Dá casa a uma regra que hoje é um enum de dois valores: `AlcanceDoFiltro` (`'mundo'` vs
-       `'mundo-e-menus'`) é uma afirmação sobre CAMADAS, e a regra da issue #82 — uma simulação alcança o
-       mundo e NÃO os menus, porque o menu é o instrumento de sair dela — passa a ser dizível em vez de
-       codificada em duas strings."
-    - "A garantia de acessibilidade deixa de ser por PONTO e passa a ser por CAMADA: «tudo o que é legível
-       nesta camada chega ao leitor de tela» é aferível de uma vez, e um sink novo tem de declarar onde mora."
+    - "It closes: the whole readable surface falls into one of the six, and what stays out is genuinely decoration
+       (parallax, weather, scanline, vignette, transition)."
+    - "⚠️ It gives a home to a rule that today is a two-value enum: `AlcanceDoFiltro` (`'mundo'` vs
+       `'mundo-e-menus'`) is a statement about LAYERS, and the rule of issue #82 — a simulation reaches the
+       world and NOT the menus, because the menu is the instrument for leaving it — becomes sayable instead of
+       encoded in two strings."
+    - "The accessibility guarantee stops being per POINT and becomes per LAYER: «tudo o que é legível
+       nesta camada chega ao leitor de tela» (everything readable in this layer reaches the screen reader) is
+       checkable at once, and a new sink has to declare where it lives."
     bad:
-    - "Seis é mais do que quatro, e uma abstração que ninguém consegue recitar não é usada."
-    - "Duas das seis (HUD do minigame, avisos do sistema) têm pouquíssimo conteúdo hoje."
+    - "Six is more than four, and an abstraction nobody can recite is not used."
+    - "Two of the six (minigame HUD, system notices) have very little content today."
   L3:
     bad:
-    - "É o estado que deixou 37 sinks acumularem-se sem lar, e que fez a issue #106 existir."
+    - "It is the state that let 37 sinks pile up with no home, and that made issue #106 exist."
 
 decision-outcome:
   chosen-option:
-    link: "L2 - seis camadas. ACEITE pelo Dev em 2026-09-06, depois de ver a medida que mudou o seu número de
-           quatro para seis"
+    link: "L2 - six layers. ACCEPTED by the Dev on 2026-09-06, after seeing the measurement that changed their number
+           from four to six"
     justification: |
-      ===== AS SEIS, E O QUE AS SEPARA =====
-      ⚠️ O TESTE NÃO É A POSIÇÃO NA TELA, É **DE QUEM A CAMADA FALA**. Três sujeitos, seis camadas:
+      ===== THE SIX, AND WHAT SEPARATES THEM =====
+      ⚠️ THE TEST IS NOT THE POSITION ON SCREEN, IT IS **WHO THE LAYER SPEAKS FOR**. Three subjects, six layers:
 
-      O JOGO fala:
-        1. AÇÃO — o mundo. Leitura = o CONTRATO + o sonar. Zero DOM, e é assim que deve ficar.
-        2. ATIVIDADE ESCOLAR — o minigame por cima do jogo. DOM.
-        3. HUD DO JOGO — o que persiste durante a partida (contador, poder).
-        4. HUD DA ATIVIDADE — o progresso do minigame. Vazia hoje.
+      The GAME speaks:
+        1. ACTION — the world. Reading = the CONTRACT + the sonar. Zero DOM, and that is how it must stay.
+        2. SCHOOL ACTIVITY — the minigame on top of the game. DOM.
+        3. GAME HUD — what persists during the match (counter, power).
+        4. ACTIVITY HUD — the minigame's progress. Empty today.
 
-      A CRIANÇA escolhe:
-        5. MENUS E DIÁLOGOS — a maior de todas, e onde as regras de a11y já existem (as três zonas do
-           ADR-0044, o rodapé de explicação, o índice «6 de 10», `todo menu persiste`).
+      The CHILD chooses:
+        5. MENUS AND DIALOGUES — the biggest of all, and where the a11y rules already exist (the three zones of
+           ADR-0044, the explanation footer, the «6 de 10» index, `every menu persists`).
 
-      O PROGRAMA fala de si:
-        6. AVISOS DO SISTEMA — o cartão de alcance, o banner de queda. Nem menu nem HUD.
+      The PROGRAM speaks of itself:
+        6. SYSTEM NOTICES — the reach card, the crash banner. Neither menu nor HUD.
 
-      ⚠️ E A SEXTA NÃO É PREGUIÇA DE CLASSIFICAR: ela tem uma REGRA PRÓPRIA que as outras não têm. Um aviso
-      do sistema precisa de sobreviver a uma simulação de empatia — uma cegueira simulada não pode apagar o
-      banner que diz que o jogo morreu —, enquanto as camadas 1 a 4 têm de ser alcançadas por ela. É a mesma
-      família da regra da issue #82, e é o que faz das duas coisas camadas distintas em vez de estilos.
+      ⚠️ AND THE SIXTH IS NOT LAZINESS IN CLASSIFYING: it has a RULE OF ITS OWN that the others do not have. A system
+      notice needs to survive an empathy simulation — a simulated blindness cannot erase the banner that says the
+      game died —, while layers 1 to 4 have to be reached by it. It is the same family as the rule of issue #82, and
+      it is what makes the two things distinct layers instead of styles.
 
-      ===== O QUE ESTE REGISTRO NÃO DECIDE =====
-      A FORMA do padrão de nós. A medida diz quantas camadas e quais; como cada uma declara os seus elementos
-      é a próxima pergunta, e ela deve nascer de um segundo levantamento — o que os 30 sinks de menu têm em
-      comum — em vez de ser desenhada aqui.
+      ===== WHAT THIS RECORD DOES NOT DECIDE =====
+      The SHAPE of the node pattern. The measurement says how many layers and which; how each one declares its
+      elements is the next question, and it should be born from a second survey — what the 30 menu sinks have in
+      common — instead of being designed here.
 
   consequences:
     positive:
-    - "A promessa de acessibilidade passa a ser aferível por camada em vez de por ponto."
-    - "`AlcanceDoFiltro` ganha um vocabulário verdadeiro, e a regra da #82 deixa de viver num enum."
+    - "The accessibility promise becomes checkable per layer instead of per point."
+    - "`AlcanceDoFiltro` gains a true vocabulary, and the rule of #82 stops living in an enum."
     negative:
-    - "⚠️ É uma abstração NOVA num produto que já tem contrato, escala de z-index e vocabulário de ações.
-       Sobrepor-se a qualquer um deles seria pior do que não a ter."
+    - "⚠️ It is a NEW abstraction in a product that already has a contract, a z-index scale and an action
+       vocabulary. Overlapping any of them would be worse than not having it."
     neutral:
-    - "A escala de `z-index` (ADR-0020) NÃO é substituída: ela ordena pintura, isto classifica leitura. As
-       duas cruzam-se mas não se contêm — a scanline do CRT tem z-index e não tem camada legível nenhuma."
+    - "The `z-index` scale (ADR-0020) is NOT replaced: it orders painting, this classifies reading. The two cross
+       but do not contain each other — the CRT scanline has a z-index and no readable layer at all."
   confirmation: |
-    A medida está em `scratchpad/camadas.py` e é repetível: conta os sinks de markup e as chamadas de
-    anúncio por módulo, agrupa pelas camadas declaradas e imprime o RESÍDUO. É o resíduo que decide o número.
+    The measurement is in `scratchpad/camadas.py` and is repeatable: it counts the markup sinks and the
+    announcement calls per module, groups them by the declared layers and prints the RESIDUE. It is the residue
+    that decides the number.
 
-    ⚠️ ESTEVE `proposed` ATÉ O DEV VER A MEDIDA, e isso fica escrito porque é o procedimento e não o acaso:
-    uma abstração de camadas escrita antes de ele saber que o número mudou de quatro para seis seria uma
-    abstração imposta por quem mediu, e não decidida por quem a propôs. Ele aceitou as seis em 2026-09-06.
+    ⚠️ IT WAS `proposed` UNTIL THE DEV SAW THE MEASUREMENT, and that stays written because it is the procedure and
+    not chance: a layer abstraction written before they knew the number had changed from four to six would be an
+    abstraction imposed by whoever measured, and not decided by whoever proposed it. They accepted the six on
+    2026-09-06.
 
-    ⚠️ E O CÓDIGO AINDA NÃO A SEGUE. O que este registro fixa é QUANTAS camadas e QUAIS; a FORMA do padrão de
-    nós depende de um segundo levantamento — o que os 30 sinks de menu têm em comum —, e desenhar a forma
-    antes dele repetiria o erro que esta própria medida acabou de corrigir.
+    ⚠️ AND THE CODE DOES NOT FOLLOW IT YET. What this record fixes is HOW MANY layers and WHICH; the SHAPE of the
+    node pattern depends on a second survey — what the 30 menu sinks have in common —, and designing the shape
+    before it would repeat the error this very measurement has just corrected.
 
 more-information: |
-  ⚠️ ESTE REGISTRO EXISTE PORQUE A MEDIDA CONTRARIOU A PROPOSTA, e é a segunda vez hoje que isso acontece: o
-  id de armazenamento não podia vir da declaração (ADR-0088) e o `main.ts` não podia entrar no escopo do
-  `engine-boundary` como o plano dizia. Nos três casos a intuição apontava a direção certa e o número errado.
+  ⚠️ THIS RECORD EXISTS BECAUSE THE MEASUREMENT CONTRADICTED THE PROPOSAL, and it is the second time today that this
+  happens: the storage id could not come from the declaration (ADR-0088) and `main.ts` could not enter the scope of
+  `engine-boundary` as the plan said. In all three cases the intuition pointed in the right direction and at the
+  wrong number.
 
-  A ordem sugerida continua a ser: decidir isto ANTES da issue #111, porque ela move o cartucho para outro
-  repositório — e é muito mais barato dizer de que camada cada peça é antes de as peças se separarem.
+  The suggested order still is: decide this BEFORE issue #111, because it moves the cartridge to another
+  repository — and it is much cheaper to say which layer each piece belongs to before the pieces separate.

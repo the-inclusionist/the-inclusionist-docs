@@ -1,28 +1,27 @@
 ---
-# ⚠️ LIDO CONTRA A ARVORE DE 2026-09-07, e nao contra a memoria de quem o redigiu. O que mudou entre a
-# redacao e a entrada esta anotado no corpo; o que se confirmou tambem, porque uma premissa que continua
-# verdadeira so' e' util se alguem disser que a conferiu.
+# ⚠️ READ AGAINST THE TREE OF 2026-09-07, and not against the memory of whoever drafted it. What changed between
+# the drafting and the entry is noted in the body; what was confirmed too, because a premise that stays true is
+# only useful if someone says they checked it.
 #
-# ⚠️ E ELE NAO SUPERSEDE NADA AINDA. O rascunho declarava `supersedes-in-part`, e isso seria falso num
-# registo `proposed`: uma supersessao e' um PAR (ADR-0057), e marcar o registo antigo como parcialmente
-# revogado por uma proposta diria ao leitor que uma decisao foi tomada quando nao foi. Os ponteiros
-# preenchem-se — nos dois lados, no mesmo turno — se e quando o Dev aceitar. O que ele PRETENDE superseder
-# esta escrito no corpo.
+# ⚠️ AND IT DOES NOT SUPERSEDE ANYTHING YET. The draft declared `supersedes-in-part`, and that would be false in a
+# `proposed` record: a supersession is a PAIR (ADR-0057), and marking the old record as partly revoked by a
+# proposal would tell the reader that a decision was taken when it was not. The pointers get filled in — on both
+# sides, in the same turn — if and when the Dev accepts. What it INTENDS to supersede is written in the body.
 metadata:
   status: "proposed"
   date: 2026-09-07
   supersedes-in-part: []
   decision-makers: [Dev]
   consulted:
-    - "ADR-0079 §1 — O QUE ESTE REGISTO PRETENDE SUPERSEDER EM PARTE, se for aceite: a transport declares
+    - "ADR-0079 §1 — WHAT THIS RECORD INTENDS TO SUPERSEDE IN PART, if accepted: a transport declares
        SLOTS and the player assigns actions to them, one action per slot. A chord is one act reached by two
        slots at once, which that model has no shape for. Everything else it decides governs untouched"
-    - "ADR-0096 — o teclado de dois jogadores, escrito no dia seguinte ao rascunho. ⚠️ ELE APERTA ESTE
-       REGISTO: as quatorze posições estão agora atribuídas para DOIS jogadores ao mesmo tempo, e um acorde
-       consome duas delas. Num teclado com dois jogadores sentados, `R1+R2` do jogador 2 são `NumpadMultiply`
-       e `NumpadAdd` — teclas que existem, mas cuja combinação a rolagem de teclado de muitos aparelhos
-       baratos não reporta. O equivalente travado deixa de ser só a acomodação motora e passa a ser também a
-       rota do segundo jogador em hardware de escola"
+    - "ADR-0096 — the two-player keyboard, written the day after the draft. ⚠️ IT TIGHTENS THIS RECORD: the
+       fourteen positions are now assigned for TWO players at the same time, and a chord consumes two of them.
+       On a keyboard with two players seated, player 2's `R1+R2` are `NumpadMultiply` and `NumpadAdd` — keys
+       that exist, but whose combination the keyboard rollover of many cheap devices does not report. The
+       latched equivalent stops being only the motor accommodation and becomes also the second player's route
+       on school hardware"
     - "ADR-0077 §2 — latching is a per-action, per-player control OPTION, and its rejected option M3 is the
        argument this record reuses: an accommodation implemented per game exists only in the games somebody
        remembered"

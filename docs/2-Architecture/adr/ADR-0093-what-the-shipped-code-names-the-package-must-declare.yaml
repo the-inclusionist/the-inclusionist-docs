@@ -1,193 +1,190 @@
 ---
 metadata:
   status: "accepted"
-  # ⚠️ O QUE CONFIRMA ESTE REGISTO HOJE, em chave conferida — a `confirmation` lá em baixo é história e fica.
-  # Ela cita `tests/docs.node.test.ts`, que é do repositório do CONSUMIDOR e ela própria o diz («do lado dele»);
-  # o gate DESTE lado, o das doze asseverações que nasceram vermelhas sobre o `@mintplex-labs/piper-tts-web`,
-  # é o `engine-package`. Sem esta chave, o ponteiro que um leitor encontra primeiro aponta para outra árvore.
+  # ⚠️ WHAT CONFIRMS THIS RECORD TODAY, in a checked key — the `confirmation` down below is history and stays.
+  # It cites `tests/docs.node.test.ts`, which belongs to the CONSUMER's repository, and it says so itself («do lado dele»);
+  # the gate on THIS side, the one with the twelve assertions that were born red over `@mintplex-labs/piper-tts-web`,
+  # is `engine-package`. Without this key, the pointer a reader meets first points to another tree.
   confirmed-by:
     - engine:tests/engine-package.node.test.js
   date: 2026-09-06
   superseded-in-part:
     - by: ADR-0094
-      what: "A ESCOLHA DO CAMPO, e só ela: `dependencies` para o `@mintplex-labs/piper-tts-web`, com o
-             parágrafo da opção D2 que rejeitou a porta. A rejeição apoiava-se num preço medido de `0,5 MB
-             e ZERO dependências transitivas`, e esse número está ERRADO — ver a errata no
-             `more-information`. Com 135,4 MB no lugar de 0,5 MB, o argumento inverte-se, e o motor neural
-             passa a chegar por porta. ⚠️ O GATE DAS DUAS DIREÇÕES, que é a outra metade e a mais durável
-             deste registro, NÃO é superseded: ele fica, e é o que torna a decisão do ADR-0094 aferível."
+      what: "THE CHOICE OF FIELD, and only that: `dependencies` for `@mintplex-labs/piper-tts-web`, with the
+             paragraph of option D2 that rejected the port. The rejection rested on a measured price of `0.5 MB
+             and ZERO transitive dependencies`, and that number is WRONG — see the erratum in
+             `more-information`. With 135.4 MB in place of 0.5 MB, the argument inverts, and the neural engine
+             comes to arrive by a port. ⚠️ THE TWO-DIRECTION GATE, which is the other half of this record and the
+             more durable one, is NOT superseded: it stays, and it is what makes ADR-0094's decision checkable."
   decision-makers: [Dev]
   consulted:
-    - "O relato de um CONSUMIDOR REAL, verbatim: `Rolldown failed to resolve import
+    - "The report of a REAL CONSUMER, verbatim: `Rolldown failed to resolve import
        \"@mintplex-labs/piper-tts-web\" from \".../@the-inclusionist/engine/dist-pkg/platform/tts.js\" ...
        So the published engine cannot be built against by anyone, not just this game`"
-    - "ADR-0072 §4 — o build do pacote e o gate que o prende; este registro acrescenta o segundo crivo ao
-       mesmo ficheiro, pelo mesmo motivo (crivo na FONTE, porque um gate que só funciona depois do build
-       falha ABERTO)"
-    - "ADR-0022 — a migração pendente para `sherpa-onnx-wasm`: o fornecedor de hoje está DESCONTINUADO, e é
-       isso que torna o gate mais importante do que o nome"
-    - "ADR-0035 — `render/port`: o precedente de não nomear fornecedor, e a razão pela qual ele NÃO se
-       transfere para cá"
-    - "ADR-0010 pilar 2 — a11y-first, que é o que decide entre a porta e a dependência"
+    - "ADR-0072 §4 — the package build and the gate that pins it; this record adds the second sieve to the
+       same file, for the same reason (a sieve at the SOURCE, because a gate that only works after the build
+       fails OPEN)"
+    - "ADR-0022 — the pending migration to `sherpa-onnx-wasm`: today's supplier is DISCONTINUED, and that is
+       what makes the gate more important than the name"
+    - "ADR-0035 — `render/port`: the precedent of not naming a supplier, and the reason it does NOT transfer
+       here"
+    - "ADR-0010 pillar 2 — a11y-first, which is what decides between the port and the dependency"
   informed: []
 
-title: O que o código EMBARCADO nomeia, o pacote tem de declarar — e o gate olha as duas direções
+title: What the SHIPPED code names, the package has to declare — and the gate looks in both directions
 
 context-and-problem-statement: |
-  A `6.36.1` foi publicada em 2026-09-06 e verificada anonimamente: pública, AGPL-3.0-or-later, LICENSE
-  presente, 224 ficheiros emitidos com zero SPDX em falta. Todas as verificações que este repositório sabia
-  fazer passaram.
+  `6.36.1` was published on 2026-09-06 and verified anonymously: public, AGPL-3.0-or-later, LICENSE present,
+  224 files emitted with zero SPDX missing. Every check this repository knew how to make passed.
 
-  ⚠️ E ELA NÃO PODIA SER COMPILADA POR NINGUÉM. Quem descobriu foi um consumidor a instalar do registro:
+  ⚠️ AND NOBODY COULD COMPILE IT. The one who found out was a consumer installing from the registry:
 
       Rolldown failed to resolve import "@mintplex-labs/piper-tts-web"
       from ".../@the-inclusionist/engine/dist-pkg/platform/tts.js"
 
-  `platform/tts` é código EMBARCADO — o `tsconfig.pkg.json` alcança-o, e o `boot/create-game.ts:255` chama
-  `createTts`, de modo que a superfície `.` do pacote (a que um consumidor importa como `createGame`) chega
-  lá. O `package.json` declarava `@mintplex-labs/piper-tts-web` em `devDependencies`, que o npm **não
-  instala para quem consome**.
+  `platform/tts` is SHIPPED code — `tsconfig.pkg.json` reaches it, and `boot/create-game.ts:255` calls
+  `createTts`, so the package's `.` surface (the one a consumer imports as `createGame`) gets there. The
+  `package.json` declared `@mintplex-labs/piper-tts-web` in `devDependencies`, which npm **does not install
+  for whoever consumes**.
 
-  ⚠️ E O DEFEITO ERA INVISÍVEL DAQUI DE DENTRO, ESTRUTURALMENTE. Nesta árvore o pacote está presente (é
-  devDependency da própria árvore), então `npm run build`, o `tsc`, o Vitest e até o `npm pack` +
-  `npm i` num projeto limpo — as 26 verificações de 05/09 — resolvem tudo. O que falhava só falhava do
-  outro lado, e o outro lado não existia até alguém sair do `file:`.
+  ⚠️ AND THE DEFECT WAS INVISIBLE FROM IN HERE, STRUCTURALLY. In this tree the package is present
+  (it is a devDependency of the tree itself), so `npm run build`, `tsc`, Vitest and even `npm pack` + `npm i` in
+  a clean project — the 26 checks of 05/09 — resolve everything. What failed only failed on the other side, and
+  the other side did not exist until someone left `file:`.
 
-  ⚠️ E ESCONDEU-SE NA FORMA DINÂMICA. A linha é `import('@mintplex-labs/piper-tts-web')` dentro de uma
-  função, não um `from` no topo do ficheiro. Qualquer crivo escrito para `from '...'` ficaria verde por
-  cima dela para sempre.
+  ⚠️ AND IT HID IN THE DYNAMIC FORM. The line is `import('@mintplex-labs/piper-tts-web')` inside a function, not
+  a `from` at the top of the file. Any sieve written for `from '...'` would stay green on top of it forever.
 
 decision-drivers:
-- "⚠️ Medido: dos 112 módulos embarcados, TRÊS especificadores de terceiros ao todo — `pixi.js` em
-   `render/canvas` e `render/minimap` (estáticos), e `@mintplex-labs/piper-tts-web` em `platform/tts`
-   (dinâmico). Exatamente UM não estava declarado, e é exatamente o que o consumidor encontrou."
-- "⚠️ O resíduo honesto é ZERO, e é isso que decide a forma do gate: não há dívida legítima a tolerar, logo
-   um teto que encolhe seria mentira — é `[Zero]`."
-- "Medido o preço do fornecedor: 0,5 MB e ZERO dependências transitivas. Os 25,6 MB da voz não vêm do npm —
-   são baixados em runtime do HuggingFace e cacheados em OPFS."
-- "⚠️ O fornecedor está DESCONTINUADO e o ADR-0022 já marca a troca. O nome de hoje é temporário; o buraco
-   que ele abriu não é."
+- "⚠️ Measured: of the 112 shipped modules, THREE third-party specifiers in all — `pixi.js` in `render/canvas`
+   and `render/minimap` (static), and `@mintplex-labs/piper-tts-web` in `platform/tts` (dynamic). Exactly ONE was
+   not declared, and it is exactly the one the consumer found."
+- "⚠️ The honest residue is ZERO, and that is what decides the shape of the gate: there is no legitimate debt to
+   tolerate, so a shrinking ceiling would be a lie — it is `[Zero]`."
+- "The supplier's price measured: 0.5 MB and ZERO transitive dependencies. The voice's 25.6 MB do not come from
+   npm — they are downloaded at runtime from HuggingFace and cached in OPFS."
+- "⚠️ The supplier is DISCONTINUED and ADR-0022 already marks the swap. Today's name is temporary; the hole it
+   opened is not."
 
 considered-options:
-- "D1 - mover para `dependencies`"
-- "D2 - uma PORTA: `ctx.carregarPiper`, injetada pelo jogo, como o `render/port` faz com o PixiJS"
+- "D1 - move to `dependencies`"
+- "D2 - a PORT: `ctx.carregarPiper`, injected by the game, as `render/port` does with PixiJS"
 - "D3 - `optionalDependencies`"
-- "D4 - peer opcional (`peerDependenciesMeta`)"
+- "D4 - optional peer (`peerDependenciesMeta`)"
 
 pros-and-cons-of-the-options:
   D1:
     good:
-    - "Conserta o sintoma medido: o especificador passa a resolver de dentro do `dist-pkg` instalado."
-    - "A narração neural continua a funcionar POR OMISSÃO, que é o que o pilar 2 pede de um recurso de
-       acessibilidade."
-    - "O `import()` continua lazy: o pacote entra num chunk à parte e só é buscado se a criança escolher o
-       motor neural. `dependencies` é peso de `node_modules`, não de bundle."
+    - "Fixes the measured symptom: the specifier comes to resolve from inside the installed `dist-pkg`."
+    - "Neural narration goes on working BY DEFAULT, which is what pillar 2 asks of an accessibility feature."
+    - "The `import()` stays lazy: the package goes into a separate chunk and is only fetched if the child chooses
+       the neural engine. `dependencies` is `node_modules` weight, not bundle weight."
     bad:
-    - "⚠️ A engine passa a depender, em execução, de um fornecedor descontinuado. Mitigado pelo gate, não
-       pelo nome: quando o `sherpa-onnx-wasm` entrar, o crivo obriga a declaração a acompanhar."
+    - "⚠️ The engine comes to depend, at run time, on a discontinued supplier. Mitigated by the gate, not by the
+       name: when `sherpa-onnx-wasm` comes in, the sieve forces the declaration to follow."
   D2:
     good:
-    - "A engine não nomearia fornecedor nenhum, e o precedente existe: o ADR-0035 tirou o PixiJS de toda a
-       engine menos duas portas."
+    - "The engine would name no supplier at all, and the precedent exists: ADR-0035 took PixiJS out of the whole
+       engine except two ports."
     bad:
-    - "⚠️ REJEITADA PELO MOTIVO PELO QUAL O PRECEDENTE EXISTE, e ele não se transfere: o `render/port` nasceu
-       do perigo do SINGLETON — duas cópias do PixiJS são dois renderizadores a disputar a mesma canvas. Não
-       há perigo equivalente aqui."
-    - "⚠️ E o custo cai onde não deve: a narração neural ficaria desligada POR OMISSÃO para todo consumidor
-       que não soubesse ligá-la. Um recurso de acessibilidade que só existe para quem já sabia que ele existia
-       é o oposto do pilar 2 — e a ~0,5 MB sem dependências transitivas, é caro em a11y para poupar pouco."
+    - "⚠️ REJECTED FOR THE REASON THE PRECEDENT EXISTS, and it does not transfer: `render/port` was born from the
+       danger of the SINGLETON — two copies of PixiJS are two renderers fighting over the same canvas. There is no
+       equivalent danger here."
+    - "⚠️ And the cost falls where it should not: neural narration would be off BY DEFAULT for every consumer who
+       did not know how to turn it on. An accessibility feature that only exists for whoever already knew it
+       existed is the opposite of pillar 2 — and at ~0.5 MB with no transitive dependencies, it is expensive in
+       a11y to save little."
   D3:
     bad:
-    - "⚠️ É a D1 com um buraco aleatório: o npm instala `optionalDependencies` por omissão, mas segue em
-       frente quando a instalação falha. O build passaria quase sempre e falharia às vezes, com a mesma
-       mensagem e sem causa visível. Falha intermitente é pior que falha franca."
+    - "⚠️ It is D1 with a random hole: npm installs `optionalDependencies` by default, but carries on when the
+       install fails. The build would pass almost always and fail sometimes, with the same message and no visible
+       cause. An intermittent failure is worse than an outright one."
   D4:
     bad:
-    - "Não conserta o sintoma medido: um peer opcional NÃO é instalado pelo npm, então o `Rolldown failed to
-       resolve` acontece exatamente na mesma."
+    - "Does not fix the measured symptom: an optional peer is NOT installed by npm, so the `Rolldown failed to
+       resolve` happens exactly the same."
 
 decision-outcome:
   chosen-option:
-    link: "D1 para o nome + um segundo crivo em `tests/engine-package.node.test.js` para a CLASSE"
+    link: "D1 for the name + a second sieve in `tests/engine-package.node.test.js` for the CLASS"
     justification: |
-      ===== O CONSERTO É DE UMA LINHA; O REGISTRO É PELA OUTRA METADE =====
-      Mover o pacote de `devDependencies` para `dependencies` fecha o defeito. Se fosse só isso, este
-      registro não existiria.
+      ===== THE FIX IS ONE LINE; THE RECORD IS FOR THE OTHER HALF =====
+      Moving the package from `devDependencies` to `dependencies` closes the defect. If that were all, this record
+      would not exist.
 
-      ⚠️ O QUE FALHOU NÃO FOI A SECÇÃO ERRADA DO `package.json`. Foi não haver NADA que relacionasse o que o
-      pacote NOMEIA com o que o pacote DECLARA. O ADR-0022 já promete trocar este fornecedor por outro; sem
-      o crivo, a troca reabre o mesmo buraco em silêncio, e outra vez só um estranho descobre.
+      ⚠️ WHAT FAILED WAS NOT THE WRONG SECTION OF `package.json`. It was that there was NOTHING relating what the
+      package NAMES to what the package DECLARES. ADR-0022 already promises to swap this supplier for another;
+      without the sieve, the swap reopens the same hole in silence, and once again only a stranger finds out.
 
-      ===== O CRIVO OLHA AS DUAS DIREÇÕES, E A SEGUNDA É A QUE PRENDE O PIXIJS =====
-        · nomeado e NÃO declarado → o pacote publicado não compila (o defeito de hoje).
-        · declarado e NÃO nomeado → o consumidor instala o que ninguém importa; se é só do app deste
-          repositório, é `devDependency`.
+      ===== THE SIEVE LOOKS IN BOTH DIRECTIONS, AND THE SECOND IS THE ONE THAT PINS PIXIJS =====
+        · named and NOT declared → the published package does not compile (today's defect).
+        · declared and NOT named → the consumer installs what nobody imports; if it belongs only to this
+          repository's app, it is a `devDependency`.
 
-      ⚠️ A SEGUNDA DIREÇÃO É A RESPOSTA AO ACHADO MENOR DO MESMO RELATO: o consumidor observou que o
-      `pixi.js@7.4.2` é instalado mesmo num jogo que ABANDONOU o PixiJS, e verificou que nada o empacota. O
-      peer FICA, e fica com razão medida — `render/canvas` e `render/minimap` nomeiam-no estaticamente, e o
-      perigo do singleton do ADR-0035 é real, enquanto torná-lo opcional partiria o caminho de renderização
-      principal por omissão para quem o usa. 12,3 MB em `node_modules` que não viajam no bundle são um custo,
-      não um defeito. ⚠️ Mas a reciprocidade fixa a data em que isso deixa de ser verdade: no dia em que as
-      duas portas saírem do pacote, o gate fica VERMELHO e diz que o peer virou peso morto.
+      ⚠️ THE SECOND DIRECTION IS THE ANSWER TO THE SMALLER FINDING OF THE SAME REPORT: the consumer observed that
+      `pixi.js@7.4.2` is installed even in a game that ABANDONED PixiJS, and verified that nothing bundles it. The
+      peer STAYS, and stays for a measured reason — `render/canvas` and `render/minimap` name it statically, and
+      ADR-0035's singleton danger is real, while making it optional would break the main rendering path by
+      default for whoever uses it. 12.3 MB in `node_modules` that do not travel in the bundle are a cost, not a
+      defect. ⚠️ But the reciprocity fixes the date on which that stops being true: on the day the two ports leave
+      the package, the gate goes RED and says the peer became dead weight.
 
-      ===== E O CRIVO É NA FONTE, PELA RAZÃO QUE O FICHEIRO JÁ TINHA ESCRITO =====
-      O cabeçalho do gate do ADR-0072 §4 diz que testar `dist-pkg/` exigiria o build ter corrido, e que um
-      gate dependente de um passo que alguém pode esquecer **falha ABERTO — o pior tipo, porque parece
-      verde**. Vale igual aqui, e por isso o segundo crivo mora no mesmo ficheiro, lê a mesma lista de
-      módulos vinda do `tsconfig.pkg.json`, e lê o `package.json` em vez de copiar nomes.
+      ===== AND THE SIEVE IS AT THE SOURCE, FOR THE REASON THE FILE HAD ALREADY WRITTEN =====
+      The header of ADR-0072 §4's gate says that testing `dist-pkg/` would require the build to have run, and that
+      a gate depending on a step someone can forget **fails OPEN — the worst kind, because it looks green**. It
+      holds equally here, and that is why the second sieve lives in the same file, reads the same module list
+      coming from `tsconfig.pkg.json`, and reads `package.json` instead of copying names.
 
   consequences:
     positive:
-    - "A versão seguinte pode ser compilada por um consumidor — que é o mínimo para a primeira versão pública
-       ser recrutamento de voluntários (ADR-0070) e não uma porta fechada."
-    - "A troca de fornecedor do ADR-0022 já nasce vigiada nas duas direções."
+    - "The next version can be compiled by a consumer — which is the minimum for the first public version to be
+       volunteer recruitment (ADR-0070) and not a closed door."
+    - "ADR-0022's supplier swap is born already watched in both directions."
     negative:
-    - "⚠️ A `6.36.1` fica no registro, quebrada e imutável. O npmjs só desfaz dentro de 72 h, e desfazer
-       partiria quem já instalou; a correção é uma versão nova, não um `unpublish`."
+    - "⚠️ `6.36.1` stays in the registry, broken and immutable. npmjs only undoes within 72 h, and undoing would
+       break whoever already installed; the fix is a new version, not an `unpublish`."
     neutral:
-    - "O `pixi.js` continua em `devDependencies` E em `peerDependencies`, porque este repositório é também
-       um APP que se compila a si próprio. O `@mintplex-labs/piper-tts-web` NÃO precisa da duplicação: o npm
-       instala as `dependencies` do próprio pacote."
+    - "`pixi.js` stays in `devDependencies` AND in `peerDependencies`, because this repository is also an APP
+       that compiles itself. `@mintplex-labs/piper-tts-web` does NOT need the duplication: npm installs the
+       package's own `dependencies`."
   confirmation: |
-    O gate nasceu VERMELHO SOBRE O DEFEITO REAL, e não sobre uma mutação — que é a birth mais forte que
-    existe: escrito antes do conserto, apontou `app/js/platform/tts.ts:83 — @mintplex-labs/piper-tts-web`, e
-    as outras 11 asserções do bloco passaram, de modo que o vermelho não vinha de um crivo partido.
+    The gate was born RED OVER THE REAL DEFECT, and not over a mutation — which is the strongest birth there is:
+    written before the fix, it pointed at `app/js/platform/tts.ts:83 — @mintplex-labs/piper-tts-web`, and the
+    other 11 assertions of the block passed, so the red did not come from a broken sieve.
 
-    Provado do LADO DE FORA, que é onde o defeito vivia: `npm pack` → o manifesto do tarball declara a
-    dependência; `npm i <tgz>` num projeto limpo → `node_modules/@mintplex-labs/piper-tts-web` existe; e
-    `import.meta.resolve('@mintplex-labs/piper-tts-web', <o dist-pkg/platform/tts.js instalado>)` devolve o
-    ficheiro, sob a condição `import` — que é a que o Rolldown usa.
+    Proved from the OUTSIDE, which is where the defect lived: `npm pack` → the tarball's manifest declares the
+    dependency; `npm i <tgz>` in a clean project → `node_modules/@mintplex-labs/piper-tts-web` exists; and
+    `import.meta.resolve('@mintplex-labs/piper-tts-web', <the installed dist-pkg/platform/tts.js>)` returns the
+    file, under the `import` condition — which is the one Rolldown uses.
 
-    ⚠️ E a resolução por `require` FALHA, sem que isso seja defeito: o `exports` do fornecedor só publica
-    `import` e `types`. Fica escrito porque a primeira sonda o mediu e a leitura fácil seria dar o conserto
-    por incompleto.
+    ⚠️ And resolution by `require` FAILS, without that being a defect: the supplier's `exports` only publishes
+    `import` and `types`. It stays written because the first probe measured it, and the easy reading would be to
+    take the fix as incomplete.
 
-    Suítes: 190 ficheiros / 3337 testes verdes nos dois projects; `tsc --noEmit` limpo.
+    Suites: 190 files / 3337 tests green in both projects; `tsc --noEmit` clean.
 
 more-information: |
-  ⚠️ ERRATA (2026-09-06, no mesmo dia) — UM NÚMERO TROCADO, e é o número que sustentava a escolha do campo.
-  Este registro afirma, na opção D1 e no `comment:dependencies` que dele saiu, que o preço do fornecedor era
-  «0,5 MB e ZERO dependências transitivas». **É FALSO.** Foi lido o campo `dependencies` do fornecedor, que
-  está vazio, e NÃO o `peerDependencies` — o mesmo campo que causou o defeito que este registro conserta. O
-  `@mintplex-labs/piper-tts-web` declara `onnxruntime-web` como peer NÃO-opcional, que o npm instala
-  sozinho: **135,4 MB** num consumidor limpo, não 0,5 MB.
-  Entra como ERRATA e não como revogação porque é da definição de errata do ADR-0057 — número trocado —, e a
-  DECISÃO que o número sustentava é que foi revogada, pelo ADR-0094. Fica escrito aqui para este registro
-  não voltar a argumentar com um número falso na próxima conversa, que é a patologia que o ADR-0057 existe
-  para impedir.
+  ⚠️ ERRATUM (2026-09-06, the same day) — A WRONG NUMBER, and it is the number that held up the choice of field.
+  This record states, in option D1 and in the `comment:dependencies` that came out of it, that the supplier's price
+  was «0,5 MB e ZERO dependências transitivas». **IT IS FALSE.** The supplier's `dependencies` field was read,
+  which is empty, and NOT `peerDependencies` — the same field that caused the defect this record fixes.
+  `@mintplex-labs/piper-tts-web` declares `onnxruntime-web` as a NON-optional peer, which npm installs on its own:
+  **135.4 MB** in a clean consumer, not 0.5 MB.
+  It enters as an ERRATUM and not as a revocation because it fits ADR-0057's definition of erratum — a wrong number
+  —, and the DECISION the number held up is what was revoked, by ADR-0094. It stays written here so that this
+  record does not argue with a false number again in the next conversation, which is the pathology ADR-0057
+  exists to prevent.
 
-  ⚠️ ESTE DEFEITO É O ÚNICO DA SÉRIE QUE VEIO DE FORA. Os outros três de hoje (o id de armazenamento não
-  podia vir da declaração, o `main.ts` não podia entrar no escopo do `engine-boundary`, as camadas legíveis
-  eram seis e não quatro) foram medidas internas a contrariar uma proposta interna. Este ninguém aqui podia
-  medir, porque a propriedade que falhava só é observável de um sítio onde este repositório não está.
+  ⚠️ THIS DEFECT IS THE ONLY ONE IN THE SERIES THAT CAME FROM OUTSIDE. Today's other three (the storage id could
+  not come from the declaration, `main.ts` could not enter the scope of `engine-boundary`, the readable layers
+  were six and not four) were internal measurements contradicting an internal proposal. Nobody here could measure
+  this one, because the property that failed is only observable from a place where this repository is not.
 
-  É o argumento mais forte que existe para o ADR-0083 §2 (o jogo instala por TARBALL antes de haver
-  registro) e para a issue #113: um consumidor que consome por `file:` **não é um consumidor** para efeitos
-  de prova — ele lê esta pasta ao vivo, com as devDependencies todas presentes.
+  It is the strongest argument there is for ADR-0083 §2 (the game installs by TARBALL before there is a registry)
+  and for issue #113: a consumer that consumes via `file:` **is not a consumer** for the purposes of proof — it
+  reads this folder live, with all the devDependencies present.
 
-  ⚠️ E fica a consequência de processo para a issue #113: o repositório do consumidor carrega hoje o pacote
-  como devDependency SUA para conseguir compilar, com um teste (`tests/docs.node.test.ts`, do lado dele) que
-  fica VERMELHO no momento em que a engine mover o pacote para `dependencies`. Ou seja: o remendo de lá foi
-  construído para não sobreviver à razão dele. Ele vai ficar vermelho com esta versão, e isso é o combinado
-  a acontecer — não uma regressão.
+  ⚠️ And the process consequence for issue #113 stays: the consumer's repository today carries the package as ITS
+  OWN devDependency to be able to compile, with a test (`tests/docs.node.test.ts`, on its side) that goes RED the
+  moment the engine moves the package to `dependencies`. That is: the patch over there was built not to survive
+  its own reason. It will go red with this version, and that is the agreement playing out — not a regression.
