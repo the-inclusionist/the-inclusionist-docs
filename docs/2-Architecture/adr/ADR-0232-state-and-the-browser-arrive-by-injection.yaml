@@ -27,6 +27,21 @@ metadata:
         second root would overwrite the first root's reader (D3). An optional port defaulting to 1 was rejected by the
         ADR-0224/0227 precedent: a game that forgets it would silently drop the child's speed setting. Breaking for the
         five games that call `startLoop`, with a migration note.
+    - date: 2026-09-24
+      what: >-
+        PHASE D2 COMPLETE (engine 717945d6): value edges into `core/state` outside the root 7 -> 0, and into all
+        stateful modules 98 -> 79. And the four shapes phase D3 needs, each settled by text this record already holds.
+        Measured first: 42 value edges into `core/i18n` outside the root, all use `t`, four use more. (1) A module
+        receives what it uses: a bare `t` where `t` is all it calls, the translator only where it reads or sets the
+        locale (D1: needs readable from the signature). (2) A stateless helper that calls `t` takes `t` as a
+        parameter and stays a function, markup builders included; a factory is point 1's shape for a module that
+        HOLDS state, and a helper holds none. (3) The LANGUAGE is per page and a game's DICTIONARY is per root. This
+        record's own reading says a page genuinely has one language, and `<html lang>` is one attribute: two roots in
+        two languages would tell a screen reader one of them wrongly. A dictionary is the game's, and one resolving
+        in another root is the leak D3 names. Games register their dictionaries through the root, not before it. (4)
+        A module hears a language change through the translator's `onChange`, which returns a release and reaches
+        modules through the root's disposing door, as `stateOn` does, so an ended root stops re-rendering (ADR-0220).
+        The window event stays as the page-level signal to the host.
   date: 2026-09-24
   decision-makers: [Dev]
   consulted:
