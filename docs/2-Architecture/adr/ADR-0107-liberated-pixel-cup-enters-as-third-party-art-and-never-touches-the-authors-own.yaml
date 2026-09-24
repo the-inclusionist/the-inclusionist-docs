@@ -28,7 +28,7 @@ context-and-problem-statement: |
   DUAL-LICENSED under «Creative Commons Attribution-ShareAlike (CC BY-SA)» 3.0 and «GNU General Public
   License (GPL)» 3.0, attribution is required under both, and the repository carries separate author files
   for original and derivative works. Meanwhile ADR-0010 pillar 10 says, in as many words, that the project's
-  art is a THIRD PARTY'S — the Dev's wife holds full patrimonial ownership — and `docs/LICENSES.md` records
+  art is a THIRD PARTY'S — an outside author holds full patrimonial ownership — and `docs/LICENSES.md` records
   it as «NÃO é FOSS».
 
   ⚠️ AND THE PIPELINE IS A DERIVATIVE-WORK MACHINE. `plan-procedural-art` turns source art into a semantic
