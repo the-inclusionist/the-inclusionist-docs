@@ -40,7 +40,7 @@ decision-drivers:
 - "⚠️ Measured in `game-15puzzle`: Chebyshev under-reports orthogonal-only movement by up to 2x."
 - "The Dev rejected the options first offered and asked for a measure the ENGINE chooses and performs, working
    at any orientation in the plane and in space, with the narration in geographic terms."
-- "⚠️ AND HE CORRECTED THE FRAME MID-DECISION, which is what makes it right: the clock is NOT an accessibility
+- "⚠️ AND THE DEV CORRECTED THE FRAME MID-DECISION, which is what makes it right: the clock is NOT an accessibility
    preference of the child. It is the reference frame of a 2D SIDE VIEW, where north and south mean nothing —
    and it is NOT for top-down. `«A ideia do relógio é para localização em jogos de plataforma 2D, quando norte
    e sul não fazem sentido»`, and then: `«E não jogos top-down»`."

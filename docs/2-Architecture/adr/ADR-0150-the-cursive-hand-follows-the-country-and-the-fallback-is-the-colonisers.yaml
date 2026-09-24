@@ -76,7 +76,7 @@ context-and-problem-statement: |
   second hand. It is the SAME hand with the handwriting rules drawn through it. Asked directly, the Dev
   confirmed: only a second SCRIPT counts, and the engine does not use Guides at all.
 
-  🔴 **THE PACKAGING QUESTION WAS A DECISION OF HIS THAT HAD TO BE PUT BACK TO HIM.** ADR-0108 §P3, from
+  🔴 **THE PACKAGING QUESTION WAS A DECISION OF THE DEV'S THAT HAD TO BE PUT BACK TO THEM.** ADR-0108 §P3, from
   2026-09-08, is verbatim: «nada de empacotar: estas são baixadas conforme necessário», with eight named
   exceptions — and it asserts the rule NO FACE IS OFFERED WITHOUT A WAY TO OBTAIN IT, precisely to force
   whoever wants a ninth to build the arrival first. 📏 The seven new faces measure **430 KB**. Two gates went

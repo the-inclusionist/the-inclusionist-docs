@@ -41,7 +41,7 @@ metadata:
 title: The GAME declares the default mapping for each device — and latching is part of it, so a game that holds nothing never offers it
 
 context-and-problem-statement: |
-  🔴 THE DEV REVOKED HIS OWN CLAUSE OF THE SAME DAY, in their words: «ERREI E ERREI FEIO! Nem todo jogo precisa
+  🔴 THE DEV REVOKED THEIR OWN CLAUSE OF THE SAME DAY, in their words: «ERREI E ERREI FEIO! Nem todo jogo precisa
   de alternância, somente os que precisam de tecla segurando.»
 
   ADR-0113 answered «where does the latching value live» and got that right — with the controller's mapping,

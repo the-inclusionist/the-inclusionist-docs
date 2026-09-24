@@ -100,7 +100,7 @@ more-information: |
   px, which is what ADR-0044 measured. Both statements are true because they describe different ends of the same
   multiplication.
 
-  ⚠️ ONE CLAUSE OF HIS IS RULE AND NOT YET FACT, said here rather than left to be discovered: **"os botões que se
+  ⚠️ ONE CLAUSE OF THE DEV'S IS RULE AND NOT YET FACT, said here rather than left to be discovered: **"os botões que se
   espalhem" — the canvas has priority over the buttons.** Their words: "o canvas deve ocupar o maior espaço possível
   sem que haja barra de rolagem, e no centro… você dá mais prioridade aos botões do que ao canvas do jogo". The
   formula honours whatever `wrap.clientHeight` gives it; who wins the space before that is CSS, and this record does

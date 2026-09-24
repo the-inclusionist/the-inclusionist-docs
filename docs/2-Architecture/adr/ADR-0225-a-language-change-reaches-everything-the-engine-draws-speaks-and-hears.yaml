@@ -5,7 +5,7 @@ metadata:
   decision-makers: [Dev]
   consulted:
     - "the Dev, 2026-09-22: «quando mudar a localização, todo o hud, menus, explicações, mensagens, textos, audio e reconhecimento de fala deve ser alterado imediatamente. Os únicos textos que não são alterados são os de disciplinas de um idioma (e isso inclui textos, enunciados, exercícios, explicações, respostas, exemplos etc.)»"
-    - "the Dev, same day, correcting the parenthetical of his own sentence when it was measured against the frontier already written: «Tens razão. O enunciado sempre traduz.»"
+    - "the Dev, same day, correcting the parenthetical of their own sentence when it was measured against the frontier already written: «Tens razão. O enunciado sempre traduz.»"
     - "engine:CLAUDE.md §A FRONTEIRA (the Dev, 2026-08-24) — the interface's language is the child's official language; the statement ALWAYS translates, and in a language discipline the single exception is the linguistic CONTENT, because it IS the subject matter"
     - "ADR-0031 and study item C6 (engine:46dbf37) — a language changed mid-game reaches what the engine DREW: the icon bar, the card, the button legend, the PAUSED word and the pad"
     - "ADR-0194 — saying the name of a menu item activates it, so the recogniser's grammar follows the open menu"
@@ -43,7 +43,7 @@ decision-drivers:
   - "D1 — THE INTERFACE'S LANGUAGE IS THE CHILD'S LANGUAGE (CLAUDE.md §A FRONTEIRA). A surface left in the old one is a surface she cannot read, and the ones she cannot read are the ones that were supposed to help her"
   - "D2 — IMMEDIATELY, not on the next open. A panel that only speaks the new language after being closed and reopened teaches a child that the setting did not work"
   - "D3 — HEARING IS A SURFACE TOO. A recogniser listening in the old language is worse than one that stopped: a closed grammar answers with the nearest word, so it acts on something she did not say"
-  - "D4 — THE STATEMENT ALWAYS TRANSLATES (the Dev, correcting his own sentence). The exception is the linguistic CONTENT and nothing else, because the content IS the subject matter"
+  - "D4 — THE STATEMENT ALWAYS TRANSLATES (the Dev, correcting their own sentence). The exception is the linguistic CONTENT and nothing else, because the content IS the subject matter"
   - "D5 — WHAT THE DEVICE DOES NOT HAVE IS SAID, NOT GUESSED (ADR-0169): a language whose model never reached the delivery is a line in `problems`, not silence"
 
 considered-options:
@@ -60,7 +60,7 @@ pros-and-cons-of-the-options: |
   microphone is listening in the wrong language and acting on the nearest word.
   **C.** ✅ Simple and total. ❌ A reload loses the game, and it makes a language change cost more than the child's
   patience — this engine's own icon bar switches language in one click, on purpose.
-  **D.** ❌ Rejected by the Dev, correcting his own first sentence: «Tens razão. O enunciado sempre traduz.» It would
+  **D.** ❌ Rejected by the Dev, correcting their own first sentence: «Tens razão. O enunciado sempre traduz.» It would
   leave a Portuguese activity opened in Spanish entirely in Portuguese, including the instruction that tells the child
   what to do — and the instruction is not the subject matter.
 

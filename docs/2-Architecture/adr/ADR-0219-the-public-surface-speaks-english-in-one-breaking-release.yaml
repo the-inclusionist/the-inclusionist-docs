@@ -23,13 +23,13 @@ metadata:
         🔴 ACCEPTED, AND THE CODEMOD IS OUT. The Dev, reading this record: «Pode renomear e nada de mexer nos outros
         repositórios, quando eu for consertá-los eu adequo o código à nova versão da engine». So item 3 of the outcome below
         loses `npx inclusionist-rename <repo>` and the confirmation loses «the seven games compile after the codemod» — what
-        the games get is the TABLE, and when each one is adapted is his call, not this release's. ⚠️ The consequence he
-        accepted with it is that a game stays on the old engine until he touches it, which is exactly what a major release is
+        the games get is the TABLE, and when each one is adapted is their call, not this release's. ⚠️ The consequence they
+        accepted with it is that a game stays on the old engine until they touch it, which is exactly what a major release is
         for; what this record must not do is pretend somebody else's repository was made ready.
   date: 2026-09-21
   decision-makers: [Dev]
   consulted:
-    - "the Dev, 2026-09-14: the artefacts are in English because the project is open-source and English is what attracts contribution — and he has protested more than once that they are not"
+    - "the Dev, 2026-09-14: the artefacts are in English because the project is open-source and English is what attracts contribution — and they have protested more than once that they are not"
     - "the Dev, 2026-09-21: «Se está como tarefa o assunto já está aberto» — the cleanup plan, written for «later», is open"
     - "the Dev, 2026-09-21, deciding this record: «Pode renomear e nada de mexer nos outros repositórios, quando eu for consertá-los eu adequo o código à nova versão da engine»"
     - "engine:CLAUDE.md §0 — docs, comments, UI strings in source and commit messages in English; pt-BR only in i18n, in the educational layer and in CLAUDE.md itself"
@@ -72,7 +72,7 @@ considered-options:
 
 pros-and-cons-of-the-options: |
   **A.** ✅ One day of breakage, one note, one table, one codemod — and the seven repositories are the same person's, upgraded
-  when he chooses. ✅ The portrait and the exports gate keep their meaning: what left, left, and the note says so. ❌ The diff
+  when they choose. ✅ The portrait and the exports gate keep their meaning: what left, left, and the note says so. ❌ The diff
   is enormous and touches 94 modules; it cannot be reviewed by reading, only by tooling and by the suites.
   **B.** ✅ Nobody breaks on the day of the bump. ❌ The surface DOUBLES while the aliases live, the `exports-sem-consumidor`
   gate starts refusing names nothing imports, and the removal — the part that actually costs — happens anyway, one release
@@ -96,7 +96,7 @@ decision-outcome:
       3. **The rename map is a FILE, and the map is what does the work** (`scripts/rename-map.json`): the engine renames itself
          from it and the migration table is printed from it, so a name cannot be renamed without being written down — which a
          hand-typed table cannot promise. ⚠️ **And nothing outside this repository is touched** (the Dev, 2026-09-21): the games
-         get the table, and each one is adapted when he goes to it.
+         get the table, and each one is adapted when they go to it.
       4. **One commit per layer**, in the direction the dependencies run (`i18n → core → platform → input/render → ui → boot`),
          each one green on `tsc`, both suites, `build` and `build:pkg`. The layers are the only cut that keeps every commit
          compiling; a cut by module would not.
@@ -132,7 +132,7 @@ decision-outcome:
     could not tell a NAME from a WORD. A glob read as a comment, a regex read as a string, a sentence read as a name, the
     gate's own dictionary rewritten, and a compound VALUE («dentro-da-zona») half-translated. Each one is now a case in
     `engine:tests/rename-map.node.test.js`, and the scanner is TypeScript's parser rather than a heuristic.
-    📌 What is NOT confirmed, by the Dev's decision: that the seven games compile. They stay on the engine they have until he
+    📌 What is NOT confirmed, by the Dev's decision: that the seven games compile. They stay on the engine they have until the Dev
     adapts each one — this record would be lying if it claimed a repository it never touches was made ready.
 
 more-information: |

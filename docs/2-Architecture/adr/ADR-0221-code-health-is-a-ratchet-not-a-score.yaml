@@ -26,7 +26,7 @@ metadata:
 title: Code health is a ratchet, never a score
 
 context-and-problem-statement: |
-  The Dev read a paper back that guided this engine's modularization and said the problems it had cured have come back. He is
+  The Dev read a paper back that guided this engine's modularization and said the problems it had cured have come back. The Dev is
   right, and the cause is mechanical rather than a lapse of care.
 
   📏 This engine gates the language (`portuguese-stays-out`), the DIRECTION of its dependencies (`dependencies-point-downward`,
@@ -149,7 +149,7 @@ more-information: |
   threshold, and borrowing one would dress it in an authority it never gave». That reasoning holds exactly where the
   literature is silent — and for this measure it is not. 📌 The Dev asked for it in those words: «Por que teto de linha quando
   a literatura dá definições melhores como uma responsabilidade por módulo?», then «Para esta engine eu colocaria um teto de
-  200 linhas, mas isso é arbitrário, precisamos de uma referência melhor», and he approved what came back with «Concordo».
+  200 linhas, mas isso é arbitrário, precisamos de uma referência melhor», and they approved what came back with «Concordo».
   🎯 The literature has no ceiling for a FILE; it has one for a FUNCTION: McCabe (1976) proposed 10, and NIST SP 500-235
   (Watson & McCabe, 1996) codified it, admitting up to 15 when the reason is written down. So D3 reads, from today:
   **the ceiling comes from this tree wherever the literature gives none, and from the source wherever it does** — and taking

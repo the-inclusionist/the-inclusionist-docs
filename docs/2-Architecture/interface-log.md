@@ -153,9 +153,9 @@ switch cannot hold three positions and two surfaces of one setting must say the 
 
 ## 2026-09-22 · The remapping row shows the KEY on the button, and an arrow key shows its arrow
 
-Two changes to the same screen, both the Dev's, both seen by him.
+Two changes to the same screen, both the Dev's, both seen by them.
 
-**The key moved onto the button.** Asked whether the word «Alterar» was worth keeping on screen, he answered «Não vale, vamos de B».
+**The key moved onto the button.** Asked whether the word «Alterar» was worth keeping on screen, they answered «Não vale, vamos de B».
 The row was «Esquerda: A [Alterar]» and is now «Esquerda [A]» — the current key IS the button's face, and «Alterar» survives only
 where a position has no key bound, which is where the word still means something. 🔴 The reason was measured, not preferred: with the
 keys inside the label's `<span>`, `fillExplain` does `span.innerHTML = strong.outerHTML` and **zero of the two `<kbd>` survive** — the
