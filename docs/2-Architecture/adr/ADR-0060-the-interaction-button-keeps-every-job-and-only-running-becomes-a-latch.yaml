@@ -33,7 +33,7 @@ context-and-problem-statement: |
   trigger — clinging to a wall with the spider power, and later picking things up — moves to the JUMP in
   context. It is in that record's title: "every other job it carried moves to the JUMP".
 
-  ⚠️ THE DEV REVOKED IT, IN TWO STEPS, AND THE SECOND ONE HE SAW ON SCREEN.
+  ⚠️ THE DEV REVOKED IT, IN TWO STEPS, AND THE SECOND ONE THEY SAW ON SCREEN.
 
     · Carrying, 2026-08-28: "Botão de interação continua sendo botão de interação e servindo para conversar,
       pegar e jogar mesmo nos outros modos. O que muda é que a parte de correr [...] vira toggle." — "desfaço
@@ -41,7 +41,7 @@ context-and-problem-statement: |
     · Clinging, the same day, after watching it: "climb está funcionando não somente apertando o botão de
       contexto na parede, mas também o botão de pulo. O correto é só o primeiro caso."
 
-  ⚠️ AND THE CODE FOLLOWED HIM WHILE THE RECORD DID NOT. `pularVaiGrudar` and `botaoDeGrude` were deleted from
+  ⚠️ AND THE CODE FOLLOWED THE DEV WHILE THE RECORD DID NOT. `pularVaiGrudar` and `botaoDeGrude` were deleted from
   `game/run-toggle.ts` on 2026-08-28 — the file says so, in a block that quotes both revocations. ADR-0045 §3
   and §4 still describe those two functions as the decision in force. A reader arriving at the record a week
   later would have implemented something the code had already removed, and nothing in `status: accepted` would

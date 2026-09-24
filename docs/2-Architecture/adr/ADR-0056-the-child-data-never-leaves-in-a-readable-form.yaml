@@ -29,7 +29,7 @@ context-and-problem-statement: |
   What the new posture demands is that four questions be answered together, because each one can silently void the
   others: what the telemetry may carry, who can decrypt what, how a share ends, and what happens when a key is lost.
 
-  ⚠️ AND ONE OF THEM WAS FOUND MID-SENTENCE BY THE DEV HIMSELF, which is why it is recorded rather than smoothed
+  ⚠️ AND ONE OF THEM WAS FOUND MID-SENTENCE BY THE DEV THEMSELVES, which is why it is recorded rather than smoothed
   over: the first sharing design encrypted the payload and still leaked, because THE FACT OF THE SHARE IS THE DATUM.
   "Fica registrado no nosso sistema que eu atendo o filho do pai do João por eu ter compartilhado algo com ele." A
   server that mediates the share learns the relationship even when it cannot read a byte of the content.
