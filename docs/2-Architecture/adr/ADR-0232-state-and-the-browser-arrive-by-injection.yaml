@@ -2,6 +2,19 @@
 metadata:
   status: "accepted"
   supersedes-in-part: [ADR-0221]
+  confirmed-by:
+    - engine:tests/code-health.node.test.js
+  errata:
+    - date: 2026-09-24
+      what: >-
+        PHASE D1 LANDED (engine commit a0ef7512): `fanOut` counts value imports only (474 -> 357 over 181 modules),
+        `globalReach` sees `globalThis`, animation frames, `caches`, `Worker`, `WebAssembly`, `AudioContext`,
+        `location`, speech synthesis and `crypto` with shadowing resolved per scope (26 modules reach a global, 40
+        reaches), and the seventh measure `statefulEdges` holds a stateful set written BY NAME in the baseline: 37
+        modules, 107 value edges into them outside the root (`core/i18n` 42, `core/state` 14, `platform/storage`
+        14). Its ceiling is 0 for a new module and an existing one must not worsen; 17 mutations red, one control
+        green. Known limits, measured and written: `ui/fonts` counts as stateful although its table is only filled at
+        import, and a constant another module mutates is not seen. D2-D4 still owe their end states (issue #207).
   date: 2026-09-24
   decision-makers: [Dev]
   consulted:
@@ -98,8 +111,10 @@ decision-outcome:
       - "Ctx types grow members — the price of dependencies being visible"
 
   confirmation: |
-    NOT BUILT. The debt is issue #207, one checkbox per phase of point 5. The gate of the first phase is what enters
-    `confirmed-by` when it lands; each later phase closes on its own measured end state.
+    ✅ D1 BUILT (engine a0ef7512, see the erratum): the measure and its gate are `confirmed-by`. The other phases are
+    still debt in issue #207, one checkbox each, and each closes on its own measured end state: D2 storage and state
+    store (27 edges -> 0, then 20 runs of the browser suite), D3 the translator (42 -> 0), D4 every remaining stateful
+    module a factory.
 
 more-information: |
   📌 Why the translator is not first despite carrying the most edges: storage and the state store are what two test files
