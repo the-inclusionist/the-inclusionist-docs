@@ -91,7 +91,7 @@ pros-and-cons-of-the-options:
       - "The npm package stays light — ADR-0094's argument honoured rather than argued with."
     bad:
       - "⚠️ The platform's first-day budget grows, and art is heavier than fonts. What enters the manifest becomes a real decision with a number."
-      - "The quarantine boundary has to survive delivery: mixing LCP with the author's own art in ONE resource would licence her work by share-alike."
+      - "The quarantine boundary has to survive delivery: mixing LCP with the author's own art in ONE resource would licence the author's work by share-alike."
       - "🔴 None of it exists yet: no art in quarantine, no runtime, no MediaPipe. This is a record about four promises, three of them unbuilt."
 
 decision-outcome:
