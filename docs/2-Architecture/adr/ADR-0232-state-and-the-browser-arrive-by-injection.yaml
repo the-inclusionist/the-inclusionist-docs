@@ -15,6 +15,18 @@ metadata:
         14). Its ceiling is 0 for a new module and an existing one must not worsen; 17 mutations red, one control
         green. Known limits, measured and written: `ui/fonts` counts as stateful although its table is only filled at
         import, and a constant another module mutates is not seen. D2-D4 still owe their end states (issue #207).
+    - date: 2026-09-24
+      what: >-
+        PHASE D2b LANDED (engine 45f5545e and the seven before it): value edges into `platform/storage` outside the
+        root 12 -> 0, `platform/storage` left the stateful set (37 -> 36), and with every browser test file on its own
+        storage the browser suite passed 20 sequential full runs, 1277/1277 each — F9's end state. And one case point 1
+        did not spell out, settled here because only one answer is consistent with it: `core/loop.startLoop` is called
+        by the GAME, not the root, and reads the game speed from `core/state` on every frame. The speed arrives as a
+        REQUIRED port on the loop's options (`speed: () => number`, a game passes `engine.gameSpeed`). A registration
+        the root fills (the `registerCrashNotice` shape) was rejected: it is module state D4 exists to remove, and a
+        second root would overwrite the first root's reader (D3). An optional port defaulting to 1 was rejected by the
+        ADR-0224/0227 precedent: a game that forgets it would silently drop the child's speed setting. Breaking for the
+        five games that call `startLoop`, with a migration note.
   date: 2026-09-24
   decision-makers: [Dev]
   consulted:
