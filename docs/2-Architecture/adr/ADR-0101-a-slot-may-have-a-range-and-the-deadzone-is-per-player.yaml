@@ -1,28 +1,27 @@
 ---
-# ⚠️ LIDO CONTRA A ARVORE DE 2026-09-07, e nao contra a memoria de quem o redigiu. O que mudou entre a
-# redacao e a entrada esta anotado no corpo; o que se confirmou tambem, porque uma premissa que continua
-# verdadeira so' e' util se alguem disser que a conferiu.
+# ⚠️ READ AGAINST THE TREE OF 2026-09-07, and not against the memory of whoever drafted it. What changed between
+# the drafting and the entry is noted in the body; what was confirmed too, because a premise that stays true is
+# only useful if someone says they checked it.
 #
-# ⚠️ E ELE NAO SUPERSEDE NADA AINDA. O rascunho declarava `supersedes-in-part`, e isso seria falso num
-# registo `proposed`: uma supersessao e' um PAR (ADR-0057), e marcar o registo antigo como parcialmente
-# revogado por uma proposta diria ao leitor que uma decisao foi tomada quando nao foi. Os ponteiros
-# preenchem-se — nos dois lados, no mesmo turno — se e quando o Dev aceitar. O que ele PRETENDE superseder
-# esta escrito no corpo.
+# ⚠️ AND IT DOES NOT SUPERSEDE ANYTHING YET. The draft declared `supersedes-in-part`, and that would be false in a
+# `proposed` record: a supersession is a PAIR (ADR-0057), and marking the old record as partly revoked by a
+# proposal would tell the reader that a decision was taken when it was not. The pointers get filled in — on both
+# sides, in the same turn — if and when the Dev accepts. What it INTENDS to supersede is written in the body.
 metadata:
   status: "proposed"
   date: 2026-09-07
   supersedes-in-part: []
   decision-makers: [Dev]
   consulted:
-    - "ADR-0079 §1 — PRETENDE SUPERSEDER EM PARTE, se aceite: a slot is modelled as ON or OFF. A trigger has
+    - "ADR-0079 §1 — INTENDS TO SUPERSEDE IN PART, if accepted: a slot is modelled as ON or OFF. A trigger has
        a travel and a stick has a distance, and neither is a boolean. Everything else governs untouched"
-    - "ADR-0013 — PRETENDE SUPERSEDER EM PARTE, em UM número: the analogue deadzone as *the* value. Its
+    - "ADR-0013 — INTENDS TO SUPERSEDE IN PART, in ONE number: the analogue deadzone as *the* value. Its
        reasoning is not withdrawn and is the reason 0.5 remains the DEFAULT"
-    - "ADR-0095 — ⚠️ A MESMA FORMA DE DECISÃO, tomada dois dias depois e já aceite: o alvo de toque deixou de
-       ser UM número e passou a ser função da altura do viewport. Aqui a zona morta deixa de ser um número e
-       passa a ser função do JOGADOR. Os dois casos são a mesma patologia — uma constante de módulo escolhida
-       para um corpo médio que não existe — e o ADR-0095 é o precedente de que esta forma já foi aceite uma
-       vez, com a régua a viver numa função consultável em vez de num literal espalhado"
+    - "ADR-0095 — ⚠️ THE SAME FORM OF DECISION, taken two days later and already accepted: the touch target
+       stopped being ONE number and became a function of viewport height. Here the deadzone stops being a number
+       and becomes a function of the PLAYER. The two cases are the same pathology — a module constant chosen for
+       an average body that does not exist — and ADR-0095 is the precedent that this form has already been
+       accepted once, with the ruler living in a queryable function instead of in a scattered literal"
     - "ADR-0086 — `leftTrigger` and `rightTrigger`. The two positions whose whole character is that they are
        not switches"
     - "ADR-0010 pillar 1 — the hardware a school has, which is what makes a per-player deadzone matter more

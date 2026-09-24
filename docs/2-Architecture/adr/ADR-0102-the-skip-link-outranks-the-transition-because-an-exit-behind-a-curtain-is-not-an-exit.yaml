@@ -1,9 +1,9 @@
 ---
 metadata:
   status: "accepted"
-  # ⚠️ CONFIRMA O SLOT E O ELEMENTO, NÃO A REGRA DE FOCO. A `confirmation` diz quais três itens estão
-  # aferidos e qual está em dívida — não existe transição nesta árvore para medir a quarta. Esta chave lista
-  # o que de facto confirma; ela não promete o que o corpo já declarou por pagar.
+  # ⚠️ CONFIRMS THE SLOT AND THE ELEMENT, NOT THE FOCUS RULE. The `confirmation` says which three items are
+  # checked and which one is owed — there is no transition in this tree to measure the fourth. This key lists
+  # what actually confirms; it does not promise what the body already declared as unpaid.
   confirmed-by:
     - engine:app/css/style.css
     - engine:app/quiz.html
@@ -17,8 +17,8 @@ metadata:
              engine's — the slots in `app/css/style.css` and the skip link adopting one — stayed behind with
              nothing holding it. `tests/the-skip-link-outranks-the-transition.node.test.js` holds the order this
              record decides, read from the stylesheet alone (4 of 4 mutations red). The decision did not change."
-  # A parte substituída é a colocação do skip-link em `CAPTIONS`; o QUE está escrito do outro lado, no
-  # `superseded-in-part` do ADR-0020, que é onde o leitor daquele registo precisa de o encontrar.
+  # The replaced part is the placement of the skip link in `CAPTIONS`; WHAT it is is written on the other side, in
+  # ADR-0020's `superseded-in-part`, which is where the reader of that record needs to find it.
   supersedes-in-part: [ADR-0020]
   date: 2026-09-07
   decision-makers: [Dev]

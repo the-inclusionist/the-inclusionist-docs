@@ -18,16 +18,18 @@ metadata:
   decision-makers: [Dev]
   consulted:
     - "ADR-0122 — «não oferecido, não declinável: um jogo que arranca pelo `createGame` recebe o mesmo cartão
-       e a mesma barra». Esta é a metade que faltava a essa frase: 📏 medido em 2026-09-12, o cartão é
-       OFERECIDO e não é ALCANÇÁVEL, e um cartão que nada abre está tão ausente quanto um que não existe"
-    - "ADR-0106 §1 — a regra do Dev de que o menu de pausa é oferecido pela ENGINE. Um jogo que tem de se
-       lembrar de chamar `pausa.mostrar` é a mesma arrumação que o ADR-0139 diz ter falhado em cinco de seis"
-    - "ADR-0085 — `ActionPreset` e o vocabulário de `core/actions`. `start` já é uma das catorze posições, com
-       a palavra do jogo, remapeável pela criança. Esta decisão não inventa uma tecla: usa a que ela já tem"
-    - "ADR-0044 §2 — «a pausa tem sete itens e a ORDEM é a decisão». Por isso a saída escolhida NÃO é um ícone
-       novo na barra: ela deslocaria a ordem de tabulação que quem usa leitor de tela já aprendeu"
-    - "ADR-0143 — o controle virtual, cujo `#touch-start` é INCONDICIONAL. É a metade táctil desta mesma
-       decisão: quem só tem dedo carrega no START do pad, quem tem tecla ou botão dispara a acção `start`"
+       e a mesma barra». This is the half that sentence was missing: 📏 measured on 2026-09-12, the card is
+       OFFERED and is not REACHABLE, and a card that nothing opens is as absent as one that does not exist"
+    - "ADR-0106 §1 — the Dev's rule that the pause menu is offered by the ENGINE. A game that has to remember
+       to call `pausa.mostrar` is the same arrangement that ADR-0139 says failed in five out of six"
+    - "ADR-0085 — `ActionPreset` and the vocabulary of `core/actions`. `start` is already one of the fourteen
+       positions, with the game's word, remappable by the child. This decision invents no key: it uses the one
+       the child already has"
+    - "ADR-0044 §2 — «a pausa tem sete itens e a ORDEM é a decisão». That is why the chosen way out is NOT a new
+       icon in the bar: it would shift the tab order that whoever uses a screen reader has already learnt"
+    - "ADR-0143 — the virtual controller, whose `#touch-start` is UNCONDITIONAL. It is the touch half of this
+       same decision: whoever only has a finger presses the pad's START, whoever has a key or a button fires the
+       `start` action"
   informed: []
   errata:
     - date: 2026-09-12

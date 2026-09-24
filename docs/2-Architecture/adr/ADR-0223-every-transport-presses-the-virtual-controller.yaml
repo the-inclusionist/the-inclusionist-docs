@@ -20,22 +20,23 @@ metadata:
   errata:
     - date: 2026-09-22
       what: >-
-        ✅ **«SIM» — `createGame` PASSA A MONTAR O GAMEPAD**, decidido pelo Dev no mesmo dia, respondendo à pergunta que a
-        errata abaixo tinha deixado nomeada em aberto. O gamepad deixa de ser o único transporte montado de fora: a raiz
-        monta os seis.
-        🎯 Isto SUPERSEDE a parte da errata abaixo que fazia de `GamepadCtx.press`/`release` a forma final — eles foram o
-        passo intermédio que aterrou em `engine:103843c`, e ficam a valer até a montagem mudar de dono. O que NÃO muda é
-        `Engine.controller`: continua publicado, porque a razão dele é ADR-0216 («a engine oferece o objeto de controle»)
-        e não a montagem do pad — um cartucho que monte um transporte próprio continua a precisar da porta.
-        📏 O tamanho do trabalho, medido antes de começar: `GamepadCtx` tem 27 membros e a raiz já sabe responder a
-        dezanove. Os OITO que só um cartucho sabe — `modalInput`, `hasModal`, `joinPlayer`, `respawnPlayer`,
-        `clearWaitingBadge`, `rotuloDaAcao`, `getPlayers`, `spriteBase` — são a decisão dentro da decisão: cada um vira
-        campo declarado pelo cartucho, ausência declarada, ou sai. ⏸ Essa repartição escreve-se quando o trabalho começar,
-        e é ela que o passo 7f do ADR-0221 estava à espera de poder ler.
-        ⚠️ E uma imprecisão minha, corrigida aqui porque foi escrita num registo: eu disse que esta era «a mesma pergunta»
-        que a interface de família `Transport`. Não é. A família pergunta O QUE os seis transportes partilham — e isso só
-        se pode declarar depois de todos apertarem a mesma porta, que é o que estes três commits fizeram. Esta pergunta é
-        ONDE um transporte é montado. São vizinhas, não a mesma.
+        ✅ **«SIM» — `createGame` COMES TO MOUNT THE GAMEPAD**, decided by the Dev the same day, answering the question the
+        erratum below had left named and open. The gamepad stops being the only transport mounted from outside: the root
+        mounts all six.
+        🎯 This SUPERSEDES the part of the erratum below that made `GamepadCtx.press`/`release` the final form — they were
+        the intermediate step that landed in `engine:103843c`, and they hold until the mounting changes owner. What does
+        NOT change is `Engine.controller`: it stays published, because its reason is ADR-0216
+        («a engine oferece o objeto de controle») and not the mounting of the pad — a cartridge that mounts a transport
+        of its own still needs the door.
+        📏 The size of the work, measured before starting: `GamepadCtx` has 27 members and the root already knows how to
+        answer nineteen. The EIGHT that only a cartridge knows — `modalInput`, `hasModal`, `joinPlayer`, `respawnPlayer`,
+        `clearWaitingBadge`, `rotuloDaAcao`, `getPlayers`, `spriteBase` — are the decision inside the decision: each one
+        becomes a field declared by the cartridge, a declared absence, or goes. ⏸ That split is written when the work
+        starts, and it is what ADR-0221's step 7f was waiting to be able to read.
+        ⚠️ And an imprecision of mine, corrected here because it was written in a record: I said this was
+        «a mesma pergunta» as the `Transport` family interface. It is not. The family asks WHAT the six transports share — and
+        that can only be declared after all of them press the same door, which is what these three commits did. This
+        question is WHERE a transport is mounted. They are neighbours, not the same.
     - date: 2026-09-22
       what: >-
         🔴 THE GAMEPAD IS NOT MOUNTED BY THE ENGINE, AND THIS RECORD DID NOT KNOW IT. Item 1 of the outcome says

@@ -108,36 +108,37 @@ decision-outcome:
       is different from keeping it actionable.
 
   responsibilities: |
-    ⚠️ QUEM RESPONDE POR QUÊ, derivado do que os registos anteriores já exigem do produto — e não inventado
-    aqui. Esta secção existe porque, sem ela, a próxima pessoa a ligar um destes runtimes decide o âmbito dele
-    por conveniência: liga o que estiver mais à mão e o outro fica sem dono.
+    ⚠️ WHO ANSWERS FOR WHAT, derived from what earlier records already demand of the product — and not invented
+    here. This section exists because, without it, the next person to wire one of these runtimes decides its scope
+    by convenience: wires whatever is closest to hand and the other is left with no owner.
 
-    **MEDIAPIPE — o que a câmara VÊ, menos o ponto no ecrã.**
-    · **Rosto** (`FaceLandmarker`) — o transporte «rosto» que o ADR-0074 lista entre os catorze e que a #11
-      pede por nome. Inclui os marcos do ÍRIS, que são a matéria-prima do olhar e não o olhar.
-    · **Gestos** (`GestureRecognizer`) e **mãos** (`HandLandmarker`) — o transporte «gestos» dos mesmos
-      registos. É o que serve uma criança que não alcança teclado nem toque com precisão.
-    · **Expressão** (blendshapes do `FaceLandmarker`) — é daqui que sai um interruptor de PISCAR ou de
-      permanência, que é metade do modo «8 sectores, dwell» do ADR-0104. A outra metade é o ponto no ecrã.
-    · ⚠️ **NÃO responde por**: para onde a criança olha no ecrã, e nada de áudio.
+    **MEDIAPIPE — what the camera SEES, except the point on the screen.**
+    · **Face** (`FaceLandmarker`) — the «rosto» transport that ADR-0074 lists among the fourteen and that #11
+      asks for by name. It includes the IRIS landmarks, which are the raw material of gaze and not gaze itself.
+    · **Gestures** (`GestureRecognizer`) and **hands** (`HandLandmarker`) — the «gestos» transport of the same
+      records. It is what serves a child who cannot reach a keyboard or touch with precision.
+    · **Expression** (`FaceLandmarker` blendshapes) — this is where a BLINK or dwell switch comes from, which is
+      half of ADR-0104's «8 sectores, dwell» mode. The other half is the point on the screen.
+    · ⚠️ **Does NOT answer for**: where on the screen the child is looking, and nothing audio.
 
-    **WEBGAZER — o PONTO no ecrã, e só ele.**
-    · A regressão de olhar e a sua calibração, que nenhuma tarefa do `tasks-vision` faz. É o que transforma
-      «o íris está aqui» em «ela está a olhar para ali», e é o que o transporte por olhar precisa para
-      apontar. 📌 O ADR-0112 exige que um ponteiro alcançado pelo olhar ofereça as MESMAS operações que um
-      alcançado pelo rato — essa promessa depende inteiramente desta peça.
-    · ⚠️ **NÃO responde por**: rosto, gestos, mãos, expressão. Foi por o supor que ele parecia substituível.
+    **WEBGAZER — the POINT on the screen, and only that.**
+    · Gaze regression and its calibration, which no `tasks-vision` task does. It is what turns
+      «o íris está aqui» into «ela está a olhar para ali», and it is what the gaze transport needs in order to
+      point. 📌 ADR-0112 demands that a pointer reached by gaze offer the SAME operations as one reached by the
+      mouse — that promise depends entirely on this piece.
+    · ⚠️ **Does NOT answer for**: face, gestures, hands, expression. It was by assuming it did that it looked
+      replaceable.
 
-    **PIPER — a voz que LÊ para a criança.**
-    · Fala neural nas quatro vozes garantidas do ADR-0110, nos três idiomas do pilar 3. É o que serve o modo
-      cego, a narração e o leitor de tela do produto (ADR-0065 §3: um cartucho «não tem de saber que existe»).
-    · ⚠️ **NÃO responde por**: reconhecer fala. E **eSpeak / Web Speech continuam a ser o RECUO** — falam
-      enquanto o modelo desce e quando ele falha, que é cláusula do ADR-0110 e não uma degradação tolerada.
+    **PIPER — the voice that READS to the child.**
+    · Neural speech in ADR-0110's four guaranteed voices, in pillar 3's three languages. It is what serves blind
+      mode, narration and the product's screen reader (ADR-0065 §3: a cartridge «não tem de saber que existe»).
+    · ⚠️ **Does NOT answer for**: recognising speech. And **eSpeak / Web Speech remain the FALLBACK** — they speak
+      while the model downloads and when it fails, which is a clause of ADR-0110 and not a tolerated degradation.
 
-    🔴 **E O QUE NÃO TEM DONO NENHUM, dito aqui para não ser descoberto tarde: o RECONHECIMENTO DE FALA.** A
-    issue #11 pede «webcam + voice command», e não há motor escolhido, medido nem registado — nem Whisper,
-    nem Vosk, nem a Web Speech API. É a única entrada assistida dos catorze transportes sem sequer um
-    fornecedor na mesa, e nada neste registo a resolve.
+    🔴 **AND WHAT HAS NO OWNER AT ALL, said here so it is not discovered late: SPEECH RECOGNITION.** Issue #11
+    asks for «webcam + voice command», and there is no engine chosen, measured or recorded — not Whisper, not
+    Vosk, not the Web Speech API. It is the only assisted input of the fourteen transports without even a
+    supplier on the table, and nothing in this record resolves it.
 
   consequences:
     good:

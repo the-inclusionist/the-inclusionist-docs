@@ -77,8 +77,8 @@ metadata:
              have had: the file is imported for a language model to READ, and a join is where a reader goes
              wrong. §§1–5 and §7 govern unchanged, and §4's mechanism is what makes the single file possible."
 
-  # Declara um endereço e NÃO supersede nada, no molde do ADR-0097. Desde que o ADR-0067 §5 fez a
-  # DECLARAÇÃO ser o gatilho, um endereço novo não emenda a enumeração do ADR-0058 §1 — junta-se a ela.
+  # It declares an address and supersedes NOTHING, on the model of ADR-0097. Since ADR-0067 §5 made the
+  # DECLARATION the trigger, a new address does not amend ADR-0058 §1's enumeration — it joins it.
   supersedes-in-part: []
   decision-makers: [Dev]
   consulted:

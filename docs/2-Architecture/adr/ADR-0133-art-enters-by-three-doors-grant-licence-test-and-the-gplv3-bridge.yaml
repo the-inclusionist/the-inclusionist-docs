@@ -20,83 +20,83 @@ metadata:
 
     - date: 2026-09-09
       what: >-
-        🔴 A PREMISSA MAIS PESADA DESTE REGISTO E DO ADR-0107 ERA FALSA, e foi o Dev que a derrubou. Decisão
-        dele: NENHUMA arte de contribuinte entrou no projecto, e nenhuma entrará enquanto este regime não
-        estiver resolvido; quem contribuir produzirá arte compatível com o que o projecto decidir. Os dois
-        registos argumentavam contra um PERIGO PRESENTE — «o share-alike alcançaria a obra de terceiro e
-        licenciá-la-ia sem lhe perguntar» —, e esse perigo descrevia um corpo de arte que não existe. 🎯 A
-        correcção inverte a ORDEM DE PRECEDÊNCIA e torna a decisão mais barata em vez de mais cara: o regime
-        de licença da arte é uma POLÍTICA QUE O PROJECTO ESCOLHE, e quem contribuir adapta-se a ela — não uma
-        restrição herdada de obra já feita. Ninguém na sala perde nada por a lista ser fechada. ⚠️ O pilar 10
-        fica intacto e muda de alcance: continua a dizer que o projecto não decide pela artista, o que agora
-        significa «não se lhe impõe um regime depois do facto», e não «existe arte não-FOSS a proteger». E o
-        argumento que sobrevive contra o share-alike deixa de ser sobre a obra de terceiro e passa a ser sobre a
-        SAÍDA: o que o pipeline produzir sai share-alike, e essa é a arte futura do próprio projecto.
-        📌 A errata é declarada em vez de o texto ser corrigido em silêncio porque o raciocínio velho é o que
-        explica por que o ADR-0107 construiu uma quarentena — apagá-lo faria aquela decisão parecer capricho.
+        🔴 THE HEAVIEST PREMISE OF THIS RECORD AND OF ADR-0107 WAS FALSE, and it was the Dev who knocked it down.
+        Their decision: NO contributor art has entered the project, and none will enter while this regime is not
+        settled; whoever contributes will produce art compatible with what the project decides. The two records
+        argued against a PRESENT DANGER — «o share-alike alcançaria a obra de terceiro e
+        licenciá-la-ia sem lhe perguntar» —, and that danger described a body of art that does not exist.
+        🎯 The correction inverts the ORDER OF PRECEDENCE and makes the decision cheaper instead of more expensive:
+        the art's licence regime is a POLICY THE PROJECT CHOOSES, and whoever contributes adapts to it — not a
+        restriction inherited from work already made. Nobody in the room loses anything by the list being closed.
+        ⚠️ Pillar 10 stays intact and changes reach: it still says the project does not decide for the artist,
+        which now means «não se lhe impõe um regime depois do facto», and not «existe arte não-FOSS a proteger».
+        And the argument that survives against share-alike stops being about the third party's work and becomes
+        about the OUTPUT: whatever the pipeline produces goes out share-alike, and that is the project's own
+        future art.
+        📌 The erratum is declared instead of the text being corrected in silence because the old reasoning is
+        what explains why ADR-0107 built a quarantine — erasing it would make that decision look like a whim.
     - date: 2026-09-09
       what: >-
-        O REGISTO NÃO CARREGAVA A PONTE PARA A AGPL, e ela existe. O Dev trouxe-a com fontes e mandou-a
-        constar: ① a **CC BY-SA 3.0 §4(b)(ii)** permite distribuir uma Adaptação sob «a later version of this
-        License with the same License Elements», logo uma derivada de material 3.0 pode sair **4.0**; ② a
-        Creative Commons declarou a **GPLv3** uma «BY-SA Compatible License» a 08/10/2015, de sentido único
-        (BY-SA 4.0 → GPLv3, nunca ao contrário); ③ e o **§13 da GPLv3**, lido literalmente do texto SPDX, dá
-        «permission to link or combine any covered work with a work licensed under version 3 of the GNU
-        Affero General Public License into a single combined work». **Existe, portanto, um caminho legal de
-        arte CC BY-SA 4.0 até um ecossistema AGPLv3, com a GPLv3 como ponte.** ⚠️ E o registo diz que o
-        caminho existe E QUE O PROJECTO O RECUSA, com os quatro custos escritos, para ninguém o redescobrir do
-        zero daqui a um ano e concluir que a decisão foi tomada por ignorância. Ver more-information.
+        THE RECORD DID NOT CARRY THE BRIDGE TO THE AGPL, and it exists. The Dev brought it with sources and had
+        it put on record: ① **CC BY-SA 3.0 §4(b)(ii)** allows distributing an Adaptation under «a later version of this
+        License with the same License Elements», so a derivative of 3.0 material may go out as **4.0**;
+        ② Creative Commons declared **GPLv3** a «BY-SA Compatible License» on 08/10/2015, one-way (BY-SA 4.0 →
+        GPLv3, never the reverse); ③ and **GPLv3 §13**, read literally from the SPDX text, gives «permission to link or combine any covered work with a work licensed under version 3 of the GNU
+        Affero General Public License into a single combined work». **There is, therefore, a legal path from CC BY-SA 4.0 art to an
+        AGPLv3 ecosystem, with GPLv3 as the bridge.** ⚠️ And the record says the path exists AND THAT THE
+        PROJECT REFUSES IT, with the four costs written down, so that nobody rediscovers it from scratch a year
+        from now and concludes the decision was taken out of ignorance. See more-information.
     - date: 2026-09-09
       what: >-
-        🔴 A LISTA FECHADA CAIU NO MESMO DIA, E PELA TERCEIRA VEZ PELO MESMO DEFEITO. A errata acima
-        substituiu «uma licença CC» por «uma destas quatro» e chamou-lhe conserto — ⚠️ **mas uma lista
-        fechada é um teste de família com outro chapéu**, e recusa exactamente da mesma maneira: por um nome
-        não estar nela. O Dev apanhou-o com dois casos concretos. ① O **Tiny Swords** tem termos que permitem
-        uso pessoal e comercial e modificação à vontade, sem exigir crédito — «É COMPATÍVEL COM NOSSO
-        PROJETO! NÃO PRECISA SER EXATAMENTE CC!» — e a lista recusava-o por a concessão ser do autor em vez
-        de ter um nome conhecido. ② E a **CC BY-SA** era recusada por ser share-alike quando existe uma
-        declaração de compatibilidade publicada pela própria Creative Commons que a leva até um projecto AGPL.
-        🎯 **O teste passa a ser COMPATIBILIDADE COM O PROJECTO, em quatro perguntas**, e a lista de nomes
-        passa a ser EXEMPLOS. Nasce uma TERCEIRA porta para copyleft, com quatro condições lidas nas fontes —
-        e a condição que trava a maioria dos adaptadores (entregar a forma preferível de modificação) é a que
-        este projecto já cumpre por construção. ⚠️ O que NÃO muda: ND e NC continuam sem caminho nenhum.
+        🔴 THE CLOSED LIST FELL THE SAME DAY, AND FOR THE THIRD TIME FROM THE SAME DEFECT. The erratum above
+        replaced «uma licença CC» with «uma destas quatro» and called it a fix — ⚠️ **but a closed list is a
+        family test wearing another hat**, and it refuses in exactly the same way: by a name not being on it.
+        The Dev caught it with two concrete cases. ① **Tiny Swords** has terms that allow personal and
+        commercial use and modification at will, without requiring credit — «É COMPATÍVEL COM NOSSO
+        PROJETO! NÃO PRECISA SER EXATAMENTE CC!» — and the list refused it because the grant was the author's
+        instead of having a well-known name. ② And **CC BY-SA** was refused for being share-alike when there
+        is a compatibility declaration published by Creative Commons itself that takes it to an AGPL project.
+        🎯 **The test becomes COMPATIBILITY WITH THE PROJECT, in four questions**, and the list of names
+        becomes EXAMPLES. A THIRD door is born for copyleft, with four conditions read from the sources — and
+        the condition that stops most adapters (delivering the preferred form for modification) is the one
+        this project already meets by construction. ⚠️ What does NOT change: ND and NC still have no path at all.
     - date: 2026-09-09
       what: >-
-        🔴 A PERGUNTA 3 NÃO É UM CRITÉRIO DE ADMISSÃO — É UM ENCAMINHAMENTO DE ENTREGA, e foi o Dev que
-        o viu: «não é necessário pedir, mas sim baixar e apontar para os assets baixados. A permissão dele
+        🔴 QUESTION 3 IS NOT AN ADMISSION CRITERION — IT IS A DELIVERY ROUTING, and it was the Dev who
+        saw it: «não é necessário pedir, mas sim baixar e apontar para os assets baixados. A permissão dele
         é que eu poderia usar os assets num jogo, mas o que estamos fazendo aqui é equipar a engine com o
         pacote inteiro! Ou seja, justamente no que a licença pessoal dele pede para não fazer.»
-        ⚠️ **A versão anterior deste registo tratava «podemos conveiar» como pergunta de SIM ou NÃO e pôs o
-        Tiny Swords atrasado numa leitura de fronteira.** A leitura não era de fronteira nenhuma: equipar
-        uma engine com o pacote inteiro e entregá-lo a trezentos jogos é *repackage* e *redistribute* no
-        sentido mais directo da frase do autor. 📌 E a resposta não é pedir-lhe autorização — seria pedir
-        licença exactamente para aquilo que ele escreveu a linha para impedir. **É NÃO CONVEIAR.**
-        🎯 Então a pergunta 3 passa a ROTEAR: quem pode ser conveiado viaja connosco; quem não pode é
-        **obtido por quem instala, da origem**, e não entra nesta árvore nem no pacote. O precedente já existe
-        e é idêntico: o **ADR-0108** decidiu que a fonte Ronde não pode ser empacotada, então oferece-se o
-        download e a opção fica desabilitada enquanto o ficheiro não estiver presente.
-        🔴 **E MEDIDO NO MESMO TURNO, o que fecha a porta à versão automática disto:** nem `itch.io` nem
-        `kenney.nl` mandam cabeçalho CORS, e o itch não tem link directo estável (`/download` responde 404
-        sem sessão). O buscador de pesados funciona com o Hugging Face e o jsDelivr porque ELES mandam o
-        cabeçalho. **Logo a engine não consegue buscar do itch: só uma pessoa consegue.** ⚠️ Isto não afecta
-        o Kenney, que é CC0 e portanto pode ser servido por nós — o obstáculo do CORS só morde onde a licença
-        já nos proibia de servir.
+        ⚠️ **The previous version of this record treated «podemos conveiar» as a YES-or-NO question and held
+        Tiny Swords back on a borderline reading.** The reading was not borderline at all: equipping an engine
+        with the whole pack and handing it to three hundred games is *repackage* and *redistribute* in the most
+        direct sense of the author's sentence. 📌 And the answer is not to ask them for authorisation — that
+        would be asking for a licence for exactly what they wrote the line to prevent. **IT IS NOT TO CONVEY.**
+        🎯 So question 3 comes to ROUTE: whatever may be conveyed travels with us; whatever may not is
+        **obtained by whoever installs, from the origin**, and enters neither this tree nor the package. The
+        precedent already exists and is identical: **ADR-0108** decided that the Ronde font cannot be packaged,
+        so the download is offered and the option stays disabled while the file is not present.
+        🔴 **AND MEASURED IN THE SAME TURN, which closes the door on the automatic version of this:** neither
+        `itch.io` nor `kenney.nl` sends a CORS header, and itch has no stable direct link (`/download` answers
+        404 without a session). The heavy-asset fetcher works with Hugging Face and jsDelivr because THEY send
+        the header. **So the engine cannot fetch from itch: only a person can.** ⚠️ This does not affect Kenney,
+        which is CC0 and can therefore be served by us — the CORS obstacle only bites where the licence already
+        forbade us to serve.
     - date: 2026-09-09
       what: >-
-        🔴 «SATISFIES IT BY CONSTRUCTION» ERA UMA PROMESSA ESCRITA COMO FACTO, e é exactamente o defeito que o
-        ADR-0128 nomeia — uma confirmação escrita antes do trabalho azeda em silêncio. A terceira porta afirma
-        que a forma preferível de modificação «IS the modifiable form — semantic image plus palette dictionary,
-        versioned in the repository». **Não é, hoje.** Medido na árvore da engine: não existe `app/js/art/`,
-        não existe formato semântico, `tools/` só tem o editor de mapas, e o único código do género é o
-        `PIP_*`/`indexedToCanvas` de `render/textures.ts:141-172`, **estacionado de propósito e com zero
-        chamadores**. ⚠️ A CONSEQUÊNCIA NÃO É COSMÉTICA: **a terceira porta está descrita e não está aberta**,
-        e o Liberated Pixel Cup não entra até o pipeline existir. O registo já dizia isso noutro parágrafo
-        («the art editor ships»); o que estava errado era o tempo verbal desta frase. 📌 A afirmação gémea em
-        `engine:docs/LICENSES.md` foi corrigida no mesmo turno.
-        📏 E a MEDIÇÃO que o desbloqueio precisava foi feita: descodificadas três folhas reais do LPC, elas têm
-        **quinze cores únicas somadas** (92 244 píxeis opacos) e **zero alfa parcial**. A anotação é uma tabela
-        de quinze linhas, não um problema — e a máscara dura do formato deixa de ser restrição imposta para
-        passar a ser o que a fonte já é.
+        🔴 «SATISFIES IT BY CONSTRUCTION» WAS A PROMISE WRITTEN AS FACT, and it is exactly the defect ADR-0128
+        names — a confirmation written before the work goes sour in silence. The third door states that the
+        preferred form for modification «IS the modifiable form — semantic image plus palette dictionary,
+        versioned in the repository». **It is not, today.** Measured in the engine's tree: there is no
+        `app/js/art/`, there is no semantic format, `tools/` only has the map editor, and the only code of the
+        kind is the `PIP_*`/`indexedToCanvas` of `render/textures.ts:141-172`, **parked on purpose and with zero
+        callers**. ⚠️ THE CONSEQUENCE IS NOT COSMETIC: **the third door is described and is not open**, and the
+        Liberated Pixel Cup does not enter until the pipeline exists. The record already said so in another
+        paragraph («the art editor ships»); what was wrong was the tense of this sentence. 📌 The twin claim in
+        `engine:docs/LICENSES.md` was corrected in the same turn.
+        📏 And the MEASUREMENT the unblocking needed was made: three real LPC sheets decoded, they have
+        **fifteen unique colours in total** (92 244 opaque pixels) and **zero partial alpha**. The annotation is
+        a fifteen-line table, not a problem — and the format's hard mask stops being an imposed restriction and
+        becomes what the source already is.
   supersedes: [ADR-0107]
   supersedes-in-part: [ADR-0018, ADR-0119]
   date: 2026-09-09

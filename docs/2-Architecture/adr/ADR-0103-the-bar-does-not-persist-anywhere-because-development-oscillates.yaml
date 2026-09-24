@@ -1,10 +1,10 @@
 ---
 metadata:
   status: "accepted"
-  # ⚠️ SEM `confirmed-by`. Este registo decide que uma coisa NÃO é construída, e não há ficheiro que prove
-  # uma ausência. O que existe hoje e é consistente com ele — `educational/adaptive-engine`, que recebe o
-  # histórico como parâmetro e não lê armazenamento nenhum — foi escrito antes desta decisão e por outro
-  # motivo. Declarar-lhe `confirmed-by` seria fazer o registo parecer aferido por acidente.
+  # ⚠️ NO `confirmed-by`. This record decides that something is NOT built, and there is no file that proves an
+  # absence. What exists today and is consistent with it — `educational/adaptive-engine`, which receives the
+  # history as a parameter and reads no storage at all — was written before this decision and for another
+  # reason. Declaring it as `confirmed-by` would make the record look checked by accident.
   supersedes-in-part: [ADR-0049]
   date: 2026-09-07
   decision-makers: [Dev]
