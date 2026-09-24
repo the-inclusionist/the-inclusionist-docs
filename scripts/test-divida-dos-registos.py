@@ -34,6 +34,42 @@ more-information: |
 """
 
 
+# A proposal shaped like ADR-0098 to ADR-0101: the `consulted` list comes first, so `status:` sits far down.
+PROPOSTA = """---
+metadata:
+  consulted:
+{consultados}
+  status: "proposed"
+  date: 2026-01-01
+  decision-makers: [Dev]
+  informed: []
+title: {titulo}
+decision-outcome:
+  confirmation: |
+    Nothing is owed until the Dev decides.
+more-information: |
+  nothing
+"""
+
+# Its pair: a DECIDED record whose prose has a line that looks like a proposed status, near the top.
+DECIDIDO_COM_ECO = """---
+metadata:
+  status: "accepted"
+  date: 2026-01-01
+  decision-makers: [Dev]
+title: {titulo}
+context-and-problem-statement: |
+  The first draft of this record read
+  status: proposed
+  and the Dev decided it the same day.
+decision-outcome:
+  confirmation: |
+    The gate IS the confirmation.
+more-information: |
+  nothing
+"""
+
+
 def escrever(dir_: Path, nome: str, conf: str, confirmado: bool = False) -> None:
     bloco = "  confirmed-by:\n    - engine:tests/x.test.js\n" if confirmado else ""
     (dir_ / nome).write_text(
@@ -89,6 +125,29 @@ def main() -> int:
         if "declare debt in the confirmation: 3" not in saida:
             falhas.append("[Zero] a record with no debt was counted as a debtor")
 
+        # 🎯 A PROPOSAL IS READ WHEREVER ITS `status:` SITS. The census once read only the first 400 characters,
+        # and ADR-0098 to ADR-0101 — long `consulted` lists, `status:` past character 700 — were counted as
+        # decided: four decisions waiting for the Dev, and the line that exists to show them said nothing.
+        consultados = "\n".join(f'    - "consulted source number {i}, long enough to push the status down"'
+                                for i in range(12))
+        proposta = PROPOSTA.format(titulo="ADR-9005", consultados=consultados)
+        if proposta.index("status:") <= 400:
+            falhas.append("[Boundary] the fixture no longer puts `status:` past character 400 — it tests nothing")
+        (vazio / "ADR-9005-proposta-longa.yaml").write_text(proposta, encoding="utf-8")
+        # ⚠️ THE PAIR: prose that LOOKS like a status is not one. Only `metadata.status` decides.
+        (vazio / "ADR-9006-decidido-com-eco.yaml").write_text(
+            DECIDIDO_COM_ECO.format(titulo="ADR-9006"), encoding="utf-8"
+        )
+        cod, saida = correr(vazio)
+        espera = next((l for l in saida.splitlines() if "WAITING FOR A DECISION" in l), "")
+        if "ADR-9005" not in espera:
+            falhas.append("[Boundary] a `proposed` record whose status sits past character 400 was not listed "
+                          "as waiting for a decision")
+        if "ADR-9006" in espera or "(1)" not in espera:
+            falhas.append(f"[Boundary] a decided record was listed as waiting for a decision: {espera.strip()!r}")
+        if cod != 0:
+            falhas.append(f"[Boundary] the census failed (code {cod}); it can never fail")
+
     for f in falhas:
         print(f"FAIL {f}")
     print(f"\ndebt census: {'OK' if not falhas else str(len(falhas)) + ' failure(s)'}")
@@ -106,3 +165,6 @@ if __name__ == "__main__":
 #    worst of all: a wrong path comes to be read as health.
 # 3. `tem_issue or tem_confirmacao` -> only `tem_issue` -> the `confirmed-by` [Boundary] fails. Without it, the
 #    STRONGEST form of trail — the one the validator really opens — would count as absence.
+# 4. 🎯 the status read by a regex over the first 400 characters (the census before it parsed the YAML) -> both
+#    [Boundary] cases on proposals fail: ADR-9005 goes missing from the waiting line, and ADR-9006 enters it
+#    because its prose echoes a status near the top.

@@ -27,6 +27,11 @@ import re
 import sys
 from pathlib import Path
 
+try:
+    import yaml
+except ImportError:
+    yaml = None
+
 RAIZ = Path(sys.argv[1]) if len(sys.argv) > 1 else Path(__file__).resolve().parent.parent / "docs/2-Architecture/adr"
 
 DEVE = re.compile(r"NOT YET BUILT|NOT YET EXECUTED|gates this owes|⬜", re.I)
@@ -50,6 +55,12 @@ def main() -> int:
         print(f"records' debt: DORMANT — no ADR-*.yaml in {RAIZ}")
         print("  ⚠️ this is NOT «zero debts»: it is zero measurements.")
         return 0
+    if yaml is None:
+        # DORMANT for the same reason: without a parser the status of a record cannot be read, and printing
+        # «no proposals» would be a measurement that never happened.
+        print("records' debt: DORMANT — PyYAML is missing (pip install pyyaml)")
+        print("  ⚠️ this is NOT «zero debts»: it is zero measurements.")
+        return 0
 
     devedores, sem_rastro = [], []
     for p in ficheiros:
@@ -66,14 +77,27 @@ def main() -> int:
     # ⏳ AND THE DECISIONS WAITING FOR THE DEV, which are the other way for something to sit still. A `proposed`
     # record owes no gates — there is no decision to owe them — so the counters above do not see it. Without this
     # line, a measured and written proposal sits in the same silence that a closed issue would take it out of.
-    propostas = [
-        p.name for p in ficheiros
-        if re.search(r'^\s*status:\s*"?proposed', p.read_text(encoding="utf-8")[:400], re.M)
-    ]
+    # 📌 The status is READ BY THE PARSER, as `metadata.status`, and not searched for in the text: a record
+    # whose `consulted` list runs long puts `status:` hundreds of characters down (ADR-0098 to ADR-0101 have it
+    # past character 700), and a prefix read skips it without a sound. A record that does not parse is NAMED
+    # rather than counted as «not proposed», because an unread status is not an answer.
+    propostas, ilegiveis = [], []
+    for p in ficheiros:
+        try:
+            doc = yaml.safe_load(p.read_text(encoding="utf-8"))
+        except yaml.YAMLError:
+            ilegiveis.append(p.name)
+            continue
+        meta = doc.get("metadata") if isinstance(doc, dict) else None
+        if isinstance(meta, dict) and meta.get("status") == "proposed":
+            propostas.append(p.name)
 
     print(f"records' debt · {len(ficheiros)} records")
     if propostas:
         print(f"  ⏳ WAITING FOR A DECISION ({len(propostas)}): " + ", ".join(n[:12] for n in propostas))
+    if ilegiveis:
+        print(f"  ⚠️ STATUS UNREADABLE — the record does not parse ({len(ilegiveis)}): "
+              + ", ".join(n[:12] for n in ilegiveis))
     print(f"  declare debt in the confirmation: {len(devedores)}")
     print(f"  🔴 NO TRAIL — neither a named issue nor a `confirmed-by`: {len(sem_rastro)}")
     for n in sem_rastro:
