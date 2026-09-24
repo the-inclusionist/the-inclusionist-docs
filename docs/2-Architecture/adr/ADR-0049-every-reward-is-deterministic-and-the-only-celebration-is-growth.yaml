@@ -5,6 +5,26 @@ metadata:
     - engine:tests/segment-bar.node.test.js
     - engine:tests/no-random-rewards.node.test.js
   errata:
+    - date: 2026-08-28
+      what: "§5 said `the ten-segment bar`, in the SINGULAR, and called it `the child's window onto §5 of
+             ADR-0048` — but ADR-0048 §3, written on the SAME DAY, already decided `ONE TO THREE SKILLS`. One bar
+             cannot be the window onto three skill trees: it would measure the average of two different children.
+             The record was born inconsistent with a decision of the same day, and the Dev's sentence of 28/08
+             (`podem haver uma barra no centro, duas ou três, sempre uma barra por skill`) changed nothing — it
+             said what was already decided. ERRATUM and not supersession, under ADR-0057 §1: a sentence that did
+             not carry a property the decision already had. Applied in the body on 2026-08-28; DECLARED here on
+             2026-09-04."
+    - date: 2026-08-28
+      what: "§1 said `one point per correct QUESTION`, which is NARROWER than what was decided: a point has two
+             sources of equal worth — an academic answer AND a good deed in the world (sorting a recyclable,
+             returning something lost, putting out a fire). The clause never said what the decision was, so
+             correcting it restores the record. Applied in the body on 2026-08-28; DECLARED here on 2026-09-04,
+             under ADR-0057."
+    - date: 2026-09-04
+      what: "§6b (the no-littering sign) and §7 (the tenth coin) were EXTRACTED into ADR-0061 and ADR-0062.
+             Neither of the two is about reward; they were written here on 2026-08-28 because this record was
+             open. Taking them out does not overwrite history: the host never decided them, they were misfiled,
+             and unfiling restores what it actually decided (ADR-0057 §1b)."
     - date: 2026-09-09
       what: >-
         this record had NO `confirmed-by` while two of its clauses were built and gated, so nothing connected
@@ -18,27 +38,6 @@ metadata:
         is not merely discouraged, it is impossible. ⚠️ The clauses about scoring, superpowers-as-level-
         structure and the two celebrations are NOT confirmed by these paths — they are game construction, and
         issue #84's sibling #93 carries them.
-  errata:
-    - date: 2026-08-28
-      what: "§5 said `the ten-segment bar`, in the SINGULAR, and called it `the child's window onto §5 of
-             ADR-0048` — but ADR-0048 §3, written on the SAME DAY, already decided `ONE TO THREE SKILLS`. One bar
-             cannot be the window onto three skill trees: it would measure the average of two different children.
-             The record was born inconsistent with a decision of the same day, and the Dev's sentence of 28/08
-             (`podem haver uma barra no centro, duas ou três, sempre uma barra por skill`) changed nothing — it
-             said what was already decided. ERRATUM and not supersession, under ADR-0057 §1: a sentence that did
-             not carry a property the decision already had. Applied in the body on 2026-08-28; DECLARED here on
-             2026-09-04."
-    - date: 2026-09-04
-      what: "§6b (the no-littering sign) and §7 (the tenth coin) were EXTRACTED into ADR-0061 and ADR-0062.
-             Neither of the two is about reward; they were written here on 2026-08-28 because this record was
-             open. Taking them out does not overwrite history: the host never decided them, they were misfiled,
-             and unfiling restores what it actually decided (ADR-0057 §1b)."
-    - date: 2026-08-28
-      what: "§1 said `one point per correct QUESTION`, which is NARROWER than what was decided: a point has two
-             sources of equal worth — an academic answer AND a good deed in the world (sorting a recyclable,
-             returning something lost, putting out a fire). The clause never said what the decision was, so
-             correcting it restores the record. Applied in the body on 2026-08-28; DECLARED here on 2026-09-04,
-             under ADR-0057."
   superseded-in-part:
     - by: ADR-0059
       what: "§5b, the ADDRESSES only — where the point count, the bars and the coin counter sit on screen.
