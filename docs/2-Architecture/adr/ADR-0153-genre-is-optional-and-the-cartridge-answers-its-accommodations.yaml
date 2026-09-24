@@ -27,7 +27,7 @@ metadata:
     - "ADR-0145 — SUPERSEDED IN PART: §1's «a GENRE declares a partial map» as the unit that answers. The general
        catalogue, and «what has no subject is absent», stand. What changes is WHO answers: the cartridge, always;
        the genre, optionally"
-    - "The accommodation study (`engine:docs/1-Discovery/estudo-acomodacoes-por-genero.md` §0.1–§0.2) and
+    - "The accommodation study (`engine:docs/1-Discovery/study-accommodations-by-genre.md` §0.1–§0.2) and
        `engine:app/js/core/accommodations.ts` — three families: 23 GENERAL, 15 CONTRACT_KEYED, 16 GAME_KEYED. A
        genre answers only 5 of the 16; the other 10 hang on the avatar, the text, the pieces, timing precision
        and repeated input"

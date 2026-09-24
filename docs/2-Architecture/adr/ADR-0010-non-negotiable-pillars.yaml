@@ -70,7 +70,7 @@ decision-outcome:
     link: *pillars
     justification: |
       Adopt the 10 pillars as the constitution. They are the DESTINATION (non-negotiable); the MVP delivers a minimal
-      subset and defers the rest (premortem: `../../research/AVALIACAO-ADVERSARIAL-PREMORTEM.md`). On conflict, the
+      subset and defers the rest (premortem: `../../research/ADVERSARIAL-ASSESSMENT-PREMORTEM.md`). On conflict, the
       **local law of the deployment region wins** (not "strictest wins", which was self-contradictory).
   consequences:
     positive:

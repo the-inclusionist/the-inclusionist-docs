@@ -26,7 +26,7 @@ metadata:
   errata:
     - date: 2026-09-12
       what: "§4's starting classification put NAVIGATION SOUND among the general entries. 📏 The study this
-             record asked for in §3 has been done — `engine:docs/1-Discovery/estudo-acomodacoes-por-genero.md`,
+             record asked for in §3 has been done — `engine:docs/1-Discovery/study-accommodations-by-genre.md`,
              crossing all 35 categories and 380 games of the catalogue — and it measures navigation sound
              (cane, sonar, guide) at **6 of 35 genres · 67 games · 18%**. It is GENRE-BOUND, not general.
              ⚠️ And the reason matters more than the number: blind mode and its cane need a SPATIAL world to
@@ -47,7 +47,7 @@ metadata:
     - date: 2026-09-12
       what: "📏 THE TWO ERRATA ABOVE WERE MEASURED UNDER A KEY THE DEV THEN CORRECTED. The study used the 35
              categories of the catalogue as genres, and they are a production backlog, not a taxonomy
-             (`engine:docs/1-Discovery/estudo-acomodacoes-por-genero.md` §0). Re-keyed with ONE axis per
+             (`engine:docs/1-Discovery/study-accommodations-by-genre.md` §0). Re-keyed with ONE axis per
              accommodation (§0.1, `engine:40179bd`) and cross-checked against the 105 Game Accessibility
              Guidelines (§0.2, `engine:d953caf`), both numbers change, and one conclusion with them.
              · **Navigation sound and blind mode: 78%, not 18%.** The reasoning of the first erratum SURVIVES

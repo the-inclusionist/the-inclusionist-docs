@@ -10,7 +10,7 @@ title: Adopt TypeScript + Vite — supersedes the "no build" preference
 
 context-and-problem-statement: |
   Was REGISTRO §5.11. The project ran as "raw ESM, no build". As it grew to 24 modules + Vitest and modularization
-  started exposing type bugs, was that still right? Detail in ../plano-typescript-vite.md.
+  started exposing type bugs, was that still right? Detail in ../plan-typescript-vite.md.
 
 decision-drivers:
 - Type safety — modularization exposes type bugs that `tsc` would catch.
@@ -55,4 +55,4 @@ decision-outcome:
 
 more-information: |
   Was REGISTRO §5.11. Stage 0 = commit d675b9c. Supersedes the "bundler discarded" note (former §5.8). The mentions of
-  "no build" in the old plano-* docs are historical, overridden by this decision + ../plano-typescript-vite.md.
+  "no build" in the old plano-* docs are historical, overridden by this decision + ../plan-typescript-vite.md.

@@ -12,7 +12,7 @@ metadata:
     - "ADR-0018 — «art = procedural data/code», with outside art only as DESIGN REFERENCE"
     - "ADR-0042 — the City parallax was REDRAWN as generated art rather than reproduced"
     - "docs/LICENSES.md — the three regimes already written down, and the third one is where this lands"
-    - "docs/game-design/plano-arte-procedural.md — the pipeline that turns source art into semantic images"
+    - "docs/game-design/plan-procedural-art.md — the pipeline that turns source art into semantic images"
   informed: []
 
 title: The Liberated Pixel Cup enters as THIRD-PARTY art under CC BY-SA 3.0, in its own quarantine, and never shares an asset with the author's own art
@@ -31,7 +31,7 @@ context-and-problem-statement: |
   art is a THIRD PARTY'S — the Dev's wife holds full patrimonial ownership — and `docs/LICENSES.md` records
   it as «NÃO é FOSS».
 
-  ⚠️ AND THE PIPELINE IS A DERIVATIVE-WORK MACHINE. `plano-arte-procedural` turns source art into a semantic
+  ⚠️ AND THE PIPELINE IS A DERIVATIVE-WORK MACHINE. `plan-procedural-art` turns source art into a semantic
   image (region, luminosity) plus a palette dictionary, for infinite recolour. A semantic image traced from an
   LCP sprite is a derivative of that sprite. So the hazard is not «may we use it» — it is that a pipeline
   which happily mixes sources would produce ONE asset carrying two incompatible regimes, and the copyleft

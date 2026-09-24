@@ -54,7 +54,7 @@ more-information: |
 
     Cat  Artifact                       State    Why / home
     A    GDD                            LIGHT    per-game ONE-SHEET, not a full GDD (200+ games)
-         TDD (technical)                COVERED  engine-level = 2-Architecture + plano-engine
+         TDD (technical)                COVERED  engine-level = 2-Architecture + plan-engine
          One-sheet / pitch              NOW      the practical per-game doc
          Design Macro / Interest Curve  NOW      pacing for LEARNING (where rewards/activities land)
          Beat chart / Level design      NOW      maps WHERE to insert educational activities (Dev's goal)
@@ -63,7 +63,7 @@ more-information: |
          Dialogue tree (Ink/Yarn)       DEFER    narrative minigames; adopt Ink/Yarn as the format then
          Economy / balance spreadsheet  NOW*     DIFFICULTY/fairness tuning only — NOT a virtual economy
          State machine / Behavior tree  NOW      game AI (enemies, NPCs, attract-mode bot)
-         Art bible + asset list         NOW      = DIRETRIZES-VISUAIS + ANIMACOES + plano-arte-procedural (migrate here)
+         Art bible + asset list         NOW      = DIRETRIZES-VISUAIS + ANIMACOES + plan-procedural-art (migrate here)
          Game feel / juice + camera     NOW      already ours (ADR-0018 juice; the juice toggles)
     B    Netcode / replication /        DEFER    the whole real-time stack -> the internet-MP tier (ADR-0008 study)
          determinism / lag-comp

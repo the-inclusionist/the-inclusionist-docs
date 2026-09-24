@@ -11,7 +11,7 @@ title: Research labs (TTS lab et al.) are first-class TS/Vite/DI/tested apps, no
 context-and-problem-statement: |
   The TTS lab (`docs/research/sherpa-lab.html`) grew into a single ~460-line monolith: HTML + CSS + inline vanilla
   JS, no TypeScript, no build, no dependency injection, no ports/adapters, no tests — the opposite of the product
-  standard (ADR-0019: TS + Vite; the modularization discipline in docs/5-Refactoring/plano-modularizacao.md). That was
+  standard (ADR-0019: TS + Vite; the modularization discipline in docs/5-Refactoring/plan-modularization.md). That was
   defensible while `docs/research/` was, per ARCHITECTURE.md, "studies that back decisions" — a throwaway spike whose
   only durable output is the DECISION, with the winning code later graduating into `app/js/**` under full discipline.
   But the Dev states these labs are a PERMANENT, publicly-accessible surface ("uma página à parte do produto principal,
@@ -96,6 +96,6 @@ more-information: |
   Extends ADR-0019 (TypeScript + Vite) to cover research labs. Relates to ADR-0022 (sherpa-onnx-wasm runtime — the
   engine the `SherpaEngine` adapter wraps) and ADR-0002 (light-DOM Web Components / Atomic Design — the UI component
   style the lab's view layer should follow). Migration plan (the staged, tested rounds + the home/topology decision):
-  docs/5-Refactoring/plano-tts-lab-modularizacao.md (to be written once topology is confirmed with the Dev). The Dev
+  docs/5-Refactoring/plan-tts-lab-modularization.md (to be written once topology is confirmed with the Dev). The Dev
   explicitly chose "full standard" over "throwaway spike" and "TS-light" — the anti-over-engineering objection was
   considered and overruled for this artifact because it is permanent and public.

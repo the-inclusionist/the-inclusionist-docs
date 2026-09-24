@@ -93,7 +93,7 @@ metadata:
     - "ADR-0027 — fifteen distinct sprite sizes, so the atlas cannot assume a uniform grid and each sprite
        carries its own pivot. It is why the pivot lives in the file and not in a naming convention"
     - "ADR-0128 — a record has two tempos. The confirmation below declares debt and does not prophesy"
-    - "docs/game-design/plano-arte-procedural.md in the engine — the study this record decides against in
+    - "docs/game-design/plan-procedural-art.md in the engine — the study this record decides against in
        three places, and agrees with everywhere else"
   informed: []
 
@@ -111,10 +111,10 @@ context-and-problem-statement: |
   no semantic format and no tool. So the third door is DESCRIBED AND NOT OPEN, and the Liberated Pixel Cup —
   the largest purpose-built asset set for exactly this kind of game — stays out.
 
-  ⚠️ AND A SECOND DEBT WAITS ON THE SAME WORK. `plano-arte-procedural.md` §11 paused about twenty scenario
+  ⚠️ AND A SECOND DEBT WAITS ON THE SAME WORK. `plan-procedural-art.md` §11 paused about twenty scenario
   themes, «because each theme drawn by hand before this exists is art that step 6 will have to redo».
 
-  A study exists (`plano-arte-procedural.md`, and a working plan written on top of it). It answered WHAT the
+  A study exists (`plan-procedural-art.md`, and a working plan written on top of it). It answered WHAT the
   format should be. It did not answer WHERE the work lives, and the answer it assumed — inside the engine —
   turned out to rest on a single load-bearing assumption that the Dev has now removed.
 
@@ -188,7 +188,7 @@ decision-outcome:
       tilesets. It never draws pixel art; it annotates art that already exists.
 
       ===== 3. WHAT THIS REVOKES, AND IT IS THREE THINGS =====
-      The study in `plano-arte-procedural.md` and the working plan on top of it are kept whole in their
+      The study in `plan-procedural-art.md` and the working plan on top of it are kept whole in their
       diagnosis and their measurement. Three of their conclusions are replaced:
 
         a) **The reader does NOT live in the engine.** The earlier plan put `semantic.ts`, `palettes.ts` and
@@ -305,7 +305,7 @@ decision-outcome:
          groups covering 139 files the worry does not arise, and the boundary holds on this pack without
          needing the LPC to rescue it."
     neutral:
-      - "`plano-arte-procedural.md` keeps its diagnosis, its four sections on palettes and render, and its
+      - "`plan-procedural-art.md` keeps its diagnosis, its four sections on palettes and render, and its
          measurement of the LPC. Only the three conclusions of §3 above are replaced."
       - "`REPOS_CONHECIDOS` in `scripts/validate-adr.py` is `{engine, docs}` and stays that way. It needs the
          new prefix only on the day a `confirmed-by` names this repository."

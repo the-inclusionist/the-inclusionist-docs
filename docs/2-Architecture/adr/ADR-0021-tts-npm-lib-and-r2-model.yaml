@@ -74,7 +74,7 @@ decision-outcome:
     that explicitly — an absent confirmation reads like an oversight, and this one is a decision that was overtaken.
 
 more-information: |
-  Supersedes the 'lazy-CDN' note in tts.ts / docs/plano-tts-fase-f5.md. Fallback chain confirmed: Piper/Kokoro/Kitten =
+  Supersedes the 'lazy-CDN' note in tts.ts / docs/plan-tts-phase-f5.md. Fallback chain confirmed: Piper/Kokoro/Kitten =
   neural (download from HF, cached OPFS); eSpeak NG = embedded (no download); Web Speech = native API. eSpeak + Web Speech
   are the always-available fallbacks. KittenTTS is English-only (no pt-BR/es). Engine comparison for pt/en/es is being
   measured in the TTS lab page (fonemas · letras · sílabas · palavras · frases).

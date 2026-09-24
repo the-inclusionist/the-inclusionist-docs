@@ -143,7 +143,7 @@ metadata:
        a GRANT from the artist rather than a policy the project can adopt"
     - "ADR-0028 — NOT TOUCHED, and the boundary is stated in more-information: the AAC pictogram layer has its
        own rule and its own CC BY-SA sources"
-    - "docs/game-design/plano-arte-procedural.md — the pipeline this record has to keep safe, because it turns
+    - "docs/game-design/plan-procedural-art.md — the pipeline this record has to keep safe, because it turns
        source art into derivative works by construction"
   informed: []
 

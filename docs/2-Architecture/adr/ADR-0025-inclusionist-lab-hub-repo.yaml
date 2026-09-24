@@ -89,4 +89,4 @@ more-information: |
   Amends ADR-0024 (repo topology only): its "tts-lab own repo + submodule + own domain" is replaced by "inclusionist-lab
   hub + subpages"; everything else in ADR-0024 (versioned packages, GitHub Packages `@jrocha-io`, no CDN, scoped
   COOP/COEP) stands. Relates to ADR-0023 (labs are first-class apps). Repos: github.com/jrocha-io/inclusionist-lab (hub),
-  /inclusionist-commons (shared packages), /the-inclusionist (game). Plan: docs/5-Refactoring/plano-tts-lab-modularizacao.md.
+  /inclusionist-commons (shared packages), /the-inclusionist (game). Plan: docs/5-Refactoring/plan-tts-lab-modularization.md.

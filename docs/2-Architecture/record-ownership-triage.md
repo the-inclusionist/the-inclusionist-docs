@@ -61,7 +61,7 @@ Each line is the sentence in the record that settles it.
 
 | record | what it decides | the evidence |
 |---|---|---|
-| **ADR-0016** City scenario & themes | the city level and its themes | «Level-design detail in `../../game-design/plano-cenario-cidade.md`» |
+| **ADR-0016** City scenario & themes | the city level and its themes | «Level-design detail in `../../game-design/plan-city-scenery.md`» |
 | **ADR-0041** The letter grid splits | `core/letter-grid` mechanics vs. screen | same — `core/letter-grid` is the platformer's since ADR-0228 |
 | **ADR-0042** The City parallax is generated art | `render/city-tiles`, `cenarios/cidade/c2..c4.png` | «both City tiles are data in `render/city-tiles.ts`» |
 | **ADR-0061** The no-littering sign bars the CHILD | the recycling activity's rule and its level data | «put a PROIBIDO JOGAR LIXO sign in the platformer level» |

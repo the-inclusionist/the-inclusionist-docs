@@ -239,7 +239,7 @@ decision-outcome:
     red: it covered the DECISION (`botaoDeCorrerEngatado` returns the right answer) and not the WIRING (that
     `physics.ts` asks it). An audit of all five decision modules followed, and THREE had exactly the same hole —
     `correndoAgora`, `pularVaiGrudar` and `botaoDeGrude` were each proved right and never proved CALLED. All three are
-    closed. It is recorded in `docs/3-Sprint-Design/plano-testes.md`, because it is the second time it happened.
+    closed. It is recorded in `docs/3-Sprint-Design/plan-unit-tests-at-extraction.md`, because it is the second time it happened.
 
     ⚠️ WHAT NO TEST OF MINE CAN CONFIRM: whether a child who plays with one finger can actually cling to a wall with a
     contextual jump. Issues #7 (field test with five children) and #8 (target hardware) are where this record is

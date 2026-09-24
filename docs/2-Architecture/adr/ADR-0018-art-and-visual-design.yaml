@@ -41,7 +41,7 @@ decision-outcome:
 more-information: |
   Decisions (was REGISTRO §8):
   - "**Art = procedural data/code** (PixelLab/Magnific only as design reference); pixel-art PNG now → procedural
-    later. [game-design/plano-arte-procedural, research/LICENCAS-GERACAO-IMAGEM]"
+    later. [game-design/plan-procedural-art, research/LICENSES-IMAGE-GENERATION]"
   - "**Flat colours, no outline/shadow/light on characters** (ADHD hypothesis); 320×180 / 16px kept (48×48 cancelled
     — \"too rich a resolution can be a problem for ADHD\"). ⚠️ noted as a hypothesis to validate (no formal study
     cited)."
@@ -52,7 +52,7 @@ more-information: |
     z-index above the game, below pause/dialogs (menus keep legibility); prefers-reduced-transparency disables it.
     [cf07b5a]"
   - "**Contrast enhancement Linear→Quadratic slider** (0=off; start=linear stretch; end=quadratic S-curve), GPU via
-    feComponentTransfer sRGB, global. [PESQUISA-ALTO-CONTRASTE, commit 78995de]"
+    feComponentTransfer sRGB, global. [RESEARCH-HIGH-CONTRAST, commit 78995de]"
   - "**CB-safe palette (optional) = Okabe & Ito 2008**, applied ONLY to players/items/effects — scenery keeps natural
     colours. **Colour-blocking customizable**: 4 roles (hazard/climbable/water/gate) with a picker + restore-default.
     Items in owner colour = an OPTION (default on); off keeps owner-dimming in MP. [commit 51df79c]"

@@ -30,7 +30,7 @@ more-information: |
     permits storing elsewhere (permission of origin AND destination)."
   - "**RN-01 — no open child data**: research data is anonymous-only via a vetted-institution partnership
     (IRB/ethics), never child PII; raw data stays local/in-region (premortem: open child data = brand-killing scandal
-    risk). [research/AVALIACAO-ADVERSARIAL-PREMORTEM]"
+    risk). [research/ADVERSARIAL-ASSESSMENT-PREMORTEM]"
   - "**China \"approvable\" is an engineering GOAL, not a sales claim** (版号/localization are external approval);
     communicate \"approvable\" only with a real local partnership."
   - "⚠️ **ESTUDO PENDENTE**: Finnish/Nordic + Chinese educational policies; item-by-item GAG map;

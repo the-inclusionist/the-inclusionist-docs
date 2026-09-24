@@ -13,7 +13,7 @@ metadata:
   consulted:
     - "L. Constantine and E. Yourdon, «Structured Design» (1979) — coupling is the cost, cohesion the benefit"
     - "D. Parnas (1972) — a module is judged by what it hides"
-    - "`engine:docs/5-Refactoring/plano-modularizacao.md` (2026-07-03) — «maximizar coesão, minimizar acoplamento e
+    - "`engine:docs/5-Refactoring/plan-modularization.md` (2026-07-03) — «maximizar coesão, minimizar acoplamento e
        complexidade»; a PLAN, never a record, and so never validated nor superseded"
     - "ADR-0027 and ADR-0080 — the engine does not know a game; `engine-boundary` gates that one direction"
     - "ADR-0170 — only what a cartridge needs is exported"
@@ -78,5 +78,5 @@ decision-outcome:
     higher one outside the listed debt; the debt list has no entry that no longer exists. The debt list is empty.
 
 more-information: |
-  The plan stays the plan (`engine:docs/5-Refactoring/plano-modularizacao.md`); this record is the rule it argued for,
+  The plan stays the plan (`engine:docs/5-Refactoring/plan-modularization.md`); this record is the rule it argued for,
   measured against the code as it is.

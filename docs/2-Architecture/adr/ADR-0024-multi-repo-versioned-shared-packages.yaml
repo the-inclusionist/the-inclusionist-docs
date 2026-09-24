@@ -89,7 +89,7 @@ decision-outcome:
       `@jrocha-io/tts` if no clean npm build exists); Vite bundles them.
       HEADERS: COOP/COEP live ONLY on the lab deploy (Cloudflare `_headers` on the `labs.` domain) — never on the game.
       This ADR fixes the SHAPE; the staged migration (rounds, tests, expected outputs) is in
-      docs/5-Refactoring/plano-tts-lab-modularizacao.md.
+      docs/5-Refactoring/plan-tts-lab-modularization.md.
   consequences:
     positive:
     - *reuse
@@ -112,4 +112,4 @@ more-information: |
   operations (repo creation, submodule wiring, publish, domain setup) — the AI designs, scaffolds files, and guides.
   Avast/TLS: NODE_OPTIONS=--use-system-ca, UV_NATIVE_TLS=1 for npm install/publish. Cloudflare: never wrangler OAuth
   (Avast blocks it) — use CLOUDFLARE_API_TOKEN or the dashboard. Relates to ADR-0022 (sherpa runtime wrapped by the
-  sherpa adapter) and ADR-0019 (TS + Vite). Plan: docs/5-Refactoring/plano-tts-lab-modularizacao.md.
+  sherpa adapter) and ADR-0019 (TS + Vite). Plan: docs/5-Refactoring/plan-tts-lab-modularization.md.
