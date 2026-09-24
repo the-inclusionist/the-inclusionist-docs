@@ -1,6 +1,13 @@
 ---
 metadata:
   status: "accepted"
+  superseded-in-part:
+    - by: ADR-0232
+      what: >-
+        The definition of fan-out: it counts VALUE imports only, because a type import is a dependence on a contract,
+        erased at build, and state now arrives by injection. And a seventh measure, `statefulEdges` (value imports into a
+        module that holds state), with the same ratchet. The other five measures, the exemptions and the co-change
+        criterion stand.
   confirmed-by:
     - engine:tests/code-health.node.test.js
   date: 2026-09-22
