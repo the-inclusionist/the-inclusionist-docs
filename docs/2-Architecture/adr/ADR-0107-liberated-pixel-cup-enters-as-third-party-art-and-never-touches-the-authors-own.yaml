@@ -37,8 +37,8 @@ context-and-problem-statement: |
   which happily mixes sources would produce ONE asset carrying two incompatible regimes, and the copyleft
   would reach the combined work.
 
-  That is not a licensing inconvenience. It would decide, on the author's behalf and without asking her, that
-  her non-FOSS art becomes share-alike. Pillar 10 exists precisely to keep that decision hers.
+  That is not a licensing inconvenience. It would decide, on the author's behalf and without asking them, that
+  their non-FOSS art becomes share-alike. Pillar 10 exists precisely to keep that decision theirs.
 
 decision-drivers:
   - "⚠️ The author's ownership is not the project's to spend. Pillar 10 is a statement of FACT, not a policy
@@ -88,7 +88,7 @@ pros-and-cons-of-the-options:
   A4:
     good: ["Fastest to start."]
     bad:
-      - "⚠️ It converts the author's art into share-alike by accident, through a pipeline, without her being
+      - "⚠️ It converts the author's art into share-alike by accident, through a pipeline, without the author being
          asked. This option is listed so that its refusal is on the record, not because it was close."
 
 decision-outcome:
@@ -115,7 +115,7 @@ decision-outcome:
           author's own art;
         · a game either uses the author's art or LCP art for a given asset — never a blend of the two.
 
-      The reason is one sentence: mixing would license HER art share-alike, and that is not the project's
+      The reason is one sentence: mixing would license THE AUTHOR'S art share-alike, and that is not the project's
       decision to make. CC BY-SA 3.0 and the GPL family are also mutually incompatible, so the quarantine is
       simultaneously what keeps the code regime clean.
 
@@ -134,7 +134,7 @@ decision-outcome:
          the requerimento's own argument about not rebuilding what already exists under a free licence."
       - "The three regimes of `LICENSES.md` gain their first real second-party case, and the file stops being
          theoretical."
-      - "⚠️ The author's ownership is left exactly where pillar 10 put it: with her."
+      - "⚠️ The author's ownership is left exactly where pillar 10 put it: with the author."
     bad:
       - "⚠️ Two incompatible copylefts now live in one repository, and every asset has to know which one it is
          under. That is a permanent tax on the art pipeline, paid per asset."
@@ -174,7 +174,7 @@ more-information: |
   · WHICH assets are taken, and for which games. That is art direction, and it belongs with the person who
     owns the art direction.
   · Whether the author's own art is retired in favour of the LCP anywhere. It is not — this record adds a
-    source, it does not replace one, and replacing one would be hers to decide.
+    source, it does not replace one, and replacing one would be the author's to decide.
   · How the 32×32 LCP grid meets the 320×180 logical canvas of pillar 5. It is a per-game art question.
   · Whether the LCP's own DERIVATIVE assets (the repository separates original from derivative, with
     different author files) carry additional attribution chains that need reading before use. They probably
@@ -182,4 +182,4 @@ more-information: |
 
   ⚠️ AND ONE THING WORTH SAYING PLAINLY: the reason this record is long is not the licence. It is that the
   project's art belongs to someone who is not in this repository, and a pipeline that mixes sources would
-  spend her rights without asking. Everything above is downstream of that.
+  spend their rights without asking. Everything above is downstream of that.
