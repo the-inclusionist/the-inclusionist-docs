@@ -1,6 +1,22 @@
 ---
 metadata:
   status: "accepted"
+  confirmed-by:
+    - engine:tests/member-renames-leave-nothing-behind.node.test.js
+    - engine:tests/portuguese-stays-out.node.test.js
+    - engine:tests/superficie-publica.node.test.js
+  errata:
+    - date: 2026-09-24
+      what: >-
+        §3 NAMED FOUR CLASSES OUT, AND THE WORK FOUND TWO MORE — both kept for a reason of the same family (renaming one side
+        breaks a handoff this record does not own). (1) A member that IS a markup attribute: `render/viz-axes-labels
+        buttonChoice` reads `eixo`/`valor` from a DOM `dataset`, i.e. the `data-eixo`/`data-valor` the visual-modes markup
+        writes and the panel queries. (2) A member that shares its shape with a type this phase does not touch:
+        `ui/hud-bands HudBar { segmentos, cor }` is the same shape as `educational/segment-bar Bar` on purpose (ADR-0168), and
+        `educational` stays in pt-BR (ADR-0032); the first run renamed it and it was renamed back through the language
+        service when the still-declared list showed `Bar` beside it. The debug console handle `window.__sonda` is kept as a
+        name typed by hand. Every exclusion and every per-file data key is written with its reason in
+        `engine:scripts/member-rename-map.json`, and the gate holds the exclusions as a set.
   date: 2026-09-24
   decision-makers: [Dev]
   consulted:
@@ -95,10 +111,22 @@ decision-outcome:
       - "A consumer that builds options without types learns of a renamed key only by reading the table"
 
   confirmation: |
-    ⏳ NOT YET BUILT — the debt is issue #206. It is confirmed when: the member map exists and every layer landed green on
-    `tsc`, both suites, `build` and `build:pkg`; the gate of point 4 is red by mutation (an old name left in a test file) and
-    green after; the note's table is printed from the map; and the language gate reports `membro` at the count of the
-    excluded list and nothing more.
+    ✅ DONE on 2026-09-24, in six layers and ten engine commits (`b3f507d5` core · `4a0a2707` the gate's word list ·
+    `ee09d32b` platform · `6eaa27ce` the `--declared` list · `a62cc21f` input · `f092a152` render · `15a452a9` ui ·
+    `28f1499a` boot, which closes #206). 📏 **331 map entries; Portuguese member declarations 342 → 11, and the eleven are
+    exactly the exclusions**, held as a SET by the gate, not as a count. Every layer landed green on `tsc`, both suites and
+    `build:pkg`; ⚠️ the page `build` was run once, at the end, not per layer — it is green, and the built quiz boots with the
+    renamed contract (its `accommodations`, its bar, its pause card by the Menu button), checked with the service worker
+    killed. The notes' tables (CI–CN) are printed from the map.
+    🔴 What the work taught, and it is the part worth reading: the language service follows a member through its TYPE, and
+    FIVE shapes escaped it, each found by a different net — untyped objects in `.js` tests (the suites), a typed
+    OPTIONAL mirror (`ui/voice-settings`' view of the voice engine: `tsc` clean, the panel saw no voices — only a browser
+    test), a ctx built as a VARIABLE and passed later (`tsc`), a member written as a STRING (`Pick<…, 'x'>`, `'x' in o`),
+    and source-reading gates anchored on the old spelling. The gate of point 4 ended probed 10 of 10 (seven leftover forms
+    red, a union value and a `t()` params key green) and the end-state case 4 of 4. ⚠️ Its declared limit stands: a spelling
+    another type still declares is not policed — `tema`/`correcao` never will be, because the excluded `VisualState`
+    declares them — and there the suites are the net.
+    📌 NOT confirmed, by the Dev's decision (ADR-0219 erratum): that the seven games compile. They receive the tables.
 
 more-information: |
   📌 WHY THE TESTS ARE IN THE TOOL'S REACH AND NOT ONLY `app/js`: they are the consumers this repository can see, and they
