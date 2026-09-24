@@ -30,16 +30,16 @@ jobs:
         with:
           python-version: '3.x'
 
-      # A única dependência do validador. Sem ela ele sai com uma mensagem própria em vez de um traceback.
+      # The validator's only dependency. Without it, it exits with a message of its own instead of a traceback.
       - run: pip install pyyaml
 
-      # ⚠️ SEM CANO. O código de saída é o gate, e um `| tail` esconde-o — lição paga neste projecto mais de
-      # uma vez: «N passed» convive com saída não-zero.
+      # ⚠️ NO PIPE. The exit code is the gate, and a `| tail` hides it — a lesson paid for in this project more
+      # than once: «N passed» coexists with a non-zero exit.
       - name: validate the records
         run: python scripts/validate-adr.py docs/2-Architecture/adr --repo docs=.
 
-      # 🎯 O GATE DO GATE (ADR-0123 §3): que o validador DIGA o que não conferiu. Sem esta linha, apagar
-      # aquele aviso deixa-o a imprimir «tudo são» sem ter aberto um artefacto, e nada reprova.
+      # 🎯 THE GATE OF THE GATE (ADR-0123 §3): that the validator SAYS what it did not check. Without this line,
+      # deleting that notice leaves it printing «tudo são» without having opened a single artefact, and nothing fails.
       - name: the validator says what it did NOT check
         run: python scripts/test-validate-adr.py
 
@@ -49,7 +49,7 @@ jobs:
       - name: the debt census stays alive
         run: python scripts/test-divida-dos-registos.py
 
-      # RELATORIO e nao gate: nunca reprova (ADR-0126). Corre aqui para o numero aparecer sozinho em
-      # vez de so quando alguem desconfia — que foi como os doze devedores foram descobertos.
+      # A REPORT, not a gate: it never fails (ADR-0126). It runs here so the number shows up on its own instead
+      # of only when someone gets suspicious — which is how the twelve debtors were found.
       - name: how many records owe work nobody can find
         run: python scripts/divida-dos-registos.py
