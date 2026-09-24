@@ -1,12 +1,12 @@
 metadata:
   status: "accepted"
   supersedes: [ADR-0034]
-  # ⚠️ O QUE CONFIRMA ESTE REGISTO HOJE. A `confirmation` cita `tests/progress.node.test.js`, que saiu em
-  # `809bc01` — o commit que ABOLIU o save. A prosa fica, e estava certa no dia: o gate não se perdeu, o que
-  # ele guardava é que deixou de existir. O que resta a afirmar são as DUAS metades desta decisão, e cada uma
-  # tem o seu ficheiro: que nada guarda o desempenho de uma criança (um CRIVO de inventário, porque uma
-  # ausência não se prova procurando a palavra), e que a única senha que existe é copiável à mão sem que um
-  # erro de cópia leve a criança para outra sala (verificação EXAUSTIVA sobre os dois erros de cópia).
+  # ⚠️ WHAT CONFIRMS THIS RECORD TODAY. The `confirmation` cites `tests/progress.node.test.js`, which left in
+  # `809bc01` — the commit that ABOLISHED the save. The prose stays, and it was right on the day: the gate was not
+  # lost, what it guarded is what stopped existing. What remains to assert are the TWO halves of this decision, and
+  # each has its own file: that nothing stores a child's performance (an inventory SIEVE, because an absence is not
+  # proved by searching for the word), and that the only password that exists can be copied by hand without a
+  # copying error taking the child to another room (EXHAUSTIVE check over the two copying errors).
   confirmed-by:
     - engine:tests/no-stored-history.node.test.js
     - game-platformer:tests/password.node.test.js
@@ -113,11 +113,12 @@ decision-outcome:
       discover in three months. It stays because the room screen will need it and because deleting it would
       mean rewriting a proof that is already green — not because anything uses it today.
 
-      ✅ CONFIRMADO E CONSTRUÍDO 2026-08-27 (ADR-0048): a segunda tela da jornada É esta frase virada tela — o
-      adulto entra, e a criança escolhe o próprio avatar na lista da turma como quem escolhe personagem de jogo de
-      luta. O que mudou desde este registro é que a PROGRESSÃO passou a existir e a ser guardada — pelo Bússola
-      Escolar, sob as credenciais do adulto, com ponta a ponta, e com uma opção de apontar para um IP na rede local
-      para que nada trafegue pela internet. O Inclusionista continua sem guardar nada. Esta cláusula não afrouxou.
+      ✅ CONFIRMED AND BUILT 2026-08-27 (ADR-0048): the second screen of the journey IS this sentence turned into a
+      screen — the adult enters, and the child picks their own avatar from the class list the way one picks a
+      fighting-game character. What changed since this record is that PROGRESSION came to exist and to be stored —
+      by Bússola Escolar, under the adult's credentials, end to end, and with an option to point at an IP on the
+      local network so that nothing travels over the internet. The Inclusionist still stores nothing. This clause did
+      not loosen.
 
       THE PRIVACY POSITION, stated so it is not softened later: the Inclusionist stores NOTHING about a child.
       Not a name, not a nickname, not a hash of a name. The roster is Bússola Escolar's, the identity is an

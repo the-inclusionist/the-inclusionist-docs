@@ -104,7 +104,7 @@ decision-outcome:
   confirmation: |
     `@jrocha-io/tts` (+ audio/logging/model-fetch) published and installable from GitHub Packages; the `tts-lab` repo
     builds against them and deploys to `labs.<domain>`; the game build/deploy is unchanged (no COOP/COEP, no lab code);
-    and `@jrocha-io/tts` is later a dependency of the game's `tts.ts`. NOT done until José's passing test each stage.
+    and `@jrocha-io/tts` is later a dependency of the game's `tts.ts`. NOT done until the Dev's passing test each stage.
 
 more-information: |
   Resolves the topology left open by ADR-0023. Registry = GitHub Packages (scope `@jrocha-io`, matching the repo owner).

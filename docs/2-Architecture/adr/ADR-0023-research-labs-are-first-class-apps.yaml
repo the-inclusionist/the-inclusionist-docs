@@ -90,7 +90,7 @@ decision-outcome:
   confirmation: |
     `npm run build` emits the lab as a routed page; `npx vitest run` passes the lab's node + browser tests; the three
     sections behave as the retired monolith did; and the winning engine adapter is later reused (not rewritten) inside
-    the game's tts.ts. NOT done until José's passing test at each stage.
+    the game's tts.ts. NOT done until the Dev's passing test at each stage.
 
 more-information: |
   Extends ADR-0019 (TypeScript + Vite) to cover research labs. Relates to ADR-0022 (sherpa-onnx-wasm runtime — the

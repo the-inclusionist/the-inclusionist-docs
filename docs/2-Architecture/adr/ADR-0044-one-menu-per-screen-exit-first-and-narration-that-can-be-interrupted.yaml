@@ -3,12 +3,12 @@ metadata:
   date: 2026-08-26
   superseded-in-part:
     - by: ADR-0095
-      what: "O §6 SÓ NO PONTO DO NÚMERO ÚNICO: `44 px` deixa de ser a régua inteira e passa a ser o degrau de
-             cima dela. O alvo é agora função da ALTURA DO VIEWPORT — 24 px (WCAG 2.5.8, AA) abaixo de 540,
-             34 px a partir de 540, 44 px (WCAG 2.5.5, AAA) a partir de 720. ⚠️ Tudo o mais do §6 FICA: a
-             lista de uma coluna, a centragem, a largura maior, e a defesa do 44 pela faixa da mão de criança
-             — que continua a valer, e é exatamente o que se paga em 360. A revisão nasceu de um custo que o
-             GATE deste registro tinha medido e deixado por decidir: a 640×360 os sete itens não cabem."
+      what: "§6 ONLY ON THE POINT OF THE SINGLE NUMBER: `44 px` stops being the whole ruler and becomes its top
+             step. The target is now a function of the VIEWPORT HEIGHT — 24 px (WCAG 2.5.8, AA) below 540,
+             34 px from 540, 44 px (WCAG 2.5.5, AAA) from 720. ⚠️ Everything else in §6 STAYS: the one-column
+             list, the centring, the greater width, and the defence of 44 by the range of a child's hand — which
+             still holds, and is exactly what is paid at 360. The revision was born from a cost that this
+             record's GATE had measured and left undecided: at 640×360 the seven items do not fit."
   decision-makers: [Dev]
   consulted:
     - "Xbox Accessibility Guideline 106 (screen narration) — https://learn.microsoft.com/en-us/gaming/accessibility/xbox-accessibility-guidelines/106"

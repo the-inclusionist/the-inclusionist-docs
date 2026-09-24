@@ -38,8 +38,8 @@ metadata:
     - "ADR-0057 (a record changes by supersession) — the mechanism, and §1c (a citation must pin what does
        not move)"
     - "ADR-0064 + docs/LICENSES.md — what a repository must carry from its first commit"
-    - "requerimento, pedido `a` — o termo lista artefatos com tamanho e hash, e é a razão do §4"
-    - "requerimento, pedido `p` — o ato identifica repositório, versão e hash de CADA sistema"
+    - "requerimento, pedido `a` — the term lists artefacts with size and hash, and it is the reason for §4"
+    - "requerimento, pedido `p` — the act identifies repository, version and hash of EACH system"
   informed: []
 
 title: A repository is created when its address is declared — and it is born carrying a README that says it is empty

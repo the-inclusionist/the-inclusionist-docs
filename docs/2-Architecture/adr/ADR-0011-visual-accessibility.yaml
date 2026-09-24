@@ -1,6 +1,6 @@
 ---
 metadata:
-  shape: bundle          # consolidacao do REGISTRO-DE-DECISOES; ver README
+  shape: bundle          # consolidation of the REGISTRO-DE-DECISOES; see README
   status: "accepted"
   superseded-in-part:
     - by: ADR-0075
@@ -64,7 +64,7 @@ more-information: |
     rendering is the industry practice (PlayStation 1st-party, Saints Row 2022). [RESEARCH-HIGH-CONTRAST]"
   - "**3 contrast levels: 3:1 (default) / 4.5:1 / 7:1** — 3:1 chosen (\"7:1 turns everything yellow/black/white,
     unpleasant\"); anchored on WCAG 1.4.11 (3:1 non-text) and 1.4.6 (7:1 AAA text). [commit e1e1f56]
-    ⚠️ **EMENDADO 2026-08-27 — O MENU NÃO SEGUE ESSE PADRÃO.** The Dev: \"menus inicial e de pause deveriam ser
+    ⚠️ **AMENDED 2026-08-27 — THE MENU DOES NOT FOLLOW THAT DEFAULT.** The Dev: \"menus inicial e de pause deveriam ser
     7:1 desde o início, para facilitar a vida das pessoas com deficiência, que precisam ajustar rapidamente os
     controles para si.\" The reasoning that picked 3:1 is about the WORLD, where 7:1 flattens pixel art into
     yellow/black/white — and it does not transfer to a text menu, which has no art to flatten. And the menu is

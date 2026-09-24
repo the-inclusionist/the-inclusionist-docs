@@ -65,13 +65,14 @@ decision-outcome:
     school-local server, no child data leaving the school network. Internet tier: blocked until a security study + ADR.
 
 more-information: |
-  ⚠️ EMENDA 2026-08-27 — OS QUATRO JOGADORES SÃO SÓ NO COMPUTADOR. O requerimento (Anexo VII §1) declara o uso
-  simultâneo por até quatro crianças como "recurso restrito ao computador, NÃO disponível em telefone celular ou
-  tablet", e o Dev confirmou. Nenhum registro daqui carregava a restrição de DISPOSITIVO — só o número.
+  ⚠️ AMENDMENT 2026-08-27 — THE FOUR PLAYERS ARE ON THE COMPUTER ONLY. The requirements document (Annex VII §1)
+  declares simultaneous use by up to four children a "recurso restrito ao computador, NÃO disponível em telefone
+  celular ou tablet" (a feature restricted to the computer, not available on phone or tablet), and the Dev confirmed
+  it. No record here carried the DEVICE restriction — only the number.
 
-  Escrito porque a ausência disto tem um custo concreto: quem encontrar o multiplayer sem funcionar num tablet vai
-  tratá-lo como defeito e "consertar". Não é defeito. Quatro viewports num tablet dariam a cada criança um quarto
-  de uma tela pequena, que é o oposto do que o pilar de telas separadas existe para garantir.
+  Written because its absence has a concrete cost: whoever finds multiplayer not working on a tablet will treat it
+  as a defect and "fix" it. It is not a defect. Four viewports on a tablet would give each child a quarter of a
+  small screen, which is the opposite of what the separate-screens pillar exists to guarantee.
 
   From the Dev (2026-07-05). Supersedes the player-count question in ADR-0006. Refines pillar 7 (separate-screen MP)
   and pillar 9 (LAN + store-and-forward). The internet-MP security study is

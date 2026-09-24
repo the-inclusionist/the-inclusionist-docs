@@ -20,18 +20,19 @@ metadata:
         issue #84's sibling #93 carries them.
   errata:
     - date: 2026-08-28
-      what: "§5 dizia `a barra de dez segmentos`, no SINGULAR, e chamava-a `the child's window onto §5 of
-             ADR-0048` — mas o ADR-0048 §3, escrito no MESMO DIA, já decidia `ONE TO THREE SKILLS`. Uma barra
-             não pode ser a janela para três árvores de skill: mediria a média de duas crianças diferentes.
-             O registro nasceu incoerente com uma decisão do mesmo dia, e a frase de 28/08 do Dev (`podem haver
-             uma barra no centro, duas ou três, sempre uma barra por skill`) não mudou nada — disse o que já
-             estava decidido. ERRATA e não supersessão, pelo ADR-0057 §1: uma frase que não carregou uma
-             propriedade que a decisão já tinha. Aplicada no corpo em 2026-08-28; DECLARADA aqui em 2026-09-04."
+      what: "§5 said `the ten-segment bar`, in the SINGULAR, and called it `the child's window onto §5 of
+             ADR-0048` — but ADR-0048 §3, written on the SAME DAY, already decided `ONE TO THREE SKILLS`. One bar
+             cannot be the window onto three skill trees: it would measure the average of two different children.
+             The record was born inconsistent with a decision of the same day, and the Dev's sentence of 28/08
+             (`podem haver uma barra no centro, duas ou três, sempre uma barra por skill`) changed nothing — it
+             said what was already decided. ERRATUM and not supersession, under ADR-0057 §1: a sentence that did
+             not carry a property the decision already had. Applied in the body on 2026-08-28; DECLARED here on
+             2026-09-04."
     - date: 2026-09-04
-      what: "§6b (a placa de proibido) e §7 (a décima moeda) foram EXTRAÍDAS para os ADR-0061 e ADR-0062. Nenhuma
-             das duas é sobre recompensa; foram escritas aqui em 2026-08-28 porque este registro estava aberto.
-             Tirá-las não sobrescreve história: o hospedeiro nunca as decidiu, estavam mal arquivadas, e
-             desarquivar restaura o que ele de fato decidiu (ADR-0057 §1b)."
+      what: "§6b (the no-littering sign) and §7 (the tenth coin) were EXTRACTED into ADR-0061 and ADR-0062.
+             Neither of the two is about reward; they were written here on 2026-08-28 because this record was
+             open. Taking them out does not overwrite history: the host never decided them, they were misfiled,
+             and unfiling restores what it actually decided (ADR-0057 §1b)."
     - date: 2026-08-28
       what: "§1 said `one point per correct QUESTION`, which is NARROWER than what was decided: a point has two
              sources of equal worth — an academic answer AND a good deed in the world (sorting a recyclable,
@@ -61,8 +62,9 @@ metadata:
     - "requerimento §49.a and §49.g — the named forbidden mechanics, with their legal basis"
     - "CLARK, L.; ZACK, M. Engineered highs: reward variability and frequency as potential prerequisites of
        behavioural addiction. Addictive Behaviors, v. 140, 107626, 2023. DOI 10.1016/j.addbeh.2023.107626 —
-       https://pubmed.ncbi.nlm.nih.gov/36701907/  ⚠️ é REVISÃO, e é ela que reporta o achado de neuroimagem;
-       o estudo primário não foi lido por mim, e a afirmação no requerimento é atribuída à revisão"
+       https://pubmed.ncbi.nlm.nih.gov/36701907/  ⚠️ it is a REVIEW, and it is the review that reports the
+       neuroimaging finding; the primary study was not read by me, and the claim in the requerimento is
+       attributed to the review"
     - "Marx, Hacker, Yu, Cortese & Sonuga-Barke (2021), meta-analysis of delay aversion in ADHD — https://journals.sagepub.com/doi/abs/10.1177/1087054718772138"
     - "Reward feedback in serious games for children with attention deficits, JMIR Serious Games 2025 — https://games.jmir.org/2025/1/e67338/"
     - "Overjustification effect — https://en.wikipedia.org/wiki/Overjustification_effect"
@@ -255,21 +257,21 @@ decision-outcome:
       answer arrives when there is **no learning left to protect** — after the attempt, never in place of it. The
       requerimento's §49.e gains the same distinction, because as written it does not carry it.
 
-      ===== 6b e 7 — EXTRAÍDAS (2026-09-04) =====
-      Duas cláusulas decididas em 2026-08-28 foram escritas aqui porque este registro estava aberto naquele dia,
-      e nenhuma das duas é sobre RECOMPENSA. Saíram para registros próprios, na forma do ADR-0057 §1b — um
-      registro aceito não cresce, e cláusula sobre coisa que o hospedeiro nunca decidiu estava MAL ARQUIVADA.
+      ===== 6b AND 7 — EXTRACTED (2026-09-04) =====
+      Two clauses decided on 2026-08-28 were written here because this record was open that day, and neither of
+      the two is about REWARD. They left for records of their own, in the form of ADR-0057 §1b — an accepted record
+      does not grow, and a clause about something the host never decided was MISFILED.
 
-        · **§6b, a placa de PROIBIDO JOGAR LIXO** → **ADR-0061**. Uma placa que impede uma criança de andar
-          adiante não é recompensa. O que fica aqui, e é do §1, é a razão de a placa nunca PUNIR: "a criança não
+        · **§6b, the NO-LITTERING sign** → **ADR-0061**. A sign that stops a child from walking on is not a
+          reward. What stays here, and belongs to §1, is the reason the sign never PUNISHES: "a criança não
           pode escolher ter um comportamento ruim, visto que a perda de pontos ainda é vista como recompensa
           para crianças que estão procurando fazer uma má ação".
 
-        · **§7, o que a décima moeda faz** → **ADR-0062**. É o ciclo de vida da RODADA, e o próprio cabeçalho
-          anunciava a mistura com um "and": "CLOSE A LAP, AND A LAP COSTS NOTHING". ⚠️ E a metade que PARECIA
-          recompensa não decidia nada: "a volta não custa nada" DECORRE do §1 (os pontos zeram no fim do DIA,
-          não da volta) e do §5 (só questão acadêmica pinta segmento). Cláusula que deriva não é cláusula que
-          decide, e por isso nada precisou ficar para trás.
+        · **§7, what the tenth coin does** → **ADR-0062**. It is the ROUND's life cycle, and the heading itself
+          announced the mix with an "and": "CLOSE A LAP, AND A LAP COSTS NOTHING". ⚠️ And the half that SEEMED
+          to be reward decided nothing: "a lap costs nothing" FOLLOWS from §1 (points reset at the end of the DAY,
+          not of the lap) and from §5 (only an academic question paints a segment). A clause that derives is not a
+          clause that decides, and that is why nothing needed to stay behind.
 
   consequences:
     positive:

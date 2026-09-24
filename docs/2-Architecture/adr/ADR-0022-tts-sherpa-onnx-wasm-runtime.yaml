@@ -161,7 +161,7 @@ more-information: |
   (eSpeak/Web Speech cover the download gap); **keep** eSpeak + Web Speech as fallbacks; **tiered by hardware** (baseline
   VITS/Piper for weak machines, Kokoro multi-lang opt-in for better ones). Still open: how the WASM + espeak-ng-data ship
   in Vite/`dist` and are cached for PWA/offline. **NOT YET VALIDATED by a passing user test** — even eSpeak is still
-  unconfirmed in the browser lab; nothing here is "done" until José tests it. Plan: docs/research/tts-sherpa-onnx-plan.md.
+  unconfirmed in the browser lab; nothing here is "done" until the Dev tests it. Plan: docs/research/tts-sherpa-onnx-plan.md.
   VITS/Piper models: k2-fsa/sherpa-onnx releases (tag tts-models). Kokoro multi-lang: kokoro-multi-lang-v1_0.onnx (~340 MB)
   + voices.bin + tokens.txt + dataDir (sherpa config `kokoro:{model,voices,tokens,dataDir}`, voice `pb_dora`/`pb_alex`).
   Why ONNX and not NCNN (sherpa-ncnn also does vits-piper TTS + WASM): docs/research/tts-ncnn-vs-onnx.md — ONNX wins on

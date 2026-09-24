@@ -1,6 +1,6 @@
 ---
 metadata:
-  shape: bundle          # consolidacao do REGISTRO-DE-DECISOES; ver README
+  shape: bundle          # consolidation of the REGISTRO-DE-DECISOES; see README
   status: "accepted"
   date: 2026-07-04
   decision-makers: [Dev]

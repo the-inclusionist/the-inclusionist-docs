@@ -9,9 +9,9 @@ metadata:
     - "ADR-0066 §3 — private until the ato. This record decides an ADDRESS, not a publication"
     - "ADR-0010 pillar 8 (offline PWA) and pillar 1 (school hardware) — why the origin is not cosmetic"
     - "ADR-0058 — the systems run on the Município's own servers; this record does not touch that"
-    - "requerimento, §49.e — dados em território nacional e sob controle do Município"
-    - "requerimento, Quadro 1 — hospedagem absorvida pelo orçamento corrente de TI, no servidor municipal"
-    - "requerimento, pedido `e` — a publicação é ato do Poder Executivo, pedida e ainda não concedida"
+    - "requerimento, §49.e — data in national territory and under the Município's control"
+    - "requerimento, Quadro 1 — hosting absorbed by the current IT budget, on the municipal server"
+    - "requerimento, pedido `e` — publication is an act of the Executive Branch, requested and not yet granted"
   informed: []
 
 title: The interim public address is a subdomain of the Dev's own domain — and the thing it costs is the ORIGIN

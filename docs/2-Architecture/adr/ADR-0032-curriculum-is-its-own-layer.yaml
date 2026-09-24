@@ -2,7 +2,7 @@ metadata:
   status: "accepted"
   date: 2026-08-25
   decision-makers: [Dev]
-  consulted: [ADR-0004 (Discovery é software, pedagogia é educational/), ADR-0010 pillar 3,
+  consulted: [ADR-0004 (Discovery is software, pedagogy is educational/), ADR-0010 pillar 3,
               ADR-0027 (the engine/game boundary), ADR-0030 (the axis is a declared contract),
               "the measurement in GitLab issue #68"]
   informed: []

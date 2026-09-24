@@ -1,9 +1,9 @@
 metadata:
   status: "accepted"
-  # ⚠️ CONSTRUÍDO EM 2026-09-07 (issue #95). A `confirmation` lá em baixo fecha com «NOT YET BUILT» e FICA
-  # ASSIM: era verdade no dia em que foi escrita, e reescrevê-la não seria errata (o autor, com os factos
-  # daquele dia, teria escrito o mesmo) nem supersessão (a decisão não mudou). É uma linha de ESTADO que
-  # envelheceu, e esta chave é a forma que o ADR-0057 não tinha. A prosa é história; isto é o facto de hoje.
+  # ⚠️ BUILT ON 2026-09-07 (issue #95). The `confirmation` down below closes with «NOT YET BUILT» and STAYS
+  # THAT WAY: it was true on the day it was written, and rewriting it would be neither erratum (the author, with
+  # that day's facts, would have written the same) nor supersession (the decision did not change). It is a STATUS
+  # line that aged, and this key is the form ADR-0057 did not have. The prose is history; this is today's fact.
   confirmed-by:
     - engine:scripts/check-annual-report.mjs
     - engine:tests/annual-report.node.test.js

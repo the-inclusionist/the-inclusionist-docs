@@ -111,71 +111,72 @@ decision-outcome:
     - "One-time large mechanical rewiring with visual-regression risk the sandbox can't verify → Dev eyeballs post-build."
 
   amendment-2026-08-26: |
-    ⚠️ TRÊS AFIRMAÇÕES DESTE REGISTRO NÃO SE SUSTENTAM NA IMPLEMENTAÇÃO. Medidas no navegador em 2026-08-26,
-    com o build `main-C-6FZO5r.js`. Ficam aqui com o texto original intacto acima — um registro que se corrige
-    escondendo o que dizia antes não ensina nada.
+    ⚠️ THREE CLAIMS OF THIS RECORD DO NOT HOLD IN THE IMPLEMENTATION. Measured in the browser on 2026-08-26,
+    with the build `main-C-6FZO5r.js`. They stay here with the original text intact above — a record that corrects
+    itself by hiding what it used to say teaches nothing.
 
-    ===== 1. "OS FILTROS COBREM TUDO (jogo + HUD + menus)" É FALSO, E É UM DEFEITO NO AR =====
-    É o driver de a11y deste ADR, e o motivo declarado de A11Y_CORRECTION vir depois do CRT. Medição, com a
-    correção de daltonismo `fix-deuter` ativa:
+    ===== 1. "THE FILTERS COVER EVERYTHING (game + HUD + menus)" IS FALSE, AND IT IS A LIVE DEFECT =====
+    It is this ADR's a11y driver, and the declared reason A11Y_CORRECTION comes after the CRT. Measurement, with
+    the colour-blindness correction `fix-deuter` active:
 
-      · a CANVAS carrega `filter: url(#cvd-fix-deuter)`  → cadeia de filtros: [CANVAS]
-      · o MENU (`.screen-pause`, DOM irmão dentro de `#game-region`) → cadeia de filtros: []
+      · the CANVAS carries `filter: url(#cvd-fix-deuter)`  → filter chain: [CANVAS]
+      · the MENU (`.screen-pause`, sibling DOM inside `#game-region`) → filter chain: []
 
-    A criança daltônica recebe o JOGO corrigido e os MENUS crus. E o menu é onde estão as palavras — inclusive
-    as dos próprios ajustes de acessibilidade. Nenhuma classe de `body` compensa isso: `document.body.classList`
-    está VAZIA nesse estado, e a única regra de CSS que reage a modo (`body.blind-mode … {visibility:hidden}`)
-    esconde HUD, não filtra.
+    The colour-blind child receives the GAME corrected and the MENUS raw. And the menu is where the words are —
+    including those of the accessibility settings themselves. No `body` class makes up for it:
+    `document.body.classList` is EMPTY in that state, and the only CSS rule that reacts to a mode
+    (`body.blind-mode … {visibility:hidden}`) hides the HUD, it does not filter.
 
-    A CAUSA é de mecanismo, não de esquecimento: metade do quadro é canvas e metade é DOM, e **um filtro do
-    PIXI não alcança DOM**. Este registro assumiu "uma CADEIA de passes sobre o frame JÁ COMPOSTO" como se
-    existisse um frame composto único. Não existe.
+    THE CAUSE is one of mechanism, not of forgetting: half the frame is canvas and half is DOM, and **a PIXI
+    filter does not reach the DOM**. This record assumed "a CHAIN of passes over the ALREADY COMPOSED frame" as if
+    a single composed frame existed. It does not.
 
-    O MECANISMO QUE FUNCIONA existe e é simples: `filter` de CSS no `#game-region`, que é o elemento que contém
-    a canvas E os menus. Hoje o filtro está na canvas. Mover o alvo é uma linha na raiz de composição (o verbo
-    `AplicarFiltroCss`, criado em 2026-08-26) — mas muda a aparência de TODO menu em TODOS os 16 modos de
-    visão, então é mudança que o Dev confere na tela, não que se empurra.
+    THE MECHANISM THAT WORKS exists and is simple: a CSS `filter` on `#game-region`, which is the element that
+    contains the canvas AND the menus. Today the filter is on the canvas. Moving the target is one line at the
+    composition root (the verb `AplicarFiltroCss`, created on 2026-08-26) — but it changes the look of EVERY menu
+    in ALL 16 vision modes, so it is a change the Dev checks on screen, not one that gets pushed.
 
-    Consequência para a ORDEM: com o filtro no `#game-region`, o CRT passa a ser filtrado JUNTO, que é
-    exatamente o que `POST_FX_ORDER` manda (CRT_VIGNETTE é o passe mais interno, A11Y_CORRECTION vem depois).
-    Hoje a ordem real é a INVERSA — a scanline é um pseudo-elemento em `z-index:500`, pintado POR CIMA da
-    canvas já corrigida.
+    Consequence for the ORDER: with the filter on `#game-region`, the CRT becomes filtered ALONG with it, which is
+    exactly what `POST_FX_ORDER` prescribes (CRT_VIGNETTE is the innermost pass, A11Y_CORRECTION comes after).
+    Today the real order is the REVERSE — the scanline is a pseudo-element at `z-index:500`, painted ON TOP of the
+    already-corrected canvas.
 
-    ✅ RESOLVIDO EM 2026-08-27 PELO ADR-0047, e esta é a metade que faltava desde 2026-07-06: a scanline E a
-    vinheta passam a CEDER a qualquer modo de acessibilidade visual, por padrão. A pergunta que esta emenda
-    deixou em aberto ("a scanline cede como a vinheta passou a ceder, ou não?") está fechada, e fechada com uma
-    resposta melhor que sim ou não — cede, e a criança tem uma chave por efeito no menu Sensibilidade visual para
-    dizer o contrário. O `POST_FX_ORDER` deste registro finalmente descreve o que o código faz.
+    ✅ RESOLVED ON 2026-08-27 BY ADR-0047, and this is the half that had been missing since 2026-07-06: the
+    scanline AND the vignette now YIELD to any visual accessibility mode, by default. The question this amendment
+    left open ("does the scanline yield the way the vignette came to yield, or not?") is closed, and closed with
+    a better answer than yes or no — it yields, and the child has one switch per effect in the Visual sensitivity
+    menu to say otherwise. This record's `POST_FX_ORDER` finally describes what the code does.
 
-    ===== 2. "MODOS DE A11Y SUPRIMEM O CRT DECORATIVO" NÃO ESTÁ IMPLEMENTADO =====
-    Medido com a vinheta ligada (`CRT.vig = 1`): a classe `crt-vig-1` sobrevive em `hc-direto`, `fix-deuter`,
-    `lv-blur` e `blind` — nos dezesseis modos, na verdade. A precedência "a11y > estética" que este registro
-    decide não existe em código.
+    ===== 2. "A11Y MODES SUPPRESS THE DECORATIVE CRT" IS NOT IMPLEMENTED =====
+    Measured with the vignette on (`CRT.vig = 1`): the class `crt-vig-1` survives in `hc-direto`, `fix-deuter`,
+    `lv-blur` and `blind` — in all sixteen modes, in fact. The "a11y > aesthetics" precedence this record decides
+    does not exist in code.
 
-    O impacto REAL é condicional e vale dizer com honestidade: a vinheta vem DESLIGADA de fábrica
-    (`CRT_DEFAULT.vig = 0`), então só alcança quem a liga no menu Sensibilidade visual. Quem liga e usa alto
-    contraste recebe uma vinheta escurecendo as bordas — trabalhando contra o modo que existe para aumentar
-    contraste.
+    The REAL impact is conditional and worth stating honestly: the vignette ships OFF by default
+    (`CRT_DEFAULT.vig = 0`), so it only reaches whoever turns it on in the Visual sensitivity menu. Whoever turns
+    it on and uses high contrast gets a vignette darkening the edges — working against the mode that exists to
+    increase contrast.
 
-    ===== 3. AS ESCALAS SÃO TRÊS, NÃO DUAS =====
-    Este registro diz "two scopes": MUNDO (por viewport, dentro da câmera) e OVERLAY (global, DOM). Falta a do
-    meio, e é por isso que o `app.stage` é o único lugar que ainda se posiciona por ORDEM DE INSERÇÃO.
+    ===== 3. THE SCOPES ARE THREE, NOT TWO =====
+    This record says "two scopes": WORLD (per viewport, inside the camera) and OVERLAY (global, DOM). The middle one
+    is missing, and that is why `app.stage` is the only place that still positions itself by INSERTION ORDER.
 
-    Medido: em solo o `stage` tem 4 filhos (câmera, `weatherLayer`, `fogG`, `titleG`); com 3 telas tem 10 — os
-    mesmos quatro mais 3 sprites de 320×180 (as render-textures por jogador), a moldura de 640×360 e as
-    bolinhas indicadoras. Todos com `zIndex: 0` e `stage.sortableChildren === false`.
+    Measured: in solo the `stage` has 4 children (camera, `weatherLayer`, `fogG`, `titleG`); with 3 screens it has
+    10 — the same four plus 3 sprites of 320×180 (the per-player render-textures), the 640×360 frame and the
+    indicator dots. All with `zIndex: 0` and `stage.sortableChildren === false`.
 
-    Os seis últimos são criados por `render/screen-pipeline` e RECRIADOS a cada troca de número de telas. E há
-    uma dependência de ordem que sustenta o multi-tela: `screen-pipeline` faz `stage.addChildAt(camera, 0)` —
-    a câmera precisa ficar embaixo dos sprites de saída, senão o mundo cru cobre as telas compostas.
+    The last six are created by `render/screen-pipeline` and RECREATED on every change in the number of screens.
+    And there is an order dependency that holds multi-screen up: `screen-pipeline` does
+    `stage.addChildAt(camera, 0)` — the camera has to stay below the output sprites, otherwise the raw world covers
+    the composed screens.
 
-    A ESCALA QUE FALTA CHAMA-SE **COMPOSIÇÃO**: o mundo JÁ RENDERIZADO em textura, disposto na tela, uma vez
-    por jogador. Não é MUNDO (que é o conteúdo DENTRO de cada viewport) nem OVERLAY (que é DOM). Encaixá-la no
-    espaço numérico livre entre `WORLD_A11Y` (23000) e `HUD` (24000) seria erro de categoria: aqueles sprites
-    não são "mais uma camada do mundo", são outra escala.
+    THE MISSING SCOPE IS CALLED **COMPOSITION**: the world ALREADY RENDERED to a texture, laid out on the screen,
+    once per player. It is not WORLD (which is the content INSIDE each viewport) nor OVERLAY (which is DOM).
+    Fitting it into the free numeric space between `WORLD_A11Y` (23000) and `HUD` (24000) would be a category
+    error: those sprites are not "one more world layer", they are another scope.
 
-    Enquanto ela não tiver nome próprio no `Z`, o `stage` continua por ordem de inserção — e continuar assim é
-    mais honesto do que inventar um número que passaria a mentir com autoridade.
+    Until it has its own name in `Z`, the `stage` stays in insertion order — and staying that way is more honest
+    than inventing a number that would start lying with authority.
 
   confirmation: |
     Recorded retroactively on 2026-08-06, and PARTIAL — stated as such rather than ticked. `app/js/core/layers.ts`
@@ -183,44 +184,44 @@ decision-outcome:
     `game.js` is the only importer, meaning the ~54 layer sites still place themselves the old way. Rewiring them is
     issue !52. The decision stands; its rollout is unfinished, and this record should not read as though it were done.
 
-    ATUALIZADO 2026-08-26, com medição (ver a emenda acima). A escala MUNDO ESTÁ adotada: o bloco "R1" do
-    `main.ts` liga `camera.sortableChildren` e posiciona ~27 camadas por `Z.*`; sobrou UM
-    `addChildAt(getChildIndex(...))` na árvore, o do `titleG`, e ele está no `stage` — a escala que este
-    registro não nomeou. A escala OVERLAY NÃO está adotada: são 17 `z-index` literais em `style.css`, de 4 a
-    500, sem relação com os slots de `Z`. E `POST_FX_ORDER` está declarado e nunca foi lido por código nenhum:
-    a única ocorrência fora do próprio `core/layers.ts` é este parágrafo.
+    UPDATED 2026-08-26, with measurement (see the amendment above). The WORLD scope IS adopted: the "R1" block of
+    `main.ts` turns on `camera.sortableChildren` and positions ~27 layers by `Z.*`; ONE
+    `addChildAt(getChildIndex(...))` is left in the tree, the one for `titleG`, and it is on the `stage` — the scope
+    this record did not name. The OVERLAY scope is NOT adopted: there are 17 literal `z-index` values in
+    `style.css`, from 4 to 500, with no relation to the `Z` slots. And `POST_FX_ORDER` is declared and has never
+    been read by any code: the only occurrence outside `core/layers.ts` itself is this paragraph.
 
 more-information: |
-  ===== EMENDA 2026-08-27 — O QUE É POR TELA, E A ÚNICA EXCEÇÃO =====
-  Este registro dizia apenas o FATO de implementação: "Multiplayer runs on separate viewports via per-screen
-  render-textures". O Dev transformou isso em REGRA, e a regra é mais forte que o fato — ela proíbe uma
-  otimização futura que parece óbvia:
+  ===== AMENDMENT 2026-08-27 — WHAT IS PER SCREEN, AND THE ONE EXCEPTION =====
+  This record stated only the implementation FACT: "Multiplayer runs on separate viewports via per-screen
+  render-textures". The Dev turned it into a RULE, and the rule is stronger than the fact — it forbids a future
+  optimisation that looks obvious:
 
     "Nunca unificar multi tela. Correções / melhorias são por tela. Modos multi são por tela. O único ponto que
      exige modo solo é o modo cego: ele limita a quantidade de telas para a quantidade de áudio, e os efeitos
      ligados a áudio (redução de fx etc.) têm prioridade e funcionam para todos ao mesmo tempo."
 
-  Em termos deste registro: **todo ajuste de visão é por VIEWPORT**, nunca um filtro único sobre o `app.stage`.
-  Numa mesa de dois jogadores em que só uma criança precisa de alto contraste, um filtro global corrigiria a tela
-  da outra também — regressão silenciosa, e do tipo que ninguém reporta porque a tela "melhorou".
+  In this record's terms: **every vision adjustment is per VIEWPORT**, never a single filter over `app.stage`.
+  At a two-player table where only one child needs high contrast, a global filter would correct the other's screen
+  too — a silent regression, and of the kind nobody reports because the screen "got better".
 
-  O SOM NÃO É EXCEÇÃO À REGRA — ele é outra realidade, e o Dev fez questão da distinção: "é pra deixar claro a
-  exceção do modo cego (acessibilidade), que NÃO É UMA EXCEÇÃO, mas sim uma realidade que não permite trabalhar de
-  outro modo."
+  SOUND IS NOT AN EXCEPTION TO THE RULE — it is another reality, and the Dev insisted on the distinction: "é pra
+  deixar claro a exceção do modo cego (acessibilidade), que NÃO É UMA EXCEÇÃO, mas sim uma realidade que não
+  permite trabalhar de outro modo."
 
-  A diferença não é retórica. Uma exceção é uma escolha que alguém poderia ter feito de outro jeito e decidiu não
-  fazer — e uma exceção convida a ser revisitada ("e se a gente...?"). Aqui não há o outro jeito: **áudio não tem
-  viewport.** Não existe recortar o som numa região da tela, como se recorta a imagem. Duas narrações simultâneas
-  na mesma mesa não são duas narrações, são ruído.
+  The difference is not rhetorical. An exception is a choice someone could have made another way and decided not
+  to — and an exception invites being revisited ("what if we...?"). Here there is no other way: **audio has no
+  viewport.** There is no cropping sound to a region of the screen, the way an image is cropped. Two simultaneous
+  narrations at the same table are not two narrations, they are noise.
 
-  Daí decorre, e decorre por FÍSICA e não por política: o modo cego é GLOBAL, vale para a mesa inteira, e por isso
-  LIMITA o número de telas — não porque a renderização não escale, mas porque a audição não se divide. Mesma lógica
-  para tudo que estiver preso ao áudio (redução de efeitos, sonar, earcons): tem prioridade e vale para todos ao
-  mesmo tempo.
+  From that it follows, and it follows from PHYSICS and not from policy: blind mode is GLOBAL, it holds for the
+  whole table, and that is why it LIMITS the number of screens — not because rendering does not scale, but because
+  hearing does not divide. Same logic for everything tied to audio (effects reduction, sonar, earcons): it has
+  priority and holds for everyone at the same time.
 
-  Isto é emenda e não registro novo porque é a mesma decisão de escopo que o parágrafo original tratava pela metade.
-  O que a torna necessária: o fato era descritivo e a regra é proibitiva — só a segunda impede alguém de "otimizar"
-  mais tarde.
+  This is an amendment and not a new record because it is the same scope decision the original paragraph dealt
+  with by half. What makes it necessary: the fact was descriptive and the rule is prohibitive — only the second
+  stops someone from "optimising" later.
 
   Registry + filter-chain live in `app/js/core/layers.ts` (`Z`, `POST_FX_ORDER`). Relates to ADR-0011 (visual a11y),
   ADR-0010 (pillars: a11y-first), and the CB-safe UI work. Y-sorting within an actor band is NOT adopted (side-view

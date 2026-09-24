@@ -51,8 +51,8 @@ metadata:
     - "ADR-0010 pillar 1 (school hardware) and pillar 8 (offline PWA) — the byte budget that decides §2"
     - "ADR-0043 (a known debt gets a budget that only goes down) — the shape of the precache budget invoked
        in the confirmation"
-    - "requerimento, pedido `p` — o ato identifica repositório, versão e hash de CADA sistema, e o
-       Inclusionista já era a exceção de cinco linhas"
+    - "requerimento, pedido `p` — the act identifies repository, version and hash of EACH system, and the
+       Inclusionist was already the five-line exception"
   informed: []
 
 title: One repository per GAME — and the catalogue stops holding games in order to start choosing them

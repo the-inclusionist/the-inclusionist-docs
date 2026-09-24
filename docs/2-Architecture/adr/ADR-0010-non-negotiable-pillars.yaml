@@ -110,30 +110,32 @@ more-information: |
        recursos conforme vai se baixando os extras pela internet`.
     9. LAN + store-and-forward telemetry — playing needs no internet; queue + batch on reconnect.
     10. Open + free + funded — AGPL-3.0 code; free; no dark patterns (ADR-0006). THE ART IS NOT OURS TO LICENCE.
-        ⚠️ CORRIGIDO 2026-08-27, e a correção é de FATO e não de política: a arte do projeto é de TERCEIRO — foi
-        feita pela esposa do Dev, que detém a titularidade patrimonial integral sobre ela. Não existe "arte
-        própria" a licenciar. Toda arte é tratada como conteúdo de terceiro, sob a licença que a autora escolher,
-        exatamente como o requerimento já trata os conteúdos externos.
-        A separação é jurídica antes de ser preferência: a Lei 14.063/2020 art. 16 obriga quanto ao PROGRAMA, e
-        programa de computador é o que a Lei 9.609 define; a arte segue a Lei 9.610 e pertence a quem a criou.
-        Estender voluntariamente a AGPLv3 à arte entregaria mais do que a lei pede E disporia de direito alheio.
+        ⚠️ CORRECTED 2026-08-27, and the correction is of FACT, not of policy: the project's art belongs to a THIRD
+        PARTY — it was made by an outside author, who holds the full economic rights over it. There is no "own
+        art" to licence. All art is treated as third-party content, under the licence its author chooses,
+        exactly as the requerimento already treats external content.
+        The separation is legal before it is a preference: Lei 14.063/2020 art. 16 binds the PROGRAM, and a
+        computer program is what Lei 9.609 defines; the art follows Lei 9.610 and belongs to whoever created it.
+        Extending AGPLv3 to the art voluntarily would hand over more than the law asks AND dispose of someone
+        else's right.
         AMENDED 2026-08-25: the code licence moved from GPL-3.0 to AGPL-3.0-or-later. GPL treats RUNNING a service
         as not distributing, so a hosted classroom-room server would owe its source to nobody; AGPL section 13
         closes exactly that. The requerimento filed with the Municipio proposes AGPLv3, and the Municipio is the
         patrimonial owner (Lei 9.609 art. 4). The non-FOSS art, the "free" and the funding half are untouched.
 
-  ⚠️ EMENDA 2026-08-27 — LIBRAS: VLIBRAS PRIMEIRO, MOTOR PRÓPRIO NUNCA COMO PONTO DE PARTIDA. O pilar 2 dizia
-  "Libras em motor zdog à parte", isto é, construir o nosso. O Dev reverteu: usa-se a **Suíte VLibras** (UFPB,
-  Software Público Brasileiro, LGPL-3.0) com fallback, e um motor melhor entra no futuro SE aparecer algo melhor.
-  A razão é a do requerimento (IV.4) e é de dinheiro público antes de ser técnica: "construir do zero aquilo que
-  já existe sob licença livre é desperdício de recurso público". Ver ADR-0051 para os DOIS níveis de ativação.
+  ⚠️ AMENDMENT 2026-08-27 — LIBRAS: VLIBRAS FIRST, OUR OWN ENGINE NEVER AS THE STARTING POINT. Pillar 2 read
+  "Libras em motor zdog à parte", that is, build our own. The Dev reversed it: the **VLibras Suite** (UFPB,
+  Software Público Brasileiro, LGPL-3.0) is used, with a fallback, and a better engine enters in the future IF
+  something better appears. The reason is the requerimento's (IV.4), and it is about public money before it is
+  technical: "construir do zero aquilo que já existe sob licença livre é desperdício de recurso público". See
+  ADR-0051 for the TWO activation levels.
 
-  ⚠️ EMENDA 2026-08-27 — TELEMETRIA: xAPI **E** CALIPER, não um ou outro. O pilar dizia "1EdTech+xAPI" e o
-  requerimento (XI) cita LTI, OneRoster e Caliper sem mencionar xAPI. Os dois entram, e o motivo é operacional:
-  **sem xAPI não há como guardar a interação offline e sincronizar quando a rede voltar** — que é o pilar 9
-  (store-and-forward) funcionando. Caliper entra pela interoperabilidade com o EducaDados e com o que a rede
-  municipal já consome. Um resolve a escola sem internet; o outro resolve a integração. Nenhum dos dois substitui
-  o outro.
+  ⚠️ AMENDMENT 2026-08-27 — TELEMETRY: xAPI **AND** CALIPER, not one or the other. The pillar read "1EdTech+xAPI"
+  and the requerimento (XI) cites LTI, OneRoster and Caliper without mentioning xAPI. Both enter, and the reason is
+  operational: **without xAPI there is no way to hold the interaction offline and sync when the network returns**
+  — which is pillar 9 (store-and-forward) working. Caliper enters for interoperability with EducaDados and with
+  what the municipal network already consumes. One solves the school without internet; the other solves the
+  integration. Neither replaces the other.
 
   Conflict resolutions (synthesis): packaging vs weak hw -> Tauri+PWA; research-data vs child-privacy -> no open data (RN-01);
   AAA text vs 320x180 -> text in the DOM; FOSS grants vs character protection -> AGPL code + art licensed by ITS AUTHOR (see pillar 10); split-screen vs

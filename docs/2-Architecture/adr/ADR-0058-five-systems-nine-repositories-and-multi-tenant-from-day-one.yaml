@@ -28,12 +28,12 @@ metadata:
     - "ADR-0010 pillars 1 (school hardware), 4 (LGPD/COPPA, strictest wins), 6 (child privacy), 7 (multiplayer on
        separate screens), 8 (offline PWA), 9 (LAN + store-and-forward telemetry)"
     - "ADR-0043 (a known debt gets a budget that only goes down) — the shape used here for the tree's size"
-    - "requerimento v7, item 39 alíneas `e`, `p` e `r` — os CINCO sistemas nomeados no pedido de publicação, o ato
-       que identifica repositório/versão/hash de CADA um, e os cadernos distribuídos por Secretaria"
-    - "requerimento v7, Anexo X §6 — `se o registro será comum a toda a rede ou por entidade`, pergunta em aberto
-       que a decisão de multi-inquilino deste registro responde"
-    - "requerimento v7, Quadro 1 — hospedagem absorvida pelo orçamento corrente de TI, no servidor municipal"
-    - "requerimento v7, §49.e — dados em território nacional e sob controle do Município"
+    - "requerimento v7, item 39 alíneas `e`, `p` and `r` — the FIVE systems named in the request for publication,
+       the act that identifies repository/version/hash of EACH one, and the cadernos distributed per Secretaria"
+    - "requerimento v7, Anexo X §6 — `se o registro será comum a toda a rede ou por entidade`, an open question
+       that this record's multi-tenant decision answers"
+    - "requerimento v7, Quadro 1 — hosting absorbed by the current IT budget, on the municipal server"
+    - "requerimento v7, §49.e — data in national territory and under the Município's control"
   informed: []
 
 title: FIVE systems, NINE repositories — the boundary follows the Secretaria that answers for the data, and every installation is multi-tenant from day one

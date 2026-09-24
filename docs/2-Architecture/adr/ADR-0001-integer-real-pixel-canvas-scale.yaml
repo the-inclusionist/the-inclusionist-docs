@@ -79,7 +79,7 @@ decision-outcome:
     (currently game.js; moves into render/ modules during modularization).
 
 more-information: |
-  ===== EMENDA 2026-08-27 — A RÉGUA INTEIRA, MEDIDA NO CÓDIGO ANTES DE SER ESCRITA =====
+  ===== AMENDMENT 2026-08-27 — THE WHOLE RULER, MEASURED IN THE CODE BEFORE IT WAS WRITTEN =====
   This record kept only the hard half — the factor is an integer in PHYSICAL pixels, not CSS. The Dev's ruler has
   three more clauses, and they had to repeat them in anger after an auto-resize broke them ("eu expliquei a oito
   prompts atrás"). A rule that has to be repeated is a rule that is not written where people look. Measured in
