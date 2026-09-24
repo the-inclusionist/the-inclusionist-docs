@@ -7,7 +7,7 @@ metadata:
   confirmed-by:
     - engine:app/public/vendor/fonts.css
     - engine:app/js/ui/fonts.ts
-    - engine:tests/fontes-empacotadas.node.test.js
+    - engine:tests/what-fonts-the-package-carries.node.test.js
     - engine:tests/settings-typo.node.test.js
   date: 2026-09-12
   decision-makers: [Dev]
@@ -34,7 +34,7 @@ metadata:
              hundred games by others, so both clauses apply. And its definition of a derivative work includes
              converting the format, which the `.woff2` we package would already be. So the condition this record
              set resolves to NO: what was a wait becomes a refusal with a reason, and a gate now holds it
-             (`engine:tests/fontes-empacotadas.node.test.js`). ⚠️ Only a separate written licence from Indian
+             (`engine:tests/what-fonts-the-package-carries.node.test.js`). ⚠️ Only a separate written licence from Indian
              Type Foundry (FFL §09) could lift it. ERRATUM under ADR-0057 §1: nothing decided changes; the record
              stated a condition, and the condition has been checked."
     - date: 2026-09-12
@@ -201,7 +201,7 @@ decision-outcome:
     that work will read.
 
     What exists and is gated today:
-      1. `engine:tests/fontes-empacotadas.node.test.js` — the packaged Playwrite are the eight of ADR-0108
+      1. `engine:tests/what-fonts-the-package-carries.node.test.js` — the packaged Playwrite are the eight of ADR-0108
          PLUS the seven named here, and the two layers are listed separately so neither loses its reason. The
          check asks by PREFIX, so a sixteenth — `Guides` included — fails without being named.
       2. `engine:tests/settings-typo.node.test.js` — the eighteen calligraphic keys, written out, so a face

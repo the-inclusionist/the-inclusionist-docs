@@ -3,7 +3,7 @@ metadata:
   status: "accepted"
   confirmed-by:
     - engine:tests/rename-map.node.test.js
-    - engine:tests/superficie-publica.node.test.js
+    - engine:tests/public-surface-shrinks-by-declaration.node.test.js
     - engine:tests/portuguese-stays-out.node.test.js
     - engine:tests/heavy-files-through-the-service-worker.node.test.js
   errata:

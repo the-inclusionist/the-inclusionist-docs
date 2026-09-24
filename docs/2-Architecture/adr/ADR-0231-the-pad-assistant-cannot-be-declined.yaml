@@ -2,8 +2,8 @@
 metadata:
   status: "accepted"
   confirmed-by:
-    - engine:tests/declinio-morto.node.test.js
-    - engine:tests/superficie-publica.node.test.js
+    - engine:tests/no-decline-is-dead.node.test.js
+    - engine:tests/public-surface-shrinks-by-declaration.node.test.js
   date: 2026-09-24
   decision-makers: [Dev]
   consulted:
@@ -62,9 +62,9 @@ decision-outcome:
       - "Breaking for a TypeScript cartridge that declares it: one line to delete, named in the migration note"
 
   confirmation: |
-    ✅ Built on 2026-09-24. `engine:tests/declinio-morto.node.test.js` — the dead-decline inventory is empty and
+    ✅ Built on 2026-09-24. `engine:tests/no-decline-is-dead.node.test.js` — the dead-decline inventory is empty and
     `noPadAssistant` is asserted ABSENT from `Declinios`; putting the field back makes both the absence case and the
-    inventory case fail (probed). `engine:tests/superficie-publica.node.test.js` — the public-shape snapshot no longer
+    inventory case fail (probed). `engine:tests/public-surface-shrinks-by-declaration.node.test.js` — the public-shape snapshot no longer
     lists it; restoring the old snapshot fails the gate (probed).
 
 more-information: |

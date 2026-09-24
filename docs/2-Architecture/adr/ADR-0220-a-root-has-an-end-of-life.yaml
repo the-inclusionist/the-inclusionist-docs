@@ -4,7 +4,7 @@ metadata:
   confirmed-by:
     - engine:tests/a-disposed-root-stops-listening.browser.test.js
     - engine:tests/boot-create-game.browser.test.js
-    - engine:tests/superficie-publica.node.test.js
+    - engine:tests/public-surface-shrinks-by-declaration.node.test.js
   date: 2026-09-22
   decision-makers: [Dev]
   consulted:

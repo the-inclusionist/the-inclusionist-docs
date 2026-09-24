@@ -4,7 +4,7 @@ metadata:
   confirmed-by:
     - engine:tests/member-renames-leave-nothing-behind.node.test.js
     - engine:tests/portuguese-stays-out.node.test.js
-    - engine:tests/superficie-publica.node.test.js
+    - engine:tests/public-surface-shrinks-by-declaration.node.test.js
   errata:
     - date: 2026-09-24
       what: >-

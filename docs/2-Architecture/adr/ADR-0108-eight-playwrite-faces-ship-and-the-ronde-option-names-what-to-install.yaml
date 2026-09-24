@@ -8,7 +8,7 @@ metadata:
         control is never disabled; the notice naming Ronde Script, OPTIFrench-Script and Merveille stays, now as the
         remedy for a hand that is close but not the ronde. §3 — the ronde is never packaged — stands.
   confirmed-by:
-    - engine:tests/fontes-empacotadas.node.test.js
+    - engine:tests/what-fonts-the-package-carries.node.test.js
     - engine:app/js/ui/fonts.ts
   errata:
     - date: 2026-09-12
