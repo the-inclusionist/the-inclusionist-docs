@@ -9,6 +9,10 @@ metadata:
              the right column under where the clock goes, neither column reaching the quick bar; the bands `mission` and
              `power` replace `round`. The clock itself is issue #94."
   supersedes-in-part: [ADR-0168]
+  superseded-in-part:
+    - by: ADR-0238
+      what: "§1, where the points sit: they move beside the clock at the top right, as five digits with leading
+              zeros. The mission keeps the top-left column; §2–§5 stand."
   date: 2026-09-13
   decision-makers: [Dev]
   consulted:
