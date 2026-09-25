@@ -224,3 +224,14 @@ fazer ele sair da tela 5 segundos após entrar em pose de espera?», then «Sim.
 (`onPlayingStateChange`, whose first flag is «playing»); the avatar leaves the screen 5 s after that flag turns false — the
 player's word that it is back at rest, not a time the engine guesses. A new sonar press within those 5 s cancels the leaving.
 To be confirmed against the player's canvas frames that the report coincides with the rest pose.
+
+
+## 2026-09-25 · «Ligado» is said by the control that started, not by the press
+
+⚠️ **A choice made while fixing a defect, and the Dev has not heard it.** Pressing the 👄 or the 📷 (or the motor panel's
+microphone and camera rows) announced «ligado» at the press, while the control starts later and may fail — the child heard
+«Comando de voz: ligado» for a control that stayed off. Now the press says nothing while the control starts (the button's
+pressed state still changes); the control itself then says «Pronto: …» (or, for face and eyes, its «Olhe para o meio…» first),
+or the reason it could not start. Turning OFF still says «… desligado» at the press, which is true when it is written. A
+«ligando…» line was not added: on a failure it would leave the spoken state disagreeing with the button again.
+`engine:cb0274dc`.
