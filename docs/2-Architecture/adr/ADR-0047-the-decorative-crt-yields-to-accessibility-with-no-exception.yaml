@@ -1,5 +1,8 @@
 metadata:
   status: "accepted"
+  superseded-in-part:
+    - by: ADR-0241
+      what: "E1, for the SCANLINE under the colour-vision modes only (correction and simulation): it stays. The vignette still yields to every visual mode, and the scanline to every other."
   date: 2026-08-27
   decision-makers: [Dev]
   consulted:
