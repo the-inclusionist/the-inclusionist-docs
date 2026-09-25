@@ -4,6 +4,15 @@ metadata:
   errata:
     - date: 2026-09-25
       what: >-
+        THE GAME'S WORKSPACE ENDS AT THE HUD ROW, NOT AT THE FOOTER BANDS ABOVE IT. Built, the row plus the room reserved for
+        the sound caption and the button legend (§6) pushed the demo quiz's last option below its floor at 640×360 (it ends at
+        297 px; the row starts at 310 px, the reserve at 262). The Dev had already given the rule for this, of the mission:
+        «a legenda é momentânea, a escrita da missão aparece o tempo todo» — what is momentary may cover what is always
+        there. So the caption and the legend still sit above the row, but they overlay the workspace while they show; the
+        room a game must leave free at the bottom is the row's, which is always there. Announced to the Dev with the way to
+        override it.
+    - date: 2026-09-25
+      what: >-
         §5 WAS MY READING, NOT THE DEV'S DECISION, and the Dev answered it the same day: «Topo no centro, abaixo dos menus,
         mas isso faz com que seja coberta com a legenda dos menus. Tudo bem, a legenda é momentânea, a escrita da missão
         aparece o tempo todo.» So the mission sits at the TOP CENTRE, under the quick accessibility bar, and the bar's
