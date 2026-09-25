@@ -5,6 +5,16 @@ metadata:
   errata:
     - date: 2026-09-25
       what: >-
+        ROUTE A NOW, ROUTE B NEXT. Told what route A needs (a patch to the Unity framework's JavaScript, the kind ruled out for
+        Vosk) and what it shares with B, the Dev asked «Não seria vantajoso seguir pela rota A e depois B para o VLibras.», and
+        then: «Então coloque no plano a rota A seguida pela B.» So A is built now, with the patch as a DECLARED, TEMPORARY
+        exception to «nunca unsafe-eval nem remendo»: it holds only until B replaces the player, it never adds
+        `unsafe-eval` to the policy, and the patch is a build step that checks the input's sha256, so an upstream change
+        fails loudly instead of being patched blind. What A builds and B keeps: the build-time glosses, the delivery of the
+        used signs, the interpreter port, the tests. What B throws away: only the Unity wrapper and the patch. B is the next
+        item after A, with its own end state, so the temporary does not become permanent.
+    - date: 2026-09-25
+      what: >-
         ROUTE A MEASURED, and the measurement meets a rule the Dev already gave. With the player served from the page's own
         origin under the delivery's exact headers (COOP, COEP, CSP unchanged): as published it does NOT run — the Unity
         loader injects its framework as a `blob:` script (refused by `script-src`), and the player talks to the page
