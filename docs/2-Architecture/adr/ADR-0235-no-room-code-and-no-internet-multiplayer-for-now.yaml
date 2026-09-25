@@ -1,0 +1,52 @@
+---
+metadata:
+  status: "accepted"
+  supersedes-in-part: [ADR-0037]
+  date: 2026-09-25
+  decision-makers: [Dev]
+  consulted:
+    - "The Dev, 2026-09-25, verbatim, on the internet-multiplayer study (issue #22): «Sem multiplayer pela internet por enquanto. Isso ocorrerá no futuro, após o bússola escolar estiver funcionando bem e com o bússola servindo de backend e servidor.»"
+    - "The Dev, same day, on the teacher's room code left without an owner by ADR-0228: «Não existe mais projeto de sala para multiplayer que usa um codigo, com acontece em jogos como garlic.io, por enquanto tudo é feito para rodar offline e sem multiplayer.»"
+    - "ADR-0037 — no save and no child data; its surviving code was the teacher's room key on the school LAN (`core/password`)"
+    - "ADR-0008 — multiplayer scaling, local and on separate screens; ADR-0228 moved `core/password` and `core/letter-grid` to game-platformer"
+  informed: []
+
+title: No room code and no internet multiplayer for now — everything runs offline and single-machine
+
+context-and-problem-statement: |
+  ADR-0037 kept one code alive after abolishing the save: the teacher's room key, which would drop a child into a class
+  room on the school LAN. ADR-0228 then moved that code's module to the platformer, and the audit of 2026-09-25 found
+  the room had no owner. Issue #22 still asked for a security study of internet multiplayer.
+
+decision-drivers:
+  - "Offline first (pillar 8): nothing now depends on a network or a server"
+  - "A room or an internet session needs a backend, and the backend is Bússola Escolar, which is not ready"
+
+considered-options:
+  - "A · Keep the room code and study internet multiplayer now"
+  - "B · No room code and no internet multiplayer until Bússola Escolar serves as backend and server"
+
+pros-and-cons-of-the-options: |
+  **A.** ❌ A room and an internet session both need a server this project does not have. **B.** ✅ Nothing is built for a
+  backend that does not exist. ❌ The study in #22 waits.
+
+decision-outcome:
+  chosen-option:
+    link: "B — no room code, no internet multiplayer, until Bússola Escolar is the backend"
+    justification: |
+      The Dev's decision. ADR-0037's no-save and no-child-data rules stand; its room key does not: there is no room, and
+      `core/password` (now in game-platformer) is no longer a platform concern. Internet multiplayer comes after Bússola
+      Escolar works well and serves as backend and server, and its security study is done then. Local multiplayer on
+      separate screens (ADR-0008) is unaffected.
+
+  consequences:
+    positive:
+      - "Nothing depends on a network or a server"
+    negative:
+      - "Internet play and its threat model wait for Bússola Escolar"
+
+  confirmation: |
+    Nothing to build: this record removes work. Issue #22 closes with it.
+
+more-information: |
+  When Bússola Escolar is ready, the room and the internet session are designed together, with the study #22 asked for.

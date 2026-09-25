@@ -1,5 +1,9 @@
 metadata:
   status: "accepted"
+  superseded-in-part:
+    - by: ADR-0235
+      what: >-
+        The teacher's room key: there is no room and no multiplayer by code for now; everything runs offline. No save and no child data stand.
   supersedes: [ADR-0034]
   # ⚠️ WHAT CONFIRMS THIS RECORD TODAY. The `confirmation` cites `tests/progress.node.test.js`, which left in
   # `809bc01` — the commit that ABOLISHED the save. The prose stays, and it was right on the day: the gate was not
