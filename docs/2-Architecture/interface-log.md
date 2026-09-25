@@ -183,3 +183,14 @@ El intérprete de lengua de señas está activado.»).
 row would say, not what someone who has just appeared would say. It is **short**, because it is signed and a signed sentence costs
 seconds the child is waiting through. And it **names itself**, because the widget may take a moment to appear and the child needs to
 know that the figure that arrived is the one they asked for. `engine:f2c544a2`.
+
+
+## 2026-09-25 · The opening menus take their widest item's width, and the ronde's label names Cookie
+
+⚠️ **Choices made while building, and the Dev has not seen them in a game.** The six opening menus (`#tm-main`, `#tm-alf`,
+`#tm-mat`, `#tm-tab`, `#tm-fr`, `#tm-cen`) went from a fixed `26em` to `fit-content` with no minimum width (issue #134 rule 6):
+📏 at 640×360 a short menu measured 118 px and one with a long Spanish label 493 px, one line each, inside the screen. The pause
+list (`.pause-menu`) and the settings-panel floor (`.ctrl-list`) are outside the six the issue names and keep `26em`.
+The ronde's row in the typography panel now names all four faces of its stack, Cookie last, and its notice says that without the
+three school faces the game shows Cookie, which is not the ronde taught at school (issue #150, ADR-0154). `engine:3875ce45`,
+`engine:5ba43b71`.
