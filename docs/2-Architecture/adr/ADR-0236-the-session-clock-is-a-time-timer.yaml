@@ -2,6 +2,8 @@
 metadata:
   status: "accepted"
   superseded-in-part:
+    - by: ADR-0240
+      what: "the options of its erratum (length; red · pulsing · lock) as engine settings: none on the child's side; one hour, red at the end, always on. They belong to Bússola Escolar's adult menu."
     - by: ADR-0239
       what: "only where the clock sits: bottom centre, the digits with the pie to their right. Everything else stands."
   supersedes-in-part: [ADR-0050]
