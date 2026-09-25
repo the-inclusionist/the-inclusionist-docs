@@ -1,8 +1,21 @@
 ---
 metadata:
   status: "accepted"
+  confirmed-by:
+    - engine:tests/the-sonar-reads-the-screen.browser.test.js
   supersedes-in-part: [ADR-0051]
   errata:
+    - date: 2026-09-25
+      what: >-
+        THE SONAR READS THE SCREEN — built (`engine:c8b18e83`, note DM) after the Dev tested the demo: «O sonar não
+        está lendo o que aparece na tela: a tela só é lida ao carregar.» The deaf-mode work had wired the interpreter
+        to the NAVIGATION sonar's sentence, and the screen was read once, by the narration. Now a press reads the text
+        on screen at that moment — the question and its options, the new ones after answering, the card or panel in
+        front when one is open — spoken, or captioned and handed to the interpreter in deaf mode; the spatial tone is
+        unchanged. Never read: hidden or `inert` content and the engine's own chrome; the session clock is left out
+        and the game's own HUD numbers are read. A canvas world, which the engine cannot read, keeps the navigation
+        sentence and gets a line in `problems`. With a menu open, R1 reads the menu in front (the Dev: «Tecla padrão
+        para o sonar deve ser R1»). The Libras player itself is route A, still being built.
     - date: 2026-09-25
       what: >-
         ROUTE A NOW, ROUTE B NEXT. Told what route A needs (a patch to the Unity framework's JavaScript, the kind ruled out for
@@ -126,8 +139,9 @@ decision-outcome:
       - "The interpreter depends on a tool whose offline behaviour is unmeasured"
 
   confirmation: |
-    ⏳ Not built. Debt: issue #59 — deaf mode (captions for every interface sound, sonar-triggered interpreter over the
-    screen's text); measuring VLibras offline and on-device first.
+    ✅ In part (errata of 2026-09-25): deaf mode captions every interface sound, and the sonar reads the screen's text and,
+    in deaf mode, hands it to the interpreter port (`confirmed-by`). 📋 Still owed under issue #59: the Libras player behind
+    that port — route A now, route B after it — and the build-time glosses.
 
 more-information: |
   Automatic Portuguese-to-Libras avatars are criticised by deaf organisations as less faithful than a human interpreter;

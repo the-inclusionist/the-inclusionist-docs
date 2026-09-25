@@ -2,11 +2,23 @@
 metadata:
   status: "accepted"
   confirmed-by:
+    - engine:tests/vosk-vocabulary.node.test.js
+    - engine:tests/vosk-vocabulary.browser.test.js
+    - engine:tests/vosk-runtime.node.test.js
     - engine:tests/voice-control.node.test.js
     - engine:tests/voice-map.node.test.js
     - engine:tests/a-name-said-activates-its-item.browser.test.js
     - engine:tests/menu-nav.browser.test.js
   errata:
+    - date: 2026-09-25
+      what: >-
+        §4 AND §5 BUILT (`engine:10a12351`, `engine:6353ba6a`). A locked item said by name goes through the same press
+        as any other transport and speaks its reason (ADR-0161); the only change is that locked items are no longer
+        left out of the names. A menu name with a word the model lacks is a line of `problems` naming the item and the
+        word — MEASURED how: the Vosk runtime cannot tell the page (the warning goes to the worker's console and no
+        event carries it), so the engine reads the model's vocabulary from the output symbol table of its `Gr.fst`
+        (pt: 99,105 words; «configurações» and «ação» present, «configuracoes», «acao» and «boreste» absent). The es
+        and en archives were not measured.
     - date: 2026-09-25
       what: >-
         THE FIRST TWO confirmed-by ENTRIES PROVED ONLY THE GRAMMAR. Measured in an issue audit the same day: the voice path in
@@ -70,10 +82,10 @@ decision-outcome:
       - "The recogniser's grammar is rebuilt when a menu opens, closes or changes language"
 
   confirmation: |
-    ✅ In part (errata of 2026-09-25): saying an item's name activates it, in the pause card and the panels; «Voltar» does not
-    fire while «Voltar ao jogo» may still be said (held by the node suites with a fixed pair, since the engine's own card has no
-    such pair); the grammar follows the language. 📋 Still owed, and gated when built: a locked item said by name speaks its
-    reason; a name with an unknown word is in `problems`.
+    ✅ All five gates are built (errata of 2026-09-25): saying an item's name activates it, in the pause card and the panels;
+    «Voltar» does not fire while «Voltar ao jogo» may still be said; the grammar follows the language; a locked item said by
+    name speaks its reason; a name with a word the model lacks is in `problems`. Unmeasured: the es and en models, and a
+    child's voice.
 
 more-information: |
   Measured only for the pause card and the settings submenu in Portuguese, with the small model; the panels' rows, the other two
