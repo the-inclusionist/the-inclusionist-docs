@@ -1,0 +1,67 @@
+---
+metadata:
+  status: "accepted"
+  supersedes-in-part: [ADR-0051]
+  date: 2026-09-25
+  decision-makers: [Dev]
+  consulted:
+    - "The Dev, 2026-09-25, verbatim: «O sonar, ao ser apertado com texto na tela faz com que o texto seja lido. Se a opção de interprete tiver ligada, o intêrprete aparece na frente da tela e \"lê\" o que está na tela. [...] não é fila de mensagens nem 'só a última', mas sim \"sonar do que está na tela\", e se houver sons de interface, ele é lido, caso contrário, escrito. A verdade é que não existe modo libras, mas modo pessoa surda: sons ganham legenda e o sonar chama o intérprete.»"
+    - "The Dev, same day: «Não haverá motor zdog, é pra usar zlibras.» — read as VLibras (ADR-0051 §3); no project named «zlibras» was found. To confirm"
+    - "ADR-0051 — two activation levels (interpreter on demand while audio plays; Libras as first language by tap-the-icon-then-the-text) and VLibras first"
+    - "Lei 10.436/2002 — recognises Libras as a legal means of communication and expression; art. 4, sole paragraph: Libras does not replace written Portuguese"
+    - "GAG, Hearing: «Provide signing» (Advanced). WCAG 2.2 1.2.6 Sign Language (Prerecorded), AAA — for audio in synchronised media"
+    - "📏 VLibras Widget documentation (vlibras.gov.br/doc/widget): integration loads `https://vlibras.gov.br/app/vlibras-plugin.js`; the documentation does not say whether translation runs on the device or on its servers, nor whether it works offline"
+  informed: []
+
+title: There is no Libras mode, there is a deaf mode — sounds get captions, and the sonar calls the interpreter
+
+context-and-problem-statement: |
+  ADR-0051 designed Libras in two levels: an interpreter that appears on its own while audio plays, and a first-language
+  level where the player taps the Libras icon and then the written thing. Neither was built, and issue #59 left open
+  how overlapping messages queue. The Dev reframes the feature by its user: the person is deaf, and what she needs is
+  every sound made visible and the screen's content available in her language on demand.
+
+decision-drivers:
+  - "Name the mode by the person it serves, not by the tool"
+  - "Libras is a language (Lei 10.436/2002); written Portuguese stays beside it (art. 4)"
+  - "The sonar already reads what is on screen on demand; one gesture should serve both the blind and the deaf child"
+
+considered-options:
+  - "A · ADR-0051 as written: interpreter appears while audio plays, plus tap-icon-then-text"
+  - "B · Deaf mode: every sound gets a caption; the sonar, with the interpreter on, has the interpreter sign what is on screen"
+
+pros-and-cons-of-the-options: |
+  **A.** ❌ An interpreter that appears on every sound buries the activity; it also needed a queue policy nobody could
+  choose well. **B.** ✅ The deaf child asks, with the same button the blind child uses, for what is on screen; sounds are
+  never lost because they are captioned. ✅ No queue: the interpreter signs what the screen holds when asked.
+  ❌ Libras then depends on the sonar being reachable, which the quick bar and the action map already guarantee.
+
+decision-outcome:
+  chosen-option:
+    link: "B — a deaf mode: captions for sounds, and the sonar calls the interpreter over the screen's content"
+    justification: |
+      The Dev's decision. Deaf mode turns on two things together: (1) every interface sound is captioned (the caption
+      host exists, ADR-0164 regra 4); (2) the sonar, pressed with text on screen, has the interpreter appear in front of
+      the screen and sign that text, where the blind child hears it read. Written Portuguese is never removed (Lei
+      10.436 art. 4). This replaces ADR-0051's level one (appear while audio plays) and its tap-icon-then-text gesture;
+      ADR-0051's choice of VLibras and the retirement of the zdog engine stand.
+      📌 Adequacy, as measured: GAG asks to «provide signing» (Advanced) and this does; WCAG 1.2.6 concerns audio in
+      synchronised media, which the engine has none of, and captions cover the audio the engine does have.
+      ⚠️ What still blocks the build is not the design: the documented VLibras integration loads a script from
+      vlibras.gov.br, a third-party host, against the delivery's own-origin policy and the offline pillar; whether its
+      translation runs on the device is undocumented and must be measured before choosing how to ship it.
+
+  consequences:
+    positive:
+      - "One gesture — the sonar — serves the blind and the deaf child"
+      - "No message queue to design"
+    negative:
+      - "The interpreter depends on a tool whose offline behaviour is unmeasured"
+
+  confirmation: |
+    ⏳ Not built. Debt: issue #59 — deaf mode (captions for every interface sound, sonar-triggered interpreter over the
+    screen's text); measuring VLibras offline and on-device first.
+
+more-information: |
+  Automatic Portuguese-to-Libras avatars are criticised by deaf organisations as less faithful than a human interpreter;
+  this record chooses the tool that exists under a free licence and keeps the written text beside it.

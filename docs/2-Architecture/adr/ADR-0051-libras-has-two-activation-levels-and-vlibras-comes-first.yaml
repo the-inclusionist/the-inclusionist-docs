@@ -1,5 +1,9 @@
 metadata:
   status: "accepted"
+  superseded-in-part:
+    - by: ADR-0234
+      what: >-
+        Level one (the interpreter appears while audio plays) and the tap-the-icon-then-the-text gesture: replaced by a deaf mode in which every sound is captioned and the sonar calls the interpreter over what is on screen. VLibras first and the retirement of the zdog engine stand.
   supersedes-in-part: [ADR-0010]
   date: 2026-08-27
   decision-makers: [Dev]
