@@ -1,7 +1,20 @@
 ---
 metadata:
-  status: "proposed"
+  status: "accepted"
   supersedes-in-part: []
+  confirmed-by:
+    - engine:tests/mount-panel.browser.test.js
+    - engine:tests/panel-widgets.browser.test.js
+    - engine:tests/a-panel-re-explains.node.test.js
+  errata:
+    - date: 2026-09-25
+      what: >-
+        DECIDED, in part. The row builder is accepted and built: the Dev said «Sim, terminamos a adoção» on 2026-09-22,
+        and all nine panels build their rows with the kit (`ui/mount-panel` + `ui/panel-widgets`, the last one
+        8664619c). The single dispatch hook is NOT adopted. Asked on 2026-09-25 whether issue #62's fourth box (the
+        footer explanation guaranteed by construction instead of by a gate) was worth building, the Dev answered «Se
+        não precisamos de uma quarta caixa, feche.» — the explanation is already held by
+        `tests/a-panel-re-explains.node.test.js`, so the per-panel hooks stay and issues #135 and #62 close.
   date: 2026-09-09
   decision-makers: [Dev]
   consulted:
