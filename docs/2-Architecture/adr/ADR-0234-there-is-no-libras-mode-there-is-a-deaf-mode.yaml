@@ -5,6 +5,29 @@ metadata:
   errata:
     - date: 2026-09-25
       what: >-
+        THE OFFLINE ROUTE IS CHOSEN, and it replaces the hosted widget. A study of VLibras's own repositories the same
+        day (GitHub `spbgovbr-vlibras`, LAViD's GitLab) measured three facts: under the delivery's COEP `require-corp`
+        the hosted widget's avatar never loads (its iframe document sends no COEP header); the hosted widget also
+        reaches jsDelivr, Wiktionary and PostHog, which receives the page's host and path on load with no consent
+        check; and the sign dictionary (23,397 signs, GPL-3.0) and the translator (`vlibras-translator`, LGPL-3.0) are
+        published, while the avatar player exists only as a closed Unity 2018 WebGL build (~20.2 MB, WebGL 1, 256 MB
+        heap). Of the three routes put to the Dev — (A) serve that player from the delivery's own origin, (B) rebuild
+        a free player from the GPL `.blend` sources in three.js, (C) the hosted widget patched with `credentialless`
+        — the Dev chose A: «Quantos subagentes para fazer B em 15 minutos? Correção: A em 15 minutos.», then «Agora
+        que eu tomei as decisões, adeque o plano.» So: the player is served from the delivery's own origin and driven
+        through its documented `postMessage` API; the text the engine and a game show is glossed at BUILD time with
+        the rule-based `vlibras-translator` (never the neural model, which declares no licence), so a game's own text
+        is glossed at that game's delivery; only the signs those glosses use, plus the manual alphabet and the digits,
+        ship as heavy files with a sha256; and the hosted widget, with every third-party host it reaches, is dropped.
+        The exception to the own-origin policy recorded below no longer exists, and pillar 8 holds for signing again.
+        What A carries, named so it is not forgotten: a proprietary binary (the Unity runtime) in an AGPL delivery,
+        with no corresponding source and redistribution terms not determined; a black box that cannot be patched; and
+        a 256 MB heap on low-end school machines. B remains the fully free destination. Not yet measured, and each can
+        stop A: whether the player runs under the delivery's CSP without `unsafe-eval` (unlike Vosk it cannot be
+        recompiled), whether it fetches signs from a same-origin base URL, and what it does with a word that has no
+        sign.
+    - date: 2026-09-25
+      what: >-
         «zlibras» was VLibras — the Dev confirmed it: «Sim, VLibras, desculpe o engano novamente.» And the exception is
         bounded: «Única exceção deve ser o VLibras. Mas verifique os repositórios do github deste projeto e se há a
         possibilidade de fazer um port que funcione offline.» So VLibras is the ONLY third-party host the delivery may
