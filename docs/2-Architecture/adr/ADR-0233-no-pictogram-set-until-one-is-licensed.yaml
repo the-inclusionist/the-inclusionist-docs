@@ -2,6 +2,17 @@
 metadata:
   status: "accepted"
   supersedes-in-part: [ADR-0028]
+  errata:
+    - date: 2026-09-25
+      what: >-
+        The Dev answered the same day. (1) «Sim, PCS» — the candidate is PCS, the symbol set, not the PECS method. (2)
+        WHAT THE MENU IS FOR, asked between symbols replacing text, exercises and a virtual keyboard: «Obvio que as duas,
+        pois eu quero o menu quando tivermos direito de usar a imagem! É um menu que fica desabilitado, e sem
+        explicação, somente "menu desabilitado" ou algo do tipo.» So the AAC menu exists for pictogram EXERCISES and a
+        pictogram KEYBOARD to build sentences, once a set is licensed; until then its door is DISABLED and says only
+        that it is disabled — no licence explanation, which replaces the «locked with the reason» wording of this
+        record's outcome. The upper-case letters switch does not wait for it: letter case already lives in the
+        quick bar's communication cycle (ADR-0151).
   date: 2026-09-25
   decision-makers: [Dev]
   consulted:

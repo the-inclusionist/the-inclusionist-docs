@@ -5,6 +5,13 @@ metadata:
   errata:
     - date: 2026-09-25
       what: >-
+        «zlibras» was VLibras — the Dev confirmed it: «Sim, VLibras, desculpe o engano novamente.» And the exception is
+        bounded: «Única exceção deve ser o VLibras. Mas verifique os repositórios do github deste projeto e se há a
+        possibilidade de fazer um port que funcione offline.» So VLibras is the ONLY third-party host the delivery may
+        reach, and whether an offline port can be built from VLibras's own public repositories is studied before the
+        exception is treated as permanent.
+    - date: 2026-09-25
+      what: >-
         THE ONLINE DEPENDENCY IS ACCEPTED FOR NOW, by the Dev the same day, asked what the problem is with VLibras not
         working offline: «Não funciona sem internet, mas qual o problema de não funcionar (por enquanto)? Vamos terminar o
         trabalho mesmo com este "problema", ok?». So the interpreter is built on the VLibras widget served by
