@@ -1,0 +1,52 @@
+---
+metadata:
+  status: "proposed"
+  date: 2026-09-25
+  decision-makers: [Dev]
+  consulted:
+    - "The Dev, 2026-09-25, verbatim, on ADR-0049's points and powers: «Isso só funciona em jogos top-down e plataforma. Creio ser melhor desenvolver uma \"subengine\" que funciona especificamente para estes dois gêneros.»"
+    - "ADR-0049 — points as a flat record of behaviour, powers as keys lying in the level, growth as the only celebration"
+    - "ADR-0228 — the tile world (tiles, collision, camera, parallax, scenery, player animation) left the engine for game-platformer, because the engine must not describe one game"
+  informed: []
+
+title: A sub-engine for top-down and platformer games — proposed
+
+context-and-problem-statement: |
+  ADR-0049's points and powers assume a world the player walks through: good deeds in a place, powers lying in a level.
+  That fits the top-down and platformer genres and not a quiz, a board or a puzzle. The engine must not describe one
+  game (ADR-0228), and the tile world already left it for game-platformer. The Dev proposes a layer between the two: a
+  sub-engine for these two genres, shared by the games that are one or the other.
+
+decision-drivers:
+  - "The engine stays genre-neutral"
+  - "Two genres share a world, points and powers; writing them twice would be the duplication the engine exists to avoid"
+
+considered-options:
+  - "A · Points and powers stay in each game"
+  - "B · A sub-engine for top-down and platformer games, between the engine and those games"
+
+pros-and-cons-of-the-options: |
+  **A.** ❌ Every top-down or platformer game rewrites the world, the points and the powers. **B.** ✅ One implementation
+  for the two genres, and the engine stays neutral. ❌ A third package to version and publish.
+
+decision-outcome:
+  chosen-option:
+    link: "⏳ PROPOSED — B is the Dev's direction; its scope is not settled"
+    justification: |
+      Recorded as proposed because four things are open, and each is the Dev's: (1) where it lives (its own repository
+      and package, or a folder of an existing one); (2) what enters it — the tile world now in game-platformer
+      (tiles, collision, camera, parallax), ADR-0049's points and powers, the player's movement; (3) whether the
+      platformer is split into the sub-engine plus its own content, and when; (4) whether its first consumer is the
+      platformer alone or waits for a top-down game.
+
+  consequences:
+    positive:
+      - "The engine keeps describing no game"
+    negative:
+      - "A third published package, with its own releases and migration notes"
+
+  confirmation: |
+    Decision half only. Nothing is built until the scope is settled.
+
+more-information: |
+  Issue #93 (rewards) closed as the engine's share done; the rest of ADR-0049 belongs here once this is accepted.

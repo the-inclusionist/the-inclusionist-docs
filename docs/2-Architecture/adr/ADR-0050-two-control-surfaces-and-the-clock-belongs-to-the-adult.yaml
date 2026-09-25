@@ -1,6 +1,9 @@
 metadata:
   status: "accepted"
   superseded-in-part:
+    - by: ADR-0236
+      what: "§3, the clock itself: it becomes a continuous Time Timer pie, never numbers only and with no unit change
+              as a warning, and the session defaults to 50 minutes when no adult has set one."
     - by: ADR-0059
       what: "§3, the HUD LAYOUT paragraph — where the name, the pie, the score, the power and the bars sit.
               The CLOCK itself (the pie, the countdown, the unit change at five minutes, the red slice for a
