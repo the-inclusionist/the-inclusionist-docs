@@ -1,6 +1,15 @@
 ---
 metadata:
   status: "accepted"
+  errata:
+    - date: 2026-09-25
+      what: >-
+        THE DELIVERY'S HALF, decided. The heavy files were chosen at boot for the boot language, so a school using two
+        languages had to build the delivery twice (`--commands`/`--reading` per language), and a language change mid-game
+        could meet a model the delivery never carried. Asked whether it stays so or the delivery carries the three languages
+        by default, the Dev: «A entrega leva as três línguas.» So the delivery carries pt, en and es by default. For the voice
+        commands that is ~108 MiB (31–39 MiB per language). For reading aloud it would be ~850 MiB (pt 378, en 162, es 310),
+        and that half waits on the Dev's answer about where reading belongs, asked the same day.
   date: 2026-09-22
   decision-makers: [Dev]
   consulted:
