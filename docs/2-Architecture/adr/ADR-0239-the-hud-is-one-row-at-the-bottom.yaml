@@ -4,6 +4,14 @@ metadata:
   errata:
     - date: 2026-09-25
       what: >-
+        THE CLOCK'S DIGITS AND SIZE, from the Dev after seeing it run: «Temo está com letras grandes demais. Se não houver
+        horas, não coloque 0: no começo. O bloco "tempo" com horas embaixo deve ocupar menos espaço na tela, não mais que dois
+        relógios de pizza e meio.» So the digits show the hour only while there is one (`1:00:00`, then `59:59`), which
+        replaces §2's «format fixed for the whole session»; the label stays at the 16 px text floor (ADR-0163) and loses
+        weight instead; and the label-and-digits block is never wider than two and a half pies, held by a test with the
+        widest digits an hour draws.
+    - date: 2026-09-25
+      what: >-
         THE GAME'S WORKSPACE ENDS AT THE HUD ROW, NOT AT THE FOOTER BANDS ABOVE IT. Built, the row plus the room reserved for
         the sound caption and the button legend (§6) pushed the demo quiz's last option below its floor at 640×360 (it ends at
         297 px; the row starts at 310 px, the reserve at 262). The Dev had already given the rule for this, of the mission:
