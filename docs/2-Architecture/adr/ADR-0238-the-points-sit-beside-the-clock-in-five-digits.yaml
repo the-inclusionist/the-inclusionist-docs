@@ -1,6 +1,9 @@
 ---
 metadata:
   status: "accepted"
+  superseded-in-part:
+    - by: ADR-0239
+      what: "only the corner: the score sits between the centre and the right of the bottom row. Five digits, clamped, spoken as a number, stand."
   supersedes-in-part: [ADR-0175]
   date: 2026-09-25
   decision-makers: [Dev]

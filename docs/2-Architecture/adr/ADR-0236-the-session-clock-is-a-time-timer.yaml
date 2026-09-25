@@ -1,6 +1,9 @@
 ---
 metadata:
   status: "accepted"
+  superseded-in-part:
+    - by: ADR-0239
+      what: "only where the clock sits: bottom centre, the digits with the pie to their right. Everything else stands."
   supersedes-in-part: [ADR-0050]
   errata:
     - date: 2026-09-25

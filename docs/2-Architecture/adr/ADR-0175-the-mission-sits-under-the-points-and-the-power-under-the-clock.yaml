@@ -10,6 +10,8 @@ metadata:
              `power` replace `round`. The clock itself is issue #94."
   supersedes-in-part: [ADR-0168]
   superseded-in-part:
+    - by: ADR-0239
+      what: "§2 and §4, where the power and the learning bars sit: the power goes above the score in the bottom row. The mission (§1) stays top left."
     - by: ADR-0238
       what: "§1, where the points sit: they move beside the clock at the top right, as five digits with leading
               zeros. The mission keeps the top-left column; §2–§5 stand."

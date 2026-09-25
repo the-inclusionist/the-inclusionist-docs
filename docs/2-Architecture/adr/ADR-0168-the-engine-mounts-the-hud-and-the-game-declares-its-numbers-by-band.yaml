@@ -5,6 +5,8 @@ metadata:
     - engine:tests/hud-mounted-by-the-engine.browser.test.js
   supersedes-in-part: [ADR-0059]
   superseded-in-part:
+    - by: ADR-0239
+      what: "§2 and §3, where the clock and the learning bars sit, and driver D2 («the footer owns the bottom»): the HUD becomes one row at the bottom."
     - by: ADR-0175
       what: "ONLY the erratum of 2026-09-13 (super-power and objective counter below the quick bar): the mission goes under
              the points on the left, the power under the clock on the right. Who mounts the HUD, the clock and the learning
