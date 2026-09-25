@@ -1,12 +1,22 @@
 ---
 metadata:
   status: "accepted"
+  confirmed-by:
+    - engine:tests/face-map.node.test.js
+    - engine:tests/hand-map.node.test.js
+    - engine:tests/face-control.browser.test.js
+    - engine:tests/hand-control.browser.test.js
   superseded-in-part:
     - by: ADR-0213
       what: >-
         §2 «eyes disabled». Eye control as its own modality is decided: a relative reading of four zones and a cycle of twelve commands
         and START, from the lab of 2026-09-16. The face and hand maps stand.
   errata:
+    - date: 2026-09-25
+      what: >-
+        CONFIRMED for the readers: `input/face-map` and `input/hand-map` read the map (with its errata up to v12) and
+        `ui/face-control`/`ui/hand-control` drive the virtual controller; the Dev played with the face («Já joguei com
+        rosto e ganhei»). The live round of the hand gestures stays with issue #191.
     - date: 2026-09-15
       what: '📌 THE FACE MAP AFTER THE MAP RUNS (2026-09-15, twelve lab runs on the Dev''s face with a bar for any other position and the raw blendshapes logged). What changed and why: winks did not separate (a frown squinted the left eye; closing the right eye closed the left one more), teeth shown opened the mouth and lifted the smile and a child with an open bite cannot show them, lips rolled and pressed read as each other, a jaw to the side opened the mouth before reaching its own mark, and a look-and-return could not be held. The Dev confirmed the result: «Sim». The face column is now: up — brows up; down — frown; left / right — the head turned to the player''s left / right (nose tip against the face''s sides, from the calibrated rest, the mark near 18°); START — ONE eye squeezed (blink or squint) past 0.5 held about 1 s, the other eye free; SELECT — no expression; 1 — lips pressed; 2 — mouth open; 3 — smile; 4 — kiss (lips pushed out); L1 — a crossed look right then left, held on the left; R1 — left then right, held on the right; L2 / R2 — the mouth to the left / right. Reading rules the runs settled: the mouth positions (1, 2, 3, 4, L2, R2) hold 600 ms, since talking passed the mark in short syllables; the kiss has its own mark 0.6 (a relaxed mouth sits near 0.33); lips pressed clear the smile; the mouth to a side clears the kiss it projects; a squeeze at START''s mark clears the frown it pulls; a crossed look needs a first side that peaked at 0.6, the second side at 0.6 within 0.8 s and held 300 ms (the release''s overshoot, 0.28–0.43, presses nothing), stays down while the look stays past the mark, and is cancelled by a turned head. In the last run no position read as another, neither in the items nor in 26.5 s of looking around; crossings took 92 ms. Looking around still turns the head and moves the eyes the way the left/right and L1/R1 commands do. §2 is narrowed: the eyes'' blendshapes (a squeeze, a crossed look) are part of the face map; what stays disabled is eye control as its own modality (where on the screen the player looks, issue #194). The hand column stands.'
   supersedes: [ADR-0199, ADR-0202, ADR-0208]
@@ -92,7 +102,7 @@ decision-outcome:
       - "A player who can only move the eyes has no camera control until an eye map exists"
 
   confirmation: |
-    ⚠️ NOT BUILT YET — **issue #191** in `the-inclusionist-engine`. Gates: a lab run of the map where each position's bar sits beside a
+    ✅ BUILT (confirmed 2026-09-25 — see `confirmed-by`): the readers exist and each is held by recorded and synthetic frames. The Dev's live round of the fourteen hand gestures is still owed under issue #191. The gates as they were named before the work, kept as history: Gates: a lab run of the map where each position's bar sits beside a
     bar for any other position, so the pairs above are measured on the Dev's face and hands; then the readers, where a recorded frame of
     each mapped expression or gesture raises its position and no other; no eye reading raises a position.
 

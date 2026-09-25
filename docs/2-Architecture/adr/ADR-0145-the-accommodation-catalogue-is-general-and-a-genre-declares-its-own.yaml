@@ -1,6 +1,9 @@
 ---
 metadata:
   status: "accepted"
+  confirmed-by:
+    - engine:tests/accommodations.node.test.js
+    - engine:tests/rows-follow-the-answer.browser.test.js
   superseded-in-part:
     - by: ADR-0153
       what: >-
@@ -24,6 +27,11 @@ metadata:
        hundred fall into, and this record is what a genre template would carry"
   informed: []
   errata:
+    - date: 2026-09-25
+      what: >-
+        CONFIRMED in the form ADR-0153 gave it: the general catalogue lives in `core/accommodations` (three families),
+        the CARTRIDGE answers the game-keyed ones at boot (the genre is optional), and a row with no subject is absent
+        while an applying one carries the game's word. Issue #143 closes with this.
     - date: 2026-09-12
       what: "§4's starting classification put NAVIGATION SOUND among the general entries. 📏 The study this
              record asked for in §3 has been done — `engine:docs/1-Discovery/study-accommodations-by-genre.md`,
@@ -197,7 +205,7 @@ decision-outcome:
          would be a smell"
 
   confirmation: |
-    ⚠️ NOT BUILT YET, so there is no `confirmed-by`. The work is **issue #143** in
+    ✅ BUILT (confirmed 2026-09-25 — see `confirmed-by`), in the form ADR-0153 gave it. The gates as they were named before the work, kept as history: The work is **issue #143** in
     `the-inclusionist-engine`, and the study of §3 is the first half of it. The gates, named now:
 
       1. An accommodation a genre does NOT declare is absent from the document — the case asserts the

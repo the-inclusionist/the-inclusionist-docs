@@ -1,6 +1,17 @@
 ---
 metadata:
   status: "accepted"
+  confirmed-by:
+    - engine:tests/a-pad-with-nowhere-to-mount.browser.test.js
+    - engine:tests/the-touch-pad-follows-the-declaration.browser.test.js
+    - engine:tests/virtual-controller-at-boot.browser.test.js
+  errata:
+    - date: 2026-09-25
+      what: >-
+        CONFIRMED. The engine mounts, wires and hides the virtual control from the declaration (plan phase 4,
+        `engine:2567148` and after), and the last gate — a host with nowhere to mount the pad says so in `problems`
+        and mounts nothing — landed with issue #141 (`engine:0a2f6905`). The shape follows ADR-0157, ADR-0162 and
+        ADR-0165 where they superseded §2–§3.
   superseded-in-part:
     - by: ADR-0165
       what: "ONLY §2, «each button carries the game's word» — the face shows the button's name, the word is its function in the legend"
@@ -170,7 +181,7 @@ decision-outcome:
          which is markup the engine did not own yesterday"
 
   confirmation: |
-    ⚠️ NOT BUILT YET, so there is no `confirmed-by`. The work is **issue #141** in
+    ✅ BUILT (confirmed 2026-09-25 — see `confirmed-by`). The gates as they were named before the work, kept as history: The work is **issue #141** in
     `the-inclusionist-engine`. The gates, named now so the record and the work cannot drift:
 
       1. A minimal document plus `createGame` with a TWO-action `preset` mounts two controls, not nine.
