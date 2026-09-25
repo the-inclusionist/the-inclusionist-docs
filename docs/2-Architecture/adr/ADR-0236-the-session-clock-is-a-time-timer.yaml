@@ -2,6 +2,17 @@
 metadata:
   status: "accepted"
   supersedes-in-part: [ADR-0050]
+  errata:
+    - date: 2026-09-25
+      what: >-
+        THE OPEN QUESTION IS ANSWERED, and the default changes. The Dev, the same day: «Mude para 1 hora, a tela não
+        trava, o relógio fica vermelho para indicar que está havendo exagero no tempo de uso, por padrão (configurar o
+        tempo e o que faz - relógio vermelho, relógio vermelho e piscando de forma suave, tela trava - deve estar nas
+        opções).» So: the default session is 60 minutes, not 50; when it runs out the screen does NOT lock, the clock
+        turns red to show the time of use is being exceeded; and both the length and the behaviour at the end are
+        OPTIONS — red clock (default), red clock pulsing gently, or screen lock. This replaces ADR-0050 §4's lock as the
+        default; the lock survives only as a chosen option. The gentle pulse stays under WCAG 2.3.1 (far below three
+        flashes a second) and stops under reduced motion, where the clock stays plain red.
   date: 2026-09-25
   decision-makers: [Dev]
   consulted:
