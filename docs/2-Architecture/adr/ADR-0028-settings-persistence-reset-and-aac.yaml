@@ -1,5 +1,9 @@
 metadata:
   status: "accepted"
+  superseded-in-part:
+    - by: ADR-0233
+      what: >-
+        The pictogram roster and its tiers: only ARASAAC and PCS are candidates, each only once licensed, and officially none today. Mulberry, Blissymbolics, Tawasol, Sclera, SymbolStix and Widgit leave. Persistence and reset stand.
   date: 2026-08-24
   decision-makers: [Dev]
   consulted: [survey of the eight settings panels and their persistence, ADR-0010 pillars 2/8/10]
