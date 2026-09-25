@@ -10,6 +10,7 @@ metadata:
         by default, the Dev: «A entrega leva as três línguas.» So the delivery carries pt, en and es by default. For the voice
         commands that is ~108 MiB (31–39 MiB per language). For reading aloud it would be ~850 MiB (pt 378, en 162, es 310),
         and that half waits on the Dev's answer about where reading belongs, asked the same day.
+        ✅ BUILT for the commands (`engine:fa9be434`): no flag carries every language the catalogue has a model for, `--commands` narrows it, `--commands none` carries none; the first-load download asks for all three, the child's own language first. Measured: +116,455,039 bytes on a delivery (111.1 MiB).
   date: 2026-09-22
   decision-makers: [Dev]
   consulted:
