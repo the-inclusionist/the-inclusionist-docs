@@ -194,3 +194,16 @@ list (`.pause-menu`) and the settings-panel floor (`.ctrl-list`) are outside the
 The ronde's row in the typography panel now names all four faces of its stack, Cookie last, and its notice says that without the
 three school faces the game shows Cookie, which is not the ronde taught at school (issue #150, ADR-0154). `engine:3875ce45`,
 `engine:5ba43b71`.
+
+
+## 2026-09-25 · Menus scroll inside their card, and the cursor stays in view
+
+⚠️ **Choices made while building, and the Dev sees them in the running demo.** Asked by the Dev («os menus não rolam quando
+têm mais de 6 ítens»): a list longer than its card scrolls INSIDE the card and the page never scrolls; the item under the
+cursor is kept in view by one function (`ui/menu-items.keepInView`) whatever moved it — keyboard, pad, touch, gaze, voice or
+scan. The pause card reserves the HUD row and the footer band at its end (`--rodape-h + --footer-band-h`) so its last item
+rests above them; the scrollbar keeps the browser's own look. The opening menus scroll at `max-height:72%` of the stage. With
+the other rules of issue #134 (ADR-0130): back from a card's list lands on the item that opened it, and a pointer press moves
+the cursor too; back to an opening menu focuses its opener; every layer under the front card is `inert`; an exclusive choice
+of five or fewer positions cycles in its row and a longer one is a dropdown (the cane row became «uma por bloco» / «a cada
+meio bloco»; an audio-output row cycles over the shared output and up to four devices). `engine:91da1bc8`…`engine:0fbac5ca`.
