@@ -2,6 +2,19 @@
 metadata:
   status: "accepted"
   supersedes-in-part: [ADR-0051]
+  errata:
+    - date: 2026-09-25
+      what: >-
+        THE ONLINE DEPENDENCY IS ACCEPTED FOR NOW, by the Dev the same day, asked what the problem is with VLibras not
+        working offline: «Não funciona sem internet, mas qual o problema de não funcionar (por enquanto)? Vamos terminar o
+        trabalho mesmo com este "problema", ok?». So the interpreter is built on the VLibras widget served by
+        vlibras.gov.br, as a NAMED EXCEPTION to two rules, for this feature only: the delivery's own-origin policy
+        (ADR-0177, the Content-Security-Policy of #170) admits vlibras.gov.br for what the widget loads, and pillar 8
+        (offline after the first day) does not hold for the interpreter. What still holds offline, and must: every sound
+        keeps its caption and the text stays written (Lei 10.436 art. 4), so a deaf child offline loses the signing and
+        nothing else, and the engine says so in `problems` and to the child instead of showing a dead interpreter.
+        A self-hosted or on-device signer replaces the widget when one exists; the exception is written so it can be
+        removed without reopening the design.
   date: 2026-09-25
   decision-makers: [Dev]
   consulted:
