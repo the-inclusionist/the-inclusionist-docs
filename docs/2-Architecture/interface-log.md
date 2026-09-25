@@ -215,3 +215,12 @@ The Dev placed the VLibras avatar at the **bottom right** of the screen, where i
 quiz's last answers; the Dev saw it there and kept it). It appears when the sonar calls it with deaf mode on and **leaves the
 screen when it finishes signing** — the Dev: «ele só deve aparecer quando for "invocado" via sonar e desaparecer quando não
 estiver em uso». The player stays loaded behind, so a second call shows it at once instead of after the ~4 s of its first load.
+
+
+## 2026-09-25 · The interpreter leaves 5 s after the player itself says it stopped
+
+Replaces the 1 s after the gloss counter of the previous entry. The Dev: «Ao invés de estipular o tempo, não tem mesmo como
+fazer ele sair da tela 5 segundos após entrar em pose de espera?», then «Sim.» The Unity player reports its own state
+(`onPlayingStateChange`, whose first flag is «playing»); the avatar leaves the screen 5 s after that flag turns false — the
+player's word that it is back at rest, not a time the engine guesses. A new sonar press within those 5 s cancels the leaving.
+To be confirmed against the player's canvas frames that the report coincides with the rest pose.
