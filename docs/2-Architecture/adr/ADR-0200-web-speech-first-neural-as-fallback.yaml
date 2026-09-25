@@ -1,7 +1,15 @@
 ---
 metadata:
   status: "accepted"
+  confirmed-by:
+    - engine:tests/browser-voice-first.browser.test.js
   errata:
+    - date: 2026-09-25
+      what: >-
+        HALF BUILT, measured in an issue audit. Speech: where the browser offers a voice for the language, it leads the list
+        and speaks and no neural voice loads (`engine:ded6bcb` and after). Recognition: the on-device route exists
+        (`platform/speech-recognition`, used by reading aloud), but commands are still heard by Vosk, and Web Speech is not
+        the default command recogniser where the language is available — that half stays with issue #190.
     - date: 2026-09-14
       what: '📌 §4, THE OPEN POINT, ANSWERED. Asked whether Web Speech recognition counts as available only on the device (`processLocally`) or also through Chrome''s servers, the Dev: «Só local, voz da criança não deve sair do aparelho.» Recognition is available only when it runs on the device; Chrome''s server recognition is never used. Issue #190.'
   supersedes-in-part: [ADR-0186, ADR-0190]
@@ -60,7 +68,7 @@ decision-outcome:
       - "Until point 4 is answered, server recognition is not turned on"
 
   confirmation: |
-    ⚠️ NOT BUILT YET — **issue #190** in `the-inclusionist-engine`. Gates: with a Web Speech voice for the language, speech goes
+    ✅ In part (errata of 2026-09-25): the SPEECH half is built and held by `confirmed-by`. 📋 The RECOGNITION half is still owed under **issue #190**: Web Speech on the device as the default command recogniser where the language is available, the neural one as the fallback. The gates as they were named before the work, kept as history: Gates: with a Web Speech voice for the language, speech goes
     through it and no neural voice loads; without one, the neural fallback speaks; with recognition available, it recognises and
     no recogniser model is fetched; without it, the fallback recognises.
 
