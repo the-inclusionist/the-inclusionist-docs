@@ -5,6 +5,20 @@ metadata:
   errata:
     - date: 2026-09-25
       what: >-
+        ROUTE A MEASURED, and the measurement meets a rule the Dev already gave. With the player served from the page's own
+        origin under the delivery's exact headers (COOP, COEP, CSP unchanged): as published it does NOT run — the Unity
+        loader injects its framework as a `blob:` script (refused by `script-src`), and the player talks to the page
+        through Unity 2018's `Application.ExternalCall`, which calls `eval` (three `EvalError`s). It runs with zero CSP
+        violations only after two changes of ours: a shim that loads the framework from a same-origin file, and a build
+        step that replaces the single `eval(str)` inside Unity's framework JavaScript with a parser of the plain calls it
+        sends (`CounterGloss(1, 2);`). Everything else answered yes: signs fetched from a same-origin `setBaseUrl`
+        («CASA ESCOLA» signed, seen in frames read back from its canvas), a word with no sign fingerspelled with letters
+        built into the player (no letter bundles needed), 256 MiB fixed wasm heap, ~3.6 s to load on localhost. So «a
+        black box that cannot be patched» above was wrong at the glue level: its JavaScript can be edited as text, its
+        wasm cannot. And editing it is the «remendo» the Dev ruled out for Vosk («nunca unsafe-eval nem remendo»), so
+        route A as measured needs the Dev's word before it is built.
+    - date: 2026-09-25
+      what: >-
         THE OFFLINE ROUTE IS CHOSEN, and it replaces the hosted widget. A study of VLibras's own repositories the same
         day (GitHub `spbgovbr-vlibras`, LAViD's GitLab) measured three facts: under the delivery's COEP `require-corp`
         the hosted widget's avatar never loads (its iframe document sends no COEP header); the hosted widget also
