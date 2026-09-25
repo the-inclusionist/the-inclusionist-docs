@@ -5,6 +5,12 @@ metadata:
   confirmed-by:
     - engine:tests/code-health.node.test.js
   errata:
+    - date: 2026-09-25
+      what: >-
+        D3 ENDS, AND WITH IT THE WHOLE RECORD'S PROGRAMME (`engine:cf39cb6f`, note DN): the words a game declares are keys of
+        its own dictionary, resolved by the root's translator at every drawing, and `core/i18n` keeps no module-level state.
+        The set of stateful modules outside the root is EMPTY (36 at D1 -> 0). A key a game's dictionaries lack is a line in
+        `problems` and never reaches the screen raw; a word passed in the old shape is refused at boot.
     - date: 2026-09-24
       what: >-
         PHASE D1 LANDED (engine commit a0ef7512): `fanOut` counts value imports only (474 -> 357 over 181 modules),
