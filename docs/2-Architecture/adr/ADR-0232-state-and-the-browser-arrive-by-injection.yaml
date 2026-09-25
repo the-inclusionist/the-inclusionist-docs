@@ -42,6 +42,22 @@ metadata:
         A module hears a language change through the translator's `onChange`, which returns a release and reaches
         modules through the root's disposing door, as `stateOn` does, so an ended root stops re-rendering (ADR-0220).
         The window event stays as the page-level signal to the host.
+    - date: 2026-09-25
+      what: >-
+        PHASES D3 AND D4 LANDED, save one step (engine 667e85fd and the commits before it). D3: value edges into
+        `core/i18n` outside the root 42 -> 0, the game dictionary per root through `CreateGameOptions.dictionaries`,
+        the demo quiz translating through `Engine.t`. D4, in six parallel batches and a final sweep: stateful modules
+        36 -> 1, value edges into them outside the root 38 -> 0, global reach outside the root 23 modules -> 0, and the
+        root's own reach 1 -> 0; games reach the root's services through additive handles (`Engine.settings`,
+        `say`/`alert`, `libras`, `input`, `keyboardConfig`, `audio`, `crt`, `lq`), each breaking change with its
+        migration note (CU-DE). Two readings the phases settled without a new decision: a port a host may lack is
+        REQUIRED and may carry `undefined`, answered inside the module, because a `??` in the root is a branch and
+        the root must not grow in branches (ADR-0221); and the worker literal stays in the root over a local taken
+        from the host, so the bundler still sees it and the root reaches nothing. The ONE module left stateful is
+        `core/i18n`: its module-level `t`/`registerDict` wait on the Dev's choice of how a game translates the words it
+        declares before `createGame` exists (words frozen in the boot language were MEASURED: a preset built with `t`
+        in Portuguese still read «Acima» after `setLocale('en')`). Also open for the Dev: whether the root mirrors every
+        announcement into Libras (today's behaviour is kept; the mirror is one line).
   date: 2026-09-24
   decision-makers: [Dev]
   consulted:
