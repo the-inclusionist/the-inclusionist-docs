@@ -58,6 +58,22 @@ metadata:
         declares before `createGame` exists (words frozen in the boot language were MEASURED: a preset built with `t`
         in Portuguese still read «Acima» after `setLocale('en')`). Also open for the Dev: whether the root mirrors every
         announcement into Libras (today's behaviour is kept; the mirror is one line).
+    - date: 2026-09-25
+      what: >-
+        THE LAST STEP OF D3 IS SETTLED BY TWO DECISIONS THE DEV HAD ALREADY MADE, so it is not put to him as a new
+        choice. The words a game declares (action labels, accommodation words, its option rows, its how-to-play
+        slides) become KEYS of the game's own dictionary — registered through `CreateGameOptions.dictionaries` — and
+        the root's translator resolves them each time it draws them. Why this and not late-binding getters or a
+        translator the game builds: ADR-0216 records the Dev's rule that the game asks and never needs to know how the
+        engine does it («O jogo não deve precisar saber como isso funciona»), and ADR-0225 records that changing the
+        language changes everything at once («todo o hud, menus, explicações, mensagens, textos […] deve ser
+        alterado imediatamente»). Getters meet the second rule only where each game remembers to wrap each word, and
+        one forgotten wrap freezes a word silently, as measured («Acima» after `setLocale('en')`); a translator built
+        by the game puts two translators in one page that may disagree on the language. Keys meet both rules by
+        construction. It changes the contract (BREAKING, with a migration note), and with it `core/i18n`'s
+        module-level `t`/`registerDict` leave, so no stateful module remains outside the root. Announced to the Dev
+        on 2026-09-25 with the way to override it. The Libras mirror of every announcement is no longer open: ADR-0234
+        took signing off announcements and gave it to the sonar.
   date: 2026-09-24
   decision-makers: [Dev]
   consulted:
