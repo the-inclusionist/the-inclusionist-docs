@@ -1,6 +1,21 @@
 ---
 metadata:
   status: "accepted"
+  errata:
+    - date: 2026-09-25
+      what: >-
+        THE SPLIT WAS WRONG, and the Dev said so the same day, reading the line that kept parallax, gravity, slopes
+        and ladders outside the folder: «NÃO FAZ O MENOR SENTIDO! Eu pretendo fazer 4 plataformers, você está
+        deixando elementos comuns em um, elementos que poderiam ser compartilhados.» The record drew the line by what
+        the two GENRES share and left the platformer genre's own mechanics inside one game; with four platformers
+        planned, those mechanics are shared by four games, and keeping them in one is the duplication the sub-engine
+        exists to prevent. So the folder holds TWO layers: a world core both genres share (tile map, camera, basic
+        collision, ADR-0049's points and powers, the objects the player interacts with) and a platformer layer every
+        platformer shares (parallax, gravity, slopes, ladders, platformer movement and physics). The platformer layer
+        may import the core and never the reverse, and neither imports a game's content; what stays in
+        game-platformer is that game alone — its levels, its scenery and art, the numbering of its own map. And the
+        extraction trigger follows: a second PLATFORMER is a consumer as much as a first top-down game, so the package
+        is extracted when the second game of either genre starts, and its API is settled against both.
   date: 2026-09-25
   decision-makers: [Dev]
   consulted:
@@ -51,7 +66,7 @@ decision-outcome:
       - "The engine keeps describing no game"
       - "No new package until a second consumer exists"
     negative:
-      - "The sub-engine is not shared until a top-down game exists"
+      - "The sub-engine is not shared until a second game of either genre exists (errata: not only a top-down one)"
       - "The work happens in game-platformer's repository, which needs the Dev's order (games are other work)"
 
   confirmation: |
