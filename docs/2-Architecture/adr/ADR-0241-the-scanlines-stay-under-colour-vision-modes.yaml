@@ -1,6 +1,15 @@
 ---
 metadata:
   status: "accepted"
+  confirmed-by:
+    - engine:tests/the-crt-under-each-visual-mode.browser.test.js
+  errata:
+    - date: 2026-09-25
+      what: >-
+        CONFIRMED (`engine:eebc2fb2`, note DL): the CRT receives two answers from the root, «the scanline yields?» and
+        «the vignette yields?», and the colour-vision modes stay listed once, beside their matrices. Found on the way and
+        fixed (`engine:fa265ab9`): under `createGame` the game's high-contrast theme never took the CRT away at all —
+        ADR-0047 held only for the filters — because the root handed the theme's writer to the bar without recording it.
   supersedes-in-part: [ADR-0047]
   date: 2026-09-25
   decision-makers: [Dev]
@@ -44,8 +53,8 @@ decision-outcome:
       - "The list of modes the scanline ignores must follow the colour-vision modes that exist"
 
   confirmation: |
-    ⏳ Not built. Debt: a browser case per colour-vision mode (scanline on, vignette off) and one per other visual mode
-    (both off), each red by mutation.
+    ✅ The gate in confirmed-by: each colour-vision correction and simulation keeps the scanline and drops the vignette; low
+    vision, blindness, the theme and the contrast enhancement drop both; 12 mutations red.
 
 more-information: |
   Scope read from the Dev's words: «modos de daltonismo» covers the correction (`fix-*`) and the simulation of the same
