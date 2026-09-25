@@ -11,7 +11,7 @@ metadata:
   supersedes-in-part: [ADR-0168]
   superseded-in-part:
     - by: ADR-0239
-      what: "§2 and §4, where the power and the learning bars sit: the power goes above the score in the bottom row. The mission (§1) stays top left."
+      what: "§1, §2, §3 and §4: the power goes above the score in the bottom row, the learning bars bottom left, and the mission to the top centre under the quick bar (errata of ADR-0239), where the bar's momentary legend may cover it."
     - by: ADR-0238
       what: "§1, where the points sit: they move beside the clock at the top right, as five digits with leading
               zeros. The mission keeps the top-left column; §2–§5 stand."

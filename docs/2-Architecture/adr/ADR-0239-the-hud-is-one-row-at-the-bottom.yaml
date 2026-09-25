@@ -1,6 +1,15 @@
 ---
 metadata:
   status: "accepted"
+  errata:
+    - date: 2026-09-25
+      what: >-
+        §5 WAS MY READING, NOT THE DEV'S DECISION, and the Dev answered it the same day: «Topo no centro, abaixo dos menus,
+        mas isso faz com que seja coberta com a legenda dos menus. Tudo bem, a legenda é momentânea, a escrita da missão
+        aparece o tempo todo.» So the mission sits at the TOP CENTRE, under the quick accessibility bar, and the bar's
+        momentary legend (the name line under the icons) may cover it while it shows. This also sets aside ADR-0175 §3
+        («nothing of the HUD sits under the quick bar») for the mission. Of §6, the Dev: «Como está está bom.» Of the
+        dictionary label over the clock: «Ok. Vamos experimentar assim.»
   supersedes-in-part: [ADR-0168, ADR-0175, ADR-0236, ADR-0238]
   date: 2026-09-25
   decision-makers: [Dev]
