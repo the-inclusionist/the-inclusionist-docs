@@ -207,3 +207,11 @@ the other rules of issue #134 (ADR-0130): back from a card's list lands on the i
 the cursor too; back to an opening menu focuses its opener; every layer under the front card is `inert`; an exclusive choice
 of five or fewer positions cycles in its row and a longer one is a dropdown (the cane row became «uma por bloco» / «a cada
 meio bloco»; an audio-output row cycles over the shared output and up to four devices). `engine:91da1bc8`…`engine:0fbac5ca`.
+
+
+## 2026-09-25 · The Libras interpreter: bottom right, and only while it signs
+
+The Dev placed the VLibras avatar at the **bottom right** of the screen, where it already was (25vw × 50vh, over part of the
+quiz's last answers; the Dev saw it there and kept it). It appears when the sonar calls it with deaf mode on and **leaves the
+screen when it finishes signing** — the Dev: «ele só deve aparecer quando for "invocado" via sonar e desaparecer quando não
+estiver em uso». The player stays loaded behind, so a second call shows it at once instead of after the ~4 s of its first load.

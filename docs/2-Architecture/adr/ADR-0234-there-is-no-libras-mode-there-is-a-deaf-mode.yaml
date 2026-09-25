@@ -7,6 +7,15 @@ metadata:
   errata:
     - date: 2026-09-25
       what: >-
+        A WORD WITH NO SIGN IS SPELLED AS IT IS WRITTEN. The rule-based translator returns lemmas in Libras word order, so a
+        word with no sign in the dictionary would be fingerspelled as its lemma («entrou» as E-N-T-R-A-R). Asked, the Dev:
+        «Soletra-se a palavra escrita». So the glosses keep, for every token with no sign, the word as written on the
+        screen, and that is what the player spells — the child sees spelled what she reads, and written Portuguese stays
+        beside Libras (Lei 10.436 art. 4). The Dev also authorised downloading the signs the engine's glosses use (632 of
+        the GPL dictionary, ~16.8 MB estimated) and placed the interpreter at the bottom right; it appears when the sonar
+        calls it and leaves the screen when it finishes signing, the player staying loaded behind so it returns at once.
+    - date: 2026-09-25
+      what: >-
         THE SONAR READS THE SCREEN — built (`engine:c8b18e83`, note DM) after the Dev tested the demo: «O sonar não
         está lendo o que aparece na tela: a tela só é lida ao carregar.» The deaf-mode work had wired the interpreter
         to the NAVIGATION sonar's sentence, and the screen was read once, by the narration. Now a press reads the text
