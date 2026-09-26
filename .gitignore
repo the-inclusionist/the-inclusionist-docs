@@ -1,3 +1,6 @@
 __pycache__/
 *.pyc
 .DS_Store
+
+# the working copies of subagents: each is a branch of this repository, never content of it
+.claude/worktrees/
