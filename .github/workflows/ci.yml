@@ -1,15 +1,18 @@
 # SPDX-License-Identifier: AGPL-3.0-or-later
 #
-# THE GATE OF THE RECORDS — ADR-0123.
+# THE GATE OF THE PROJECT-WIDE RECORDS — ADR-0123, and ADR-0242 for what this tree keeps.
 #
 # ⚠️ IT DOES NOT CHECK OUT THE ENGINE, and that is a decision rather than an omission (ADR-0123 §5). A record
 # naming an engine artefact that disappeared is the ENGINE's breakage, and it must redden where somebody can
 # fix it. Making this repository red on another repository's rename is the coupling ADR-0121 was written
 # about, pointing the other way.
 #
-# 📌 So the `confirmed-by` paths qualified with `engine:` are NOT opened here — the validator counts them and
-# says so on every run, which is the whole defence against a sieve that checks nothing and prints «all sound».
-# The engine's own `adr` job is what opens them, with `--repo engine=.`.
+# 📌 So what points into the engine is NOT opened here — the `engine:` confirmations, the index rows of the
+# engine's records (ADR-0242), and the supersession pointers whose other half lives there. The validator counts
+# each and says so on every run, which is the whole defence against a sieve that checks nothing and prints «all
+# sound». The engine's own `adr` job is what opens them, with `--repo engine=.` against a checkout of this tree.
+#
+# 🎯 The five scripts below exist, identical, in the engine, and its drift gate compares them file by file.
 name: ci
 
 on:

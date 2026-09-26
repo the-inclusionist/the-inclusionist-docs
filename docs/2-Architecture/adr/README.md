@@ -4,6 +4,11 @@ One file per deliberate architectural decision, in **YADR** format — the YAML 
 ([adr/yadr](https://github.com/adr/yadr)). Pure YAML so records are **machine-readable** (filter/index by
 `metadata.status`, generate the table below, lint against a schema later).
 
+📌 **This tree keeps the records that belong to the whole project (ADR-0242).** The engine's live in the engine, and a
+game's own in that game; every one of them still has a row below, whose link names its repository (`engine:…`,
+`game-platformer:…`). That row answers for the number when another record cites it, and `--repo <name>=<path>` lets
+the validator open the file. Which tree a new record goes to: this repository's `README.md`.
+
 - **Format:** `templates/yadr-template-full.yaml` from the upstream repo. Keys, in order: `metadata`
   (`status`, `date`, `decision-makers`, `consulted`, `informed`) → `title` → `context-and-problem-statement` →
   `decision-drivers` → `considered-options` → `pros-and-cons-of-the-options` → `decision-outcome`
