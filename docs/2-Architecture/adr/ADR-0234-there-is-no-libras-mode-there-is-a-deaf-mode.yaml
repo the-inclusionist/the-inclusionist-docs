@@ -3,8 +3,29 @@ metadata:
   status: "accepted"
   confirmed-by:
     - engine:tests/the-sonar-reads-the-screen.browser.test.js
+    - engine:tests/libras-avatar.browser.test.js
+    - engine:tests/libras-glosses.node.test.js
   supersedes-in-part: [ADR-0051]
   errata:
+    - date: 2026-09-26
+      what: >-
+        PHASE B3 LANDED — THE FREE PLAYER IS THE INTERPRETER, AND ROUTE A LEFT (engine `a3827e63`, Breaking-Changes note
+        DO). `createGame`, when the host lends no interpreter, builds the free Libras player (`ui/libras-avatar-player`:
+        LAViD-UFPB's GPL-3.0 signs exported to a three.js avatar); where the delivery carries no avatar it answers exactly
+        as `NO_INTERPRETER` does. `inclusionist-heavy --libras` delivers the glosses beside the avatar
+        (`libras/avatar/glosses.json`), the avatar and its 655 clips (pinned in `scripts/libras-avatar.json`) and
+        `libras/offline-avatar.json`. Left the engine and the delivery: the VLibras Unity player and its closed runtime;
+        the delivery-time `eval` rewrite this record allowed as a declared, temporary exception, with its CSP shim and
+        page; LAViD's Unity sign bundles (`scripts/libras-signs.json`, `libras/signs/`); route A's delivery list; and
+        `--libras-avatar`, which no release ever carried. At gloss time «has a sign» is the avatar's clip set, and the
+        engine's glosses came out byte-identical to route A's. The policy is unchanged — `script-src 'self'
+        'wasm-unsafe-eval'`, `connect-src 'self'`, never `unsafe-eval` — and the exception is gone. Measured on a served
+        delivery: the plain quiz in deaf mode signs with the avatar online (416 ms to the avatar) and, after one online
+        start, offline (341 ms); zero CSP violations; no request to anything of route A; nothing of Libras with deaf mode
+        off; the files a device keeps with deaf mode on went from 1,321 to 681, and the delivery is 35.9 MB smaller.
+        Still open: B4 (the Dev's round and acceptance by deaf signers), letter timing and chaining (a question to the
+        Dev), the avatar's upload to the project's mirror (until then `--libras` needs a local `--base`), and route A's
+        files already kept by a test browser, which nothing now deletes.
     - date: 2026-09-25
       what: >-
         Ç IS SPELLED AS Ç — the rule «a word with no sign is spelled as it is written» stripped every mark, the cedilla
