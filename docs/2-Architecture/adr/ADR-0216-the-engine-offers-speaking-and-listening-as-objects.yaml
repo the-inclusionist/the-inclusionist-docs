@@ -26,6 +26,13 @@ metadata:
        neural voice copies them."
   informed: []
   errata:
+    - date: 2026-09-26
+      what: >-
+        WHERE READING ALOUD LIVES, confirmed by the Dev after asking whether it should be the cartridge's alone: «A
+        capacidade fica na engine. A forma de usar é que é do cartucho. Por exemplo, falar e selecionar a opção correta
+        entre as alternativas do quiz é do cartucho quiz.» That is this record's split, unchanged: the engine hears and
+        returns the text (`motor.reading.listen()`), and what the text means — choosing the option that was said — is the
+        cartridge's (the demo quiz's `heardAlternative`).
     - date: 2026-09-21
       what: >-
         📏 THE COST IS SMALLER THAN THIS RECORD SAYS, measured while building it. The negative consequence «the engine's package
