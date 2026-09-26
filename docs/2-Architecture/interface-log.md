@@ -245,3 +245,12 @@ alphabet: a letter takes 1.2–1.97 s (median 1.63 s), of which the hand rises f
 «ENTROU» goes from ~8.3 s to ~3.9 s and «PÕE» from ~4.3 s to ~2.8 s. Fingerspelling in Libras is done with the hand still in
 the signing space; the rise and fall between letters was an artefact of each letter being an isolated clip. A sign that is
 not a letter or digit keeps its whole clip. Engine: route B's sequencer (`ui/libras-avatar-*`), to be built.
+
+## 2026-09-26 · The quiz's welcome names the child's own keys for choosing and answering
+
+⚠️ Chosen while fixing a false welcome and NOT YET SEEN by the Dev — no Dev words to quote. The demo quiz said «Use as setas
+para escolher e Enter para responder», and Enter is `start` (it opened the pause, measured on the served `dist`). The line is
+now built from the child's scheme: one key per position, an arrow or Space named first when bound — «Quiz. Use ↑ e ↓ para
+escolher e Espaço para responder.» in the default scheme, her own keys after a remap, and a position with no key is not
+named (with no key at all: «Quiz. Toque numa resposta para responder.»). `engine:77868fdc`; the double answer one Space used
+to give, which this line would have sent children into, `engine:aeea9423`.
