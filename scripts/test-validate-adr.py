@@ -241,6 +241,49 @@ with tempfile.TemporaryDirectory() as base:
     exige(codigo != 0 and "cites ADR-0009" in saida,
           f"a number no tree has passed; it exited {codigo}. Output:\n{saida}")
 
+    # ============ A SUPERSESSION PAIR ACROSS TREES (ADR-0242): the engine's records went home ============
+    # `docs` keeps ADR-0010; the engine's ADR-0011 supersedes part of it. Each half lives in its own repository.
+    lado_docs = os.path.join(base, "lado-docs", "docs", "2-Architecture", "adr")
+    raiz_engine = os.path.join(base, "lado-engine")
+    lado_engine = os.path.join(raiz_engine, "docs", "2-Architecture", "adr")
+    os.makedirs(lado_docs)
+    os.makedirs(lado_engine)
+    escreve(lado_docs, 10, "superseded in part by a record that went home to the engine",
+            '  superseded-in-part:\n    - by: ADR-0011\n      what: "the part the engine decides now"')
+    com_espelho = "  supersedes-in-part: [ADR-0010]"
+    escreve(lado_engine, 11, "supersedes part of a record that stayed in docs", com_espelho)
+    linha_da_casa = "| [ADR-0010](ADR-0010-fixture.yaml) | the one that stayed | accepted |\n"
+    linha_da_engine = "| [ADR-0011](engine:docs/2-Architecture/adr/ADR-0011-fixture.yaml) | went home | accepted |\n"
+    indice_docs = os.path.join(lado_docs, "README.md")
+    with open(indice_docs, "w", encoding="utf-8") as fh:
+        fh.write("| ADR | Decision | Status |\n|---|---|---|\n" + linha_da_casa)
+
+    # 🔴 [Boundary] with no row and no root, the other half is NOWHERE, and that fails — it never becomes «not
+    # checked», or a mistyped number in `by:` would live inside the message that says all is well.
+    codigo, saida = corre(lado_docs)
+    exige(codigo != 0 and "ADR-0011, which does not exist" in saida,
+          f"a pair whose other half no tree answers for passed; it exited {codigo}. Output:\n{saida}")
+
+    # 🎯 [Zero] with the row and WITHOUT the engine's root: green, and the pair is COUNTED and said.
+    with open(indice_docs, "w", encoding="utf-8") as fh:
+        fh.write("| ADR | Decision | Status |\n|---|---|---|\n" + linha_da_casa + linha_da_engine)
+    codigo, saida = corre(lado_docs)
+    exige(codigo == 0, f"the pair across trees should be sound without the root; it exited {codigo}. Output:\n{saida}")
+    exige("supersession pointers into `engine` NOT checked" in saida,
+          f"the pair was not checked and the validator kept quiet. Output:\n{saida}")
+
+    # [Right] WITH the engine's root: the other half is READ, the pair is checked, and the warning stops.
+    codigo, saida = corre(lado_docs, "--repo", f"engine={raiz_engine}")
+    exige(codigo == 0 and "supersession pointers" not in saida,
+          f"with the engine's root the pair should be checked and quiet; it exited {codigo}. Output:\n{saida}")
+
+    # 🔴 [Inverse] the other half forgets the mirror: with the root in hand, that FAILS, and says on which side.
+    os.remove(os.path.join(lado_engine, "ADR-0011-fixture.yaml"))
+    escreve(lado_engine, 11, "no longer says what it supersedes")
+    codigo, saida = corre(lado_docs, "--repo", f"engine={raiz_engine}")
+    exige(codigo != 0 and "ADR-0011 (in `engine:`) does not list ADR-0010" in saida,
+          f"a pair missing its mirror in another tree passed; it exited {codigo}. Output:\n{saida}")
+
 if falhas:
     for f in falhas:
         print(f"FAIL {f}")
@@ -274,3 +317,9 @@ print("validator: what is not checked is said, and what is checked fails when it
 # 13. the index failure exiting 0, and 14. no longer printing it → the missing-file [Inverse] fails.
 #    The index is not a record and does not enter the «N records» count, but a row that points at nothing is the
 #    same lie as a `confirmed-by` pointing at nothing.
+#
+# A SUPERSESSION PAIR ACROSS TREES (ADR-0242):
+# 15. the other declared tree's metadata not being read → [Right] fails: the pair is counted with the root in hand.
+# 16. silencing the count of pairs → [Zero] fails. Mutation 1 again, for the pairs.
+# 17. a pair with no other half anywhere being COUNTED instead of failing → the pair [Boundary] fails.
+# 18. the mirror check skipped for a pair read from another tree → the pair [Inverse] goes green.
