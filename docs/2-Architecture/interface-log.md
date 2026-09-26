@@ -235,3 +235,13 @@ pressed state still changes); the control itself then says «Pronto: …» (or, 
 or the reason it could not start. Turning OFF still says «… desligado» at the press, which is true when it is written. A
 «ligando…» line was not added: on a failure it would leave the spoken state disagreeing with the button again.
 `engine:cb0274dc`.
+
+
+## 2026-09-26 · The free Libras player spells a word with the hand held up between letters
+
+The Dev: «Sim» — asked whether the letters of one spelled word chain, the hand staying in the signing space and coming down
+only at the word's end, instead of every letter's clip rising from rest and falling back to it. Measured on the exported
+alphabet: a letter takes 1.2–1.97 s (median 1.63 s), of which the hand rises for ~0.48 s and falls for ~0.52 s; chained,
+«ENTROU» goes from ~8.3 s to ~3.9 s and «PÕE» from ~4.3 s to ~2.8 s. Fingerspelling in Libras is done with the hand still in
+the signing space; the rise and fall between letters was an artefact of each letter being an isolated clip. A sign that is
+not a letter or digit keeps its whole clip. Engine: route B's sequencer (`ui/libras-avatar-*`), to be built.
