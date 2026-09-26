@@ -7,6 +7,25 @@ metadata:
   errata:
     - date: 2026-09-25
       what: >-
+        ROUTE B SIGNS OFFLINE AFTER ONE ONLINE START (phase B3, offline half; route A stays the default). Measured before:
+        with a delivery built `--libras --libras-avatar`, deaf mode on and the free player lent, one online start kept
+        route A's listed files and nothing of route B — no avatar, no clip, no three.js chunk (627,596 bytes, left out of
+        the precache by the three.js erratum) — and offline the page with the free player did not open. Now route B is
+        kept by route A's mechanism, as a SECOND delivery list: `inclusionist-heavy --libras-avatar`, run after the
+        build, finds the one `assets/libras-avatar-stage-<hash>.js` (none or two stops it) and writes
+        `libras/offline-avatar.json` naming the manifest, `avatar.glb`, the clips and that chunk with their sha256; each
+        delivery step writes its own list, so a delivery keeps exactly what its steps carried. The list may name only
+        `libras/avatar/` and that chunk's name start — never the rest of `assets/`, which is the precache's. A device asks
+        for it only while deaf mode is on, checks every file by sha256 and never stores a mismatch; the service worker's
+        Libras route (never writing) also answers `libras/avatar/*` and the chunk by name, and the player asks each clip at
+        the address the list keeps (`PRIMEIRO&ORDINAL` was never found offline before). The rule is «what the delivery
+        carries, deaf mode keeps»: a delivery with both players makes a device keep both (≈49 MB); this ends when phase B3
+        takes the Unity player out of the delivery. Measured after (engine `c0274626`…`cd200afa`): offline, the
+        free player's canvas appeared and signed in 0.57–0.86 s with every player request answered by the service worker;
+        a tampered clip was not kept and the other 633 were; with deaf mode off nothing was requested; a delivery without
+        `--libras-avatar` keeps route A as before, with one quiet 404 report for the missing list per deaf-mode start.
+    - date: 2026-09-25
+      what: >-
         ROUTE A SIGNS OFFLINE AFTER ONE ONLINE START WITH DEAF MODE ON (pillar 8). Measured before: the page RAN the
         patched framework, which no catalogue entry named, so nothing on the device checked its bytes; and the player's
         page, glosses and 632 signs went to the network on every start with no service-worker route, so offline the
