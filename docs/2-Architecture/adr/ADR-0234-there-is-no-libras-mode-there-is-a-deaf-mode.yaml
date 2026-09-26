@@ -9,6 +9,13 @@ metadata:
   errata:
     - date: 2026-09-26
       what: >-
+        PHASE B4 — THE FREE PLAYER IS APPROVED. Asked for the last phase of route B — «a sua rodada com o avatar novo e a
+        aceitação por pessoas surdas que sinalizam» — the Dev answered «Aprovado!». Route B is the interpreter, route A is
+        gone, and the four phases of route B are closed. The same day the Dev chose that a spelled word's letters chain
+        with the hand held up between them (`interface-log`, 2026-09-26), which changes the player's timing and not this
+        decision.
+    - date: 2026-09-26
+      what: >-
         PHASE B3 LANDED — THE FREE PLAYER IS THE INTERPRETER, AND ROUTE A LEFT (engine `a3827e63`, Breaking-Changes note
         DO). `createGame`, when the host lends no interpreter, builds the free Libras player (`ui/libras-avatar-player`:
         LAViD-UFPB's GPL-3.0 signs exported to a three.js avatar); where the delivery carries no avatar it answers exactly
