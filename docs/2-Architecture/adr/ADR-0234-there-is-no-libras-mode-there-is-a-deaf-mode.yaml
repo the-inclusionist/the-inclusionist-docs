@@ -7,6 +7,25 @@ metadata:
   errata:
     - date: 2026-09-25
       what: >-
+        ROUTE A SIGNS OFFLINE AFTER ONE ONLINE START WITH DEAF MODE ON (pillar 8). Measured before: the page RAN the
+        patched framework, which no catalogue entry named, so nothing on the device checked its bytes; and the player's
+        page, glosses and 632 signs went to the network on every start with no service-worker route, so offline the
+        interpreter never loaded. Now: (1) a catalogue entry may carry `madeFrom` — made by the DELIVERY from the entry it
+        names, never downloaded by the build, its `sha256` still the pin a device checks — and the patched framework is
+        one, so the delivery step and the device check against the same hash; (2) a delivery built with `--libras`
+        writes `libras/offline.json`, listing each page, glosses and sign file with its sha256, and the catalogue
+        declares it (`DELIVERY_LISTS`) with the only folders it may name — a list naming anything else is refused whole;
+        (3) at boot, only while deaf mode is on, `downloadHeavy` stores each listed file under its own address when its
+        sha256 matches, and a later boot refetches only what changed; (4) the service worker answers `libras/player/*`
+        and `libras/signs/*` from that checked cache, never writing, and goes to the page's own origin on a miss. The
+        list comes from the page's origin, so it is exactly as trusted as the page; the signs' hashes in it come from the
+        pins in `scripts/libras-signs.json`. Measured after (engine `ad0af039`, `15a33a9b` and the two before them):
+        offline, the player loaded and signed 3 of 3 tokens, one never played online; a tampered sign was not stored and
+        the other 637 files were; with deaf mode off nothing of it was requested. Still true: a child who turns deaf mode
+        on mid-session and goes offline before another online start has nothing kept, and signs a later delivery drops
+        stay in the device's cache.
+    - date: 2026-09-25
+      what: >-
         ROUTE B'S PLAYER RUNS ON three.js, AND HOW IT ENTERS THE PACKAGE. The Dev authorised the download («Sim, pode
         baixar»): `three` 0.186.1, MIT, from the npm registry. It enters as a runtime `dependency` pinned to that exact
         version, and it is reached ONLY through a dynamic `import()` from the route B player when deaf mode first signs,
