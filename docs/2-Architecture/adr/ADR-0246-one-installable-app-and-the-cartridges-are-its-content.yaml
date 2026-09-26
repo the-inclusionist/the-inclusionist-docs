@@ -1,0 +1,78 @@
+---
+metadata:
+  status: "accepted"
+  date: 2026-09-26
+  decision-makers: [Dev]
+  consulted:
+    - "The Dev, 2026-09-26, asking whether an installable of the engine and the cartridges could be built with Tauri, desktop and APK, «aproveitando o conteúdo da engine para não baixar o mesmo conteúdo novamente»"
+    - "The Dev, 2026-09-26, verbatim: «Escolho este caminho. Confira se baixar código nativo é proibido.» (option A: one app, the cartridges as its content); and, asked whether A holds on every platform: «Sim»"
+    - "The Dev, 2026-09-26, on the Android WebView having no speechSynthesis: «O objetivo do Kokoro era justamente esse.»"
+    - "Google Play, Device and Network Abuse policy — an app may not download executable code (dex, JAR, .so) from outside Google Play; the restriction «does not apply to code that runs in a virtual machine or an interpreter … such as JavaScript in a webview»; a webview with a JavaScript interface must not load untrusted or unverified content — https://support.google.com/googleplay/android-developer/answer/16559646"
+    - "Tauri 2 — HTTP headers set in configuration for production builds, which gives COOP/COEP (cross-origin isolation) to the engine's threaded runtimes — https://v2.tauri.app/security/http-headers/"
+    - "ADR-0177 — the heavy files are delivered from the app's own origin, each checked by its sha256"
+    - "ADR-0010 pillar 8 — a PWA online on the first day, offline after; an installable is how a school with no network gets the first day"
+  informed: []
+
+title: One installable app on every platform, and the cartridges are its content
+
+context-and-problem-statement: |
+  The Inclusionist reaches a school as a PWA, which needs the network on the first day. An installable (Tauri 2: Windows,
+  Linux, macOS and an Android APK from the same build) can arrive on a USB stick with everything inside. The question was
+  how a school that installs several games avoids carrying the same heavy files — voices, reading and command models,
+  fonts, hundreds of MiB — once per game.
+
+  What the games share is not the engine's code: each cartridge compiles the engine version it pinned into itself, a few
+  MiB. What they share is the heavy files, which the catalogue already names by sha256.
+
+decision-drivers:
+  - "The heavy files are delivered once per device, whatever the number of games"
+  - "One way to install and update, on every platform"
+  - "Android isolates each app: two APKs cannot see each other's files"
+  - "A store must accept it: nothing executable downloaded, nothing unverified loaded"
+
+considered-options:
+  - "A · One app (the shell) holding the heavy files; each cartridge is content it downloads or receives, verified"
+  - "B · One installer per game on the desktop, sharing a folder of heavy files between installers"
+  - "C · One installer per game, each with everything inside"
+
+pros-and-cons-of-the-options: |
+  **A.** ✅ The heavy files once; one update path; the only option that works on Android. ✅ Within Google Play's policy:
+  a cartridge is JavaScript run in the webview, and the policy excepts interpreted code in a webview. ❌ A cartridge must be
+  verified before it is loaded (the webview has a bridge to native code).
+  **B.** ✅ A school can install one game alone. ❌ A shared folder, versions between installers, an uninstall that must
+  not delete what another game uses — and it does not exist on Android.
+  **C.** ❌ Hundreds of MiB repeated per game.
+
+decision-outcome:
+  chosen-option:
+    link: "A — one app, the cartridges as its content, on every platform"
+    justification: |
+      §1 · ONE SHELL PER DEVICE. The installable is the shell: the heavy files, checked by sha256 (ADR-0177), and a place
+      where cartridges live. It is the same on Windows, Linux, macOS and Android.
+
+      §2 · A CARTRIDGE IS CONTENT. It arrives in the shell — downloaded or copied —, is checked by its sha256 before it is
+      kept, and is served from the shell's own origin; nothing is loaded from a third party's address. A game can still
+      have its own entry point (a shortcut or icon that opens the shell straight into it).
+
+      §3 · NOTHING NATIVE ARRIVES LATER. Native code travels inside the installable and changes only by an update of it.
+      The runtimes a cartridge's JavaScript loads (`.wasm` for the voice, reading and commands) are content under the same
+      check; confirming this reading of the store policy for `.wasm` is owed before publishing to Google Play.
+
+      §4 · THE VOICE ON ANDROID IS THE NEURAL ONE. The Android webview has no speechSynthesis; narration there is Kokoro,
+      the fallback built for exactly this (ADR-0200, ADR-0216) — no native text-to-speech plugin.
+
+  consequences:
+    positive:
+      - "A school without network installs everything from a USB stick"
+      - "The heavy files once per device, however many games"
+    negative:
+      - "A shell to build and maintain for four platforms"
+      - "Signing costs: a Windows code-signing certificate (an unsigned installer warns), a Google Play account"
+      - "Android carries Kokoro's weight for narration"
+
+  confirmation: |
+    Debt: nothing is built. An issue is to be opened when the shell's work starts; the first measure is the size of a real
+    delivery and a Tauri build of the demo on Windows.
+
+more-information: |
+  ChromeOS runs neither Tauri's desktop build nor any installer; Chromebooks keep the PWA, or the APK through the Play Store.
