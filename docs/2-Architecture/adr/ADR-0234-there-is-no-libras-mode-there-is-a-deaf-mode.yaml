@@ -7,6 +7,18 @@ metadata:
   errata:
     - date: 2026-09-25
       what: >-
+        Ç IS SPELLED AS Ç — the rule «a word with no sign is spelled as it is written» stripped every mark, the cedilla
+        included, so «caça» was fingerspelled C-A-C-A; but Ç is not an accented C, it is a letter of the Libras manual
+        alphabet with its own handshape and movement. Measured on route A before changing anything: handed «CAÇA», which
+        has no bundle, the VLibras player spells C-A-Ç-A from a clip of its own (its caption marks the Ç, the hand makes
+        the C and moves, «Ç» alone plays ~7.9 s against ~3.5 s for «C»), logs no missing clip where «Ã» logs «Clip Ã não
+        foi encontrado em GERAL», and asks `libras/signs/` for no Ç bundle; route B carries a Ç clip since the manual
+        alphabet was exported (engine `eb2eeda0`). So the rule reads: in capitals, an accented vowel as its base letter
+        (Ã → A, É → E), and Ç as Ç — one rule for both routes (`spelledWord` in `scripts/libras-glosses.mjs`,
+        `provisionalGloss` in `ui/libras-glosses`, held in agreement by `tests/libras-glosses.node.test.js`). On the
+        engine's delivery, 12 of 598 glossed texts change. Engine `fcff09a2`.
+    - date: 2026-09-25
+      what: >-
         ROUTE B SIGNS OFFLINE AFTER ONE ONLINE START (phase B3, offline half; route A stays the default). Measured before:
         with a delivery built `--libras --libras-avatar`, deaf mode on and the free player lent, one online start kept
         route A's listed files and nothing of route B — no avatar, no clip, no three.js chunk (627,596 bytes, left out of
