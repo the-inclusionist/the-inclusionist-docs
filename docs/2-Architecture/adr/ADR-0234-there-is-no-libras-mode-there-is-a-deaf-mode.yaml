@@ -7,6 +7,17 @@ metadata:
   errata:
     - date: 2026-09-25
       what: >-
+        ROUTE B'S PLAYER RUNS ON three.js, AND HOW IT ENTERS THE PACKAGE. The Dev authorised the download («Sim, pode
+        baixar»): `three` 0.186.1, MIT, from the npm registry. It enters as a runtime `dependency` pinned to that exact
+        version, and it is reached ONLY through a dynamic `import()` from the route B player when deaf mode first signs,
+        so a game's bundler emits it as a separate chunk and a child who never turns deaf mode on downloads none of it;
+        the cost for a game's developer is ~20 MB in `node_modules`, never in the delivery. Rejected: serving a prebuilt
+        `three.module.js` as a heavy file, as the ONNX runtime is — that fits a wasm runtime a bundler cannot split, while
+        three.js is plain modules the bundler tree-shakes to what the player uses. The avatar (`avatar.glb`) and the 632
+        clips exported in phase B1 are heavy files with a sha256, like the route A signs; the clips keep the GPL-3.0 of
+        their `.blend` sources.
+    - date: 2026-09-25
+      what: >-
         A WORD WITH NO SIGN IS SPELLED AS IT IS WRITTEN. The rule-based translator returns lemmas in Libras word order, so a
         word with no sign in the dictionary would be fingerspelled as its lemma («entrou» as E-N-T-R-A-R). Asked, the Dev:
         «Soletra-se a palavra escrita». So the glosses keep, for every token with no sign, the word as written on the
