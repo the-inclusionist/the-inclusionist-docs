@@ -5,6 +5,8 @@ metadata:
   superseded-in-part:
     - by: ADR-0226
       what: "ONLY the CONCENTRATION — one tree for the whole project. Every repository now keeps the records about itself and the engine's return to the engine. The other three clauses stand and matter more under N trees: a confirmation carries its repository, what cannot be opened is counted and SAID on every run, and the validator and the gates run in every repository"
+    - by: ADR-0242
+      what: "Clause 1's address, for the ENGINE's records: they live in the engine's own `docs/2-Architecture/adr/`, and `the-inclusionist-docs` keeps only what belongs to the whole project. The path, the qualified `confirmed-by` (clause 2), the count of what was not checked (clause 3) and the gates in every repository (clauses 4 and 5) stand"
   date: 2026-09-09
   decision-makers: [Dev]
   consulted:
