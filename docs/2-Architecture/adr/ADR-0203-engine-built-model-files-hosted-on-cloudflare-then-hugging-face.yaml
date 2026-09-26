@@ -2,6 +2,18 @@
 metadata:
   status: "accepted"
   errata:
+    - date: 2026-09-26
+      what: >-
+        eSpeak NG IS COMPILED BY THE PROJECT, from a pinned commit. The phonemizer the neural voice needs
+        (`espeak-ng.wasm`, GPL-3.0-or-later) came from the npm package `espeak-ng@1.0.2`, which does not say which
+        eSpeak NG commit it was built from — the binary reports «1.52-dev» — so no delivery could name the Corresponding
+        Source the GPL requires beside a conveyed binary. Of the four ways out put to the Dev (the source in every
+        delivery, the source on the mirror, compiling it here, asking the package's author), the first two stay blocked
+        without the revision and the last has no guarantee; the Dev: «Minha escolha é a c, compilar nós mesmos o
+        .wasm.» So the engine builds the phonemizer from a pinned eSpeak NG commit, reproducibly (the recipe in the
+        engine's `scripts/models/`, as the Vosk runtime's is), pins the output by sha256 in the heavy catalogue, and the
+        Corresponding Source is that commit plus the recipe. The download of the toolchain and the source was authorised
+        with the choice. Issue #192.
     - date: 2026-09-14
       what: '📌 THE LESSAC-DERIVED VOICES ARE NOT HOSTED. The Dev, on Faber, Amy and Ryan: «Não vamos hospedar.» The project puts no copy of `pt_BR-faber-medium`, `en_US-amy-medium` or `en_US-ryan-medium` on its Cloudflare nor on Hugging Face. ⚠️ The delivery of ADR-0177 copies each catalogued voice into `dist/pesados/` and serves it from the game''s own origin — a copy the project serves, whichever host carries the game; how the three voices still reach a device is the Dev''s open question (a CDN, or packaged in the PWA). Issue #192.'
     - date: 2026-09-14

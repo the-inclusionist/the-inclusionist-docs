@@ -2,6 +2,14 @@
 metadata:
   status: "accepted"
   errata:
+    - date: 2026-09-26
+      what: >-
+        THE READING MODELS COME IN THE THREE LANGUAGES TOO, AND EVERY DEVICE KEEPS THE THREE. Asked whether a device
+        should download only the language the child plays in (~850 MiB for the three), the Dev: «Negativo, baixar os
+        três. Toda criança vai experimentar as três línguas imediatamente.» So, for a game that declares reading, the
+        delivery carries the pt, en and es reading models unless its `--reading` list narrows it, and the start asks for
+        the model of every language the page can switch to, the child's first — the same rule the command models follow
+        (this record's erratum of 2026-09-25). Where reading lives was confirmed the same day (ADR-0216 erratum).
     - date: 2026-09-25
       what: >-
         THE DELIVERY'S HALF, decided. The heavy files were chosen at boot for the boot language, so a school using two
